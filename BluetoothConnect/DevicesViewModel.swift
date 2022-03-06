@@ -52,7 +52,7 @@ final class DevicesViewModel: ObservableObject {
             }
             .store(in: &bag)
         manager.start()
-        dataSubject.throttle(for: 0.5, scheduler: DispatchQueue.main, latest: true)
+        dataSubject.throttle(for: 0.2, scheduler: DispatchQueue.main, latest: true)
             .sink { data in
             self.manager.sendData(data)
         }.store(in: &bag)
