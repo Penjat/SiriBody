@@ -99,18 +99,10 @@ extension BluetoothManager: CBCentralManagerDelegate {
         }
     }
     
-    func writeOutgoingValue(data: String){
-        
-//        let valueString = (data as NSString).data(using: String.Encoding.utf8.rawValue)
-        var myInt = 77
-        var valueString = Data(bytes: &myInt,
-                             count: MemoryLayout.size(ofValue: myInt))
-        
+    func sendData(_ data: Data) {
         if let bluefruitPeripheral = connectedBody {
-            
             if let txCharacteristic = txCharacteristic {
-                
-                bluefruitPeripheral.writeValue(valueString, for: txCharacteristic, type: CBCharacteristicWriteType.withoutResponse)
+                bluefruitPeripheral.writeValue(data, for: txCharacteristic, type: CBCharacteristicWriteType.withoutResponse)
             }
         }
     }

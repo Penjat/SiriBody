@@ -57,8 +57,8 @@
 			children = (
 				0BD88B3927CB09DB009F514D /* BluetoothConnectApp.swift */,
 				0BD88B3B27CB09DB009F514D /* ContentView.swift */,
-				0BD88B4727CB09EE009F514D /* BluetoothManager.swift */,
 				0BD88B4927CB0B87009F514D /* DevicesViewModel.swift */,
+				0BD88B4727CB09EE009F514D /* BluetoothManager.swift */,
 				0BD88B3D27CB09DE009F514D /* Assets.xcassets */,
 				0BD88B3F27CB09DE009F514D /* Preview Content */,
 			);

@@ -19,11 +19,12 @@ struct ContentView: View {
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onChanged { value in
-                                    
                                     print("Touch down \(value.location.y)")
-                                    viewModel.motor1Speed = 250 - value.location.y
+                                    let speed = Int(250 - value.location.y)*100/255
+                                    viewModel.motor1Speed = speed < 0 ? abs(speed) : speed + 100
                                 }
                                 .onEnded { value in
+                                    print("released")
                                     viewModel.motor1Speed = 0
                                 }
                         )
@@ -35,37 +36,18 @@ struct ContentView: View {
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onChanged { value in
-                                    
                                     print("Touch down \(value.location.y)")
-                                    viewModel.motor2Speed = 250 - value.location.y
+                                    let speed = Int(250 - value.location.y)*100/255
+                                    viewModel.motor2Speed = speed < 0 ? abs(speed) : speed + 100
                                 }
                                 .onEnded { value in
+                                    print("released")
                                     viewModel.motor2Speed = 0
                                 }
                         )
                 }
                 
                 Spacer()
-        
-        
-//            Button {
-//                viewModel.sendMessage("f")
-//            } label: {
-//                Text("forward")
-//            }
-//
-//            Button {
-//                viewModel.sendMessage("s")
-//            } label: {
-//                Text("stop")
-//            }
-//
-//            Button {
-//                viewModel.sendMessage("b")
-//            } label: {
-//                Text("backwards")
-//            }
-
         }
         
             .padding()

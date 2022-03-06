@@ -3,15 +3,16 @@ import CoreBluetooth
 import Combine
 
 final class DevicesViewModel: ObservableObject {
+    var dataSubject = PassthroughSubject<Data, Never>()
     
     @Published var state: CBManagerState = .unknown
     @Published var peripherals: [CBPeripheral] = []
     
-    @Published var motor1Speed = 0.0
-    @Published var motor2Speed = 0.0
+    @Published var motor1Speed = 0
+    @Published var motor2Speed = 0
     
     private lazy var manager: BluetoothManager = BluetoothManager()
-    private lazy var cancellables: Set<AnyCancellable> = .init()
+    private lazy var bag: Set<AnyCancellable> = .init()
     
     
 //    deinit {
@@ -39,7 +40,7 @@ final class DevicesViewModel: ObservableObject {
                 }
             }
         
-            .store(in: &cancellables)
+            .store(in: &bag)
         manager.peripheralSubject
             .filter { [weak self] in self?.peripherals.contains($0) == false }
             .sink { [weak self] in
@@ -49,11 +50,29 @@ final class DevicesViewModel: ObservableObject {
                     self?.manager.connect($0)
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &bag)
         manager.start()
+        dataSubject.throttle(for: 0.5, scheduler: DispatchQueue.main, latest: true)
+            .sink { data in
+            self.manager.sendData(data)
+        }.store(in: &bag)
+        
+        $motor1Speed.sink { _ in
+            self.sendPacket()
+        }.store(in: &bag)
+        
+        $motor2Speed.sink { _ in
+            self.sendPacket()
+        }.store(in: &bag)
     }
     
-    func sendMessage(_ message: String) {
-        manager.writeOutgoingValue(data: message)
+    func sendPacket() {
+        let data = Data([235, UInt8(min(255,motor1Speed)), UInt8(min(255,motor2Speed))])
+        dataSubject.send(data)
     }
+}
+
+enum Motor {
+    case motor1
+    case motor2
 }
