@@ -15,6 +15,7 @@
 		0B89D4BC27D54A84006FEB36 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD88B4727CB09EE009F514D /* BluetoothManager.swift */; };
 		0BC62D6527D7D5DA00BCDFA3 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */; };
 		0BC62D6727D7D7A200BCDFA3 /* CommandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */; };
+		0BC62D6B27D7EB7000BCDFA3 /* RobotMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */; };
 		0BD88B3A27CB09DB009F514D /* BluetoothConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD88B3927CB09DB009F514D /* BluetoothConnectApp.swift */; };
 		0BD88B3C27CB09DB009F514D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD88B3B27CB09DB009F514D /* ContentView.swift */; };
 		0BD88B3E27CB09DE009F514D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BD88B3D27CB09DE009F514D /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		0B89D4B627D54A65006FEB36 /* RobitController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RobitController.entitlements; sourceTree = "<group>"; };
 		0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
 		0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsView.swift; sourceTree = "<group>"; };
+		0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotMotions.swift; sourceTree = "<group>"; };
 		0BD88B3627CB09DB009F514D /* BluetoothConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD88B3927CB09DB009F514D /* BluetoothConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnectApp.swift; sourceTree = "<group>"; };
 		0BD88B3B27CB09DB009F514D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				0BD88B4727CB09EE009F514D /* BluetoothManager.swift */,
 				0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */,
 				0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */,
+				0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */,
 				0BD88B3D27CB09DE009F514D /* Assets.xcassets */,
 				0BD88B3F27CB09DE009F514D /* Preview Content */,
 			);
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC62D6B27D7EB7000BCDFA3 /* RobotMotions.swift in Sources */,
 				0BD88B4A27CB0B87009F514D /* DevicesViewModel.swift in Sources */,
 				0BD88B3C27CB09DB009F514D /* ContentView.swift in Sources */,
 				0BD88B4827CB09EE009F514D /* BluetoothManager.swift in Sources */,

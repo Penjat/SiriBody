@@ -3,7 +3,7 @@ import SwiftUI
 struct CommandsView: View {
     @EnvironmentObject var viewModel: DevicesViewModel
     var body: some View {
-        VStack {
+        VStack(spacing: 40) {
             Text("\(viewModel.turnTime)")
             Slider(value: $viewModel.turnTime, in: 0.2...2.0)
             Button {
@@ -19,9 +19,9 @@ struct CommandsView: View {
             }
 
             Button {
-                viewModel.makeSquare()
+                viewModel.stopMotion()
             } label: {
-                Text("square")
+                Text("stop")
             }
         }
     }

@@ -17,7 +17,16 @@ final class DevicesViewModel: ObservableObject {
 //    deinit {
 //        cancellables.cancel()
 //    }
+    let commands = [RobotMotion(speed: (motor1Speed: 60, motor2Speed: -60), time: 0.2),
+                    RobotMotion(speed: (motor1Speed: 0, motor2Speed: 0), time: 2.0),
+                    RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.2),
+                    RobotMotion(speed: (motor1Speed: 0, motor2Speed: 0), time: 2.0)]
     
+    private let commandQueue =
+      DispatchQueue(
+        label: "robot.motion")
+    
+    var inMotion = false
     func start() {
         manager.stateSubject
             .sink { [weak self] state in
@@ -74,20 +83,30 @@ final class DevicesViewModel: ObservableObject {
             let data = Data([235, UInt8(min(255,self.convertedSpeed(0))), UInt8(min(255,self.convertedSpeed(0)))])
             self.dataSubject.send(data)
         }
+        
+        
     }
     
     public func makeSquare() {
-        let queue = DispatchQueue.main
-        Timer.publish(every: 2, on: .main, in: .default)
-            .autoconnect()
-            .sink { click in
-                let data = Data([235, UInt8(min(255,self.convertedSpeed(60))), UInt8(min(255,self.convertedSpeed(-60)))])
-                self.dataSubject.send(data)
-                queue.asyncAfter(deadline: .now() + self.turnTime) {
-                    let data = Data([235, UInt8(min(255,self.convertedSpeed(0))), UInt8(min(255,self.convertedSpeed(0)))])
+        inMotion = true
+        commandQueue.async {
+            while self.inMotion {
+                for command in self.commands {
+                    if !self.inMotion {
+                        return
+                    }
+                    print(command.speed)
+                    let data = Data([235, UInt8(min(255,self.convertedSpeed(command.speed.motor1Speed))), UInt8(min(255,self.convertedSpeed(command.speed.motor2Speed)))])
                     self.dataSubject.send(data)
+                    usleep(UInt32(command.time*1000000))
                 }
-            }.store(in: &bag)
+            }
+        }
+    }
+    
+    public func stopMotion() {
+        inMotion = false
+        motorSpeed = (0,0)
     }
     
     private func sendPacket() {
