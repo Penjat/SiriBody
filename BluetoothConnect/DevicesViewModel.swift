@@ -8,8 +8,7 @@ final class DevicesViewModel: ObservableObject {
     @Published var state: CBManagerState = .unknown
     @Published var peripherals: [CBPeripheral] = []
     
-    @Published var motor1Speed = 0
-    @Published var motor2Speed = 0
+    @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     
     private lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
@@ -46,9 +45,11 @@ final class DevicesViewModel: ObservableObject {
             .sink { [weak self] in
                 self?.peripherals.append($0)
                 if $0.name == "SiriBody" {
-                    print("SiriBody Found!!!!!!!!")
+                    print("SiriBody Found!!!!!!!! \($0)")
+                    
                     self?.manager.connect($0)
                 }
+                print($0)
             }
             .store(in: &bag)
         manager.start()
@@ -57,17 +58,13 @@ final class DevicesViewModel: ObservableObject {
             self.manager.sendData(data)
         }.store(in: &bag)
         
-        $motor1Speed.sink { _ in
-            self.sendPacket()
-        }.store(in: &bag)
-        
-        $motor2Speed.sink { _ in
+        $motorSpeed.sink { _ in
             self.sendPacket()
         }.store(in: &bag)
     }
     
     func sendPacket() {
-        let data = Data([235, UInt8(min(255,motor1Speed)), UInt8(min(255,motor2Speed))])
+        let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
         dataSubject.send(data)
     }
 }

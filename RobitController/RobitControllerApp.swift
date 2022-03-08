@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct BluetoothConnectApp: App {
+struct RobitControllerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
