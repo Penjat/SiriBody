@@ -63,7 +63,20 @@ final class DevicesViewModel: ObservableObject {
         }.store(in: &bag)
     }
     
-    func sendPacket() {
+    public func convertedSpeed(_ speed: Int) -> Int {
+        Int(speed < 0 ? abs(speed) : speed + 100)
+    }
+    
+    public func turn90Degrees() {
+        let data = Data([235, UInt8(min(255,convertedSpeed(60))), UInt8(min(255,convertedSpeed(-60)))])
+        dataSubject.send(data)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let data = Data([235, UInt8(min(255,self.convertedSpeed(0))), UInt8(min(255,self.convertedSpeed(0)))])
+            self.dataSubject.send(data)
+        }
+    }
+    
+    private func sendPacket() {
         let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
         dataSubject.send(data)
     }
