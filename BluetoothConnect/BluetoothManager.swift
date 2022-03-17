@@ -54,7 +54,6 @@ extension BluetoothManager: CBCentralManagerDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        print("Discovered services \(peripheral)")
         if ((error) != nil) {
             print("Error discovering services: \(error!.localizedDescription)")
             return

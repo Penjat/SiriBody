@@ -16,6 +16,9 @@
 		0BC62D6527D7D5DA00BCDFA3 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */; };
 		0BC62D6727D7D7A200BCDFA3 /* CommandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */; };
 		0BC62D6B27D7EB7000BCDFA3 /* RobotMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */; };
+		0BC62D6C27D8651B00BCDFA3 /* CommandsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */; };
+		0BC62D6D27D8651B00BCDFA3 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */; };
+		0BC62D6E27D8655E00BCDFA3 /* RobotMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */; };
 		0BD88B3A27CB09DB009F514D /* BluetoothConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD88B3927CB09DB009F514D /* BluetoothConnectApp.swift */; };
 		0BD88B3C27CB09DB009F514D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD88B3B27CB09DB009F514D /* ContentView.swift */; };
 		0BD88B3E27CB09DE009F514D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BD88B3D27CB09DE009F514D /* Assets.xcassets */; };
@@ -223,8 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC62D6E27D8655E00BCDFA3 /* RobotMotions.swift in Sources */,
 				0B89D4BB27D54A84006FEB36 /* DevicesViewModel.swift in Sources */,
 				0B89D4B027D54A63006FEB36 /* ContentView.swift in Sources */,
+				0BC62D6D27D8651B00BCDFA3 /* JoystickView.swift in Sources */,
+				0BC62D6C27D8651B00BCDFA3 /* CommandsView.swift in Sources */,
 				0B89D4AE27D54A63006FEB36 /* RobitControllerApp.swift in Sources */,
 				0B89D4BC27D54A84006FEB36 /* BluetoothManager.swift in Sources */,
 			);
@@ -453,7 +459,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,7 +491,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

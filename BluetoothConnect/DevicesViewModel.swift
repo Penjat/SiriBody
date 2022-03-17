@@ -8,7 +8,7 @@ final class DevicesViewModel: ObservableObject {
     @Published var state: CBManagerState = .unknown
     @Published var peripherals: [CBPeripheral] = []
     
-    @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
+    @Published var motorSpeed = (motor1Speed: UInt8(0), motor2Speed: UInt8(0))
     
     private lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
@@ -17,9 +17,9 @@ final class DevicesViewModel: ObservableObject {
 //    deinit {
 //        cancellables.cancel()
 //    }
-    let commands = [RobotMotion(speed: (motor1Speed: 60, motor2Speed: -60), time: 0.2),
+    let commands = [RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.257*2),
                     RobotMotion(speed: (motor1Speed: 0, motor2Speed: 0), time: 2.0),
-                    RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.2),
+                    RobotMotion(speed: (motor1Speed: -60, motor2Speed: -60), time: 2.0),
                     RobotMotion(speed: (motor1Speed: 0, motor2Speed: 0), time: 2.0)]
     
     private let commandQueue =
@@ -62,18 +62,25 @@ final class DevicesViewModel: ObservableObject {
             }
             .store(in: &bag)
         manager.start()
-        dataSubject.throttle(for: 0.2, scheduler: DispatchQueue.main, latest: true)
-            .sink { data in
-            self.manager.sendData(data)
+        
+        $motorSpeed.sink { newSpeed in
+            self.sendPacket(speed1: newSpeed.motor1Speed, speed2: newSpeed.motor2Speed)
         }.store(in: &bag)
         
-        $motorSpeed.sink { _ in
-            self.sendPacket()
+        dataSubject
+            .sink { data in
+            self.manager.sendData(data)
+                
         }.store(in: &bag)
+        
+        
     }
     
-    public func convertedSpeed(_ speed: Int) -> Int {
-        Int(speed < 0 ? abs(speed) : speed + 100)
+    public func convertedSpeed(_ speed: Int) -> UInt8 {
+        guard speed != 0 else {
+            return UInt8(0)
+        }
+        return UInt8(speed < 0 ? abs(speed) : speed + 100)
     }
     
     public func turn90Degrees() {
@@ -83,8 +90,6 @@ final class DevicesViewModel: ObservableObject {
             let data = Data([235, UInt8(min(255,self.convertedSpeed(0))), UInt8(min(255,self.convertedSpeed(0)))])
             self.dataSubject.send(data)
         }
-        
-        
     }
     
     public func makeSquare() {
@@ -92,9 +97,6 @@ final class DevicesViewModel: ObservableObject {
         commandQueue.async {
             while self.inMotion {
                 for command in self.commands {
-                    if !self.inMotion {
-                        return
-                    }
                     print(command.speed)
                     let data = Data([235, UInt8(min(255,self.convertedSpeed(command.speed.motor1Speed))), UInt8(min(255,self.convertedSpeed(command.speed.motor2Speed)))])
                     self.dataSubject.send(data)
@@ -109,10 +111,10 @@ final class DevicesViewModel: ObservableObject {
         motorSpeed = (0,0)
     }
     
-    private func sendPacket() {
+    private func sendPacket(speed1: UInt8, speed2: UInt8) {
         let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
-        dataSubject.send(data)
-        
+//        dataSubject.send(data)
+        manager.sendData(data)
     }
 }
 

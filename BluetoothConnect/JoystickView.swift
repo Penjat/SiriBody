@@ -5,7 +5,7 @@ struct JoystickView: View {
     @EnvironmentObject var viewModel: DevicesViewModel
     @State var touchPoint = CGPoint.zero
     // Create a CMMotionManager instance
-    let manager = CMMotionManager()
+//    let manager = CMMotionManager()
     @State var possitionData: CMDeviceMotion?
     @State var turnSensitivity = 1.0
     var body: some View {
@@ -31,6 +31,11 @@ struct JoystickView: View {
                     Circle().aspectRatio(1.0, contentMode: .fit)
                         .gesture(
                             DragGesture(minimumDistance: 0)
+                                .onEnded { value in
+                                    viewModel.motorSpeed = (motor1Speed: UInt8(0), motor2Speed:  UInt8(0))
+                                    touchPoint = value.location
+                                    viewModel.stopMotion()
+                                }
                                 .onChanged { value in
                                     let radius = (geometry.size.width/2)
                                     let forwardBackward = max(-100,min(100,(value.location.y - radius)*100/radius))
@@ -38,13 +43,7 @@ struct JoystickView: View {
                                     
                                     let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))
                                     let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))
-                                    print("Touch down \(motor1Speed) \(motor2Speed)")
                                     viewModel.motorSpeed = (motor1Speed: viewModel.convertedSpeed(Int(motor1Speed)), motor2Speed: viewModel.convertedSpeed(Int(motor2Speed)))
-                                    touchPoint = value.location
-                                }
-                                .onEnded { value in
-                                    viewModel.motorSpeed = (0,0)
-                                    
                                     touchPoint = value.location
                                 }
                         )
@@ -72,11 +71,11 @@ struct JoystickView: View {
 //            manager.accelerometerUpdateInterval = 0.1
 
             // Start accelerometer updates on a specific thread
-            manager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
-//                 Handle acceleration update
-                possitionData = data
-                
-            }
+//            manager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
+////                 Handle acceleration update
+//                possitionData = data
+//                
+//            }
         }
     }
 }
