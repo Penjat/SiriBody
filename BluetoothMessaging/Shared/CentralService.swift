@@ -5,10 +5,10 @@ class CentralService: NSObject {
     var centralManager: CBCentralManager!
     var discoveredPeripheral: CBPeripheral?
     var transferCharacteristic: CBCharacteristic?
-    
-    var data = PassthroughSubject<String, Never>()
-    var commandSubject = PassthroughSubject<Data, Never>()
-    
+     
+    let centralState = PassthroughSubject<CBManagerState, Never>()
+    let data = PassthroughSubject<String, Never>()
+    let commandSubject = PassthroughSubject<Data, Never>()
     
     var bag = Set<AnyCancellable>()
     
@@ -26,24 +26,7 @@ class CentralService: NSObject {
 
 extension CentralService: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch centralManager.state {
-            
-        case .unknown:
-            print("Unknown")
-        case .resetting:
-            print("restting")
-        case .unsupported:
-            print("unsupported")
-        case .unauthorized:
-            print("unauthorized")
-        case .poweredOff:
-            print("Powered off")
-        case .poweredOn:
-            print("Powered on")
-            retrievePeripheral()
-        @unknown default:
-            print("Unknown")
-        }
+        centralState.send(centralManager.state)
     }
     
     func retrievePeripheral() {

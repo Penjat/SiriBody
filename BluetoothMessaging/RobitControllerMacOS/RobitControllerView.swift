@@ -5,14 +5,8 @@ struct RobitControllerView: View {
     
     var body: some View {
         VStack {
-            TextField("message", text: $viewModel.messageText)
-            Button("send msg") {
-                if let transferCharacteristic = viewModel.centralService.transferCharacteristic {
-                    viewModel.centralService.discoveredPeripheral?.writeValue(viewModel.messageText.data(using: .utf8)!, for: transferCharacteristic, type: .withoutResponse)
-                }
-            }
-            ForEach(viewModel.recievedData, id: \.self) { text in
-                Text(text).foregroundColor(.white)
+            Button("turn 360") {
+                viewModel.centralService.commandSubject.send(Command.turn360.data())
             }
         }
         .frame(width: 500, height: 500)

@@ -9,8 +9,14 @@ class RobitViewModel: ObservableObject {
     var bag = Set<AnyCancellable>()
     
     init() {
-        peripheralService.dataIN.receive(on: DispatchQueue.main, options: nil).sink { text in
-            self.reciededData.append(text)
+        peripheralService.dataIN.receive(on: DispatchQueue.main, options: nil).sink { cmd in
+            switch cmd {
+            case .turn360:
+                self.reciededData.append("turn 360")
+            case .unknown:
+                self.reciededData.append("unknown")
+            }
+            
         }.store(in: &bag)
         
         peripheralService.peripheralState.sink { state in

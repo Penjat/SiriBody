@@ -7,7 +7,7 @@ class PeripheralService: NSObject {
     
     let peripheralState = PassthroughSubject<CBManagerState, Never>()
     let dataOUT = PassthroughSubject<Data, Never>()
-    let dataIN = PassthroughSubject<String, Never>()
+    let dataIN = PassthroughSubject<Command, Never>()
     
     var transferCharacteristic: CBMutableCharacteristic?
     
@@ -53,7 +53,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         for aRequest in requests {
             guard let requestValue = aRequest.value,
-                  let stringFromData = String(data: requestValue, encoding: .utf8) else {
+                  let stringFromData = Command(rawValue: ([UInt8](requestValue)).first ?? 0) else {
                       continue
                   }
             dataIN.send(stringFromData)
