@@ -1,0 +1,877 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B2CB18627E10362000A81C5 /* RobitControllerIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB18527E10362000A81C5 /* RobitControllerIOSApp.swift */; };
+		0B2CB18827E10362000A81C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB18727E10362000A81C5 /* ContentView.swift */; };
+		0B2CB18A27E10364000A81C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CB18927E10364000A81C5 /* Assets.xcassets */; };
+		0B2CB18D27E10364000A81C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CB18C27E10364000A81C5 /* Preview Assets.xcassets */; };
+		0B2CB19227E106B9000A81C5 /* RobitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19127E106B9000A81C5 /* RobitViewModel.swift */; };
+		0B2CB19427E106FB000A81C5 /* RobitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19327E106FA000A81C5 /* RobitView.swift */; };
+		0B2CB19627E10734000A81C5 /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19527E10733000A81C5 /* PeripheralService.swift */; };
+		0B2CB19E27E17257000A81C5 /* RobitControllerMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19D27E17257000A81C5 /* RobitControllerMacOSApp.swift */; };
+		0B2CB1A027E17257000A81C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19F27E17257000A81C5 /* ContentView.swift */; };
+		0B2CB1A227E1725B000A81C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CB1A127E1725B000A81C5 /* Assets.xcassets */; };
+		0B2CB1A527E1725B000A81C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CB1A427E1725B000A81C5 /* Preview Assets.xcassets */; };
+		0B2CB1AB27E1729B000A81C5 /* RobitControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */; };
+		0B2CB1AD27E172CB000A81C5 /* RobitControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */; };
+		0B2CB1AF27E1730E000A81C5 /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AE27E1730E000A81C5 /* CentralService.swift */; };
+		0B72B38427D97F33006FDFBA /* BluetoothMessagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */; };
+		0B72B38627D97F33006FDFBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B38527D97F33006FDFBA /* ContentView.swift */; };
+		0B72B38827D97F35006FDFBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B72B38727D97F35006FDFBA /* Assets.xcassets */; };
+		0B72B38B27D97F35006FDFBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */; };
+		0B72B39227D98185006FDFBA /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39127D98185006FDFBA /* TitleView.swift */; };
+		0B72B39427D98219006FDFBA /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39327D98219006FDFBA /* PeripheralView.swift */; };
+		0B72B39627D98227006FDFBA /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39527D98227006FDFBA /* CenterView.swift */; };
+		0B72B39827D98E11006FDFBA /* PeripheralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */; };
+		0BF0980E27DBB03000C43884 /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980D27DBB03000C43884 /* CentralViewModel.swift */; };
+		0BF0981027DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */; };
+		0BF0981227DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */; };
+		0BF0981C27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */; };
+		0BF0981E27DBC11B00C43884 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981D27DBC11B00C43884 /* ContentView.swift */; };
+		0BF0982027DBC11C00C43884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF0981F27DBC11C00C43884 /* Assets.xcassets */; };
+		0BF0982327DBC11C00C43884 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */; };
+		0BF0982827DBC17900C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */; };
+		0BF0982927DBC17900C43884 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39127D98185006FDFBA /* TitleView.swift */; };
+		0BF0982C27DBC17900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */; };
+		0BF0982D27DBC17900C43884 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39327D98219006FDFBA /* PeripheralView.swift */; };
+		0BF0982E27DBC17900C43884 /* PeripheralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */; };
+		0BF0982F27DBC17900C43884 /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980D27DBB03000C43884 /* CentralViewModel.swift */; };
+		0BF0983027DBC17900C43884 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39527D98227006FDFBA /* CenterView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0B2CB18327E10362000A81C5 /* RobitControllerIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobitControllerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B2CB18527E10362000A81C5 /* RobitControllerIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerIOSApp.swift; sourceTree = "<group>"; };
+		0B2CB18727E10362000A81C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B2CB18927E10364000A81C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B2CB18C27E10364000A81C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B2CB19127E106B9000A81C5 /* RobitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitViewModel.swift; sourceTree = "<group>"; };
+		0B2CB19327E106FA000A81C5 /* RobitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitView.swift; sourceTree = "<group>"; };
+		0B2CB19527E10733000A81C5 /* PeripheralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralService.swift; sourceTree = "<group>"; };
+		0B2CB19B27E17257000A81C5 /* RobitControllerMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobitControllerMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B2CB19D27E17257000A81C5 /* RobitControllerMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerMacOSApp.swift; sourceTree = "<group>"; };
+		0B2CB19F27E17257000A81C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B2CB1A127E1725B000A81C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B2CB1A427E1725B000A81C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B2CB1A627E1725B000A81C5 /* RobitControllerMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RobitControllerMacOS.entitlements; sourceTree = "<group>"; };
+		0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerView.swift; sourceTree = "<group>"; };
+		0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerViewModel.swift; sourceTree = "<group>"; };
+		0B2CB1AE27E1730E000A81C5 /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
+		0B72B38027D97F33006FDFBA /* BluetoothMessaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessagingApp.swift; sourceTree = "<group>"; };
+		0B72B38527D97F33006FDFBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B72B38727D97F35006FDFBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B72B39127D98185006FDFBA /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		0B72B39327D98219006FDFBA /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
+		0B72B39527D98227006FDFBA /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewModel.swift; sourceTree = "<group>"; };
+		0BF0980D27DBB03000C43884 /* CentralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewModel.swift; sourceTree = "<group>"; };
+		0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CentralViewModel+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
+		0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CentralView+CBPeripheralManagerDelegate.swift"; sourceTree = "<group>"; };
+		0BF0981927DBC11B00C43884 /* BluetoothMessagingMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessagingMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessagingMacOSApp.swift; sourceTree = "<group>"; };
+		0BF0981D27DBC11B00C43884 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0BF0981F27DBC11C00C43884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0BF0982427DBC11C00C43884 /* BluetoothMessagingMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothMessagingMacOS.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B2CB18027E10362000A81C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2CB19827E17257000A81C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B72B37D27D97F33006FDFBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BF0981627DBC11B00C43884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B2CB18427E10362000A81C5 /* RobitControllerIOS */ = {
+			isa = PBXGroup;
+			children = (
+				0B2CB18527E10362000A81C5 /* RobitControllerIOSApp.swift */,
+				0B2CB18727E10362000A81C5 /* ContentView.swift */,
+				0B2CB19327E106FA000A81C5 /* RobitView.swift */,
+				0B2CB19127E106B9000A81C5 /* RobitViewModel.swift */,
+				0B2CB19527E10733000A81C5 /* PeripheralService.swift */,
+				0B2CB18927E10364000A81C5 /* Assets.xcassets */,
+				0B2CB18B27E10364000A81C5 /* Preview Content */,
+			);
+			path = RobitControllerIOS;
+			sourceTree = "<group>";
+		};
+		0B2CB18B27E10364000A81C5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B2CB18C27E10364000A81C5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0B2CB19C27E17257000A81C5 /* RobitControllerMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				0B2CB19D27E17257000A81C5 /* RobitControllerMacOSApp.swift */,
+				0B2CB19F27E17257000A81C5 /* ContentView.swift */,
+				0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */,
+				0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */,
+				0B2CB1AE27E1730E000A81C5 /* CentralService.swift */,
+				0B2CB1A127E1725B000A81C5 /* Assets.xcassets */,
+				0B2CB1A627E1725B000A81C5 /* RobitControllerMacOS.entitlements */,
+				0B2CB1A327E1725B000A81C5 /* Preview Content */,
+			);
+			path = RobitControllerMacOS;
+			sourceTree = "<group>";
+		};
+		0B2CB1A327E1725B000A81C5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B2CB1A427E1725B000A81C5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0B72B37727D97F33006FDFBA = {
+			isa = PBXGroup;
+			children = (
+				0B72B38227D97F33006FDFBA /* BluetoothMessaging */,
+				0BF0981A27DBC11B00C43884 /* BluetoothMessagingMacOS */,
+				0B2CB18427E10362000A81C5 /* RobitControllerIOS */,
+				0B2CB19C27E17257000A81C5 /* RobitControllerMacOS */,
+				0B72B38127D97F33006FDFBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0B72B38127D97F33006FDFBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B72B38027D97F33006FDFBA /* BluetoothMessaging.app */,
+				0BF0981927DBC11B00C43884 /* BluetoothMessagingMacOS.app */,
+				0B2CB18327E10362000A81C5 /* RobitControllerIOS.app */,
+				0B2CB19B27E17257000A81C5 /* RobitControllerMacOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0B72B38227D97F33006FDFBA /* BluetoothMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0981427DBB41300C43884 /* Central */,
+				0BF0981327DBB3DB00C43884 /* Peripheral */,
+				0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */,
+				0B72B38527D97F33006FDFBA /* ContentView.swift */,
+				0B72B39127D98185006FDFBA /* TitleView.swift */,
+				0B72B38727D97F35006FDFBA /* Assets.xcassets */,
+				0B72B38927D97F35006FDFBA /* Preview Content */,
+			);
+			path = BluetoothMessaging;
+			sourceTree = "<group>";
+		};
+		0B72B38927D97F35006FDFBA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0BF0981327DBB3DB00C43884 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				0B72B39327D98219006FDFBA /* PeripheralView.swift */,
+				0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		0BF0981427DBB41300C43884 /* Central */ = {
+			isa = PBXGroup;
+			children = (
+				0B72B39527D98227006FDFBA /* CenterView.swift */,
+				0BF0980D27DBB03000C43884 /* CentralViewModel.swift */,
+				0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */,
+				0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */,
+			);
+			path = Central;
+			sourceTree = "<group>";
+		};
+		0BF0981A27DBC11B00C43884 /* BluetoothMessagingMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */,
+				0BF0981D27DBC11B00C43884 /* ContentView.swift */,
+				0BF0981F27DBC11C00C43884 /* Assets.xcassets */,
+				0BF0982427DBC11C00C43884 /* BluetoothMessagingMacOS.entitlements */,
+				0BF0982127DBC11C00C43884 /* Preview Content */,
+			);
+			path = BluetoothMessagingMacOS;
+			sourceTree = "<group>";
+		};
+		0BF0982127DBC11C00C43884 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B2CB18227E10362000A81C5 /* RobitControllerIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B2CB19027E10364000A81C5 /* Build configuration list for PBXNativeTarget "RobitControllerIOS" */;
+			buildPhases = (
+				0B2CB17F27E10362000A81C5 /* Sources */,
+				0B2CB18027E10362000A81C5 /* Frameworks */,
+				0B2CB18127E10362000A81C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RobitControllerIOS;
+			productName = RobitControllerIOS;
+			productReference = 0B2CB18327E10362000A81C5 /* RobitControllerIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0B2CB19A27E17257000A81C5 /* RobitControllerMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B2CB1A727E1725B000A81C5 /* Build configuration list for PBXNativeTarget "RobitControllerMacOS" */;
+			buildPhases = (
+				0B2CB19727E17257000A81C5 /* Sources */,
+				0B2CB19827E17257000A81C5 /* Frameworks */,
+				0B2CB19927E17257000A81C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RobitControllerMacOS;
+			productName = RobitControllerMacOS;
+			productReference = 0B2CB19B27E17257000A81C5 /* RobitControllerMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0B72B37F27D97F33006FDFBA /* BluetoothMessaging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B72B38E27D97F35006FDFBA /* Build configuration list for PBXNativeTarget "BluetoothMessaging" */;
+			buildPhases = (
+				0B72B37C27D97F33006FDFBA /* Sources */,
+				0B72B37D27D97F33006FDFBA /* Frameworks */,
+				0B72B37E27D97F33006FDFBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothMessaging;
+			productName = BluetoothMessaging;
+			productReference = 0B72B38027D97F33006FDFBA /* BluetoothMessaging.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0BF0981827DBC11B00C43884 /* BluetoothMessagingMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BF0982527DBC11C00C43884 /* Build configuration list for PBXNativeTarget "BluetoothMessagingMacOS" */;
+			buildPhases = (
+				0BF0981527DBC11B00C43884 /* Sources */,
+				0BF0981627DBC11B00C43884 /* Frameworks */,
+				0BF0981727DBC11B00C43884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothMessagingMacOS;
+			productName = BluetoothMessagingMacOS;
+			productReference = 0BF0981927DBC11B00C43884 /* BluetoothMessagingMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0B72B37827D97F33006FDFBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					0B2CB18227E10362000A81C5 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					0B2CB19A27E17257000A81C5 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					0B72B37F27D97F33006FDFBA = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					0BF0981827DBC11B00C43884 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 0B72B37B27D97F33006FDFBA /* Build configuration list for PBXProject "BluetoothMessaging" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0B72B37727D97F33006FDFBA;
+			productRefGroup = 0B72B38127D97F33006FDFBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B72B37F27D97F33006FDFBA /* BluetoothMessaging */,
+				0BF0981827DBC11B00C43884 /* BluetoothMessagingMacOS */,
+				0B2CB18227E10362000A81C5 /* RobitControllerIOS */,
+				0B2CB19A27E17257000A81C5 /* RobitControllerMacOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B2CB18127E10362000A81C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2CB18D27E10364000A81C5 /* Preview Assets.xcassets in Resources */,
+				0B2CB18A27E10364000A81C5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2CB19927E17257000A81C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2CB1A527E1725B000A81C5 /* Preview Assets.xcassets in Resources */,
+				0B2CB1A227E1725B000A81C5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B72B37E27D97F33006FDFBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B72B38B27D97F35006FDFBA /* Preview Assets.xcassets in Resources */,
+				0B72B38827D97F35006FDFBA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BF0981727DBC11B00C43884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BF0982327DBC11C00C43884 /* Preview Assets.xcassets in Resources */,
+				0BF0982027DBC11C00C43884 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B2CB17F27E10362000A81C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2CB19227E106B9000A81C5 /* RobitViewModel.swift in Sources */,
+				0B2CB19427E106FB000A81C5 /* RobitView.swift in Sources */,
+				0B2CB19627E10734000A81C5 /* PeripheralService.swift in Sources */,
+				0B2CB18827E10362000A81C5 /* ContentView.swift in Sources */,
+				0B2CB18627E10362000A81C5 /* RobitControllerIOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2CB19727E17257000A81C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2CB1A027E17257000A81C5 /* ContentView.swift in Sources */,
+				0B2CB1AD27E172CB000A81C5 /* RobitControllerViewModel.swift in Sources */,
+				0B2CB1AF27E1730E000A81C5 /* CentralService.swift in Sources */,
+				0B2CB19E27E17257000A81C5 /* RobitControllerMacOSApp.swift in Sources */,
+				0B2CB1AB27E1729B000A81C5 /* RobitControllerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B72B37C27D97F33006FDFBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B72B38627D97F33006FDFBA /* ContentView.swift in Sources */,
+				0B72B39627D98227006FDFBA /* CenterView.swift in Sources */,
+				0BF0980E27DBB03000C43884 /* CentralViewModel.swift in Sources */,
+				0B72B39827D98E11006FDFBA /* PeripheralViewModel.swift in Sources */,
+				0BF0981227DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */,
+				0B72B38427D97F33006FDFBA /* BluetoothMessagingApp.swift in Sources */,
+				0B72B39427D98219006FDFBA /* PeripheralView.swift in Sources */,
+				0BF0981027DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */,
+				0B72B39227D98185006FDFBA /* TitleView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BF0981527DBC11B00C43884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BF0982F27DBC17900C43884 /* CentralViewModel.swift in Sources */,
+				0BF0981E27DBC11B00C43884 /* ContentView.swift in Sources */,
+				0BF0982827DBC17900C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */,
+				0BF0982C27DBC17900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */,
+				0BF0983027DBC17900C43884 /* CenterView.swift in Sources */,
+				0BF0982E27DBC17900C43884 /* PeripheralViewModel.swift in Sources */,
+				0BF0981C27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift in Sources */,
+				0BF0982D27DBC17900C43884 /* PeripheralView.swift in Sources */,
+				0BF0982927DBC17900C43884 /* TitleView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0B2CB18E27E10364000A81C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RobitControllerIOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send messages as central";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send messages as a peripheral";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.RobitControllerIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B2CB18F27E10364000A81C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RobitControllerIOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send messages as central";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send messages as a peripheral";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.RobitControllerIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0B2CB1A827E1725B000A81C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RobitControllerMacOS/RobitControllerMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RobitControllerMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send bluetooth messages";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send bluetooth messages";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.RobitControllerMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0B2CB1A927E1725B000A81C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RobitControllerMacOS/RobitControllerMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RobitControllerMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send bluetooth messages";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send bluetooth messages";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.RobitControllerMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		0B72B38C27D97F35006FDFBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0B72B38D27D97F35006FDFBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B72B38F27D97F35006FDFBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothMessaging/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send msgs";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothMessaging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B72B39027D97F35006FDFBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothMessaging/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send msgs";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothMessaging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0BF0982627DBC11C00C43884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BluetoothMessagingMacOS/BluetoothMessagingMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothMessagingMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothMessagingMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0BF0982727DBC11C00C43884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BluetoothMessagingMacOS/BluetoothMessagingMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothMessagingMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "send msgs";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothMessagingMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B2CB19027E10364000A81C5 /* Build configuration list for PBXNativeTarget "RobitControllerIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B2CB18E27E10364000A81C5 /* Debug */,
+				0B2CB18F27E10364000A81C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B2CB1A727E1725B000A81C5 /* Build configuration list for PBXNativeTarget "RobitControllerMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B2CB1A827E1725B000A81C5 /* Debug */,
+				0B2CB1A927E1725B000A81C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B72B37B27D97F33006FDFBA /* Build configuration list for PBXProject "BluetoothMessaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B72B38C27D97F35006FDFBA /* Debug */,
+				0B72B38D27D97F35006FDFBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B72B38E27D97F35006FDFBA /* Build configuration list for PBXNativeTarget "BluetoothMessaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B72B38F27D97F35006FDFBA /* Debug */,
+				0B72B39027D97F35006FDFBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BF0982527DBC11C00C43884 /* Build configuration list for PBXNativeTarget "BluetoothMessagingMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BF0982627DBC11C00C43884 /* Debug */,
+				0BF0982727DBC11C00C43884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0B72B37827D97F33006FDFBA /* Project object */;
+}
