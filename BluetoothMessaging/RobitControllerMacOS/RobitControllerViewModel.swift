@@ -3,7 +3,7 @@ import Combine
 
 class RobitControllerViewModel: ObservableObject {
     var bag = Set<AnyCancellable>()
-    var centralService = CentralService()
+    var centralService = CentralService(serviceID: TransferService.robitComandsServiceUUID, charID: TransferService.robitCommnadsCharacteristicUUID)
     @Published var recievedData = [String]()
     @Published var messageText = ""
     init() {
