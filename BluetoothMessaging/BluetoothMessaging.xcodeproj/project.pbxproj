@@ -20,29 +20,11 @@
 		0B2CB1A527E1725B000A81C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CB1A427E1725B000A81C5 /* Preview Assets.xcassets */; };
 		0B2CB1AB27E1729B000A81C5 /* RobitControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */; };
 		0B2CB1AD27E172CB000A81C5 /* RobitControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */; };
-		0B2CB1AF27E1730E000A81C5 /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AE27E1730E000A81C5 /* CentralService.swift */; };
-		0B72B38427D97F33006FDFBA /* BluetoothMessagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */; };
-		0B72B38627D97F33006FDFBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B38527D97F33006FDFBA /* ContentView.swift */; };
-		0B72B38827D97F35006FDFBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B72B38727D97F35006FDFBA /* Assets.xcassets */; };
-		0B72B38B27D97F35006FDFBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */; };
-		0B72B39227D98185006FDFBA /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39127D98185006FDFBA /* TitleView.swift */; };
-		0B72B39427D98219006FDFBA /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39327D98219006FDFBA /* PeripheralView.swift */; };
-		0B72B39627D98227006FDFBA /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39527D98227006FDFBA /* CenterView.swift */; };
-		0B72B39827D98E11006FDFBA /* PeripheralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */; };
-		0BF0980E27DBB03000C43884 /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980D27DBB03000C43884 /* CentralViewModel.swift */; };
-		0BF0981027DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */; };
-		0BF0981227DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */; };
-		0BF0981C27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */; };
-		0BF0981E27DBC11B00C43884 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981D27DBC11B00C43884 /* ContentView.swift */; };
-		0BF0982027DBC11C00C43884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF0981F27DBC11C00C43884 /* Assets.xcassets */; };
-		0BF0982327DBC11C00C43884 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */; };
-		0BF0982827DBC17900C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */; };
-		0BF0982927DBC17900C43884 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39127D98185006FDFBA /* TitleView.swift */; };
-		0BF0982C27DBC17900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */; };
-		0BF0982D27DBC17900C43884 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39327D98219006FDFBA /* PeripheralView.swift */; };
-		0BF0982E27DBC17900C43884 /* PeripheralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */; };
-		0BF0982F27DBC17900C43884 /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0980D27DBB03000C43884 /* CentralViewModel.swift */; };
-		0BF0983027DBC17900C43884 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B72B39527D98227006FDFBA /* CenterView.swift */; };
+		0B337B9C27E4C31B00133E0E /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AE27E1730E000A81C5 /* CentralService.swift */; };
+		0B337B9E27E4CB1A00133E0E /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337B9D27E4CB1A00133E0E /* TransferService.swift */; };
+		0B337B9F27E4D5E800133E0E /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337B9D27E4CB1A00133E0E /* TransferService.swift */; };
+		0B337BA027E4D5E800133E0E /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AE27E1730E000A81C5 /* CentralService.swift */; };
+		0B337BA127E4D5E800133E0E /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19527E10733000A81C5 /* PeripheralService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,24 +45,9 @@
 		0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerView.swift; sourceTree = "<group>"; };
 		0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerViewModel.swift; sourceTree = "<group>"; };
 		0B2CB1AE27E1730E000A81C5 /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
+		0B337B9D27E4CB1A00133E0E /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
 		0B72B38027D97F33006FDFBA /* BluetoothMessaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessagingApp.swift; sourceTree = "<group>"; };
-		0B72B38527D97F33006FDFBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0B72B38727D97F35006FDFBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0B72B39127D98185006FDFBA /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
-		0B72B39327D98219006FDFBA /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
-		0B72B39527D98227006FDFBA /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
-		0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewModel.swift; sourceTree = "<group>"; };
-		0BF0980D27DBB03000C43884 /* CentralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewModel.swift; sourceTree = "<group>"; };
-		0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CentralViewModel+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
-		0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CentralView+CBPeripheralManagerDelegate.swift"; sourceTree = "<group>"; };
 		0BF0981927DBC11B00C43884 /* BluetoothMessagingMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessagingMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessagingMacOSApp.swift; sourceTree = "<group>"; };
-		0BF0981D27DBC11B00C43884 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0BF0981F27DBC11C00C43884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0BF0982427DBC11C00C43884 /* BluetoothMessagingMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothMessagingMacOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +89,6 @@
 				0B2CB18727E10362000A81C5 /* ContentView.swift */,
 				0B2CB19327E106FA000A81C5 /* RobitView.swift */,
 				0B2CB19127E106B9000A81C5 /* RobitViewModel.swift */,
-				0B2CB19527E10733000A81C5 /* PeripheralService.swift */,
 				0B2CB18927E10364000A81C5 /* Assets.xcassets */,
 				0B2CB18B27E10364000A81C5 /* Preview Content */,
 			);
@@ -144,7 +110,6 @@
 				0B2CB19F27E17257000A81C5 /* ContentView.swift */,
 				0B2CB1AA27E1729B000A81C5 /* RobitControllerView.swift */,
 				0B2CB1AC27E172CB000A81C5 /* RobitControllerViewModel.swift */,
-				0B2CB1AE27E1730E000A81C5 /* CentralService.swift */,
 				0B2CB1A127E1725B000A81C5 /* Assets.xcassets */,
 				0B2CB1A627E1725B000A81C5 /* RobitControllerMacOS.entitlements */,
 				0B2CB1A327E1725B000A81C5 /* Preview Content */,
@@ -160,11 +125,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0B337B9B27E4C26700133E0E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0B2CB19527E10733000A81C5 /* PeripheralService.swift */,
+				0B2CB1AE27E1730E000A81C5 /* CentralService.swift */,
+				0B337B9D27E4CB1A00133E0E /* TransferService.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		0B72B37727D97F33006FDFBA = {
 			isa = PBXGroup;
 			children = (
-				0B72B38227D97F33006FDFBA /* BluetoothMessaging */,
-				0BF0981A27DBC11B00C43884 /* BluetoothMessagingMacOS */,
+				0B337B9B27E4C26700133E0E /* Shared */,
 				0B2CB18427E10362000A81C5 /* RobitControllerIOS */,
 				0B2CB19C27E17257000A81C5 /* RobitControllerMacOS */,
 				0B72B38127D97F33006FDFBA /* Products */,
@@ -180,68 +154,6 @@
 				0B2CB19B27E17257000A81C5 /* RobitControllerMacOS.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0B72B38227D97F33006FDFBA /* BluetoothMessaging */ = {
-			isa = PBXGroup;
-			children = (
-				0BF0981427DBB41300C43884 /* Central */,
-				0BF0981327DBB3DB00C43884 /* Peripheral */,
-				0B72B38327D97F33006FDFBA /* BluetoothMessagingApp.swift */,
-				0B72B38527D97F33006FDFBA /* ContentView.swift */,
-				0B72B39127D98185006FDFBA /* TitleView.swift */,
-				0B72B38727D97F35006FDFBA /* Assets.xcassets */,
-				0B72B38927D97F35006FDFBA /* Preview Content */,
-			);
-			path = BluetoothMessaging;
-			sourceTree = "<group>";
-		};
-		0B72B38927D97F35006FDFBA /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0B72B38A27D97F35006FDFBA /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0BF0981327DBB3DB00C43884 /* Peripheral */ = {
-			isa = PBXGroup;
-			children = (
-				0B72B39327D98219006FDFBA /* PeripheralView.swift */,
-				0B72B39727D98E11006FDFBA /* PeripheralViewModel.swift */,
-			);
-			path = Peripheral;
-			sourceTree = "<group>";
-		};
-		0BF0981427DBB41300C43884 /* Central */ = {
-			isa = PBXGroup;
-			children = (
-				0B72B39527D98227006FDFBA /* CenterView.swift */,
-				0BF0980D27DBB03000C43884 /* CentralViewModel.swift */,
-				0BF0980F27DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift */,
-				0BF0981127DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift */,
-			);
-			path = Central;
-			sourceTree = "<group>";
-		};
-		0BF0981A27DBC11B00C43884 /* BluetoothMessagingMacOS */ = {
-			isa = PBXGroup;
-			children = (
-				0BF0981B27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift */,
-				0BF0981D27DBC11B00C43884 /* ContentView.swift */,
-				0BF0981F27DBC11C00C43884 /* Assets.xcassets */,
-				0BF0982427DBC11C00C43884 /* BluetoothMessagingMacOS.entitlements */,
-				0BF0982127DBC11C00C43884 /* Preview Content */,
-			);
-			path = BluetoothMessagingMacOS;
-			sourceTree = "<group>";
-		};
-		0BF0982127DBC11C00C43884 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0BF0982227DBC11C00C43884 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,8 +295,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B72B38B27D97F35006FDFBA /* Preview Assets.xcassets in Resources */,
-				0B72B38827D97F35006FDFBA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,8 +302,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF0982327DBC11C00C43884 /* Preview Assets.xcassets in Resources */,
-				0BF0982027DBC11C00C43884 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,8 +315,10 @@
 				0B2CB19227E106B9000A81C5 /* RobitViewModel.swift in Sources */,
 				0B2CB19427E106FB000A81C5 /* RobitView.swift in Sources */,
 				0B2CB19627E10734000A81C5 /* PeripheralService.swift in Sources */,
+				0B337B9C27E4C31B00133E0E /* CentralService.swift in Sources */,
 				0B2CB18827E10362000A81C5 /* ContentView.swift in Sources */,
 				0B2CB18627E10362000A81C5 /* RobitControllerIOSApp.swift in Sources */,
+				0B337B9E27E4CB1A00133E0E /* TransferService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,9 +326,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B337B9F27E4D5E800133E0E /* TransferService.swift in Sources */,
 				0B2CB1A027E17257000A81C5 /* ContentView.swift in Sources */,
 				0B2CB1AD27E172CB000A81C5 /* RobitControllerViewModel.swift in Sources */,
-				0B2CB1AF27E1730E000A81C5 /* CentralService.swift in Sources */,
+				0B337BA027E4D5E800133E0E /* CentralService.swift in Sources */,
+				0B337BA127E4D5E800133E0E /* PeripheralService.swift in Sources */,
 				0B2CB19E27E17257000A81C5 /* RobitControllerMacOSApp.swift in Sources */,
 				0B2CB1AB27E1729B000A81C5 /* RobitControllerView.swift in Sources */,
 			);
@@ -428,15 +340,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B72B38627D97F33006FDFBA /* ContentView.swift in Sources */,
-				0B72B39627D98227006FDFBA /* CenterView.swift in Sources */,
-				0BF0980E27DBB03000C43884 /* CentralViewModel.swift in Sources */,
-				0B72B39827D98E11006FDFBA /* PeripheralViewModel.swift in Sources */,
-				0BF0981227DBB3B500C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */,
-				0B72B38427D97F33006FDFBA /* BluetoothMessagingApp.swift in Sources */,
-				0B72B39427D98219006FDFBA /* PeripheralView.swift in Sources */,
-				0BF0981027DBB37900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */,
-				0B72B39227D98185006FDFBA /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,15 +347,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF0982F27DBC17900C43884 /* CentralViewModel.swift in Sources */,
-				0BF0981E27DBC11B00C43884 /* ContentView.swift in Sources */,
-				0BF0982827DBC17900C43884 /* CentralView+CBPeripheralManagerDelegate.swift in Sources */,
-				0BF0982C27DBC17900C43884 /* CentralViewModel+CBCentralManagerDelegate.swift in Sources */,
-				0BF0983027DBC17900C43884 /* CenterView.swift in Sources */,
-				0BF0982E27DBC17900C43884 /* PeripheralViewModel.swift in Sources */,
-				0BF0981C27DBC11B00C43884 /* BluetoothMessagingMacOSApp.swift in Sources */,
-				0BF0982D27DBC17900C43884 /* PeripheralView.swift in Sources */,
-				0BF0982927DBC17900C43884 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

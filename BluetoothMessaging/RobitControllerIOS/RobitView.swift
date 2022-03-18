@@ -6,9 +6,7 @@ struct RobitView: View {
         Text("Robit")
         TextField("message", text: $viewModel.messageText)
         Button("Send") {
-            if let transferCharacteristic = viewModel.peripheralService.transferCharacteristic {
-                viewModel.peripheralService.peripheralManager.updateValue(viewModel.messageText.data(using: .utf8)!, for: transferCharacteristic, onSubscribedCentrals: nil)
-            }
+            self.viewModel.peripheralService.dataOUT.send(self.viewModel.messageText.data(using: .utf8)!)
         }
         ForEach(viewModel.reciededData, id: \.self) { text in
             Text(text)

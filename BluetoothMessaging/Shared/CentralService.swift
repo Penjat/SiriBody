@@ -2,14 +2,14 @@ import CoreBluetooth
 import Combine
 
 class CentralService: NSObject {
-    static let serviceUUID = CBUUID(string: "E20A39F4-73F5-4BC4-A12F-17D1AD07A961")
-    static let characteristicUUID = CBUUID(string: "08590F7E-DB05-467E-8757-72F6FAEB13D4")
     var centralManager: CBCentralManager!
     var discoveredPeripheral: CBPeripheral?
     var transferCharacteristic: CBCharacteristic?
     
     var data = PassthroughSubject<String, Never>()
     var commandSubject = PassthroughSubject<Data, Never>()
+    
+    
     var bag = Set<AnyCancellable>()
     
     override init() {
@@ -48,7 +48,7 @@ extension CentralService: CBCentralManagerDelegate {
     
     func retrievePeripheral() {
         
-        let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [CentralService.serviceUUID]))
+        let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [TransferService.serviceUUID]))
         
         if let connectedPeripheral = connectedPeripherals.last {
             self.discoveredPeripheral = connectedPeripheral
@@ -56,7 +56,7 @@ extension CentralService: CBCentralManagerDelegate {
         } else {
             // We were not connected to our counterpart, so start scanning
             print("scaning")
-            centralManager.scanForPeripherals(withServices: [CentralService.serviceUUID],
+            centralManager.scanForPeripherals(withServices: [TransferService.serviceUUID],
                                                options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         }
     }
@@ -73,15 +73,15 @@ extension CentralService: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         centralManager.stopScan()
         peripheral.delegate = self
-        peripheral.discoverServices([CentralService.serviceUUID])
+        peripheral.discoverServices([TransferService.serviceUUID])
         print("connected")
     }
 }
 
 extension CentralService: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
-        for service in invalidatedServices where service.uuid == CentralService.serviceUUID {
-            peripheral.discoverServices([CentralService.serviceUUID])
+        for service in invalidatedServices where service.uuid == TransferService.serviceUUID {
+            peripheral.discoverServices([TransferService.serviceUUID])
         }
     }
 
@@ -92,7 +92,7 @@ extension CentralService: CBPeripheralDelegate {
         
         guard let peripheralServices = peripheral.services else { return }
         for service in peripheralServices {
-            peripheral.discoverCharacteristics([CentralService.characteristicUUID], for: service)
+            peripheral.discoverCharacteristics([TransferService.characteristicUUID], for: service)
         }
     }
     
@@ -102,7 +102,7 @@ extension CentralService: CBPeripheralDelegate {
         }
         
         guard let serviceCharacteristics = service.characteristics else { return }
-        for characteristic in serviceCharacteristics where characteristic.uuid == CentralService.characteristicUUID {
+        for characteristic in serviceCharacteristics where characteristic.uuid == TransferService.characteristicUUID {
             transferCharacteristic = characteristic
             peripheral.setNotifyValue(true, for: characteristic)
         }
@@ -131,7 +131,7 @@ extension CentralService: CBPeripheralDelegate {
         }
         
         // Exit if it's not the transfer characteristic
-        guard characteristic.uuid == CentralService.characteristicUUID else { return }
+        guard characteristic.uuid == TransferService.characteristicUUID else { return }
         
         if characteristic.isNotifying {
             // Notification has started
