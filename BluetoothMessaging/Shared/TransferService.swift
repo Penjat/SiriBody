@@ -9,8 +9,12 @@ class TransferService {
 }
 
 enum Command: UInt8 {
-    case turn360 = 3
+    case faceNorth = 3
+    case faceSouth
+    case faceWest
+    case faceEast
     case unknown = 0
+    
     
     func data() -> Data {
         return Data([self.rawValue])

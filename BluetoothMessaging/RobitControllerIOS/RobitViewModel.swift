@@ -14,12 +14,22 @@ class RobitViewModel: ObservableObject {
     init() {
         peripheralService.dataIN.receive(on: DispatchQueue.main, options: nil).sink { cmd in
             switch cmd {
-            case .turn360:
-                self.reciededData.append("turn 360")
+            
                 
-                self.motionService.goal.send(20.0)
             case .unknown:
                 self.reciededData.append("unknown")
+            case .faceNorth:
+                self.reciededData.append("face north")
+                
+                self.motionService.goal.send(0.0)
+            case .faceSouth:
+                self.reciededData.append("face south")
+                
+                self.motionService.goal.send(Double.pi/2)
+            case .faceWest:
+                self.motionService.goal.send(Double.pi/4)
+            case .faceEast:
+                self.motionService.goal.send(Double.pi/(-4))
             }
             
         }.store(in: &bag)

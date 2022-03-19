@@ -23,7 +23,7 @@ class MotionService {
                 return
             }
             
-            if abs(data.attitude.yaw) < 0.05 {
+            if abs(data.attitude.yaw-self.goal.value) < 0.05 {
                 self.motionStatePublisher.send(.stopped)
             }
         }
