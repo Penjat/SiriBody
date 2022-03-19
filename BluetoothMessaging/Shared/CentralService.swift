@@ -37,7 +37,6 @@ extension CentralService: CBCentralManagerDelegate {
     }
     
     func retrievePeripheral() {
-        print("\(serviceUUID)")
         let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [serviceUUID]))
         
         if let connectedPeripheral = connectedPeripherals.last {

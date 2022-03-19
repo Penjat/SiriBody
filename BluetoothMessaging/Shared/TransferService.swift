@@ -21,3 +21,10 @@ enum Command: UInt8 {
         return Command(rawValue: array.first ?? 0) ?? .unknown
     }
 }
+
+enum RobitCommand {
+    case turnLeft
+    case stop
+}
+
+

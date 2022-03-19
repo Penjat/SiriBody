@@ -4,6 +4,8 @@ import Combine
 class RobitViewModel: ObservableObject {
     let peripheralService = PeripheralService()
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
+    let motionService = MotionService()
+    
     @Published var messageText = ""
     @Published var reciededData = [String]()
     
@@ -14,6 +16,8 @@ class RobitViewModel: ObservableObject {
             switch cmd {
             case .turn360:
                 self.reciededData.append("turn 360")
+                
+                self.motionService.goal.send(20.0)
             case .unknown:
                 self.reciededData.append("unknown")
             }
@@ -60,6 +64,20 @@ class RobitViewModel: ObservableObject {
             }
         }.store(in: &bag)
         
-//        peripheralService.start()
+        motionService.motionStatePublisher.sink { motionState in
+            switch motionState {
+                
+            case .turningLeft:
+                print("turning left")
+                let data = Data([235, UInt8(min(255,160)), UInt8(min(255,60))])
+                self.centralService.commandSubject.send(data)
+            case .stopped:
+                print("stopped")
+                let data = Data([235, UInt8(min(255,0)), UInt8(min(255,0))])
+                self.centralService.commandSubject.send(data)
+            }
+        }.store(in: &bag)
+        
+        peripheralService.start()
     }
 }
