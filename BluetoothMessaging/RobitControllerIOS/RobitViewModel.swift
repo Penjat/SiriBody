@@ -21,16 +21,16 @@ class RobitViewModel: ObservableObject {
             case .faceNorth:
                 self.reciededData.append("face north")
                 
-                self.motionService.goal.send(0.0)
+                self.motionService.goal.send(.turnTo(angle: 0.0))
             case .faceSouth:
                 self.reciededData.append("face south")
                 
-                self.motionService.goal.send(Double.pi)
+                self.motionService.goal.send(.turnTo(angle: Double.pi))
             case .faceWest:
-                self.motionService.goal.send(Double.pi/2)
+                self.motionService.goal.send(.turnTo(angle:Double.pi/(2)))
                 self.reciededData.append("face west")
             case .faceEast:
-                self.motionService.goal.send(Double.pi/(-2))
+                self.motionService.goal.send(.turnTo(angle: Double.pi/(-2)))
                 self.reciededData.append("face east")
             }
             
