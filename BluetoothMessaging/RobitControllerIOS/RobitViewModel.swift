@@ -25,11 +25,13 @@ class RobitViewModel: ObservableObject {
             case .faceSouth:
                 self.reciededData.append("face south")
                 
-                self.motionService.goal.send(Double.pi/2)
+                self.motionService.goal.send(Double.pi)
             case .faceWest:
-                self.motionService.goal.send(Double.pi/4)
+                self.motionService.goal.send(Double.pi/2)
+                self.reciededData.append("face west")
             case .faceEast:
-                self.motionService.goal.send(Double.pi/(-4))
+                self.motionService.goal.send(Double.pi/(-2))
+                self.reciededData.append("face east")
             }
             
         }.store(in: &bag)
@@ -79,11 +81,11 @@ class RobitViewModel: ObservableObject {
                 
             case .turningLeft:
                 print("turning left")
-                let data = Data([235, UInt8(min(255,160)), UInt8(min(255,60))])
+                let data = Data([10 + (4 << 4)])
                 self.centralService.commandSubject.send(data)
             case .stopped:
                 print("stopped")
-                let data = Data([235, UInt8(min(255,0)), UInt8(min(255,0))])
+                let data = Data([7 + (7 << 4)])
                 self.centralService.commandSubject.send(data)
             }
         }.store(in: &bag)
