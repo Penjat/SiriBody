@@ -35,8 +35,9 @@ class MotionService {
                     self.motionStatePublisher.send(.stopped)
                 }
             case .driveFor(time: let time):
-                //TODO: check time
-                return
+                if time < Date.timeIntervalSinceReferenceDate {
+                    self.motionStatePublisher.send(.stopped)
+                }
             case .idle:
                 return
             }
@@ -55,8 +56,9 @@ class MotionService {
                 }
             case .driveTo(angle: _, leftSpeed: let leftSpeed, rightSpeed: let rightSpeed):
                 self.motionStatePublisher.send(MotionState(leftSpeed: leftSpeed, rightSpeed: rightSpeed))
-            case .driveFor(time: let time):
+            case .driveFor(time: _):
                 //TODO: write time drive code
+                self.motionStatePublisher.send(MotionState(leftSpeed: 60, rightSpeed: 60))
                 return
             case .idle:
                 self.motionStatePublisher.send(.stopped)

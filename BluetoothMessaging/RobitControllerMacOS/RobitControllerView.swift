@@ -17,6 +17,10 @@ struct RobitControllerView: View {
             Button("west") {
                 viewModel.centralService.commandSubject.send(Command.faceWest.data())
             }
+            
+            Button("forward") {
+                viewModel.centralService.commandSubject.send(Command.moveForward.data())
+            }
         }
         .frame(width: 500, height: 500)
     }

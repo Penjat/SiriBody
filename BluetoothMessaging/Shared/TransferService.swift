@@ -13,6 +13,7 @@ enum Command: UInt8 {
     case faceSouth
     case faceWest
     case faceEast
+    case moveForward
     case unknown = 0
     
     

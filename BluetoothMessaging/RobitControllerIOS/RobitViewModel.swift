@@ -14,8 +14,6 @@ class RobitViewModel: ObservableObject {
     init() {
         peripheralService.dataIN.receive(on: DispatchQueue.main, options: nil).sink { cmd in
             switch cmd {
-            
-                
             case .unknown:
                 self.reciededData.append("unknown")
             case .faceNorth:
@@ -32,6 +30,9 @@ class RobitViewModel: ObservableObject {
             case .faceEast:
                 self.motionService.goal.send(.turnTo(angle: Double.pi/(-2)))
                 self.reciededData.append("face east")
+            case .moveForward:
+                self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+2.0 ))
+                self.reciededData.append("move forward")
             }
             
         }.store(in: &bag)
