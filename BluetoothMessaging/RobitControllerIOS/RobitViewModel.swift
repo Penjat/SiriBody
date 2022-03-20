@@ -77,17 +77,13 @@ class RobitViewModel: ObservableObject {
         }.store(in: &bag)
         
         motionService.motionStatePublisher.sink { motionState in
-            switch motionState {
-                
-            case .turningLeft:
-                print("turning left")
-                let data = Data([10 + (4 << 4)])
-                self.centralService.commandSubject.send(data)
-            case .stopped:
-                print("stopped")
-                let data = Data([7 + (7 << 4)])
-                self.centralService.commandSubject.send(data)
-            }
+            
+            let speed1 = UInt8(motionState.leftSpeed*7/100 + 7)
+            let speed2 = UInt8(motionState.rightSpeed*7/100 + 7)
+            let data = Data([speed1 + (speed2 << 4)])
+            self.centralService.commandSubject.send(data)
+            
+            
         }.store(in: &bag)
         
         peripheralService.start()

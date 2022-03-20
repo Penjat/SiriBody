@@ -2,6 +2,12 @@ import Foundation
 import CoreMotion
 import Combine
 
+enum Goal {
+    case turnTo(angle: Double)
+    case driveTo(angle: Double, leftSpeed: Double, rightSpeed: Double)
+    case driveFor(time: Double)
+}
+
 class MotionService {
     let motionManager = CMMotionManager()
     
@@ -19,24 +25,35 @@ class MotionService {
             }
             self.positionPublisher.send(data)
             
-            guard self.motionStatePublisher.value != .stopped else {
-                return
-            }
-            
             if abs(data.attitude.yaw-self.goal.value) < 0.05 {
                 self.motionStatePublisher.send(.stopped)
             }
         }
         
-        goal.sink { newGoal in
+        goal.withLatestFrom(positionPublisher).sink { (newGoal, position) in
             // TODO: this will get smarter later
-            self.motionStatePublisher.send(.turningLeft)
+            if position.attitude.yaw < newGoal {
+                self.motionStatePublisher.send(.turningLeft)
+            } else {
+                self.motionStatePublisher.send(.turningRight)
+            }
         }.store(in: &bag)
-        
     }
 }
 
-enum MotionState {
-    case turningLeft
-    case stopped
+struct MotionState {
+    let leftSpeed: Double
+    let rightSpeed: Double
+    
+    static var stopped: MotionState {
+        MotionState(leftSpeed: 0.0, rightSpeed: 0.0)
+    }
+    
+    static var turningLeft: MotionState {
+        MotionState(leftSpeed: 60.0, rightSpeed: -60.0)
+    }
+    
+    static var turningRight: MotionState {
+        MotionState(leftSpeed: -60.0, rightSpeed: 60.0)
+    }
 }
