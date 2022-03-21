@@ -17,6 +17,10 @@ class MotionService {
     let goal = CurrentValueSubject<Goal, Never>(.idle)
     
     var bag = Set<AnyCancellable>()
+    
+    let goalSeq = [Goal.turnTo(angle: 0.0), Goal.driveFor(time: 1.0), Goal.turnTo(angle: Double.pi), Goal.driveFor(time: 1.0)]
+    
+    var index = 0
 
     init() {
         motionManager.accelerometerUpdateInterval = 0.1
@@ -28,15 +32,15 @@ class MotionService {
             switch self.goal.value {
             case .turnTo(angle: let angle):
                 if abs(data.attitude.yaw-angle) < 0.05 {
-                    self.motionStatePublisher.send(.stopped)
+                    self.done()
                 }
             case .driveTo(angle: let angle, leftSpeed: _, rightSpeed: _):
                 if abs(data.attitude.yaw-angle) < 0.05 {
-                    self.motionStatePublisher.send(.stopped)
+                    self.done()
                 }
             case .driveFor(time: let time):
                 if time < Date.timeIntervalSinceReferenceDate {
-                    self.motionStatePublisher.send(.stopped)
+                    self.done()
                 }
             case .idle:
                 return
@@ -65,6 +69,10 @@ class MotionService {
             }
             
         }.store(in: &bag)
+    }
+    
+    func done() {
+        goal.send(.idle)
     }
 }
 

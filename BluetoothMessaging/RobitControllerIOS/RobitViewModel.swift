@@ -31,7 +31,7 @@ class RobitViewModel: ObservableObject {
                 self.motionService.goal.send(.turnTo(angle: Double.pi/(-2)))
                 self.reciededData.append("face east")
             case .moveForward:
-                self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+2.0 ))
+                self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+1.0 ))
                 self.reciededData.append("move forward")
             }
             
