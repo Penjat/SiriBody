@@ -34,12 +34,12 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     
     
     func setupPeripheral() {
-        let transferCharacteristic = CBMutableCharacteristic(type: TransferService.characteristicUUID,
+        let transferCharacteristic = CBMutableCharacteristic(type: TransferService.robitCommnadsCharacteristicUUID,
                                                              properties: [.notify, .writeWithoutResponse],
                                                              value: nil,
                                                              permissions: [.readable, .writeable])
         
-        let transferService = CBMutableService(type: TransferService.serviceUUID, primary: true)
+        let transferService = CBMutableService(type: TransferService.robitComandsServiceUUID, primary: true)
         transferService.characteristics = [transferCharacteristic]
         
         peripheralManager.add(transferService)
@@ -47,7 +47,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     }
     
     func startAdvertising() {
-        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [TransferService.serviceUUID]])
+        peripheralManager.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [TransferService.robitComandsServiceUUID]])
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {

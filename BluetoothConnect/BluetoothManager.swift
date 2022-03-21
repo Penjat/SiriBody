@@ -65,7 +65,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
         for service in services {
             peripheral.discoverCharacteristics(nil, for: service)
         }
-//        print("Discovered Services: \(services)")
+        print("Discovered Services: \(services)")
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {

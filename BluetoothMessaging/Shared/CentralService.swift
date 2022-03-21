@@ -10,14 +10,22 @@ class CentralService: NSObject {
     let data = PassthroughSubject<String, Never>()
     let commandSubject = PassthroughSubject<Data, Never>()
     
+    var serviceUUID: CBUUID!
+    var charUUID: CBUUID!
+    
     var bag = Set<AnyCancellable>()
     
-    override init() {
-        print("creating...")
+    
+    init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
+        print("creating...")
+        self.serviceUUID = serviceID
+        self.charUUID = charID
+        
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         commandSubject.sink { cmdData in
             if let transferCharacteristic = self.transferCharacteristic {
+                print("sending data")
                 self.discoveredPeripheral?.writeValue(cmdData, for: transferCharacteristic, type: .withoutResponse)
             }
         }.store(in: &bag)
@@ -30,8 +38,7 @@ extension CentralService: CBCentralManagerDelegate {
     }
     
     func retrievePeripheral() {
-        
-        let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [TransferService.serviceUUID]))
+        let connectedPeripherals: [CBPeripheral] = (centralManager.retrieveConnectedPeripherals(withServices: [serviceUUID]))
         
         if let connectedPeripheral = connectedPeripherals.last {
             self.discoveredPeripheral = connectedPeripheral
@@ -39,7 +46,7 @@ extension CentralService: CBCentralManagerDelegate {
         } else {
             // We were not connected to our counterpart, so start scanning
             print("scaning")
-            centralManager.scanForPeripherals(withServices: [TransferService.serviceUUID],
+            centralManager.scanForPeripherals(withServices: [serviceUUID],
                                                options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         }
     }
@@ -56,15 +63,15 @@ extension CentralService: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         centralManager.stopScan()
         peripheral.delegate = self
-        peripheral.discoverServices([TransferService.serviceUUID])
+        peripheral.discoverServices([serviceUUID])
         print("connected")
     }
 }
 
 extension CentralService: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
-        for service in invalidatedServices where service.uuid == TransferService.serviceUUID {
-            peripheral.discoverServices([TransferService.serviceUUID])
+        for service in invalidatedServices where service.uuid == serviceUUID {
+            peripheral.discoverServices([serviceUUID])
         }
     }
 
@@ -75,8 +82,10 @@ extension CentralService: CBPeripheralDelegate {
         
         guard let peripheralServices = peripheral.services else { return }
         for service in peripheralServices {
-            peripheral.discoverCharacteristics([TransferService.characteristicUUID], for: service)
+            peripheral.discoverCharacteristics(nil, for: service)
+            print("discovered service: \(service)")
         }
+        
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -85,9 +94,10 @@ extension CentralService: CBPeripheralDelegate {
         }
         
         guard let serviceCharacteristics = service.characteristics else { return }
-        for characteristic in serviceCharacteristics where characteristic.uuid == TransferService.characteristicUUID {
+        for characteristic in serviceCharacteristics where characteristic.uuid == charUUID {
             transferCharacteristic = characteristic
             peripheral.setNotifyValue(true, for: characteristic)
+            print("discovered characteristic: \(characteristic)")
         }
     }
     
@@ -114,7 +124,7 @@ extension CentralService: CBPeripheralDelegate {
         }
         
         // Exit if it's not the transfer characteristic
-        guard characteristic.uuid == TransferService.characteristicUUID else { return }
+        guard characteristic.uuid == TransferService.robitCommnadsCharacteristicUUID else { return }
         
         if characteristic.isNotifying {
             // Notification has started

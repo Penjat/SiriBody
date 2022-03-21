@@ -26,6 +26,9 @@
 		0B337BA027E4D5E800133E0E /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB1AE27E1730E000A81C5 /* CentralService.swift */; };
 		0B337BA127E4D5E800133E0E /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CB19527E10733000A81C5 /* PeripheralService.swift */; };
 		0B337BAF27E4E14C00133E0E /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337B9D27E4CB1A00133E0E /* TransferService.swift */; };
+		0B337BB327E5FA3D00133E0E /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337BB227E5FA3D00133E0E /* MotionService.swift */; };
+		0B337BB527E7A4B700133E0E /* Publisher+withLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337BB427E7A4B700133E0E /* Publisher+withLatestFrom.swift */; };
+		0B337BB627E7A4CA00133E0E /* Publisher+withLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B337BB427E7A4B700133E0E /* Publisher+withLatestFrom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,8 @@
 		0B2CB1AE27E1730E000A81C5 /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		0B337B9D27E4CB1A00133E0E /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
 		0B337BA627E4E0AD00133E0E /* RobitControolerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RobitControolerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B337BB227E5FA3D00133E0E /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		0B337BB427E7A4B700133E0E /* Publisher+withLatestFrom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+withLatestFrom.swift"; sourceTree = "<group>"; };
 		0B72B38027D97F33006FDFBA /* BluetoothMessaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF0981927DBC11B00C43884 /* BluetoothMessagingMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothMessagingMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -108,6 +113,8 @@
 				0B2CB18727E10362000A81C5 /* ContentView.swift */,
 				0B2CB19327E106FA000A81C5 /* RobitView.swift */,
 				0B2CB19127E106B9000A81C5 /* RobitViewModel.swift */,
+				0B337BB227E5FA3D00133E0E /* MotionService.swift */,
+				0B337BB427E7A4B700133E0E /* Publisher+withLatestFrom.swift */,
 				0B2CB18927E10364000A81C5 /* Assets.xcassets */,
 				0B2CB18B27E10364000A81C5 /* Preview Content */,
 			);
@@ -367,8 +374,10 @@
 				0B2CB19627E10734000A81C5 /* PeripheralService.swift in Sources */,
 				0B337B9C27E4C31B00133E0E /* CentralService.swift in Sources */,
 				0B2CB18827E10362000A81C5 /* ContentView.swift in Sources */,
+				0B337BB327E5FA3D00133E0E /* MotionService.swift in Sources */,
 				0B2CB18627E10362000A81C5 /* RobitControllerIOSApp.swift in Sources */,
 				0B337B9E27E4CB1A00133E0E /* TransferService.swift in Sources */,
+				0B337BB527E7A4B700133E0E /* Publisher+withLatestFrom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +392,7 @@
 				0B337BA127E4D5E800133E0E /* PeripheralService.swift in Sources */,
 				0B2CB19E27E17257000A81C5 /* RobitControllerMacOSApp.swift in Sources */,
 				0B2CB1AB27E1729B000A81C5 /* RobitControllerView.swift in Sources */,
+				0B337BB627E7A4CA00133E0E /* Publisher+withLatestFrom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

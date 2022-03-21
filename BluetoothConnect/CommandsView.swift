@@ -7,19 +7,24 @@ struct CommandsView: View {
             Text("\(viewModel.turnTime)")
             Slider(value: $viewModel.turnTime, in: 0.2...2.0)
             Button {
-                viewModel.turn90Degrees()
+                
+                let data = Data([14 + (14 << 4)])
+                viewModel.dataSubject.send(data)
+                
             } label: {
-                Text("90°")
+                Text("forward")
             }
             
             Button {
-                viewModel.makeSquare()
+                let data = Data([0 + (0 << 4)])
+                viewModel.dataSubject.send(data)
             } label: {
-                Text("square")
+                Text("backward")
             }
 
             Button {
-                viewModel.stopMotion()
+                let data = Data([7 + (7 << 4)])
+                viewModel.dataSubject.send(data)
             } label: {
                 Text("stop")
             }
