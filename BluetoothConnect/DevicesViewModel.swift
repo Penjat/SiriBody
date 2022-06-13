@@ -8,7 +8,7 @@ final class DevicesViewModel: ObservableObject {
     @Published var state: CBManagerState = .unknown
     @Published var peripherals: [CBPeripheral] = []
     
-    @Published var motorSpeed = (motor1Speed: UInt8(0), motor2Speed: UInt8(0))
+    @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     
     private lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
@@ -76,11 +76,11 @@ final class DevicesViewModel: ObservableObject {
         
     }
     
-    public func convertedSpeed(_ speed: Int) -> UInt8 {
+    public func convertedSpeed(_ speed: Int) -> Int {
         guard speed != 0 else {
-            return UInt8(0)
+            return 0
         }
-        return UInt8(speed < 0 ? abs(speed) : speed + 100)
+        return speed < 0 ? abs(speed) : speed + 100
     }
     
     public func turn90Degrees() {
@@ -98,7 +98,10 @@ final class DevicesViewModel: ObservableObject {
             while self.inMotion {
                 for command in self.commands {
                     print(command.speed)
-                    let data = Data([235, UInt8(min(255,self.convertedSpeed(command.speed.motor1Speed))), UInt8(min(255,self.convertedSpeed(command.speed.motor2Speed)))])
+                    let speed1 = UInt8(command.speed.motor1Speed*7/100 + 7)
+                    let speed2 = UInt8(command.speed.motor2Speed*7/100 + 7)
+                    
+                    let data = Data([speed1 + (speed2 << 4)])
                     self.dataSubject.send(data)
                     usleep(UInt32(command.time*1000000))
                 }
@@ -111,9 +114,12 @@ final class DevicesViewModel: ObservableObject {
         motorSpeed = (0,0)
     }
     
-    private func sendPacket(speed1: UInt8, speed2: UInt8) {
-        let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
-//        dataSubject.send(data)
+    private func sendPacket(speed1: Int, speed2: Int) {
+        let s1 = (speed1*7)/100 + 7
+        let s2 = ((speed2*7)/100 + 7) << 4
+        print("\(s1) , \(s2)")
+        let data = Data([UInt8(s1 + s2)])
+//        let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
         manager.sendData(data)
     }
 }

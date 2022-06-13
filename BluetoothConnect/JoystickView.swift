@@ -32,18 +32,20 @@ struct JoystickView: View {
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onEnded { value in
-                                    viewModel.motorSpeed = (motor1Speed: UInt8(0), motor2Speed:  UInt8(0))
+                                    viewModel.motorSpeed = (motor1Speed: 0, motor2Speed:  0)
                                     touchPoint = value.location
                                     viewModel.stopMotion()
                                 }
                                 .onChanged { value in
+                                    
                                     let radius = (geometry.size.width/2)
                                     let forwardBackward = max(-100,min(100,(value.location.y - radius)*100/radius))
                                     let leftRight = max(-100*turnSensitivity,min(100*turnSensitivity,(value.location.x - radius)*100/radius))
                                     
-                                    let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))
-                                    let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))
-                                    viewModel.motorSpeed = (motor1Speed: viewModel.convertedSpeed(Int(motor1Speed)), motor2Speed: viewModel.convertedSpeed(Int(motor2Speed)))
+                                    let motor1Speed = max(-100, min(100,(forwardBackward + leftRight)))
+                                    let motor2Speed = max(-100, min(100,(forwardBackward - leftRight)))
+                                    print("motor 1 \(motor1Speed) , motor 2 \(motor2Speed)")
+                                    viewModel.motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
                                     touchPoint = value.location
                                 }
                         )

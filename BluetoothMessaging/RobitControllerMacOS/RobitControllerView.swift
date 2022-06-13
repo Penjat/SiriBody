@@ -5,22 +5,44 @@ struct RobitControllerView: View {
     
     var body: some View {
         VStack {
-            Button("north") {
-                viewModel.centralService.commandSubject.send(Command.faceNorth.data())
-            }
-            Button("south") {
-                viewModel.centralService.commandSubject.send(Command.faceSouth.data())
-            }
-            Button("east") {
-                viewModel.centralService.commandSubject.send(Command.faceEast.data())
-            }
-            Button("west") {
-                viewModel.centralService.commandSubject.send(Command.faceWest.data())
+            Group {
+                Button("north") {
+                    viewModel.centralService.commandSubject.send(Command.faceNorth.data())
+                }
+                Button("south") {
+                    viewModel.centralService.commandSubject.send(Command.faceSouth.data())
+                }
+                Button("east") {
+                    viewModel.centralService.commandSubject.send(Command.faceEast.data())
+                }
+                Button("west") {
+                    viewModel.centralService.commandSubject.send(Command.faceWest.data())
+                }
+                
+                Button("forward") {
+                    viewModel.centralService.commandSubject.send(Command.moveForward.data())
+                }
+                
+                Button("just left") {
+                    viewModel.centralService.commandSubject.send(Command.justLeft.data())
+                }
+                
+                Button("just right") {
+                    viewModel.centralService.commandSubject.send(Command.justRight.data())
+                }
             }
             
-            Button("forward") {
-                viewModel.centralService.commandSubject.send(Command.moveForward.data())
+            Divider()
+            
+            Group {
+                Button("just right") {
+                    viewModel.centralService.commandSubject.send(Command.justRight.data())
+                }
             }
+            
+            
+            
+            
         }
         .frame(width: 500, height: 500)
     }

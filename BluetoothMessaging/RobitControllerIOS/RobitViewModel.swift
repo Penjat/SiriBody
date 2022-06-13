@@ -10,6 +10,7 @@ class RobitViewModel: ObservableObject {
     @Published var reciededData = [String]()
     
     var bag = Set<AnyCancellable>()
+    var speed = 100
     
     init() {
         peripheralService.dataIN.receive(on: DispatchQueue.main, options: nil).sink { cmd in
@@ -31,8 +32,34 @@ class RobitViewModel: ObservableObject {
                 self.motionService.goal.send(.turnTo(angle: Double.pi/(-2)))
                 self.reciededData.append("face east")
             case .moveForward:
-                self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+1.0 ))
+                self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+1.0, leftSpeed: Double(self.speed), rightSpeed: Double(self.speed)))
                 self.reciededData.append("move forward")
+            case .justLeft:
+                self.motionService.goal.send(.driveTo(angle: Double.pi/4, leftSpeed: Double(self.speed), rightSpeed: 0))
+                self.reciededData.append("just left")
+            case .justRight:
+                self.motionService.goal.send(.driveTo(angle: Double.pi/4, leftSpeed: 0, rightSpeed: Double(self.speed)))
+                self.reciededData.append("just right")
+            case .speed10:
+                self.speed = 10
+            case .speed20:
+                self.speed = 20
+            case .speed30:
+                self.speed = 30
+            case .speed40:
+                self.speed = 40
+            case .speed50:
+                self.speed = 50
+            case .speed60:
+                self.speed = 60
+            case .speed70:
+                self.speed = 70
+            case .speed80:
+                self.speed = 80
+            case .speed90:
+                self.speed = 90
+            case .speed100:
+                self.speed = 100
             }
             
         }.store(in: &bag)
@@ -81,7 +108,10 @@ class RobitViewModel: ObservableObject {
             
             let speed1 = UInt8(motionState.leftSpeed*7/100 + 7)
             let speed2 = UInt8(motionState.rightSpeed*7/100 + 7)
+            
             let data = Data([speed1 + (speed2 << 4)])
+            let asString = data.map { String(format: "%02x", $0) }.joined()
+            print("\(speed1) \(speed2) asData: \(asString)")
             self.centralService.commandSubject.send(data)
             
             

@@ -25,6 +25,7 @@ class CentralService: NSObject {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         commandSubject.sink { cmdData in
             if let transferCharacteristic = self.transferCharacteristic {
+                
                 print("sending data")
                 self.discoveredPeripheral?.writeValue(cmdData, for: transferCharacteristic, type: .withoutResponse)
             }

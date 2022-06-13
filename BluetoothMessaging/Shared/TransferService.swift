@@ -9,12 +9,26 @@ class TransferService {
 }
 
 enum Command: UInt8 {
-    case faceNorth = 3
-    case faceSouth
-    case faceWest
-    case faceEast
-    case moveForward
-    case unknown = 0
+    case faceNorth = 1
+    case faceSouth = 2
+    case faceWest = 3
+    case faceEast = 4
+    case moveForward = 5
+    case unknown = 6
+    
+    case justLeft = 7
+    case justRight = 8
+    case speed10 = 9
+    case speed20 = 10
+    case speed30 = 11
+    case speed40 = 12
+    case speed50 = 13
+    case speed60 = 14
+    case speed70 = 15
+    case speed80 = 16
+    case speed90 = 17
+    case speed100 = 18
+    
     
     
     func data() -> Data {

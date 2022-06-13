@@ -5,8 +5,9 @@ import Combine
 enum Goal {
     case turnTo(angle: Double)
     case driveTo(angle: Double, leftSpeed: Double, rightSpeed: Double)
-    case driveFor(time: Double)
+    case driveFor(time: Double, leftSpeed: Double, rightSpeed: Double)
     case idle
+    case waitFor(time: Double)
 }
 
 class MotionService {
@@ -18,7 +19,7 @@ class MotionService {
     
     var bag = Set<AnyCancellable>()
     
-    let goalSeq = [Goal.turnTo(angle: 0.0), Goal.driveFor(time: 1.0), Goal.turnTo(angle: Double.pi), Goal.driveFor(time: 1.0)]
+    let goalSeq = [Goal.turnTo(angle: 0.0), Goal.driveFor(time: 1.0, leftSpeed: 60.0, rightSpeed: 60.0), Goal.waitFor(time: 1.0), Goal.turnTo(angle: Double.pi), Goal.waitFor(time: 1.0), Goal.driveFor(time: 1.0, leftSpeed: 60.0, rightSpeed: 60.0), Goal.waitFor(time: 1.0),]
     
     var index = 0
 
@@ -38,12 +39,16 @@ class MotionService {
                 if abs(data.attitude.yaw-angle) < 0.05 {
                     self.done()
                 }
-            case .driveFor(time: let time):
+            case .driveFor(time: let time, _, _):
                 if time < Date.timeIntervalSinceReferenceDate {
                     self.done()
                 }
             case .idle:
                 return
+            case .waitFor(time: let time):
+                if time < Date.timeIntervalSinceReferenceDate {
+                    self.done()
+                }
             }
             self.positionPublisher.send(data)
         }
@@ -53,26 +58,41 @@ class MotionService {
             switch newGoal {
                 
             case .turnTo(angle: let angle):
+                print("turn to \(angle)")
                 if position.attitude.yaw < angle {
                     self.motionStatePublisher.send(.turningRight)
                 } else {
                     self.motionStatePublisher.send(.turningLeft)
                 }
             case .driveTo(angle: _, leftSpeed: let leftSpeed, rightSpeed: let rightSpeed):
+                print("drive to")
                 self.motionStatePublisher.send(MotionState(leftSpeed: leftSpeed, rightSpeed: rightSpeed))
             case .driveFor(time: _):
-                //TODO: write time drive code
-                self.motionStatePublisher.send(MotionState(leftSpeed: 60, rightSpeed: 60))
-                return
+                print("drive for")
+                self.motionStatePublisher.send(MotionState(leftSpeed: 100, rightSpeed: 100))
             case .idle:
+                print("idle")
+                self.motionStatePublisher.send(.stopped)
+            case .waitFor(time: let time):
+                print("wait for \(time)")
                 self.motionStatePublisher.send(.stopped)
             }
-            
         }.store(in: &bag)
     }
     
     func done() {
         goal.send(.idle)
+//        goal.send(goalSeq.map({ goal in
+//            switch goal {
+//            case .waitFor(time: let time):
+//                return Goal.waitFor(time: time + Date.timeIntervalSinceReferenceDate)
+//            case .driveFor(time: let time):
+//                return Goal.driveFor(time: time + Date.timeIntervalSinceReferenceDate)
+//            default:
+//                return goal
+//            }
+//        })[index%goalSeq.count])
+        index += 1
     }
 }
 
@@ -85,10 +105,10 @@ struct MotionState {
     }
     
     static var turningLeft: MotionState {
-        MotionState(leftSpeed: -60.0, rightSpeed: 60.0)
+        MotionState(leftSpeed: 100.0, rightSpeed: -100.0)
     }
     
     static var turningRight: MotionState {
-        MotionState(leftSpeed: 60.0, rightSpeed: -60.0)
+        MotionState(leftSpeed: -100.0, rightSpeed: 100.0)
     }
 }
