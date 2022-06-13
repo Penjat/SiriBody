@@ -37,7 +37,7 @@
 		0BC62D6427D7D5DA00BCDFA3 /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
 		0BC62D6627D7D7A200BCDFA3 /* CommandsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsView.swift; sourceTree = "<group>"; };
 		0BC62D6A27D7EB7000BCDFA3 /* RobotMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotMotions.swift; sourceTree = "<group>"; };
-		0BD88B3627CB09DB009F514D /* BluetoothConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BD88B3627CB09DB009F514D /* Robit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD88B3927CB09DB009F514D /* BluetoothConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnectApp.swift; sourceTree = "<group>"; };
 		0BD88B3B27CB09DB009F514D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0BD88B3D27CB09DE009F514D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		0BD88B3727CB09DB009F514D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BD88B3627CB09DB009F514D /* BluetoothConnect.app */,
+				0BD88B3627CB09DB009F514D /* Robit.app */,
 				0B89D4AB27D54A63006FEB36 /* RobitController.app */,
 			);
 			name = Products;
@@ -160,7 +160,7 @@
 			);
 			name = BluetoothConnect;
 			productName = BluetoothConnect;
-			productReference = 0BD88B3627CB09DB009F514D /* BluetoothConnect.app */;
+			productReference = 0BD88B3627CB09DB009F514D /* Robit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -456,7 +456,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothConnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Robit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -488,7 +488,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Penjat.BluetoothConnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Robit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -63,17 +63,14 @@ final class DevicesViewModel: ObservableObject {
             .store(in: &bag)
         manager.start()
         
-        $motorSpeed.sink { newSpeed in
+        $motorSpeed.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true).sink { newSpeed in
             self.sendPacket(speed1: newSpeed.motor1Speed, speed2: newSpeed.motor2Speed)
         }.store(in: &bag)
         
         dataSubject
             .sink { data in
             self.manager.sendData(data)
-                
         }.store(in: &bag)
-        
-        
     }
     
     public func convertedSpeed(_ speed: Int) -> Int {
@@ -117,9 +114,7 @@ final class DevicesViewModel: ObservableObject {
     private func sendPacket(speed1: Int, speed2: Int) {
         let s1 = (speed1*7)/100 + 7
         let s2 = ((speed2*7)/100 + 7) << 4
-        print("\(s1) , \(s2)")
-        let data = Data([UInt8(s1 + s2)])
-//        let data = Data([235, UInt8(min(255,motorSpeed.motor1Speed)), UInt8(min(255,motorSpeed.motor2Speed))])
+        let data = Data([UInt8(min(s1 + s2, 256))])
         manager.sendData(data)
     }
 }
