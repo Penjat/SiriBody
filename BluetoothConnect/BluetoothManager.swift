@@ -28,6 +28,7 @@ enum CentralManagerEvent {
     case DidConnect(central: CBCentralManager, peripheral: CBPeripheral)
     case DidDiscoverService(peripheral: CBPeripheral, error: Error?)
     case DidDiscoverCharacteristic(peripheral: CBPeripheral, service: CBService, error: Error?)
+    case DidDisconnect(central: CBCentralManager, peripheral: CBPeripheral, error: Error?)
 }
 
 extension BluetoothManager: CBCentralManagerDelegate {
@@ -50,5 +51,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         eventSubject.send(.DidDiscoverCharacteristic(peripheral: peripheral, service: service, error: error))
+    }
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        eventSubject.send(.DidDisconnect(central: central, peripheral: peripheral, error: error))
     }
 }

@@ -14,7 +14,7 @@ final class DevicesViewModel: ObservableObject {
     
     lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
-    var connectedBody: CBPeripheral?
+    @Published var connectedBody: CBPeripheral?
     @Published var turnTime = 0.2
     
     let commands = [RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.257*2),
@@ -64,7 +64,7 @@ final class DevicesViewModel: ObservableObject {
                     peripheral.discoverCharacteristics(nil, for: service)
                 }
                 print("Discovered Services: \(services)")
-            case .DidDiscoverCharacteristic(peripheral: let peripheral, service: let service, error: let error):
+            case .DidDiscoverCharacteristic(peripheral: _, service: let service, error: let error):
                 guard let characteristics = service.characteristics else {
                     return
                 }
@@ -74,6 +74,8 @@ final class DevicesViewModel: ObservableObject {
                     print("TX Characteristic: \(self.txCharacteristic.uuid)")
                 }
                 
+            case .DidDisconnect(central: let central, peripheral: let peripheral, error: let error):
+                self.connectedBody = nil
             }
             print(event)
         }).store(in: &bag)
