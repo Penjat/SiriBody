@@ -69,6 +69,10 @@ final class DevicesViewModel: ObservableObject {
             .sink { data in
             self.manager.sendData(data)
         }.store(in: &bag)
+        
+        manager.eventSubject.sink(receiveValue: { event in
+            print(event)
+        }).store(in: &bag)
     }
     
     public func convertedSpeed(_ speed: Int) -> Int {

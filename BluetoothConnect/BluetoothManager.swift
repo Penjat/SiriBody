@@ -10,6 +10,8 @@ final class BluetoothManager: NSObject, CBPeripheralDelegate {
     var peripheralSubject: PassthroughSubject<CBPeripheral, Never> = .init()
     var connectedBody: CBPeripheral?
     
+    var eventSubject: PassthroughSubject<CentralManagerEvent, Never> = .init()
+    
     func start() {
         print("starting up")
         centralManager = .init(delegate: self, queue: .main)
@@ -27,20 +29,31 @@ final class BluetoothManager: NSObject, CBPeripheralDelegate {
     }
 }
 
+enum CentralManagerEvent {
+    case DidUpdateState(state: CBManagerState)
+    case DidDiscover(central: CBCentralManager, peripheral: CBPeripheral)
+    case DidConnect(central: CBCentralManager, peripheral: CBPeripheral)
+    case DidDiscoverService(peripheral: CBPeripheral, error: Error?)
+    case DidDiscoverCharacteristic(peripheral: CBPeripheral, service: CBService, error: Error?)
+}
+
 extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         stateSubject.send(central.state)
+        eventSubject.send(.DidUpdateState(state: central.state))
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         peripheralSubject.send(peripheral)
+        eventSubject.send(.DidDiscover(central: central, peripheral: peripheral))
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("connected")
         connectedBody = peripheral
         connectedBody?.discoverServices(nil)
+        eventSubject.send(.DidConnect(central: central, peripheral: peripheral))
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -56,6 +69,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
             peripheral.discoverCharacteristics(nil, for: service)
         }
         print("Discovered Services: \(services)")
+        eventSubject.send(.DidDiscoverService(peripheral: peripheral, error: error))
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -65,27 +79,11 @@ extension BluetoothManager: CBCentralManagerDelegate {
         }
         
         print("Found \(characteristics.count) characteristics.")
-        
+        eventSubject.send(.DidDiscoverCharacteristic(peripheral: peripheral, service: service, error: error))
         for characteristic in characteristics {
             print("\(characteristic)")
-            //            if characteristic.uuid.isEqual(CBUUID.BLE_Characteristic_uuid_Rx)  {
-            //
-            //                rxCharacteristic = characteristic
-            //
-            //                peripheral.setNotifyValue(true, for: rxCharacteristic!)
-            //                peripheral.readValue(for: characteristic)
-            //
-            //                print("RX Characteristic: \(rxCharacteristic.uuid)")
-            //            }
-            //
-            //            if characteristic.uuid.isEqual(CBUUID.BLE_Characteristic_uuid_Tx){
-            //
             txCharacteristic = characteristic
-            //
             print("TX Characteristic: \(txCharacteristic.uuid)")
-            //            }
-            
-            
         }
     }
     
