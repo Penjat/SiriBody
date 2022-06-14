@@ -18,6 +18,7 @@ struct JoystickView: View {
 //                    Text("\(possitionData?.attitude.roll ?? 0)")
 //
 //                }.font(.title3)
+                BluetoothStateView()
                 Text("turn sensitivity: \(turnSensitivity)")
                 Slider(value: $turnSensitivity, in: 0.0...1.0)
                 HStack {

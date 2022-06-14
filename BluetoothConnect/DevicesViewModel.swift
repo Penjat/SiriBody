@@ -10,13 +10,11 @@ final class DevicesViewModel: ObservableObject {
     
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     
-    private lazy var manager: BluetoothManager = BluetoothManager()
+    lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
     
     @Published var turnTime = 0.2
-//    deinit {
-//        cancellables.cancel()
-//    }
+    
     let commands = [RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.257*2),
                     RobotMotion(speed: (motor1Speed: 0, motor2Speed: 0), time: 2.0),
                     RobotMotion(speed: (motor1Speed: -60, motor2Speed: -60), time: 2.0),

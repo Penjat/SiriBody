@@ -25,16 +25,6 @@ final class BluetoothManager: NSObject, CBPeripheralDelegate {
         print("scanning")
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
-    
-    
-    
-    func sendMessageToDevice(_ message: String) {
-        //            guard isReady else { return }
-        
-        //            if let data = message.data(using: String.Encoding.utf8) {
-        //                connectedBody.writeValue(data, for: writeCharacteristic!, type: writeType)
-        //            }
-    }
 }
 
 extension BluetoothManager: CBCentralManagerDelegate {
