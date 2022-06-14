@@ -3,6 +3,8 @@ import CoreBluetooth
 import Combine
 
 final class DevicesViewModel: ObservableObject {
+    private var txCharacteristic: CBCharacteristic!
+    private var rxCharacteristic: CBCharacteristic!
     var dataSubject = PassthroughSubject<Data, Never>()
     
     @Published var state: CBManagerState = .unknown
@@ -12,7 +14,7 @@ final class DevicesViewModel: ObservableObject {
     
     lazy var manager: BluetoothManager = BluetoothManager()
     private lazy var bag: Set<AnyCancellable> = .init()
-    
+    var connectedBody: CBPeripheral?
     @Published var turnTime = 0.2
     
     let commands = [RobotMotion(speed: (motor1Speed: -60, motor2Speed: 60), time: 0.257*2),
@@ -26,53 +28,75 @@ final class DevicesViewModel: ObservableObject {
     
     var inMotion = false
     func start() {
-        manager.stateSubject
-            .sink { [weak self] state in
-                self?.state = state
-                switch state {
-                case .unknown:
-                    print("unkown")
-                case .resetting:
-                    print("restting")
-                case .unsupported:
-                    print("unsupported")
-                case .unauthorized:
-                    print("unauthourised")
-                case .poweredOff:
-                    print("power off")
-                case .poweredOn:
-                    print("power on")
-                    self?.manager.startScanning()
-                }
-            }
-        
-            .store(in: &bag)
-        manager.peripheralSubject
-            .filter { [weak self] in self?.peripherals.contains($0) == false }
-            .sink { [weak self] in
-                self?.peripherals.append($0)
-                if $0.name == "SiriBody" {
-                    print("SiriBody Found!!!!!!!! \($0)")
-                    
-                    self?.manager.connect($0)
-                }
-                print($0)
-            }
-            .store(in: &bag)
-        manager.start()
         
         $motorSpeed.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true).sink { newSpeed in
             self.sendPacket(speed1: newSpeed.motor1Speed, speed2: newSpeed.motor2Speed)
         }.store(in: &bag)
         
-        dataSubject
-            .sink { data in
-            self.manager.sendData(data)
-        }.store(in: &bag)
+//        dataSubject
+//            .sink { data in
+//            self.sendData(data)
+//        }.store(in: &bag)
         
         manager.eventSubject.sink(receiveValue: { event in
+            switch event {
+            case .DidUpdateState(state: let state):
+                self.processUpdateState(state: state)
+            case .DidDiscover(central: _, peripheral: let peripheral):
+                if peripheral.name == "SiriBody" {
+                    print("SiriBody Found!!!!!!!! \(peripheral)")
+                    self.peripherals.append(peripheral)
+                    self.manager.connect(peripheral)
+                }
+            case .DidConnect(central: _, peripheral: let peripheral):
+                self.connectedBody = peripheral
+                self.connectedBody?.discoverServices(nil)
+            case .DidDiscoverService(peripheral: let peripheral, error: let error):
+                if ((error) != nil) {
+                    print("Error discovering services: \(error!.localizedDescription)")
+                    return
+                }
+                guard let services = peripheral.services else {
+                    return
+                }
+                //We need to discover the all characteristic
+                for service in services {
+                    peripheral.discoverCharacteristics(nil, for: service)
+                }
+                print("Discovered Services: \(services)")
+            case .DidDiscoverCharacteristic(peripheral: let peripheral, service: let service, error: let error):
+                guard let characteristics = service.characteristics else {
+                    return
+                }
+                for characteristic in characteristics {
+                    print("\(characteristic)")
+                    self.txCharacteristic = characteristic
+                    print("TX Characteristic: \(self.txCharacteristic.uuid)")
+                }
+                
+            }
             print(event)
         }).store(in: &bag)
+        
+        manager.start()
+    }
+    
+    func processUpdateState(state: CBManagerState) {
+        switch state {
+        case .unknown:
+            print("unkown")
+        case .resetting:
+            print("restting")
+        case .unsupported:
+            print("unsupported")
+        case .unauthorized:
+            print("unauthourised")
+        case .poweredOff:
+            print("power off")
+        case .poweredOn:
+            print("power on")
+            self.manager.startScanning()
+        }
     }
     
     public func convertedSpeed(_ speed: Int) -> Int {
@@ -117,7 +141,15 @@ final class DevicesViewModel: ObservableObject {
         let s1 = (speed1*7)/100 + 7
         let s2 = ((speed2*7)/100 + 7) << 4
         let data = Data([UInt8(min(s1 + s2, 256))])
-        manager.sendData(data)
+        sendData(data)
+    }
+    
+    func sendData(_ data: Data) {
+        if let bluefruitPeripheral = connectedBody {
+            if let txCharacteristic = txCharacteristic {
+                bluefruitPeripheral.writeValue(data, for: txCharacteristic, type: CBCharacteristicWriteType.withoutResponse)
+            }
+        }
     }
 }
 
