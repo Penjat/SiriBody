@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B173A29285E74F100829196 /* SiriBodyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A28285E74F100829196 /* SiriBodyApp.swift */; };
+		0B173A2B285E74F100829196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A2A285E74F100829196 /* ContentView.swift */; };
+		0B173A2D285E74F300829196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B173A2C285E74F300829196 /* Assets.xcassets */; };
+		0B173A30285E74F300829196 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B173A2F285E74F300829196 /* Preview Assets.xcassets */; };
+		0B173A35285E754800829196 /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A34285E754800829196 /* BodyView.swift */; };
+		0B173A37285E75AC00829196 /* BodyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A36285E75AC00829196 /* BodyInputView.swift */; };
+		0B173A39285E75EE00829196 /* BodyOuputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A38285E75EE00829196 /* BodyOuputView.swift */; };
 		0B89D4AE27D54A63006FEB36 /* RobitControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89D4AD27D54A63006FEB36 /* RobitControllerApp.swift */; };
 		0B89D4B027D54A63006FEB36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89D4AF27D54A63006FEB36 /* ContentView.swift */; };
 		0B89D4B227D54A65006FEB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B89D4B127D54A65006FEB36 /* Assets.xcassets */; };
@@ -29,6 +36,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B173A26285E74F100829196 /* SiriBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B173A28285E74F100829196 /* SiriBodyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyApp.swift; sourceTree = "<group>"; };
+		0B173A2A285E74F100829196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B173A2C285E74F300829196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B173A2F285E74F300829196 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B173A34285E754800829196 /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
+		0B173A36285E75AC00829196 /* BodyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyInputView.swift; sourceTree = "<group>"; };
+		0B173A38285E75EE00829196 /* BodyOuputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyOuputView.swift; sourceTree = "<group>"; };
 		0B89D4AB27D54A63006FEB36 /* RobitController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobitController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B89D4AD27D54A63006FEB36 /* RobitControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerApp.swift; sourceTree = "<group>"; };
 		0B89D4AF27D54A63006FEB36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B173A23285E74F100829196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B89D4A827D54A63006FEB36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +88,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B173A27285E74F100829196 /* SiriBody */ = {
+			isa = PBXGroup;
+			children = (
+				0B173A28285E74F100829196 /* SiriBodyApp.swift */,
+				0B173A2A285E74F100829196 /* ContentView.swift */,
+				0B173A34285E754800829196 /* BodyView.swift */,
+				0B173A36285E75AC00829196 /* BodyInputView.swift */,
+				0B173A38285E75EE00829196 /* BodyOuputView.swift */,
+				0B173A2C285E74F300829196 /* Assets.xcassets */,
+				0B173A2E285E74F300829196 /* Preview Content */,
+			);
+			path = SiriBody;
+			sourceTree = "<group>";
+		};
+		0B173A2E285E74F300829196 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B173A2F285E74F300829196 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		0B89D4AC27D54A63006FEB36 /* RobitController */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +135,7 @@
 			children = (
 				0BD88B3827CB09DB009F514D /* BluetoothConnect */,
 				0B89D4AC27D54A63006FEB36 /* RobitController */,
+				0B173A27285E74F100829196 /* SiriBody */,
 				0BD88B3727CB09DB009F514D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +145,7 @@
 			children = (
 				0BD88B3627CB09DB009F514D /* Robit.app */,
 				0B89D4AB27D54A63006FEB36 /* RobitController.app */,
+				0B173A26285E74F100829196 /* SiriBody.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +178,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0B173A25285E74F100829196 /* SiriBody */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B173A33285E74F300829196 /* Build configuration list for PBXNativeTarget "SiriBody" */;
+			buildPhases = (
+				0B173A22285E74F100829196 /* Sources */,
+				0B173A23285E74F100829196 /* Frameworks */,
+				0B173A24285E74F100829196 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriBody;
+			productName = SiriBody;
+			productReference = 0B173A26285E74F100829196 /* SiriBody.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0B89D4AA27D54A63006FEB36 /* RobitController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B89D4B727D54A65006FEB36 /* Build configuration list for PBXNativeTarget "RobitController" */;
@@ -176,6 +239,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					0B173A25285E74F100829196 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					0B89D4AA27D54A63006FEB36 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -199,11 +265,21 @@
 			targets = (
 				0BD88B3527CB09DB009F514D /* BluetoothConnect */,
 				0B89D4AA27D54A63006FEB36 /* RobitController */,
+				0B173A25285E74F100829196 /* SiriBody */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B173A24285E74F100829196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B173A30285E74F300829196 /* Preview Assets.xcassets in Resources */,
+				0B173A2D285E74F300829196 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B89D4A927D54A63006FEB36 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +301,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B173A22285E74F100829196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B173A39285E75EE00829196 /* BodyOuputView.swift in Sources */,
+				0B173A2B285E74F100829196 /* ContentView.swift in Sources */,
+				0B173A29285E74F100829196 /* SiriBodyApp.swift in Sources */,
+				0B173A35285E754800829196 /* BodyView.swift in Sources */,
+				0B173A37285E75AC00829196 /* BodyInputView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B89D4A727D54A63006FEB36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +345,64 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0B173A31285E74F300829196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SiriBody/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.SiriBody;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B173A32285E74F300829196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SiriBody/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.SiriBody;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		0B89D4B827D54A65006FEB36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -502,6 +648,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B173A33285E74F300829196 /* Build configuration list for PBXNativeTarget "SiriBody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B173A31285E74F300829196 /* Debug */,
+				0B173A32285E74F300829196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0B89D4B727D54A65006FEB36 /* Build configuration list for PBXNativeTarget "RobitController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

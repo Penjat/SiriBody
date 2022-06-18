@@ -27,6 +27,7 @@ final class DevicesViewModel: ObservableObject {
         label: "robot.motion")
     
     var inMotion = false
+    
     func start() {
         
         $motorSpeed.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true).sink { newSpeed in
@@ -76,6 +77,7 @@ final class DevicesViewModel: ObservableObject {
                 
             case .DidDisconnect(central: let central, peripheral: let peripheral, error: let error):
                 self.connectedBody = nil
+                self.manager.startScanning()
             }
             print(event)
         }).store(in: &bag)
