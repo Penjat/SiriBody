@@ -14,6 +14,8 @@
 		0B173A35285E754800829196 /* BodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A34285E754800829196 /* BodyView.swift */; };
 		0B173A37285E75AC00829196 /* BodyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A36285E75AC00829196 /* BodyInputView.swift */; };
 		0B173A39285E75EE00829196 /* BodyOuputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A38285E75EE00829196 /* BodyOuputView.swift */; };
+		0B173A3B285EA11200829196 /* BodyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A3A285EA11200829196 /* BodyMenuView.swift */; };
+		0B173A3D285EA12700829196 /* BodyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B173A3C285EA12700829196 /* BodyViewModel.swift */; };
 		0B89D4AE27D54A63006FEB36 /* RobitControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89D4AD27D54A63006FEB36 /* RobitControllerApp.swift */; };
 		0B89D4B027D54A63006FEB36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B89D4AF27D54A63006FEB36 /* ContentView.swift */; };
 		0B89D4B227D54A65006FEB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B89D4B127D54A65006FEB36 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		0B173A34285E754800829196 /* BodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyView.swift; sourceTree = "<group>"; };
 		0B173A36285E75AC00829196 /* BodyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyInputView.swift; sourceTree = "<group>"; };
 		0B173A38285E75EE00829196 /* BodyOuputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyOuputView.swift; sourceTree = "<group>"; };
+		0B173A3A285EA11200829196 /* BodyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMenuView.swift; sourceTree = "<group>"; };
+		0B173A3C285EA12700829196 /* BodyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewModel.swift; sourceTree = "<group>"; };
 		0B89D4AB27D54A63006FEB36 /* RobitController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobitController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B89D4AD27D54A63006FEB36 /* RobitControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitControllerApp.swift; sourceTree = "<group>"; };
 		0B89D4AF27D54A63006FEB36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,9 +97,7 @@
 			children = (
 				0B173A28285E74F100829196 /* SiriBodyApp.swift */,
 				0B173A2A285E74F100829196 /* ContentView.swift */,
-				0B173A34285E754800829196 /* BodyView.swift */,
-				0B173A36285E75AC00829196 /* BodyInputView.swift */,
-				0B173A38285E75EE00829196 /* BodyOuputView.swift */,
+				0B173A3E285EA89B00829196 /* Body */,
 				0B173A2C285E74F300829196 /* Assets.xcassets */,
 				0B173A2E285E74F300829196 /* Preview Content */,
 			);
@@ -108,6 +110,18 @@
 				0B173A2F285E74F300829196 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0B173A3E285EA89B00829196 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				0B173A34285E754800829196 /* BodyView.swift */,
+				0B173A36285E75AC00829196 /* BodyInputView.swift */,
+				0B173A38285E75EE00829196 /* BodyOuputView.swift */,
+				0B173A3A285EA11200829196 /* BodyMenuView.swift */,
+				0B173A3C285EA12700829196 /* BodyViewModel.swift */,
+			);
+			path = Body;
 			sourceTree = "<group>";
 		};
 		0B89D4AC27D54A63006FEB36 /* RobitController */ = {
@@ -306,7 +320,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B173A39285E75EE00829196 /* BodyOuputView.swift in Sources */,
+				0B173A3B285EA11200829196 /* BodyMenuView.swift in Sources */,
 				0B173A2B285E74F100829196 /* ContentView.swift in Sources */,
+				0B173A3D285EA12700829196 /* BodyViewModel.swift in Sources */,
 				0B173A29285E74F100829196 /* SiriBodyApp.swift in Sources */,
 				0B173A35285E754800829196 /* BodyView.swift in Sources */,
 				0B173A37285E75AC00829196 /* BodyInputView.swift in Sources */,
@@ -359,6 +375,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,7 +387,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -388,6 +405,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -399,7 +417,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
