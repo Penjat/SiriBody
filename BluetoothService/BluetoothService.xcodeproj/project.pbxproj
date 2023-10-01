@@ -79,8 +79,8 @@
 		1A73DBEE2AC94130005F833E /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */,
 				1A73DC022AC9FF50005F833E /* AppState.swift */,
+				1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -88,9 +88,9 @@
 		1A73DBEF2AC94154005F833E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1A73DBE42AC90A81005F833E /* Synth.swift */,
 				1A73DBF62AC9C01E005F833E /* GloveDataService */,
 				1A73DBF52AC9BFDF005F833E /* BluetoothService */,
-				1A73DBE42AC90A81005F833E /* Synth.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

@@ -2,7 +2,7 @@ import SwiftUI
 import CoreBluetooth
 
 struct GloveView: View {
-    @StateObject var viewModel = GloveViewModel()
+    @StateObject var viewModel: GloveViewModel
     var body: some View {
         ZStack {
             VStack {

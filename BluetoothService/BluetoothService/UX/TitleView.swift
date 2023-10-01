@@ -7,7 +7,7 @@ struct TitleView: View {
             VStack {
                 NavigationLink("Glove Synth", destination:
                                 GloveSynthView(viewModel: gloveSynthViewModel))
-                NavigationLink("Synth Test", destination: GloveView())
+                NavigationLink("Synth Test", destination: GloveView(viewModel: gloveStatusViewModel))
             }
         }
     }
@@ -16,6 +16,10 @@ struct TitleView: View {
         GloveSynthViewModel(
             synth: appState.synth,
             gloveService: appState.gloveDataService)
+    }
+
+    var gloveStatusViewModel: GloveViewModel {
+        GloveViewModel()
     }
 }
 
