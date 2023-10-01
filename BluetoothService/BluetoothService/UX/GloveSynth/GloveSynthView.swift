@@ -26,9 +26,9 @@ struct GloveSynthView: View {
 
     var defaultGloveState: PowerGloveDataObject {
         PowerGloveDataObject(
-            fingerSensor1: 0,
-            fingerSensor2: 0,
-            fingerSensor3: 0,
+            fingerSensor1: 255,
+            fingerSensor2: 255,
+            fingerSensor3: 255,
             button1State: false,
             button2State: false,
             button3State: false,

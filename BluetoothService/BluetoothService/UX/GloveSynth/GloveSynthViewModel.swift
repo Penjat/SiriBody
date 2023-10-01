@@ -15,22 +15,19 @@ class GloveSynthViewModel: ObservableObject {
     @Published var frequency = 440.0
     @Published var gloveState: PowerGloveDataObject?
 
-
     var volume = 0.0
 
     var bag = Set<AnyCancellable>()
 
     init(synth: Synth, gloveService: GloveDataService) {
-        synth.frequency = 440.0
-        synth.startPlaying()
         synth.wav = waveForm(_:)
+        synth.startPlaying()
         $isPressed
             .removeDuplicates()
             .sink { [weak self] isPressed in
                 if isPressed {
                     self?.frequency = Double.random(in: 60.0..<880.0)
                 }
-
         }.store(in: &bag)
 
         timer.sink { [weak self] _ in
