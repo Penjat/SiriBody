@@ -34,7 +34,6 @@ class RobitViewModel: ObservableObject {
                 self.motionService.goal.send(.driveFor(time: Date.timeIntervalSinceReferenceDate+1.0 ))
                 self.reciededData.append("move forward")
             }
-            
         }.store(in: &bag)
         
         peripheralService.peripheralState.sink { state in
