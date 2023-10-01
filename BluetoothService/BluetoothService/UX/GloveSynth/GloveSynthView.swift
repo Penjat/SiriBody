@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GloveSynthView: View {
-    @StateObject var viewModel = GloveSynthViewModel()
+    @StateObject var viewModel: GloveSynthViewModel
     var body: some View {
         ZStack {
             VStack {
@@ -41,8 +41,8 @@ struct GloveSynthView: View {
     }
 }
 
-struct GloveSynthView_Previews: PreviewProvider {
-    static var previews: some View {
-        GloveSynthView()
-    }
-}
+//struct GloveSynthView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GloveSynthView()
+//    }
+//}

@@ -13,6 +13,12 @@
 		1A73DBEB2AC93629005F833E /* Color+Lerp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBEA2AC93629005F833E /* Color+Lerp.swift */; };
 		1A73DBED2AC93E0B005F833E /* Waveforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBEC2AC93E0B005F833E /* Waveforms.swift */; };
 		1A73DBF82AC9C139005F833E /* GloveDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBF72AC9C139005F833E /* GloveDataService.swift */; };
+		1A73DBFA2AC9F965005F833E /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBF92AC9F965005F833E /* TitleView.swift */; };
+		1A73DBFD2AC9FDBF005F833E /* SynthTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBFC2AC9FDBF005F833E /* SynthTestView.swift */; };
+		1A73DBFF2AC9FE4B005F833E /* FrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DBFE2AC9FE4B005F833E /* FrequencyView.swift */; };
+		1A73DC012AC9FE79005F833E /* CGSize+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC002AC9FE79005F833E /* CGSize+Helpers.swift */; };
+		1A73DC032AC9FF50005F833E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC022AC9FF50005F833E /* AppState.swift */; };
+		1A73DC052ACA002B005F833E /* SynthTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC042ACA002B005F833E /* SynthTestViewModel.swift */; };
 		1A80A2252ABD31EB004A3622 /* BluetoothServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */; };
 		1A80A2272ABD31EB004A3622 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2262ABD31EB004A3622 /* ContentView.swift */; };
 		1A80A2292ABD31F2004A3622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A80A2282ABD31F2004A3622 /* Assets.xcassets */; };
@@ -36,6 +42,12 @@
 		1A73DBEA2AC93629005F833E /* Color+Lerp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Lerp.swift"; sourceTree = "<group>"; };
 		1A73DBEC2AC93E0B005F833E /* Waveforms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveforms.swift; sourceTree = "<group>"; };
 		1A73DBF72AC9C139005F833E /* GloveDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveDataService.swift; sourceTree = "<group>"; };
+		1A73DBF92AC9F965005F833E /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		1A73DBFC2AC9FDBF005F833E /* SynthTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthTestView.swift; sourceTree = "<group>"; };
+		1A73DBFE2AC9FE4B005F833E /* FrequencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyView.swift; sourceTree = "<group>"; };
+		1A73DC002AC9FE79005F833E /* CGSize+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Helpers.swift"; sourceTree = "<group>"; };
+		1A73DC022AC9FF50005F833E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1A73DC042ACA002B005F833E /* SynthTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthTestViewModel.swift; sourceTree = "<group>"; };
 		1A80A2212ABD31EB004A3622 /* BluetoothService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServiceApp.swift; sourceTree = "<group>"; };
 		1A80A2262ABD31EB004A3622 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */,
+				1A73DC022AC9FF50005F833E /* AppState.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -87,7 +100,6 @@
 			children = (
 				1A73DBE62AC90B92005F833E /* GloveSynthView.swift */,
 				1A73DBE82AC90BDE005F833E /* GloveSynthViewModel.swift */,
-				1A73DBEF2AC94154005F833E /* Service */,
 			);
 			path = GloveSynth;
 			sourceTree = "<group>";
@@ -108,6 +120,7 @@
 				1A80A24D2ABFC411004A3622 /* LetterButtonView.swift */,
 				1A80A24F2ABFC738004A3622 /* ByteBarView.swift */,
 				1A80A2512ABFCE3C004A3622 /* CircleDialView.swift */,
+				1A73DBFE2AC9FE4B005F833E /* FrequencyView.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -116,9 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				1A80A2262ABD31EB004A3622 /* ContentView.swift */,
-				1A73DBF22AC9433A005F833E /* UI Components */,
+				1A73DBF92AC9F965005F833E /* TitleView.swift */,
+				1A73DBFB2AC9FCD0005F833E /* SynthTest */,
 				1A73DBF12AC942E8005F833E /* Glove Status */,
 				1A73DBF02AC9427D005F833E /* GloveSynth */,
+				1A73DBF22AC9433A005F833E /* UI Components */,
 			);
 			path = UX;
 			sourceTree = "<group>";
@@ -128,6 +143,7 @@
 			children = (
 				1A73DBEC2AC93E0B005F833E /* Waveforms.swift */,
 				1A73DBEA2AC93629005F833E /* Color+Lerp.swift */,
+				1A73DC002AC9FE79005F833E /* CGSize+Helpers.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -151,6 +167,15 @@
 			path = GloveDataService;
 			sourceTree = "<group>";
 		};
+		1A73DBFB2AC9FCD0005F833E /* SynthTest */ = {
+			isa = PBXGroup;
+			children = (
+				1A73DBFC2AC9FDBF005F833E /* SynthTestView.swift */,
+				1A73DC042ACA002B005F833E /* SynthTestViewModel.swift */,
+			);
+			path = SynthTest;
+			sourceTree = "<group>";
+		};
 		1A80A2182ABD31EB004A3622 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				1A73DBEE2AC94130005F833E /* Application */,
+				1A73DBEF2AC94154005F833E /* Service */,
 				1A73DBF32AC9437B005F833E /* UX */,
 				1A73DBF42AC943AA005F833E /* Utility */,
 				1A80A2282ABD31F2004A3622 /* Assets.xcassets */,
@@ -260,6 +286,8 @@
 				1A80A2502ABFC738004A3622 /* ByteBarView.swift in Sources */,
 				1A73DBED2AC93E0B005F833E /* Waveforms.swift in Sources */,
 				1A73DBE72AC90B92005F833E /* GloveSynthView.swift in Sources */,
+				1A73DBFF2AC9FE4B005F833E /* FrequencyView.swift in Sources */,
+				1A73DBFD2AC9FDBF005F833E /* SynthTestView.swift in Sources */,
 				1A80A23F2ABDD2A5004A3622 /* GloveView.swift in Sources */,
 				1A80A2522ABFCE3C004A3622 /* CircleDialView.swift in Sources */,
 				1A80A2432ABF8295004A3622 /* PowerGloveDataOb.swift in Sources */,
@@ -271,9 +299,13 @@
 				1A80A23B2ABD3362004A3622 /* PeripheralService.swift in Sources */,
 				1A73DBE52AC90A81005F833E /* Synth.swift in Sources */,
 				1A73DBF82AC9C139005F833E /* GloveDataService.swift in Sources */,
+				1A73DBFA2AC9F965005F833E /* TitleView.swift in Sources */,
+				1A73DC032AC9FF50005F833E /* AppState.swift in Sources */,
 				1A80A23C2ABD3362004A3622 /* CentralService.swift in Sources */,
 				1A80A2272ABD31EB004A3622 /* ContentView.swift in Sources */,
 				1A73DBE92AC90BDE005F833E /* GloveSynthViewModel.swift in Sources */,
+				1A73DC052ACA002B005F833E /* SynthTestViewModel.swift in Sources */,
+				1A73DC012AC9FE79005F833E /* CGSize+Helpers.swift in Sources */,
 				1A80A2252ABD31EB004A3622 /* BluetoothServiceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

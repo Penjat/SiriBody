@@ -1,17 +1,11 @@
-//
-//  BluetoothServiceApp.swift
-//  BluetoothService
-//
-//  Created by Spencer Symington on 2023-09-21.
-//
-
 import SwiftUI
 
 @main
 struct BluetoothServiceApp: App {
+        @StateObject var appState = AppState()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(appState)
         }
     }
 }
