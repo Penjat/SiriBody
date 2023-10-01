@@ -3,13 +3,10 @@ import Combine
 import SwiftUI
 
 class GloveSynthViewModel: ObservableObject {
-    let synth: Synth
-    let gloveService: GloveDataService
 
     let volumeMax = 0.0
     let upSwell = 0.1
     let downSwell = 0.1
-
 
     let timer = Timer.publish(every: 0.1, on: .main, in: .default)
         .autoconnect()
@@ -24,8 +21,6 @@ class GloveSynthViewModel: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init(synth: Synth, gloveService: GloveDataService) {
-        self.synth = synth
-        self.gloveService = gloveService
         synth.frequency = 440.0
         synth.startPlaying()
         synth.wav = waveForm(_:)
@@ -35,7 +30,6 @@ class GloveSynthViewModel: ObservableObject {
                 if isPressed {
                     self?.frequency = Double.random(in: 60.0..<880.0)
                 }
-
 
         }.store(in: &bag)
 

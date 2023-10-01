@@ -1,13 +1,12 @@
 import Foundation
 import Combine
 
-class GloveViewModel: ObservableObject {
-    var gloveService = GloveDataService()
+class GloveStatusViewModel: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     @Published var gloveState: PowerGloveDataObject?
 
-    init() {
+    init(gloveService: GloveDataService) {
         gloveService.$gloveState.assign(to: &$gloveState)
     }
 }

@@ -26,8 +26,8 @@
 		1A80A23B2ABD3362004A3622 /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2382ABD3361004A3622 /* PeripheralService.swift */; };
 		1A80A23C2ABD3362004A3622 /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2392ABD3362004A3622 /* CentralService.swift */; };
 		1A80A23D2ABD3362004A3622 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A23A2ABD3362004A3622 /* TransferService.swift */; };
-		1A80A23F2ABDD2A5004A3622 /* GloveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A23E2ABDD2A5004A3622 /* GloveView.swift */; };
-		1A80A2412ABDD2C9004A3622 /* GloveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2402ABDD2C9004A3622 /* GloveViewModel.swift */; };
+		1A80A23F2ABDD2A5004A3622 /* GloveStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A23E2ABDD2A5004A3622 /* GloveStatusView.swift */; };
+		1A80A2412ABDD2C9004A3622 /* GloveStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2402ABDD2C9004A3622 /* GloveStatusViewModel.swift */; };
 		1A80A2432ABF8295004A3622 /* PowerGloveDataOb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2422ABF8295004A3622 /* PowerGloveDataOb.swift */; };
 		1A80A24B2ABF9751004A3622 /* PowerGloveStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A24A2ABF9751004A3622 /* PowerGloveStatusView.swift */; };
 		1A80A24E2ABFC411004A3622 /* LetterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A24D2ABFC411004A3622 /* LetterButtonView.swift */; };
@@ -56,8 +56,8 @@
 		1A80A2382ABD3361004A3622 /* PeripheralService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralService.swift; sourceTree = "<group>"; };
 		1A80A2392ABD3362004A3622 /* CentralService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		1A80A23A2ABD3362004A3622 /* TransferService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
-		1A80A23E2ABDD2A5004A3622 /* GloveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveView.swift; sourceTree = "<group>"; };
-		1A80A2402ABDD2C9004A3622 /* GloveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveViewModel.swift; sourceTree = "<group>"; };
+		1A80A23E2ABDD2A5004A3622 /* GloveStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveStatusView.swift; sourceTree = "<group>"; };
+		1A80A2402ABDD2C9004A3622 /* GloveStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloveStatusViewModel.swift; sourceTree = "<group>"; };
 		1A80A2422ABF8295004A3622 /* PowerGloveDataOb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerGloveDataOb.swift; sourceTree = "<group>"; };
 		1A80A24A2ABF9751004A3622 /* PowerGloveStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerGloveStatusView.swift; sourceTree = "<group>"; };
 		1A80A24D2ABFC411004A3622 /* LetterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonView.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 		1A73DBF12AC942E8005F833E /* Glove Status */ = {
 			isa = PBXGroup;
 			children = (
-				1A80A23E2ABDD2A5004A3622 /* GloveView.swift */,
-				1A80A2402ABDD2C9004A3622 /* GloveViewModel.swift */,
+				1A80A23E2ABDD2A5004A3622 /* GloveStatusView.swift */,
+				1A80A2402ABDD2C9004A3622 /* GloveStatusViewModel.swift */,
 				1A80A24A2ABF9751004A3622 /* PowerGloveStatusView.swift */,
 			);
 			path = "Glove Status";
@@ -288,11 +288,11 @@
 				1A73DBE72AC90B92005F833E /* GloveSynthView.swift in Sources */,
 				1A73DBFF2AC9FE4B005F833E /* FrequencyView.swift in Sources */,
 				1A73DBFD2AC9FDBF005F833E /* SynthTestView.swift in Sources */,
-				1A80A23F2ABDD2A5004A3622 /* GloveView.swift in Sources */,
+				1A80A23F2ABDD2A5004A3622 /* GloveStatusView.swift in Sources */,
 				1A80A2522ABFCE3C004A3622 /* CircleDialView.swift in Sources */,
 				1A80A2432ABF8295004A3622 /* PowerGloveDataOb.swift in Sources */,
 				1A80A24B2ABF9751004A3622 /* PowerGloveStatusView.swift in Sources */,
-				1A80A2412ABDD2C9004A3622 /* GloveViewModel.swift in Sources */,
+				1A80A2412ABDD2C9004A3622 /* GloveStatusViewModel.swift in Sources */,
 				1A80A24E2ABFC411004A3622 /* LetterButtonView.swift in Sources */,
 				1A73DBEB2AC93629005F833E /* Color+Lerp.swift in Sources */,
 				1A80A23D2ABD3362004A3622 /* TransferService.swift in Sources */,
