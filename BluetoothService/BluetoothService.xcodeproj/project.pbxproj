@@ -24,6 +24,8 @@
 		1A73DC122ACA3BD8005F833E /* BluetoothServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC112ACA3BD8005F833E /* BluetoothServiceTests.swift */; };
 		1A73DC182ACA3C4F005F833E /* NoteHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC092ACA39F2005F833E /* NoteHelpers.swift */; };
 		1A73DC1A2ACA4175005F833E /* MapValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC192ACA4175005F833E /* MapValueTests.swift */; };
+		1A73DC1C2ACA52A1005F833E /* PitchArchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC1B2ACA52A1005F833E /* PitchArchView.swift */; };
+		1A73DC1E2ACA53BB005F833E /* PitchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73DC1D2ACA53BB005F833E /* PitchInfo.swift */; };
 		1A80A2252ABD31EB004A3622 /* BluetoothServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */; };
 		1A80A2272ABD31EB004A3622 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80A2262ABD31EB004A3622 /* ContentView.swift */; };
 		1A80A2292ABD31F2004A3622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A80A2282ABD31F2004A3622 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		1A73DC0F2ACA3BD8005F833E /* BluetoothServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A73DC112ACA3BD8005F833E /* BluetoothServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServiceTests.swift; sourceTree = "<group>"; };
 		1A73DC192ACA4175005F833E /* MapValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapValueTests.swift; sourceTree = "<group>"; };
+		1A73DC1B2ACA52A1005F833E /* PitchArchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchArchView.swift; sourceTree = "<group>"; };
+		1A73DC1D2ACA53BB005F833E /* PitchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchInfo.swift; sourceTree = "<group>"; };
 		1A80A2212ABD31EB004A3622 /* BluetoothService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A80A2242ABD31EB004A3622 /* BluetoothServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServiceApp.swift; sourceTree = "<group>"; };
 		1A80A2262ABD31EB004A3622 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				1A80A24F2ABFC738004A3622 /* ByteBarView.swift */,
 				1A80A2512ABFCE3C004A3622 /* CircleDialView.swift */,
 				1A73DBFE2AC9FE4B005F833E /* FrequencyView.swift */,
+				1A73DC1B2ACA52A1005F833E /* PitchArchView.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				1A73DBEA2AC93629005F833E /* Color+Lerp.swift */,
 				1A73DC002AC9FE79005F833E /* CGSize+Helpers.swift */,
 				1A73DC092ACA39F2005F833E /* NoteHelpers.swift */,
+				1A73DC1D2ACA53BB005F833E /* PitchInfo.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A80A2502ABFC738004A3622 /* ByteBarView.swift in Sources */,
+				1A73DC1C2ACA52A1005F833E /* PitchArchView.swift in Sources */,
 				1A73DBED2AC93E0B005F833E /* Waveforms.swift in Sources */,
 				1A73DBE72AC90B92005F833E /* GloveSynthView.swift in Sources */,
 				1A73DBFF2AC9FE4B005F833E /* FrequencyView.swift in Sources */,
@@ -396,6 +403,7 @@
 				1A73DC052ACA002B005F833E /* SynthTestViewModel.swift in Sources */,
 				1A73DC082ACA153D005F833E /* MotionService.swift in Sources */,
 				1A73DC012AC9FE79005F833E /* CGSize+Helpers.swift in Sources */,
+				1A73DC1E2ACA53BB005F833E /* PitchInfo.swift in Sources */,
 				1A80A2252ABD31EB004A3622 /* BluetoothServiceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

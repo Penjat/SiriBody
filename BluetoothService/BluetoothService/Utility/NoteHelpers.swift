@@ -8,7 +8,6 @@ enum Note {
             return nil // Invalid note number
         }
 
-
         let octave = (noteNumber / 12) - 1
         let noteIndex = noteNumber % 12
 
@@ -21,27 +20,26 @@ enum Note {
         return (noteName, pitch, frequency)
     }
 
-    static func pitchInfo(inputLowerBound: Double, inputUpperBound: Double, outputLowerBound: Int, outputUpperBound: Int, inputValue: Double) -> (noteName: String, pitch: String, frequencySnapped: Double, frequencyExact: Double)? {
-        // Ensure that the input value is within the specified input bounds
-        guard inputValue >= inputLowerBound && inputValue <= inputUpperBound else {
-            return nil
-        }
+    static func pitchInfo(inputLowerBound: Double, inputUpperBound: Double, outputLowerBound: Int, outputUpperBound: Int, inputValue: Double) -> PitchInfo? {
+        let inputValue = min(max(inputLowerBound, inputValue), inputUpperBound)
 
-        // Map the inputValue from the input range to the output range
         let mappedValue = mapValue(inputValue, inputLowerBound, inputUpperBound, Double(outputLowerBound), Double(outputUpperBound))
 
-        // Calculate MIDI note number for the mapped value
         let noteNumber = Int(round(mappedValue))
 
-        // Calculate the exact frequency based on the mapped value
-//        let a = pow(2.0, 1.0 / 12.0) // The 12th root of 2
         let a = 1.059463094359
         let referenceFrequency = 440.0 // A4
         let exactFrequency = referenceFrequency * pow(a, mappedValue - 69)
 
-        // Get note information using the noteInfo function
         if let noteInfo = noteInfo(for: noteNumber) {
-            return (noteInfo.noteName, noteInfo.pitch, noteInfo.frequency, exactFrequency)
+            let pitchInfo = PitchInfo(
+                noteNumber: noteNumber,
+                noteName: noteInfo.noteName,
+                pitch: noteInfo.pitch,
+                frequencySnapped: noteInfo.frequency,
+                frequencyExact: exactFrequency
+            )
+            return pitchInfo
         }
 
         return nil // Invalid MIDI note number

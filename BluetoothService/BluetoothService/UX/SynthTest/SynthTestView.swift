@@ -4,6 +4,8 @@ struct SynthTestView: View {
     @StateObject var viewModel: SynthTestViewModel
     var body: some View {
         VStack {
+            
+            PitchArcView(pitchNames: Note.noteNames, selectedNote: viewModel.currentPitch?.noteNumber ?? 69, lowerBound: 40, upperBound: 81)
             Text("roll: \(viewModel.rotation)")
             Slider(value: $viewModel.finger0)
             Slider(value: $viewModel.finger1)
@@ -19,6 +21,7 @@ struct SynthTestView: View {
     var possibleNotes: [String] {
         []
     }
+
 
 //    var freqency: Double {
 //        if rotation < -
