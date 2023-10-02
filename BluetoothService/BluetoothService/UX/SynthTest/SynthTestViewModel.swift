@@ -16,7 +16,31 @@ class SynthTestViewModel: ObservableObject {
     @Published var roll = 0.0
     @Published var yaw = 0.0
 
-    init(synth: Synth) {
+    @Published var rotation = 0.0
 
+    var volume = 0.0
+
+    @Published var isPressed = false
+    @Published var frequency = 440.0
+
+    init(synth: Synth, motionService: MotionService) {
+        synth.wav = waveForm(_:)
+        synth.startPlaying()
+        $isPressed
+            .removeDuplicates()
+            .sink { [weak self] isPressed in
+                if isPressed {
+                    self?.frequency = Double.random(in: 60.0..<880.0)
+                }
+        }.store(in: &bag)
+
+        motionService.positionPublisher.sink { [weak self] positionData in
+
+            self?.rotation = atan2(positionData.gravity.x, -positionData.gravity.y)
+        }.store(in: &bag)
+    }
+
+    func waveForm(_ input: Double) -> Double {
+        return sin(2.0 * Double.pi * frequency * input)*volume
     }
 }

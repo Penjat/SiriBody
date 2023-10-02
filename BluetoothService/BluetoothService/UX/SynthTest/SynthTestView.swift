@@ -4,6 +4,7 @@ struct SynthTestView: View {
     @StateObject var viewModel: SynthTestViewModel
     var body: some View {
         VStack {
+            Text("roll: \(viewModel.rotation)")
             Slider(value: $viewModel.finger0)
             Slider(value: $viewModel.finger1)
             Slider(value: $viewModel.finger2)
@@ -14,6 +15,14 @@ struct SynthTestView: View {
             }
         }.padding(40)
     }
+
+    var possibleNotes: [String] {
+        []
+    }
+
+//    var freqency: Double {
+//        if rotation < -
+//    }
 }
 
 //struct SynthTestView_Previews: PreviewProvider {

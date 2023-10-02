@@ -40,7 +40,7 @@ struct TitleView: View {
     }
 
     var synthTestViewModel: SynthTestViewModel {
-        SynthTestViewModel(synth: appState.synth)
+        SynthTestViewModel(synth: appState.synth, motionService: appState.motionService)
     }
 }
 
