@@ -103,6 +103,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
         if let bluefruitPeripheral = connectedBody {
             if let txCharacteristic = txCharacteristic {
                 bluefruitPeripheral.writeValue(data, for: txCharacteristic, type: CBCharacteristicWriteType.withoutResponse)
+                
             }
         }
     }
