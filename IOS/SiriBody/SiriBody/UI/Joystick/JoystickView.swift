@@ -28,13 +28,14 @@ struct JoystickView: View {
                                     touchPoint = nil
                                 }
                                 .onChanged { value in
-                                    print("changed \(value)")
+                                    
                                     let radius = (geometry.size.width/2)
                                     let forwardBackward = max(-100,min(100,(value.location.y - radius)*100/radius))
                                     let leftRight = max(-100*turnSensitivity,min(100*turnSensitivity,(value.location.x - radius)*100/radius))
                                     
-                                    let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))
-                                    let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))
+                                    let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))*(-1)
+                                    let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))*(-1)
+                                    print("1: \(motor1Speed) 2: \(motor2Speed)")
                                     
                                     motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
                                     touchPoint = value.location

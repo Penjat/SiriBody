@@ -3,10 +3,15 @@ import Combine
 
 class AppState: ObservableObject {
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
+    
+    @Published var movementInteractor: MovementInteractor
+    
     var bag = Set<AnyCancellable>()
     
     init() {
-        centralService.centralState.sink { state in
+        self.movementInteractor = MovementInteractor(mode: .bluetooth(service: centralService))
+        
+        centralService.centralState.sink { [weak self] state in
             switch state {
                 
             case .unknown:
@@ -21,7 +26,7 @@ class AppState: ObservableObject {
                 print("poweredOff")
             case .poweredOn:
                 print("poweredOn")
-                self.centralService.retrievePeripheral()
+                self?.centralService.retrievePeripheral()
             @unknown default:
                 print("unkown")
             }

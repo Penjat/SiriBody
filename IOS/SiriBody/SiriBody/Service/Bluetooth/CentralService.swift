@@ -23,9 +23,11 @@ class CentralService: NSObject {
         self.charUUID = charID
         
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
-        outputSubject.sink { cmdData in
+        outputSubject
+            .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
+            .sink { cmdData in
             if let transferCharacteristic = self.transferCharacteristic {
-                print("sending data")
+                
                 self.discoveredPeripheral?.writeValue(cmdData, for: transferCharacteristic, type: .withoutResponse)
             }
         }.store(in: &bag)

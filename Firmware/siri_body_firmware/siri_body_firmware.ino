@@ -24,54 +24,69 @@ void setup() {
   Serial.begin(9600);
   hm10.begin(9600);
   Serial.println("Starting up...");
-  hm10.write("AT");
 }
 
 void loop() {
-  Serial.println("Begin Test");
 
-  Serial.println("Right On, Left Off");
-  digitalWrite(motor1PinA, LOW);
-  digitalWrite(motor1PinB, HIGH);
-  digitalWrite(motor2PinA, HIGH);
-  digitalWrite(motor2PinB, LOW);
-  
-  analogWrite(motor1PinSpeed, 1020);
-  analogWrite(motor2PinSpeed, 1020);
 
-  delay(1000);
+  if (hm10.available() >= 4) {
 
-  Serial.println("Right Off, Left Off");
-  analogWrite(motor1PinSpeed, 0);
-  analogWrite(motor2PinSpeed, 0);
-  delay(1000);
+    byte c = hm10.read();
 
-  Serial.println("Right Off, Left On");
-  digitalWrite(motor1PinA, HIGH);
-  digitalWrite(motor1PinB, LOW);
-  
+    if (c == 253) {
+      byte motor1Byte = hm10.read();
+      byte motor2Byte = hm10.read();
+      byte endByte = hm10.read();
 
-  digitalWrite(motor2PinA, LOW);
-  digitalWrite(motor2PinB, HIGH);
-  analogWrite(motor1PinSpeed, 1020);
-  analogWrite(motor2PinSpeed, 1020);
+      if (endByte == 252) {
+        int motor1Speed = (motor1Byte - 100);
+        int motor2Speed = (motor2Byte - 100);
 
-  delay(1000);
-  Serial.println("Right Off, Left Off");
-  analogWrite(motor1PinSpeed, 0);
-  analogWrite(motor2PinSpeed, 0);
-  
-  delay(1000);
+        if (motor1Speed == 0) {
+          digitalWrite(motor1PinA, LOW);
+          digitalWrite(motor1PinB, LOW);
+          analogWrite(motor1PinSpeed, 0);
 
-  
-  
-  // if (Serial.available()) {
-  //   char input = Serial.read();
-  //   hm10.write(input);
-  // }
+        } else if (motor1Speed > 0) {
+          digitalWrite(motor1PinA, HIGH);
+          digitalWrite(motor1PinB, LOW);
+          
+          int motor1Output = map(motor1Speed, 0, 100, 0, 1023);
+          analogWrite(motor1PinSpeed, motor1Output);
 
-  // if (hm10.available()) {
-  //   char btInput = hm10.read();
-  //   Serial.write(btInput);
-  // }
+        } else {
+          digitalWrite(motor1PinA, LOW);
+          digitalWrite(motor1PinB, HIGH);
+
+          int motor1Output = map(motor1Speed, 0, -100, 0, 1023);
+          analogWrite(motor1PinSpeed, motor1Output);
+        }
+
+        if (motor2Speed == 0) {
+          digitalWrite(motor2PinA, LOW);
+          digitalWrite(motor2PinB, LOW);
+          analogWrite(motor2PinSpeed, 0);
+
+        } else if (motor2Speed > 0) {
+          digitalWrite(motor2PinA, HIGH);
+          digitalWrite(motor2PinB, LOW);
+
+          int motor2Output = map(motor2Speed, 0, 100, 0, 1023);
+          analogWrite(motor2PinSpeed, motor2Output);
+
+        } else {
+          digitalWrite(motor2PinA, LOW);
+          digitalWrite(motor2PinB, HIGH);
+          
+          int motor2Output = map(motor2Speed, 0, -100, 0, 1023);
+          analogWrite(motor2PinSpeed, motor2Output);
+        }
+
+      } else {
+        Serial.println(endByte);
+      }
+    } else {
+      Serial.println(c);
+    }
+  }
 }
