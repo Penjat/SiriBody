@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE452CA76379008B663D /* SiriBodyApp.swift */; };
+		0BCEAE4A2CA7637A008B663D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE492CA7637A008B663D /* Assets.xcassets */; };
+		0BCEAE4D2CA7637A008B663D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */; };
+		0BCEAE542CAD8402008B663D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE532CAD8402008B663D /* AppState.swift */; };
+		0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE552CAD844F008B663D /* TitleView.swift */; };
+		0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
+		0BCEAE5D2CADD066008B663D /* JoystickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */; };
+		0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */; };
+		0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE622CAED0D1008B663D /* CentralService.swift */; };
+		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BCEAE422CA76379008B663D /* SiriBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BCEAE452CA76379008B663D /* SiriBodyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyApp.swift; sourceTree = "<group>"; };
+		0BCEAE492CA7637A008B663D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0BCEAE532CAD8402008B663D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		0BCEAE552CAD844F008B663D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		0BCEAE572CAD8627008B663D /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickViewModel.swift; sourceTree = "<group>"; };
+		0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementInteractor.swift; sourceTree = "<group>"; };
+		0BCEAE622CAED0D1008B663D /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
+		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0BCEAE3F2CA76379008B663D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BCEAE392CA76379008B663D = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE442CA76379008B663D /* SiriBody */,
+				0BCEAE432CA76379008B663D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0BCEAE432CA76379008B663D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE422CA76379008B663D /* SiriBody.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0BCEAE442CA76379008B663D /* SiriBody */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
+				0BCEAE532CAD8402008B663D /* AppState.swift */,
+				0BCEAE552CAD844F008B663D /* TitleView.swift */,
+				0BCEAE592CAD87B5008B663D /* Service */,
+				0BCEAE5E2CADD131008B663D /* Interactor */,
+				0BCEAE5A2CAD87C9008B663D /* UI */,
+				0BCEAE492CA7637A008B663D /* Assets.xcassets */,
+				0BCEAE4B2CA7637A008B663D /* Preview Content */,
+			);
+			path = SiriBody;
+			sourceTree = "<group>";
+		};
+		0BCEAE4B2CA7637A008B663D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0BCEAE592CAD87B5008B663D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE612CAECFBE008B663D /* Bluetooth */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0BCEAE5A2CAD87C9008B663D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE5B2CADD051008B663D /* Joystick */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0BCEAE5B2CADD051008B663D /* Joystick */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE572CAD8627008B663D /* JoystickView.swift */,
+				0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */,
+			);
+			path = Joystick;
+			sourceTree = "<group>";
+		};
+		0BCEAE5E2CADD131008B663D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0BCEAE612CAECFBE008B663D /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE622CAED0D1008B663D /* CentralService.swift */,
+				0BCEAE642CAED2FE008B663D /* TransferService.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0BCEAE412CA76379008B663D /* SiriBody */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BCEAE502CA7637A008B663D /* Build configuration list for PBXNativeTarget "SiriBody" */;
+			buildPhases = (
+				0BCEAE3E2CA76379008B663D /* Sources */,
+				0BCEAE3F2CA76379008B663D /* Frameworks */,
+				0BCEAE402CA76379008B663D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriBody;
+			productName = SiriBody;
+			productReference = 0BCEAE422CA76379008B663D /* SiriBody.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0BCEAE3A2CA76379008B663D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					0BCEAE412CA76379008B663D = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 0BCEAE3D2CA76379008B663D /* Build configuration list for PBXProject "SiriBody" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0BCEAE392CA76379008B663D;
+			productRefGroup = 0BCEAE432CA76379008B663D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0BCEAE412CA76379008B663D /* SiriBody */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0BCEAE402CA76379008B663D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BCEAE4D2CA7637A008B663D /* Preview Assets.xcassets in Resources */,
+				0BCEAE4A2CA7637A008B663D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0BCEAE3E2CA76379008B663D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BCEAE5D2CADD066008B663D /* JoystickViewModel.swift in Sources */,
+				0BCEAE542CAD8402008B663D /* AppState.swift in Sources */,
+				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
+				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
+				0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */,
+				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
+				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
+				0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0BCEAE4E2CA7637A008B663D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0BCEAE4F2CA7637A008B663D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0BCEAE512CA7637A008B663D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SiriBody/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = superart.SiriBody;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0BCEAE522CA7637A008B663D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SiriBody/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = superart.SiriBody;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0BCEAE3D2CA76379008B663D /* Build configuration list for PBXProject "SiriBody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BCEAE4E2CA7637A008B663D /* Debug */,
+				0BCEAE4F2CA7637A008B663D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BCEAE502CA7637A008B663D /* Build configuration list for PBXNativeTarget "SiriBody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BCEAE512CA7637A008B663D /* Debug */,
+				0BCEAE522CA7637A008B663D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0BCEAE3A2CA76379008B663D /* Project object */;
+}
