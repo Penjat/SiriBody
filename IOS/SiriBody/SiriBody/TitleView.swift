@@ -33,10 +33,6 @@ struct TitleView: View {
             }
         }
     }
-    
-    var joystickViewModel: JoystickViewModel {
-        JoystickViewModel()
-    }
 }
 
 #Preview {

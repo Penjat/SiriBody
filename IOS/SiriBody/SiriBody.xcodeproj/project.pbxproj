@@ -13,7 +13,6 @@
 		0BCEAE542CAD8402008B663D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE532CAD8402008B663D /* AppState.swift */; };
 		0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE552CAD844F008B663D /* TitleView.swift */; };
 		0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
-		0BCEAE5D2CADD066008B663D /* JoystickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */; };
 		0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */; };
 		0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE622CAED0D1008B663D /* CentralService.swift */; };
 		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
@@ -27,7 +26,6 @@
 		0BCEAE532CAD8402008B663D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BCEAE552CAD844F008B663D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BCEAE572CAD8627008B663D /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
-		0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickViewModel.swift; sourceTree = "<group>"; };
 		0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementInteractor.swift; sourceTree = "<group>"; };
 		0BCEAE622CAED0D1008B663D /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				0BCEAE572CAD8627008B663D /* JoystickView.swift */,
-				0BCEAE5C2CADD066008B663D /* JoystickViewModel.swift */,
 			);
 			path = Joystick;
 			sourceTree = "<group>";
@@ -195,7 +192,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BCEAE5D2CADD066008B663D /* JoystickViewModel.swift in Sources */,
 				0BCEAE542CAD8402008B663D /* AppState.swift in Sources */,
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
