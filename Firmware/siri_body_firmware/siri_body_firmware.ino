@@ -14,6 +14,12 @@
 // Bluetooth
 SoftwareSerial hm10(11, 12);
 
+int motor1Level = 0;
+int motor1TargetLevel = 0;
+
+int motor2Level = 0;
+int motor2TargetLevel = 0;
+
 void setup() {
   // Set up pins
   pinMode(motor1PinA, OUTPUT);
@@ -28,7 +34,15 @@ void setup() {
 
 void loop() {
 
+  checkBluetooth();
+  updateMotorOutput();
+}
 
+void updateMotorOutput() {
+
+}
+
+void checkBluetooth() {
   if (hm10.available() >= 4) {
 
     byte c = hm10.read();
@@ -42,6 +56,12 @@ void loop() {
         int motor1Speed = (motor1Byte - 100);
         int motor2Speed = (motor2Byte - 100);
 
+        Serial.print("Motor 1 Speed: ");
+        Serial.println(motor1Speed);
+        Serial.print("Motor 2 Speed: ");
+        Serial.println(motor2Speed);
+
+
         if (motor1Speed == 0) {
           digitalWrite(motor1PinA, LOW);
           digitalWrite(motor1PinB, LOW);
@@ -50,7 +70,7 @@ void loop() {
         } else if (motor1Speed > 0) {
           digitalWrite(motor1PinA, HIGH);
           digitalWrite(motor1PinB, LOW);
-          
+
           int motor1Output = map(motor1Speed, 0, 100, 0, 1023);
           analogWrite(motor1PinSpeed, motor1Output);
 
@@ -77,7 +97,7 @@ void loop() {
         } else {
           digitalWrite(motor2PinA, LOW);
           digitalWrite(motor2PinB, HIGH);
-          
+
           int motor2Output = map(motor2Speed, 0, -100, 0, 1023);
           analogWrite(motor2PinSpeed, motor2Output);
         }

@@ -5,12 +5,15 @@ struct JoystickView: View {
     @Binding var motorSpeed: (motor1Speed: Int, motor2Speed: Int)
     @State var touchPoint: CGPoint?
     @State var turnSensitivity = 1.0
+    @State var speedDamping = 1.0
     var body: some View {
         
         VStack {
             
             Text("turn sensitivity: \(turnSensitivity)")
             Slider(value: $turnSensitivity, in: 0.0...1.0)
+            Text("speed damping: \(Int(100 - speedDamping*100))%")
+            Slider(value: $speedDamping, in: 0.2...1.0)
             HStack {
                 Text("\(motorSpeed.motor1Speed)")
                 Spacer()
@@ -33,8 +36,8 @@ struct JoystickView: View {
                                     let forwardBackward = max(-100,min(100,(value.location.y - radius)*100/radius))
                                     let leftRight = max(-100*turnSensitivity,min(100*turnSensitivity,(value.location.x - radius)*100/radius))
                                     
-                                    let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))*(-1)
-                                    let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))*(-1)
+                                    let motor1Speed = max(-100,min(100,(forwardBackward + leftRight)))*(-1)*speedDamping
+                                    let motor2Speed = max(-100,min(100,(forwardBackward - leftRight)))*(-1)*speedDamping
                                     print("1: \(motor1Speed) 2: \(motor2Speed)")
                                     
                                     motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
