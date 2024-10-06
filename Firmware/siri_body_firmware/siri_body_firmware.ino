@@ -52,80 +52,82 @@ bool approximatelyEqual(float a, float b, float epsilon = 0.001) {
 }
 
 void updateMotorOutput(unsigned long deltaTime) {
-  if (approximatelyEqual(motor1Level, motor1TargetLevel) == true) {
-    motor1Level = motor1TargetLevel;
-  } else if (motor1Level < motor1TargetLevel) {
-    motor1Level += acceleration * deltaTime;
-  } else if (motor1Level > motor1TargetLevel) {
-    motor1Level -= acceleration * deltaTime;
-  }
+  // if (approximatelyEqual(motor1Level, motor1TargetLevel) == true) {
+  //   motor1Level = motor1TargetLevel;
+  // } else if (motor1Level < motor1TargetLevel) {
+  //   motor1Level += acceleration * deltaTime;
+  // } else if (motor1Level > motor1TargetLevel) {
+  //   motor1Level -= acceleration * deltaTime;
+  // }
 
-  if (approximatelyEqual(motor2Level, motor2TargetLevel) == true) {
-    motor2Level = motor2TargetLevel;
-  } else if (motor2Level < motor2TargetLevel) {
-    motor2Level += acceleration * deltaTime;
-  } else if (motor2Level > motor2TargetLevel) {
-    motor2Level -= acceleration * deltaTime;
-  }
+  // if (approximatelyEqual(motor2Level, motor2TargetLevel) == true) {
+  //   motor2Level = motor2TargetLevel;
+  // } else if (motor2Level < motor2TargetLevel) {
+  //   motor2Level += acceleration * deltaTime;
+  // } else if (motor2Level > motor2TargetLevel) {
+  //   motor2Level -= acceleration * deltaTime;
+  // }
 
-  analogWrite(motor1PinSpeed, motor1Level);
-  analogWrite(motor2PinSpeed, motor2Level);
+  analogWrite(motor1PinSpeed, motor1TargetLevel);
+  analogWrite(motor2PinSpeed, motor2TargetLevel);
 }
 
 void checkBluetooth() {
-  if (hm10.available() >= 4) {
+  if (hm10.available() >= 5) {
 
     byte c = hm10.read();
 
     if (c == 253) {
+      byte motorDirectionByte = hm10.read();
+      bool firstBit = (motorDirectionByte & (1)) != 0; 
+      bool secondBit = (motorDirectionByte & (1 << 1)) != 0;
       byte motor1Byte = hm10.read();
       byte motor2Byte = hm10.read();
       byte endByte = hm10.read();
 
       if (endByte == 252) {
-        int motor1Speed = (motor1Byte - 100);
-        int motor2Speed = (motor2Byte - 100);
-
+        
+        Serial.print(firstBit);
+        Serial.println(secondBit);
         // Serial.print("Motor 1 Speed: ");
         // Serial.println(motor1Speed);
         // Serial.print("Motor 2 Speed: ");
         // Serial.println(motor2Speed);
 
 
-        if (motor1Speed == 0) {
+        if (motor1Byte == 0) {
           digitalWrite(motor1PinA, LOW);
           digitalWrite(motor1PinB, LOW);
           motor1TargetLevel = 0;
 
-        } else if (motor1Speed > 0) {
+        } else if (firstBit == true) {
           digitalWrite(motor1PinA, HIGH);
           digitalWrite(motor1PinB, LOW);
 
-          motor1TargetLevel = map(motor1Speed, 0, 100, 0, 255);
-
+          motor1TargetLevel = motor1Byte;
         } else {
           digitalWrite(motor1PinA, LOW);
           digitalWrite(motor1PinB, HIGH);
 
-          motor1TargetLevel = map(motor1Speed, 0, -100, 0, 255);
+          motor1TargetLevel = motor1Byte;
         }
 
-        if (motor2Speed == 0) {
+        if (motor2Byte == 0) {
           digitalWrite(motor2PinA, LOW);
           digitalWrite(motor2PinB, LOW);
           motor2TargetLevel = 0;
 
-        } else if (motor2Speed > 0) {
+        } else if (secondBit == true) {
           digitalWrite(motor2PinA, HIGH);
           digitalWrite(motor2PinB, LOW);
 
-          motor2TargetLevel = map(motor2Speed, 0, 100, 0, 255);
+          motor2TargetLevel = motor2Byte;
 
         } else {
           digitalWrite(motor2PinA, LOW);
           digitalWrite(motor2PinB, HIGH);
 
-          motor2TargetLevel = map(motor2Speed, 0, -100, 0, 255);
+          motor2TargetLevel = motor2Byte;
 
         }
 

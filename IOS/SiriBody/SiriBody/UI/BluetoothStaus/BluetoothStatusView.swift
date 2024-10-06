@@ -9,25 +9,28 @@ struct BluetoothStatusView: View {
                 switch centralService.connectionState {
                 case .scanning:
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
-                    
+                    Spacer()
                     Text("Scanning for devices...")
                     Spacer()
-                    Button("stop scanning", action: {
+                    Button("stop", action: {
                         centralService.stopScanning()
                     })
-                case .connected:
+                    
+                case .connected(let peripheral):
                     Circle()
                         .fill(.green)
                         .frame(width: 20, height: 20)
-                    Text("connected")
+                    Spacer()
+                    Text("\(peripheral.name ?? "")")
                     Spacer()
                 case .disconnected:
                     Circle()
                         .fill(.gray)
                         .frame(width: 20, height: 20)
+                    Spacer()
                     Text("not connected")
                     Spacer()
-                    Button("Start Scanning", action: {
+                    Button("scan", action: {
                         centralService.retrievePeripheral()
                     })
                 }

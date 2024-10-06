@@ -3,7 +3,7 @@ import Combine
 
 enum ConnectionState {
     case scanning
-    case connected
+    case connected(CBPeripheral)
     case disconnected
 }
 
@@ -34,6 +34,7 @@ class CentralService: NSObject, ObservableObject {
         outputSubject
             .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
             .sink { cmdData in
+                print(cmdData[1])
             if let transferCharacteristic = self.transferCharacteristic {
                 
                 self.discoveredPeripheral?.writeValue(cmdData, for: transferCharacteristic, type: .withoutResponse)
@@ -59,7 +60,6 @@ extension CentralService: CBCentralManagerDelegate {
             self.discoveredPeripheral = connectedPeripheral
             centralManager.connect(connectedPeripheral, options: nil)
         } else {
-            // We were not connected to our counterpart, so start scanning
             print("scaning...")
             connectionState = .scanning
             centralManager.scanForPeripherals(withServices: [serviceUUID],
@@ -80,7 +80,7 @@ extension CentralService: CBCentralManagerDelegate {
         centralManager.stopScan()
         peripheral.delegate = self
         peripheral.discoverServices([serviceUUID])
-        connectionState = .connected
+        connectionState = .connected(peripheral)
         print("connected")
     }
     
@@ -98,6 +98,7 @@ extension CentralService: CBPeripheralDelegate {
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
+            print(error)
             return
         }
         
@@ -111,6 +112,7 @@ extension CentralService: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
+            print(error)
             return
         }
         
@@ -124,7 +126,7 @@ extension CentralService: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let error = error {
-
+            print(error)
             return
         }
         
@@ -134,33 +136,24 @@ extension CentralService: CBPeripheralDelegate {
         print("recieved: \(stringFromData)")
     }
 
-    /*
-     *  The peripheral letting us know whether our subscribe/unsubscribe happened or not
-     */
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        // Deal with errors (if any)
+        
         if let error = error {
-            
+            print(error)
             return
         }
         
-        // Exit if it's not the transfer characteristic
-//        guard characteristic.uuid == TransferService.robitCommnadsCharacteristicUUID else { return }
-        
         if characteristic.isNotifying {
-            // Notification has started
+           
             
         } else {
-            // Notification has stopped, so disconnect from the peripheral
-            
-//            cleanup()
+
         }
         
     }
     
     func peripheralIsReady(toSendWriteWithoutResponse peripheral: CBPeripheral) {
-        
-//        writeData()
+
     }
     
 }

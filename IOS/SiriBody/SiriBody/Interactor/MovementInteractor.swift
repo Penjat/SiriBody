@@ -14,15 +14,17 @@ class MovementInteractor: ObservableObject {
         case .bluetooth(service: let bluetoothService):
             $motorSpeed.sink { (motor1Speed, motor2Speed) in
                 //Only write code here
-                let motor1Byte = UInt8(((motor1Speed)) + 100)
-                let motor2Byte = UInt8(((motor2Speed)) + 100)
+                let motorDirectionByte = UInt8((motor1Speed > 0 ? 1 : 0) + (motor2Speed > 0 ? 2 : 0))
+                let motor1Byte = UInt8(abs(motor1Speed))
+                let motor2Byte = UInt8(abs(motor2Speed))
                 bluetoothService
                     .outputSubject
                     .send(
                         Data(
                             [UInt8(253),
-                             UInt8(motor1Byte),
-                             UInt8(motor2Byte),
+                             motorDirectionByte,
+                             motor1Byte,
+                             motor2Byte,
                              UInt8(252)
                             ]))
             }.store(in: &bag)
