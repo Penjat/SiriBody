@@ -54,6 +54,7 @@ struct JoystickView: View {
                 }
             }
             Spacer()
+            BluetoothStatusView().padding()
         }
         .padding()
         .onAppear {

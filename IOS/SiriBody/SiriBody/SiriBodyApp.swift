@@ -7,6 +7,7 @@ struct SiriBodyApp: App {
         WindowGroup {
             TitleView()
                 .environmentObject(appState)
+                .environmentObject(appState.centralService)
         }
     }
 }

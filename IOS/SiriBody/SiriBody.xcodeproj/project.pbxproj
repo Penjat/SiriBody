@@ -16,6 +16,7 @@
 		0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */; };
 		0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE622CAED0D1008B663D /* CentralService.swift */; };
 		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
+		0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementInteractor.swift; sourceTree = "<group>"; };
 		0BCEAE622CAED0D1008B663D /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
+		0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				0BCEAE5B2CADD051008B663D /* Joystick */,
+				0BCEAE682CB316CB008B663D /* BluetoothStaus */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -120,6 +123,14 @@
 				0BCEAE642CAED2FE008B663D /* TransferService.swift */,
 			);
 			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		0BCEAE682CB316CB008B663D /* BluetoothStaus */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */,
+			);
+			path = BluetoothStaus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BCEAE542CAD8402008B663D /* AppState.swift in Sources */,
+				0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */,
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
 				0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */,
