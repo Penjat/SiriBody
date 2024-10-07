@@ -8,6 +8,8 @@ struct SiriBodyApp: App {
             TitleView()
                 .environmentObject(appState)
                 .environmentObject(appState.centralService)
+                .environmentObject(appState.motionService)
+                .environmentObject(appState.locationService)
         }
     }
 }

@@ -15,9 +15,8 @@ struct TitleView: View {
                         NavigationLink("Joystick 🕹️",
                                        destination:
                                         JoystickView(motorSpeed: $appState.movementInteractor.motorSpeed))
-                        NavigationLink("Robit 🤖",
-                                       destination:
-                                        BluetoothStatusView())
+                        NavigationLink("Status",
+                                       destination: PhoneStatusView())
 //                        NavigationLink("Virtual 👩🏻‍💻",
 //                                       destination:
 //                                        JoystickView(motorSpeed: $movementInteractor.motorSpeed))

@@ -7,13 +7,7 @@ class MotionService: ObservableObject {
     @Published var position: CMDeviceMotion?
     @Published var acceleration: CMAccelerometerData?
     
-    init() {
-        startAccelerationUpdates()
-        startPositionUpdates()
-        
-    }
-    
-    func startAccelerationUpdates() {
+    public func startAccelerationUpdates() {
         motionManager.accelerometerUpdateInterval = 0.01
         motionManager.startAccelerometerUpdates(to: .main) { [weak self] (acceleration, error) in
             guard let acceleration, error == nil else {
@@ -23,7 +17,7 @@ class MotionService: ObservableObject {
         }
     }
     
-    func startPositionUpdates() {
+    public func startPositionUpdates() {
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] (position, error) in
             guard let position else {
