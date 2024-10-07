@@ -9,7 +9,7 @@ struct SiriBodyApp: App {
                 .environmentObject(appState)
                 .environmentObject(appState.centralService)
                 .environmentObject(appState.motionService)
-                .environmentObject(appState.locationService)
+//                .environmentObject(appState.locationService)
         }
     }
 }

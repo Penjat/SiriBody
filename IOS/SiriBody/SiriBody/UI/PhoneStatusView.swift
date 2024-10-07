@@ -4,7 +4,7 @@ struct PhoneStatusView: View {
     var body: some View {
         VStack {
             MotionStatusView()
-            LocationStatusView()
+//            LocationStatusView()
         }
     }
 }

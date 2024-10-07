@@ -4,7 +4,7 @@ import Combine
 class AppState: ObservableObject {
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
     let motionService = MotionService()
-    let locationService = LocationService()
+//    let locationService = LocationService()
 
 
     @Published var movementInteractor: MovementInteractor

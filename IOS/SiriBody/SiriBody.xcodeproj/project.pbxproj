@@ -18,6 +18,7 @@
 		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
 		0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 		0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE692CB3350B008B663D /* MotionService.swift */; };
+		0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -37,6 +38,7 @@
 		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
 		0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusView.swift; sourceTree = "<group>"; };
 		0BCEAE692CB3350B008B663D /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+ApproximatelyEqual.swift"; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
 				0BCEAE532CAD8402008B663D /* AppState.swift */,
 				0BCEAE552CAD844F008B663D /* TitleView.swift */,
+				0BF86FA92CB3952D004FCD87 /* Utility */,
 				0BCEAE592CAD87B5008B663D /* Service */,
 				0BCEAE5E2CADD131008B663D /* Interactor */,
 				0BCEAE5A2CAD87C9008B663D /* UI */,
@@ -146,6 +149,14 @@
 				0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */,
 			);
 			path = BluetoothStaus;
+			sourceTree = "<group>";
+		};
+		0BF86FA92CB3952D004FCD87 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		1AD9745E2CB3732200DF80C2 /* MotionStatus */ = {
@@ -240,6 +251,7 @@
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
 				0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */,
+				0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
@@ -383,13 +395,21 @@
 				DEVELOPMENT_TEAM = L688AU9RCV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to connect to external hardware";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera the guide the robit's vision.";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses your location to guide the robit.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses your location to guide the robit.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,13 +434,21 @@
 				DEVELOPMENT_TEAM = L688AU9RCV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses bluetooth to connect to external hardware";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to connect to external hardware";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera the guide the robit's vision.";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses your location to guide the robit.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses your location to guide the robit.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
