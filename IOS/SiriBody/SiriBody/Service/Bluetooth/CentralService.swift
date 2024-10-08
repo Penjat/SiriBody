@@ -69,10 +69,8 @@ extension CentralService: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        if discoveredPeripheral != peripheral {
             discoveredPeripheral = peripheral
             centralManager.connect(peripheral, options: nil)
-        }
         print("discovered \(peripheral)")
     }
     

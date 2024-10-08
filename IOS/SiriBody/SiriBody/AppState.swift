@@ -8,7 +8,6 @@ class AppState: ObservableObject {
     let goalInteractor = GoalInteractor()
     let robitStateService: RobitStateService
 
-
     @Published var movementInteractor: MovementInteractor
     
     var bag = Set<AnyCancellable>()
