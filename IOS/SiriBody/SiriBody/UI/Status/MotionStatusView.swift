@@ -2,24 +2,24 @@ import SwiftUI
 
 struct MotionStatusView: View {
     @EnvironmentObject var motionService: MotionService
-    @State var goal = 0.0
+    @EnvironmentObject var goalInteractor: GoalInteractor
     var body: some View {
         VStack(spacing: 30) {
             HStack {
                 VStack {
-                    Text("goal: \(String(format: "%.2f", goal))")
+                    Text("goal: \(String(format: "%.2f", goalInteractor.targetYaw))")
                     Text("Yaw")
                     ZStack {
                         // Original Orange Circle
                         Circle()
-                            .trim(from: 0, to: CGFloat(((goal) + .pi) / (2 * .pi)))
+                            .trim(from: 0, to: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)))
                             .stroke(Color.orange, lineWidth: 20)
                             .frame(width: 80, height: 80)
                             .rotationEffect(.degrees(-90))
                         
                         // New Circle - goes opposite of Orange
                         Circle()
-                            .trim(from: CGFloat(((goal) + .pi) / (2 * .pi)), to: 1)
+                            .trim(from: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)), to: 1)
                             .stroke(Color.blue, lineWidth: 20)
                             .frame(width: 80, height: 80)
                             .rotationEffect(.degrees(-90))
@@ -42,7 +42,7 @@ struct MotionStatusView: View {
                             .rotationEffect(.degrees(-90))
                     }
                     
-                    Text(approximatelyEqual(goal, motionService.position?.attitude.yaw ?? 0, tolerance: 0.025) ? "matches" : "doesn't match")
+                    Text(approximatelyEqual(goalInteractor.targetYaw, motionService.position?.attitude.yaw ?? 0, tolerance: 0.025) ? "matches" : "doesn't match")
                 }
                 
                 
@@ -84,7 +84,7 @@ struct MotionStatusView: View {
             //                    }
             
             Button {
-                goal = Double.random(in: -Double.pi..<Double.pi)
+                goalInteractor.targetYaw = Double.random(in: -Double.pi..<Double.pi)
             } label: {
                 Text("new goal")
             }

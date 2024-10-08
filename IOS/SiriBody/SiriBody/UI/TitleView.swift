@@ -15,11 +15,13 @@ struct TitleView: View {
                         NavigationLink("Joystick 🕹️",
                                        destination:
                                         JoystickView(motorSpeed: $appState.movementInteractor.motorSpeed))
-                        NavigationLink("Status",
-                                       destination: PhoneStatusView())
+                        NavigationLink("Motion Status",
+                                       destination: MotionStatusView())
+                        NavigationLink("PID 🎚️🎚️🎚️",
+                                       destination: RobitView())
 //                        NavigationLink("Virtual 👩🏻‍💻",
 //                                       destination:
-//                                        JoystickView(motorSpeed: $movementInteractor.motorSpeed))
+//JoystickView(motorSpeed: $movementInteractor.motorSpeed))
                         
                     }.font(.title)
                     Rectangle()

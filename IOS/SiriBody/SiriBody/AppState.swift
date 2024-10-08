@@ -5,6 +5,7 @@ class AppState: ObservableObject {
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
     let motionService = MotionService()
 //    let locationService = LocationService()
+    let goalInteractor = GoalInteractor()
 
 
     @Published var movementInteractor: MovementInteractor
