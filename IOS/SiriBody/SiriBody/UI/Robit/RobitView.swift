@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 struct RobitView: View {
-    @EnvironmentObject var motionService: MotionService
+    @EnvironmentObject var robitStateService: RobitStateService
     @EnvironmentObject var movementInteractor: MovementInteractor
     
     @StateObject var pidControl = PIDRotationControl()
@@ -14,15 +14,54 @@ struct RobitView: View {
         VStack {
             Spacer()
             Text("goal: \(String(format: "%.2f", pidControl.targetYaw))")
-            Button(action: {
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    pidControl.targetYaw = Double.random(in: -Double.pi..<Double.pi)
-                    }
-                
-            }, label: {
-                Text("New Goal")
-            })
+            HStack {
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        pidControl.targetYaw = 0.0
+                        }
+                    
+                }, label: {
+                    Text("north")
+                })
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        pidControl.targetYaw = .pi/2
+                        }
+                    
+                }, label: {
+                    Text("east")
+                })
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        pidControl.targetYaw = .pi
+                        }
+                    
+                }, label: {
+                    Text("south")
+                })
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        pidControl.targetYaw = -(.pi/2)
+                        }
+                    
+                }, label: {
+                    Text("west")
+                })
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        pidControl.targetYaw = Double.random(in: -Double.pi..<Double.pi)
+                        }
+                    
+                }, label: {
+                    Text("rand")
+                })
+            }
+            
             Text("Yaw")
             ZStack {
 
@@ -33,11 +72,11 @@ struct RobitView: View {
                     .rotationEffect(.degrees(-90))
                 
                 Circle()
-                    .trim(from: 0, to: CGFloat(((motionService.position?.attitude.yaw ?? 0) + .pi) / (2 * .pi)))
+                    .trim(from: 0, to: CGFloat(((robitStateService.state?.yaw ?? 0) + .pi) / (2 * .pi)))
                     .stroke(Color.green, lineWidth: 10)
                     .frame(width: 80, height: 80)
                     .rotationEffect(.degrees(-90))
-                    .overlay(Text("\(String(format: "%.2f", motionService.position?.attitude.yaw ?? 0.0))"))
+                    .overlay(Text("\(String(format: "%.2f", robitStateService.state?.yaw ?? 0.0))"))
             }
             
             Toggle(isOn: $motionEnabled) {
@@ -57,9 +96,6 @@ struct RobitView: View {
                     Slider(value: $pidControl.pConstant, in: 0.5...200).disabled(!pidControl.pIsOn)
                 }
                 
-                
-                
-                
                 VStack {
                     Toggle("", isOn: $pidControl.iIsOn)
                     Text("\(String(format: "%.2f", pidControl.iConstant))")
@@ -76,14 +112,12 @@ struct RobitView: View {
                 
             }.padding()
             
-            
             BluetoothStatusView()
             
         }.onAppear {
-            motionService.$position.sink { deviceMotion in
-                let turnVector = pidControl.motorOutput(currentYaw: deviceMotion?.attitude.yaw ?? 0.0)
+            robitStateService.$state.sink { state in
+                let turnVector = pidControl.motorOutput(currentYaw: state?.yaw ?? 0.0)
                 print(turnVector)
-                
                 
                 let forwardBackward = 0.0
                 let leftRight = max(-254,min(254,(turnVector)))

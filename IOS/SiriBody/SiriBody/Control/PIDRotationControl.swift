@@ -5,19 +5,19 @@ class PIDRotationControl: ObservableObject {
     var bag = Set<AnyCancellable>()
     
     let proportionalRange = 1.0..<200.0
-    @Published var pConstant = 20.0
-    @Published var iConstant = 0.05
-    @Published var dConstant = 20.0
+    @Published var pConstant = 76.0
+    @Published var iConstant = 120.0
+    @Published var dConstant = 38.0
     
     @Published var pOutput = 0.0
     @Published var iOutput = 0.0
     @Published var dOutput = 0.0
     
     @Published var pIsOn = true
-    @Published var iIsOn = true // Set to true for integral calculation
+    @Published var iIsOn = true
     @Published var dIsOn = true
     
-    @Published var maxSpeed = 254.0
+    @Published var maxSpeed = 95.0
     
     @Published var targetYaw = 0.0
     
@@ -27,7 +27,6 @@ class PIDRotationControl: ObservableObject {
     
     init() {
         $targetYaw.sink { _ in
-            // Reset errors when the target yaw changes
             self.integralError = 0.0
             self.lastError = 0.0
         }.store(in: &bag)
@@ -50,26 +49,20 @@ class PIDRotationControl: ObservableObject {
         
         let error = findClosestRotation(targetYaw: targetYaw, currentYaw: currentYaw)
         
-        // Proportional term
         pOutput = pIsOn ? (error * pConstant) : 0
         
-        // Integral term
         let currentTime = Date()
         if let lastTime = lastTime {
             let deltaTime = currentTime.timeIntervalSince(lastTime)
             integralError += error * deltaTime
             iOutput = iIsOn ? (integralError * iConstant) : 0
             
-            // Derivative term
             let derivative = (error - lastError) / deltaTime
             dOutput = dIsOn ? (derivative * dConstant) : 0
-            
-            // Update lastError for the next derivative calculation
             lastError = error
         }
         lastTime = currentTime
         
-        // Sum the outputs and constrain to maxSpeed
         let output = pOutput + iOutput + dOutput
         return max(-maxSpeed, min(maxSpeed, output))
     }

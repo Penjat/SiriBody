@@ -25,6 +25,7 @@
 		0BF86FBC2CB41509004FCD87 /* SiriBodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */; };
 		0BF86FC22CB41600004FCD87 /* PIDRotationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FB32CB3A19C004FCD87 /* PIDRotationControl.swift */; };
 		0BF86FC32CB41BE5004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
+		0BF86FC52CB56DF4004FCD87 /* RobitStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FC42CB56DF4004FCD87 /* RobitStateService.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -59,6 +60,7 @@
 		0BF86FB32CB3A19C004FCD87 /* PIDRotationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDRotationControl.swift; sourceTree = "<group>"; };
 		0BF86FB92CB41509004FCD87 /* SiriBodyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriBodyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyTests.swift; sourceTree = "<group>"; };
+		0BF86FC42CB56DF4004FCD87 /* RobitStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitStateService.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				0BCEAE612CAECFBE008B663D /* Bluetooth */,
 				0BCEAE692CB3350B008B663D /* MotionService.swift */,
 				1AD974612CB3766F00DF80C2 /* LocationService.swift */,
+				0BF86FC42CB56DF4004FCD87 /* RobitStateService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BF86FAD2CB39EE0004FCD87 /* GoalInteractor.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
+				0BF86FC52CB56DF4004FCD87 /* RobitStateService.swift in Sources */,
 				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
 				0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */,
 				1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */,

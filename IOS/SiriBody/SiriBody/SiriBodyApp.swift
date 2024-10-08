@@ -12,6 +12,7 @@ struct SiriBodyApp: App {
 //                .environmentObject(appState.locationService)
                 .environmentObject(appState.goalInteractor)
                 .environmentObject(appState.movementInteractor)
+                .environmentObject(appState.robitStateService)
         }
     }
 }

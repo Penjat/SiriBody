@@ -6,6 +6,7 @@ class AppState: ObservableObject {
     let motionService = MotionService()
 //    let locationService = LocationService()
     let goalInteractor = GoalInteractor()
+    let robitStateService: RobitStateService
 
 
     @Published var movementInteractor: MovementInteractor
@@ -14,7 +15,8 @@ class AppState: ObservableObject {
     
     init() {
         self.movementInteractor = MovementInteractor(mode: .bluetooth(service: centralService))
-
+        self.robitStateService = RobitStateService(motionService: motionService)
+        
         centralService.centralState.sink { [weak self] state in
             switch state {
                 
