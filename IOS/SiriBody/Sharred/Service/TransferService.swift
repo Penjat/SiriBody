@@ -11,7 +11,6 @@ class TransferService {
     static let phoneCharUUID = CBUUID(string: "FFE6")
 }
 
-
 enum CommandCode: UInt8 {
     case turnTo = 1
     case unknown = 0

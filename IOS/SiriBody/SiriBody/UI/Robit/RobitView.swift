@@ -13,6 +13,14 @@ struct RobitView: View {
     
     var body: some View {
         VStack {
+            Button {
+                if let data = "helloaf".data(using: .utf8) {
+                    peripheralService.outputSubject.send(data)
+                }
+            } label: {
+                Text("send msg")
+            }
+
             Spacer()
             Text("goal: \(String(format: "%.2f", pidControl.targetYaw))")
             HStack {

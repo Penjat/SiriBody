@@ -13,7 +13,7 @@ class CentralService: NSObject, ObservableObject {
     var transferCharacteristic: CBCharacteristic?
      
     let centralState = PassthroughSubject<CBManagerState, Never>()
-    let data = PassthroughSubject<String, Never>()
+    let inputSubject = PassthroughSubject<String, Never>()
     let outputSubject = PassthroughSubject<Data, Never>()
     
     @Published var connectionState = ConnectionState.disconnected
@@ -129,7 +129,7 @@ extension CentralService: CBPeripheralDelegate {
         
         guard let characteristicData = characteristic.value,
             let stringFromData = String(data: characteristicData, encoding: .utf8) else { return }
-        data.send(stringFromData)
+        inputSubject.send(stringFromData)
         print("recieved: \(stringFromData)")
     }
 

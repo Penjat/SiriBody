@@ -9,7 +9,11 @@ class PeripheralService: NSObject, ObservableObject {
     var serviceUUID: CBUUID!
     var charUUID: CBUUID!
     var bag = Set<AnyCancellable>()
+    
     let inputSubject = PassthroughSubject<Data, Never>()
+    let outputSubject = PassthroughSubject<Data, Never>()
+    
+    var transferCharacteristic: CBMutableCharacteristic?
     
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
@@ -18,6 +22,25 @@ class PeripheralService: NSObject, ObservableObject {
         self.charUUID = charID
         
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        
+        outputSubject
+            .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
+            .sink { [weak self] data in
+                guard let transferCharacteristic = self?.transferCharacteristic else {
+                    print("Characteristic not found")
+                    return
+                }
+                
+                // Update the characteristic value and notify subscribers
+                let success = self?.peripheralManager?.updateValue(data, for: transferCharacteristic, onSubscribedCentrals: nil) ?? false
+                
+                if success {
+                    print("Data sent successfully")
+                } else {
+                    print("Failed to send data")
+                }
+                
+            }.store(in: &bag)
     }
 }
 
@@ -31,7 +54,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     
     func startAdvertising() {
         // Create a characteristic with properties for reading/writing
-        let characteristic = CBMutableCharacteristic(
+        transferCharacteristic = CBMutableCharacteristic(
             type: charUUID,
             properties: [.writeWithoutResponse, .read, .notify],
             value: nil,
@@ -40,7 +63,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
         
         // Create a service and add the characteristic to it
         let service = CBMutableService(type: serviceUUID, primary: true)
-        service.characteristics = [characteristic]
+        service.characteristics = [transferCharacteristic!]
         
         // Add the service to the peripheral manager
         peripheralManager?.add(service)
