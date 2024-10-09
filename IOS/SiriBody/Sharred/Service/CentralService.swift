@@ -33,7 +33,7 @@ class CentralService: NSObject, ObservableObject {
         outputSubject
             .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
             .sink { cmdData in
-                print(cmdData[1])
+                
             if let transferCharacteristic = self.transferCharacteristic {
                 
                 self.discoveredPeripheral?.writeValue(cmdData, for: transferCharacteristic, type: .withoutResponse)

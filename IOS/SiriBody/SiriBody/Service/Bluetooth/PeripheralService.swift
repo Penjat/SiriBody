@@ -9,7 +9,7 @@ class PeripheralService: NSObject, ObservableObject {
     var serviceUUID: CBUUID!
     var charUUID: CBUUID!
     var bag = Set<AnyCancellable>()
-    let inputSubject = PassthroughSubject<Command, Never>()
+    let inputSubject = PassthroughSubject<Data, Never>()
     
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
@@ -70,13 +70,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         for request in requests {
             if let value = request.value {
-                // Handle incoming data and update published variable
-                if let string = String(data: value, encoding: .utf8) {
-                    print("String: \(string)")
-                } else {
-                    print("Failed to convert data to string.")
-                }
-//                inputSubject.send()
+                inputSubject.send(value)
             }
             peripheralManager?.respond(to: request, withResult: .success)
         }

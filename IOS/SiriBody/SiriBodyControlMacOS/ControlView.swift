@@ -10,7 +10,7 @@ struct ControlView: View {
             BluetoothStatusView()
             Slider(value: $rotation, in: -Double.pi...Double.pi)
             Button {
-                
+                centralService.outputSubject.send(Data(Command.turnTo(angle: rotation).toData()))
             } label: {
                 Text("set rotation")
             }

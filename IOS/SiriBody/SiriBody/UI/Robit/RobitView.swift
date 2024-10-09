@@ -4,6 +4,7 @@ import Combine
 struct RobitView: View {
     @EnvironmentObject var robitStateService: RobitStateService
     @EnvironmentObject var movementInteractor: MovementInteractor
+    @EnvironmentObject var peripheralService: PeripheralService
     
     @StateObject var pidControl = PIDRotationControl()
     
@@ -127,6 +128,18 @@ struct RobitView: View {
                 
                 if motionEnabled {
                     movementInteractor.motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
+                }
+            }.store(in: &bag)
+            
+            peripheralService.inputSubject.sink { data in
+                print("recieved command! ")
+                guard let command = Command.createFrom(data: data) else {
+                    return
+                }
+                switch command {
+                case .turnTo(angle: let angle):
+                    
+                    pidControl.targetYaw = angle
                 }
             }.store(in: &bag)
         }
