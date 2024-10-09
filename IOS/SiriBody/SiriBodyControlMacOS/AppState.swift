@@ -2,20 +2,11 @@ import Foundation
 import Combine
 
 class AppState: ObservableObject {
-    let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
-    let peripheralService = PeripheralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
-    let motionService = MotionService()
-//    let locationService = LocationService()
-    let goalInteractor = GoalInteractor()
-    let robitStateService: RobitStateService
-
-    @Published var movementInteractor: MovementInteractor
+    let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
     
     var bag = Set<AnyCancellable>()
     
     init() {
-        self.movementInteractor = MovementInteractor(mode: .bluetooth(service: centralService))
-        self.robitStateService = RobitStateService(motionService: motionService)
         
         centralService.centralState.sink { [weak self] state in
             switch state {

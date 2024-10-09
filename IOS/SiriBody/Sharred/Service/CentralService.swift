@@ -23,7 +23,6 @@ class CentralService: NSObject, ObservableObject {
     
     var bag = Set<AnyCancellable>()
     
-    
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
         print("creating...")
