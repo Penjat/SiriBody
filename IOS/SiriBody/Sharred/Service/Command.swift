@@ -16,7 +16,5 @@ enum Command {
         default:
             return .unknown
         }
-
     }
-    
 }

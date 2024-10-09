@@ -33,7 +33,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
         // Create a characteristic with properties for reading/writing
         let characteristic = CBMutableCharacteristic(
             type: charUUID,
-            properties: [.write, .read, .notify],
+            properties: [.writeWithoutResponse, .read, .notify],
             value: nil,
             permissions: [.readable, .writeable]
         )
@@ -71,7 +71,11 @@ extension PeripheralService: CBPeripheralManagerDelegate {
         for request in requests {
             if let value = request.value {
                 // Handle incoming data and update published variable
-                print(value)
+                if let string = String(data: value, encoding: .utf8) {
+                    print("String: \(string)")
+                } else {
+                    print("Failed to convert data to string.")
+                }
 //                inputSubject.send()
             }
             peripheralManager?.respond(to: request, withResult: .success)
