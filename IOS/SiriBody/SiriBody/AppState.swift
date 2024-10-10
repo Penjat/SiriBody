@@ -8,6 +8,7 @@ class AppState: ObservableObject {
 //    let locationService = LocationService()
     let goalInteractor = GoalInteractor()
     let robitStateService: RobitStateService
+    let realityKitService = RealityKitService()
 
     @Published var movementInteractor: MovementInteractor
     

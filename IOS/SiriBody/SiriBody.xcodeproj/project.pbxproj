@@ -37,6 +37,8 @@
 		0BF86FE72CB61B10004FCD87 /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 		0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
 		0BF86FE92CB6A746004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
+		0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */; };
+		0BF86FEF2CB7840B004FCD87 /* RobitRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -80,6 +82,8 @@
 		0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriBodyControlMacOS.entitlements; sourceTree = "<group>"; };
 		0BF86FDE2CB61951004FCD87 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BF86FE02CB6197B004FCD87 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitService.swift; sourceTree = "<group>"; };
+		0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitRealityView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				0BCEAE612CAECFBE008B663D /* Bluetooth */,
 				0BCEAE692CB3350B008B663D /* MotionService.swift */,
 				1AD974612CB3766F00DF80C2 /* LocationService.swift */,
+				0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */,
 				0BF86FC42CB56DF4004FCD87 /* RobitStateService.swift */,
 			);
 			path = Service;
@@ -171,6 +176,7 @@
 				0BCEAE552CAD844F008B663D /* TitleView.swift */,
 				1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */,
 				1AD974642CB377B400DF80C2 /* LocationStatusView.swift */,
+				0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */,
 				0BF86FAF2CB3A064004FCD87 /* Robit */,
 			);
 			path = UI;
@@ -435,8 +441,10 @@
 				0BF86FAD2CB39EE0004FCD87 /* GoalInteractor.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
 				0BF86FC52CB56DF4004FCD87 /* RobitStateService.swift in Sources */,
+				0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */,
 				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
 				0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */,
+				0BF86FEF2CB7840B004FCD87 /* RobitRealityView.swift in Sources */,
 				1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,9 +19,10 @@ struct TitleView: View {
                                        destination: MotionStatusView())
                         NavigationLink("PID 🎚️🎚️🎚️",
                                        destination: RobitView())
-//                        NavigationLink("Virtual 👩🏻‍💻",
-//                                       destination:
-//JoystickView(motorSpeed: $movementInteractor.motorSpeed))
+                        NavigationLink("Reality Kit 👩🏻‍💻",
+                                       destination:
+                                        RobitRealityView()
+)
                         
                     }.font(.title)
                     Rectangle()
