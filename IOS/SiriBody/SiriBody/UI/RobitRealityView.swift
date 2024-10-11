@@ -4,17 +4,14 @@ import ARKit
 import Combine
 
 struct RobitRealityView : View {
-//    @StateObject var viewModel = ARProofViewModel()
     @EnvironmentObject var realityKitService: RealityKitService
-    @State var devicePosition = SIMD3<Float>(0.0, 0.0, 0.0)
-    @State var deviceOrientation = SIMD3<Float>(0.0, 0.0, 0.0)
     var body: some View {
         VStack {
             
-            Text("Position: x: \(devicePosition.x), y: \(devicePosition.y), z: \(devicePosition.z)")
-                        Text("Orientation: pitch: \(deviceOrientation.x), yaw: \(deviceOrientation.y), roll: \(deviceOrientation.z)")
+            Text("Position: x: \(realityKitService.devicePosition.x), y: \(realityKitService.devicePosition.y), z: \(realityKitService.devicePosition.z)")
+            Text("Orientation: pitch: \(realityKitService.deviceOrientation.x), yaw: \(realityKitService.deviceOrientation.y), roll: \(realityKitService.deviceOrientation.z)")
                             .padding()
-            MyARViewContainer(realityKitService: realityKitService, devicePosition: $devicePosition, deviceOrientation: $deviceOrientation)
+            MyARViewContainer(realityKitService: realityKitService, devicePosition: $realityKitService.devicePosition, deviceOrientation: $realityKitService.deviceOrientation)
             .edgesIgnoringSafeArea(.all)
         }
         
