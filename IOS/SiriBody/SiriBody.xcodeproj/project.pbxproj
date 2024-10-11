@@ -39,6 +39,7 @@
 		0BF86FE92CB6A746004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
 		0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */; };
 		0BF86FEF2CB7840B004FCD87 /* RobitRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */; };
+		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -84,6 +85,7 @@
 		0BF86FE02CB6197B004FCD87 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitService.swift; sourceTree = "<group>"; };
 		0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitRealityView.swift; sourceTree = "<group>"; };
+		0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitStatusView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */,
 				1AD974642CB377B400DF80C2 /* LocationStatusView.swift */,
 				0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */,
+				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
 				0BF86FAF2CB3A064004FCD87 /* Robit */,
 			);
 			path = UI;
@@ -438,6 +441,7 @@
 				0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
+				0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */,
 				0BF86FAD2CB39EE0004FCD87 /* GoalInteractor.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
 				0BF86FC52CB56DF4004FCD87 /* RobitStateService.swift in Sources */,

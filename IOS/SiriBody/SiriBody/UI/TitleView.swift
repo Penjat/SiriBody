@@ -21,7 +21,10 @@ struct TitleView: View {
                                        destination: RobitView())
                         NavigationLink("Reality Kit 👩🏻‍💻",
                                        destination:
-                                        RobitRealityView()
+                                        VStack {
+                            RealityKitStatusView()
+                            MotionStatusView()
+                        }
 )
                         
                     }.font(.title)

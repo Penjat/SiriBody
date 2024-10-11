@@ -131,8 +131,8 @@ struct RobitView: View {
                 let forwardBackward = 0.0
                 let leftRight = max(-254,min(254,(turnVector)))
                 
-                let motor1Speed = max(-254,min(254,(forwardBackward - leftRight)))*(-1)
-                let motor2Speed = max(-254,min(254,(forwardBackward + leftRight)))*(-1)
+                let motor1Speed = max(-254,min(254,(forwardBackward - leftRight)))
+                let motor2Speed = max(-254,min(254,(forwardBackward + leftRight)))
                 
                 if motionEnabled {
                     movementInteractor.motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
