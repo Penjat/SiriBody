@@ -6,37 +6,19 @@ struct RealityKitStatusView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Group {
-                Text("Device Position:")
+            
+                Text("Status: \(trackingStatusDescription)")
                 Text("x: \(realityKitService.devicePosition.x, specifier: "%.2f"), y: \(realityKitService.devicePosition.y, specifier: "%.2f"), z: \(realityKitService.devicePosition.z, specifier: "%.2f")")
                 
-                Text("Device Orientation (Pitch, Yaw, Roll):")
+                
                 Text("Pitch: \(realityKitService.deviceOrientation.x, specifier: "%.2f"), Yaw: \(realityKitService.deviceOrientation.y, specifier: "%.2f"), Roll: \(realityKitService.deviceOrientation.z, specifier: "%.2f")")
                 
-                Text("Linear Velocity:")
-                Text("x: \(realityKitService.linearVelocity.x, specifier: "%.2f"), y: \(realityKitService.linearVelocity.y, specifier: "%.2f"), z: \(realityKitService.linearVelocity.z, specifier: "%.2f")")
                 
-                Text("Angular Velocity:")
-                Text("x: \(realityKitService.angularVelocity.x, specifier: "%.2f"), y: \(realityKitService.angularVelocity.y, specifier: "%.2f"), z: \(realityKitService.angularVelocity.z, specifier: "%.2f")")
-            }
+                Text("x: \(realityKitService.linearVelocity.x, specifier: "%.2f"), y: \(realityKitService.linearVelocity.y, specifier: "%.2f"), z: \(realityKitService.linearVelocity.z, specifier: "%.2f")")
             
-            Divider()
-            
-//            Group {
-//                Text("Tracking Status:")
-//                Text("\(trackingStatusDescription)")
-//                
-//                Text("Camera Intrinsics:")
-//                Text("\(matrixDescription(realityKitService.cameraIntrinsics))")
-//                
-//                Text("Field of View:")
-//                Text("\(realityKitService.fieldOfView, specifier: "%.2f") degrees")
-//                
-//                Text("Gravity Vector:")
-//                Text("x: \(realityKitService.gravity.x, specifier: "%.2f"), y: \(realityKitService.gravity.y, specifier: "%.2f"), z: \(realityKitService.gravity.z, specifier: "%.2f")")
-//            }
         }
         .padding()
+        .background(.regularMaterial).cornerRadius(8)
         .navigationTitle("RealityKit Service Data")
     }
     
@@ -64,12 +46,12 @@ struct RealityKitStatusView: View {
     }
     
     // Helper to format a matrix
-//    private func matrixDescription(_ matrix: simd_float4x4) -> String {
-//        """
-//        [\(matrix.columns.0.x, specifier: "%.2f"), \(matrix.columns.0.y, specifier: "%.2f"), \(matrix.columns.0.z, specifier: "%.2f"), \(matrix.columns.0.w, specifier: "%.2f")]
-//        [\(matrix.columns.1.x, specifier: "%.2f"), \(matrix.columns.1.y, specifier: "%.2f"), \(matrix.columns.1.z, specifier: "%.2f"), \(matrix.columns.1.w, specifier: "%.2f")]
-//        [\(matrix.columns.2.x, specifier: "%.2f"), \(matrix.columns.2.y, specifier: "%.2f"), \(matrix.columns.2.z, specifier: "%.2f"), \(matrix.columns.2.w, specifier: "%.2f")]
-//        [\(matrix.columns.3.x, specifier: "%.2f"), \(matrix.columns.3.y, specifier: "%.2f"), \(matrix.columns.3.z, specifier: "%.2f"), \(matrix.columns.3.w, specifier: "%.2f")]
-//        """
-//    }
+    private func matrixDescription(_ matrix: simd_float4x4) -> String {
+        """
+        [\(matrix.columns.0.x), \(matrix.columns.0.y), \(matrix.columns.0.z), \(matrix.columns.0.w)]
+        [\(matrix.columns.1.x), \(matrix.columns.1.y), \(matrix.columns.1.z), \(matrix.columns.1.w)]
+        [\(matrix.columns.2.x), \(matrix.columns.2.y), \(matrix.columns.2.z), \(matrix.columns.2.w)]
+        [\(matrix.columns.3.x), \(matrix.columns.3.y), \(matrix.columns.3.z), \(matrix.columns.3.w)]
+        """
+    }
 }

@@ -179,8 +179,8 @@
 				1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */,
 				1AD974642CB377B400DF80C2 /* LocationStatusView.swift */,
 				0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */,
+				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
 				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
-				0BF86FAF2CB3A064004FCD87 /* Robit */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -224,14 +224,6 @@
 				0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */,
 			);
 			path = Status;
-			sourceTree = "<group>";
-		};
-		0BF86FAF2CB3A064004FCD87 /* Robit */ = {
-			isa = PBXGroup;
-			children = (
-				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
-			);
-			path = Robit;
 			sourceTree = "<group>";
 		};
 		0BF86FB22CB3A131004FCD87 /* Control */ = {

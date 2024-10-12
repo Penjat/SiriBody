@@ -32,9 +32,10 @@ class PIDRotationControl: ObservableObject {
         }.store(in: &bag)
     }
     
-    func findClosestRotation(targetYaw: Double, currentYaw: Double) -> Double  {
-        let distance = targetYaw - currentYaw
-        return abs(distance) > .pi ? distance.truncatingRemainder(dividingBy: .pi) * -1 : distance
+    func findClosestRotation(targetYaw: Double, currentYaw: Double) -> Double {
+        let difference = targetYaw - currentYaw
+        let shortestAngle = atan2(sin(difference), cos(difference))
+        return shortestAngle
     }
     
     func motorOutput(currentYaw: Double) -> Double {

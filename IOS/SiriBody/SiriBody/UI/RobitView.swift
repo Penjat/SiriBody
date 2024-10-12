@@ -13,14 +13,7 @@ struct RobitView: View {
     
     var body: some View {
         VStack {
-            Button {
-                if let data = "helloaf".data(using: .utf8) {
-                    peripheralService.outputSubject.send(data)
-                }
-            } label: {
-                Text("send msg")
-            }
-
+            RealityKitStatusView()
             Spacer()
             Text("goal: \(String(format: "%.2f", pidControl.targetYaw))")
             HStack {
@@ -125,6 +118,7 @@ struct RobitView: View {
             
         }.onAppear {
             robitStateService.$state.sink { state in
+                // TODO: Eventually move this logic somewhere else
                 let turnVector = pidControl.motorOutput(currentYaw: state?.yaw ?? 0.0)
                 print(turnVector)
                 

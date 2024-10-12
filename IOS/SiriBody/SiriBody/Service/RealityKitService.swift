@@ -2,19 +2,17 @@ import SwiftUI
 import ARKit
 
 class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
-    var session: ARSession
+    
     
     @Published var devicePosition: SIMD3<Float> = SIMD3(0, 0, 0)
     @Published var deviceOrientation: SIMD3<Float> = SIMD3(0, 0, 0)
-    @Published var linearVelocity: SIMD4<Float> = SIMD4(0, 0, 0, 0)
-    @Published var angularVelocity: SIMD3<Float> = SIMD3(0, 0, 0)
+    @Published var linearVelocity: SIMD3<Float> = SIMD3(0, 0, 0)
     @Published var trackingStatus: ARCamera.TrackingState = .normal
-    @Published var anchors: [ARAnchor] = []
-    
-    // New properties
-    @Published var cameraIntrinsics: simd_float3x3 = simd_float3x3(1)
-    @Published var fieldOfView: Float = 0.0
     @Published var gravity: SIMD4<Float> = SIMD4(0, 0, 0, 0)
+    
+    private var lastPosition: SIMD3<Float>?
+    private var lastUpdateTime: Date?
+    private var session: ARSession
 
     override init() {
         self.session = ARSession()
@@ -25,10 +23,12 @@ class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
         session.run(configuration)
     }
     
+    
+
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         let transform = frame.camera.transform
-        let position = transform.columns.3
-        self.devicePosition = SIMD3(position.x, position.y, position.z)
+        let position = SIMD3(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
+        self.devicePosition = position
 
         // Update orientation
         let column0 = transform.columns.0
@@ -41,19 +41,32 @@ class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
         
         self.deviceOrientation = SIMD3(pitch, yaw, roll)
         
-        // Update velocity, gravity, camera intrinsics, and field of view
-        self.linearVelocity = frame.camera.transform.columns.3
-        self.angularVelocity = SIMD3(frame.camera.eulerAngles.x, frame.camera.eulerAngles.y, frame.camera.eulerAngles.z)
+        // Calculate linear velocity
+        if let lastPosition = lastPosition, let lastUpdateTime = lastUpdateTime {
+            let deltaTime = Date().timeIntervalSince(lastUpdateTime)
+            if deltaTime > 0 {
+                let deltaPosition = position - lastPosition
+                self.linearVelocity = deltaPosition / Float(deltaTime)
+            }
+        }
+        
+        // Update last position and time
+        self.lastPosition = position
+        self.lastUpdateTime = Date()
+        
+        // Angular velocity can be handled similarly, but here we use camera.eulerAngles directly for simplicity
+//        self.angularVelocity = SIMD3(frame.camera.eulerAngles.x, frame.camera.eulerAngles.y, frame.camera.eulerAngles.z)
         self.trackingStatus = frame.camera.trackingState
-        self.anchors = session.currentFrame?.anchors ?? []
+//        self.anchors = session.currentFrame?.anchors ?? []
         
         // Camera intrinsics and field of view
-        self.cameraIntrinsics = frame.camera.intrinsics
-        self.fieldOfView = frame.camera.intrinsics[1, 1]  // Example for the Y-axis FoV
+//        self.cameraIntrinsics = frame.camera.intrinsics
+//        self.fieldOfView = frame.camera.intrinsics[1, 1]  // Example for the Y-axis FoV
         
         // Gravity
-        self.gravity = frame.camera.transform.columns.2 * -1 // Direction of gravity
+        self.gravity = transform.columns.2 * -1 // Direction of gravity
     }
+
     
     func pauseTracking() {
         session.pause()
