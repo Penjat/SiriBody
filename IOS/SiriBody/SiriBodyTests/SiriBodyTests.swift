@@ -1,10 +1,3 @@
-//
-//  SiriBodyTests.swift
-//  SiriBodyTests
-//
-//  Created by Spencer Symington on 2024-10-07.
-//
-
 import XCTest
 
 final class SiriBodyTests: XCTestCase {

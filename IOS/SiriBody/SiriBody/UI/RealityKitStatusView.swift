@@ -6,16 +6,19 @@ struct RealityKitStatusView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            
+            if let robitState = realityKitService.robitState {
                 Text("Status: \(trackingStatusDescription)")
-                Text("x: \(realityKitService.devicePosition.x, specifier: "%.2f"), y: \(realityKitService.devicePosition.y, specifier: "%.2f"), z: \(realityKitService.devicePosition.z, specifier: "%.2f")")
+                Text("x: \(robitState.devicePosition.x, specifier: "%.2f"), y: \(robitState.devicePosition.y, specifier: "%.2f"), z: \(robitState.devicePosition.z, specifier: "%.2f")")
                 
                 
-                Text("Pitch: \(realityKitService.deviceOrientation.x, specifier: "%.2f"), Yaw: \(realityKitService.deviceOrientation.y, specifier: "%.2f"), Roll: \(realityKitService.deviceOrientation.z, specifier: "%.2f")")
+                Text("Pitch: \(robitState.deviceOrientation.x, specifier: "%.2f"), Yaw: \(robitState.deviceOrientation.y, specifier: "%.2f"), Roll: \(robitState.deviceOrientation.z, specifier: "%.2f")")
                 
-                
-                Text("x: \(realityKitService.linearVelocity.x, specifier: "%.2f"), y: \(realityKitService.linearVelocity.y, specifier: "%.2f"), z: \(realityKitService.linearVelocity.z, specifier: "%.2f")")
-            
+                if let velocity = robitState.linearVelocity {
+                    Text("x: \(velocity.x, specifier: "%.2f"), y: \(velocity.y, specifier: "%.2f"), z: \(velocity.z, specifier: "%.2f")")
+                } else {
+                    Text("no data")
+                }
+            }
         }
         .padding()
         .background(.regularMaterial).cornerRadius(8)
@@ -24,7 +27,7 @@ struct RealityKitStatusView: View {
     
     // Helper to format tracking status
     private var trackingStatusDescription: String {
-        switch realityKitService.trackingStatus {
+        switch realityKitService.robitState?.trackingStatus {
         case .notAvailable:
             return "Not Available"
         case .normal:
@@ -42,6 +45,8 @@ struct RealityKitStatusView: View {
             @unknown default:
                 return "Unknown"
             }
+        default:
+            return "Unknown"
         }
     }
     

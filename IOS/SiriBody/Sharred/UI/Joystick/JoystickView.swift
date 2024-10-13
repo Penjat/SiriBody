@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct JoystickView: View {
-//    let viewModel: JoystickViewModel
     @Binding var motorSpeed: (motor1Speed: Int, motor2Speed: Int)
     @State var touchPoint: CGPoint?
     @State var turnSensitivity = 1.0
@@ -56,9 +55,5 @@ struct JoystickView: View {
             BluetoothStatusView().padding()
         }
         .padding()
-        .onAppear {
-            //            viewModel.start()
-            
-        }
     }
 }

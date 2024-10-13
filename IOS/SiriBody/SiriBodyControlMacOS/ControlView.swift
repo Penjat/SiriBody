@@ -14,7 +14,6 @@ struct ControlView: View {
             } label: {
                 Text("set rotation")
             }
-
             
             TextField("", text: $message)
             Button(action: {

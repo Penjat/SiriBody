@@ -7,7 +7,6 @@ class AppState: ObservableObject {
     let motionService = MotionService()
 //    let locationService = LocationService()
     let goalInteractor = GoalInteractor()
-    let robitStateService = RobitStateService()
     let realityKitService = RealityKitService()
 
     @Published var movementInteractor: MovementInteractor
@@ -16,10 +15,8 @@ class AppState: ObservableObject {
     
     init() {
         self.movementInteractor = MovementInteractor(mode: .bluetooth(service: centralService))
-        realityKitService.$deviceOrientation.sink { [weak self] orientation in
-            self?.robitStateService.state = RobitState(pitch: Double(orientation.x), roll: Double(orientation.y), yaw: Double(orientation.z))
-        }.store(in: &bag)
-        motionService.startPositionUpdates()
+        
+//        motionService.startPositionUpdates()
         centralService.centralState.sink { [weak self] state in
             switch state {
                 
