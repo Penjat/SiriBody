@@ -5,9 +5,9 @@ class PIDRotationControl: ObservableObject {
     var bag = Set<AnyCancellable>()
     
     let proportionalRange = 1.0..<200.0
-    @Published var pConstant = 76.0
-    @Published var iConstant = 120.0
-    @Published var dConstant = 38.0
+    @Published var pConstant = 200.0
+    @Published var iConstant = 0.5
+    @Published var dConstant = 16.0
     
     @Published var pOutput = 0.0
     @Published var iOutput = 0.0

@@ -40,6 +40,7 @@
 		0BF86FEF2CB7840B004FCD87 /* RobitRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */; };
 		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
 		0BF86FF32CBA23D6004FCD87 /* PIDMotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* PIDMotionService.swift */; };
+		0BF86FF72CBC0714004FCD87 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -86,6 +87,7 @@
 		0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitRealityView.swift; sourceTree = "<group>"; };
 		0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitStatusView.swift; sourceTree = "<group>"; };
 		0BF86FF22CBA23D6004FCD87 /* PIDMotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDMotionService.swift; sourceTree = "<group>"; };
+		0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */,
 				0BF86FDE2CB61951004FCD87 /* AppState.swift */,
 				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
+				0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */,
 				0BF86FD52CB617C3004FCD87 /* Assets.xcassets */,
 				0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */,
 				0BF86FD72CB617C3004FCD87 /* Preview Content */,
@@ -461,6 +464,7 @@
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
+				0BF86FF72CBC0714004FCD87 /* SceneKitView.swift in Sources */,
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
 				0BF86FE22CB6198B004FCD87 /* TransferService.swift in Sources */,
 				0BF86FE92CB6A746004FCD87 /* Math+ApproximatelyEqual.swift in Sources */,

@@ -129,7 +129,7 @@ struct RobitView: View {
                         Toggle("", isOn: $pidControl.pIsOn)
                         Text("\(String(format: "%.2f", pidControl.pConstant))")
                         Text("\(String(format: "%.2f", pidControl.pOutput))").monospaced()
-                        Slider(value: $pidControl.pConstant, in: 0.5...200).disabled(!pidControl.pIsOn)
+                        Slider(value: $pidControl.pConstant, in: 0.5...400).disabled(!pidControl.pIsOn)
                     }
                     
                     
@@ -225,9 +225,10 @@ struct RobitView: View {
                     
                 
                 case .moveTo(x: let x, z: let z):
-                    if motionEnabled, let robitState = robitStateService.robitState {
-                        movementInteractor.motorSpeed = pidMotionControl.updateMotorSpeeds(robitState: robitState)
-                    }
+//                    if motionEnabled, let robitState = robitStateService.robitState {
+//                        movementInteractor.motorSpeed = pidMotionControl.updateMotorSpeeds(robitState: robitState)
+//                    }
+                    break
                 }
                 
             }.store(in: &bag)
@@ -245,6 +246,8 @@ struct RobitView: View {
                 switch command {
                 case .moveTo(x: let x, z: let z):
                     pidMotionControl.target = (x: x, z: z)
+                case .turnTo(angle: let angle):
+                    pidControl.targetYaw = angle
                 default:
                     return
                 }

@@ -9,6 +9,9 @@ struct SiriBodyControlMacOSApp: App {
             ControlView()
                 .environmentObject(appState)
                 .environmentObject(appState.centralService)
+            
+//            SceneKitView()
+//                        .frame(minWidth: 400, minHeight: 400)
         }
     }
 }
