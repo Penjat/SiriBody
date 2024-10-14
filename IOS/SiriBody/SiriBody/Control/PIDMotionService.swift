@@ -77,7 +77,7 @@ class PIDMotionService: ObservableObject {
         angleDifference = atan2(sin(angleDifference), cos(angleDifference))
         
         // PID control for distance
-        let errorDistance = distance
+        let errorDistance = -distance
         integralDistance += errorDistance * deltaTime
         let derivativeDistance = deltaTime > 0 ? (errorDistance - lastErrorDistance) / deltaTime : 0.0
         

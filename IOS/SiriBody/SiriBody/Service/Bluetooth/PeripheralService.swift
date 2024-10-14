@@ -4,7 +4,14 @@ import CoreBluetooth
 
 // Central Service and Transfer Service in Sharred Folder
 
+
+
 class PeripheralService: NSObject, ObservableObject {
+    enum ConnectionState {
+        case scanning
+        case connected(CBPeripheral)
+        case disconnected
+    }
     var peripheralManager: CBPeripheralManager?
     var serviceUUID: CBUUID!
     var charUUID: CBUUID!

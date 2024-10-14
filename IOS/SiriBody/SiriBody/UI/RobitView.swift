@@ -34,7 +34,7 @@ struct RobitView: View {
                 Toggle(isOn: $pidMotionControl.motionEnabled) {
                     Text("motion")
                 }
-                Toggle(isOn: $pidMotionControl.motionEnabled) {
+                Toggle(isOn: $pidMotionControl.rotationEnabled) {
                     Text("rotation")
                 }
             }

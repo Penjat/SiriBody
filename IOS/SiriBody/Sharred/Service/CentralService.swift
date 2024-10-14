@@ -1,13 +1,14 @@
 import CoreBluetooth
 import Combine
 
-enum ConnectionState {
-    case scanning
-    case connected(CBPeripheral)
-    case disconnected
-}
+
 
 class CentralService: NSObject, ObservableObject {
+    enum ConnectionState {
+        case scanning
+        case connected(CBPeripheral)
+        case disconnected
+    }
     var centralManager: CBCentralManager!
     var discoveredPeripheral: CBPeripheral?
     var transferCharacteristic: CBCharacteristic?
