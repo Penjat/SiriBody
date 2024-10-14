@@ -27,8 +27,22 @@ struct RobitView: View {
             default:
                 Text("no command")
             }
+            HStack {
+                
+               
+                
+                Toggle(isOn: $pidMotionControl.motionEnabled) {
+                    Text("motion")
+                }
+                Toggle(isOn: $pidMotionControl.motionEnabled) {
+                    Text("rotation")
+                }
+            }
                 
             HStack {
+                
+               
+                
                 Button(action: {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -38,14 +52,25 @@ struct RobitView: View {
                 }, label: {
                     Text("0,0")
                 })
+                
+                
                 Button(action: {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        goalInteractor.command = .moveTo(x: 0.2, z: 0.0)
+                        goalInteractor.command = .moveTo(x: 0.0, z: 3.0)
                     }
                     
                 }, label: {
-                    Text("0.1,0.1")
+                    Text("0,3")
+                })
+                Button(action: {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        goalInteractor.command = .moveTo(x: 0.6, z: 0.0)
+                    }
+                    
+                }, label: {
+                    Text("0.6,0.0")
                 })
                 
             }
@@ -98,21 +123,6 @@ struct RobitView: View {
                 }
                 
                 Text("Yaw")
-                ZStack {
-                    
-                    Circle()
-                        .trim(from: 0, to: CGFloat(((pidControl.targetYaw) + .pi) / (2 * .pi)))
-                        .stroke(Color.orange, lineWidth: 20)
-                        .frame(width: 80, height: 80)
-                        .rotationEffect(.degrees(-90))
-                    
-                    Circle()
-                        .trim(from: 0, to: CGFloat(((robitStateService.robitState?.deviceOrientation.z ?? 0) + .pi) / (2 * .pi)))
-                        .stroke(Color.green, lineWidth: 10)
-                        .frame(width: 80, height: 80)
-                        .rotationEffect(.degrees(-90))
-                        .overlay(Text("\(String(format: "%.2f", robitStateService.robitState?.deviceOrientation.z ?? 0.0))"))
-                }
                 
                 Toggle(isOn: $motionEnabled) {
                     Text("Motion Enabled")
@@ -225,9 +235,9 @@ struct RobitView: View {
                     
                 
                 case .moveTo(x: let x, z: let z):
-//                    if motionEnabled, let robitState = robitStateService.robitState {
-//                        movementInteractor.motorSpeed = pidMotionControl.updateMotorSpeeds(robitState: robitState)
-//                    }
+                    if motionEnabled, let robitState = robitStateService.robitState {
+                        movementInteractor.motorSpeed = pidMotionControl.motorSpeeds(robitState: robitState)
+                    }
                     break
                 }
                 

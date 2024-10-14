@@ -13,7 +13,7 @@ class TransferService {
 
 enum CommandCode: UInt8 {
     case turnTo = 1
-    //TODO: Command code for moveTo
+    case moveTo = 2
     case unknown = 0
 }
 
@@ -25,6 +25,9 @@ enum Command {
         case .turnTo:
             let angle = rotationFrom(data: Data([data[1], data[2]])) ?? 0.0
             return .turnTo(angle: angle)
+        case .moveTo:
+            let (x, z) = dataToFloats(data.dropFirst(1)) ?? (8, 8)
+            return .moveTo(x: Double(x), z: Double(z))
         default:
             return nil
         }
@@ -35,7 +38,7 @@ enum Command {
         case .turnTo(angle: let angle):
             return Data([CommandCode.turnTo.rawValue]) + rotationToData(value: angle)
         case .moveTo(x: let x, z: let z):
-            return Data([])
+            return Data([CommandCode.moveTo.rawValue]) + floatsToData(x, z)
         }
     }
 }
@@ -80,13 +83,15 @@ func dataToFloats(_ data: Data) -> (Float, Float)? {
         return nil // Data size mismatch
     }
 
-    let firstFloat: Float = data.withUnsafeBytes { rawBufferPointer in
-        rawBufferPointer.load(fromByteOffset: 0, as: Float.self)
-    }
+    return data.withUnsafeBytes { rawBufferPointer -> (Float, Float)? in
+        guard let baseAddress = rawBufferPointer.baseAddress else {
+            return nil
+        }
 
-    let secondFloat: Float = data.withUnsafeBytes { rawBufferPointer in
-        rawBufferPointer.load(fromByteOffset: floatSize, as: Float.self)
+        let floatBufferPointer = baseAddress.assumingMemoryBound(to: Float.self)
+        let buffer = UnsafeBufferPointer(start: floatBufferPointer, count: 2)
+        let firstFloat = buffer[0]
+        let secondFloat = buffer[1]
+        return (firstFloat, secondFloat)
     }
-
-    return (firstFloat, secondFloat)
 }

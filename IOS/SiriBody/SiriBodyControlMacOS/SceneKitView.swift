@@ -5,9 +5,6 @@ struct SceneKitView: NSViewRepresentable {
     func makeNSView(context: Context) -> SCNView {
         // Create the SCNView
         let scnView = SCNView(frame: .zero)
-        
-        
-        // Set up the scene
         let scene = SCNScene()
         scnView.scene = scene
         scene.physicsWorld.gravity = SCNVector3(0, -9.8, 0)
@@ -41,7 +38,6 @@ struct SceneKitView: NSViewRepresentable {
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = NSColor.blue
         boxGeometry.materials = [boxMaterial]
-        
         
         let boxNode = SCNNode(geometry: boxGeometry)
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
