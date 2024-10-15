@@ -67,12 +67,16 @@ class PIDMotionService: ObservableObject {
         
         // Calculate the distance to the target
         let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
+        guard distance > 0.02 else {
+            self.target = nil
+            return (motor1Speed: 0, motor2Speed: 0)
+        }
         
         // Calculate the desired heading (angle) to the target
         let desiredHeading = atan2(deltaZ, deltaX) // In radians
 
         // Calculate the smallest difference between the desired heading and current yaw
-        let currentAngle = Double(robitState.deviceOrientation.z)
+        let currentAngle = Double(robitState.deviceOrientation.z)+(Double.pi/2)
 
         var angleDifference = desiredHeading - currentAngle
         // Normalize the angle difference to be within -π to π

@@ -165,21 +165,21 @@ struct RobitView: View {
                     Toggle("", isOn: $pidMotionControl.pDistanceIsOn)
                     Text("\(String(format: "%.2f", pidMotionControl.kpDistance))")
 //                    Text("\(String(format: "%.2f", pidMotionControl.pOutput))").monospaced()
-                    Slider(value: $pidMotionControl.kpDistance, in: 0.5...200).disabled(!pidMotionControl.pDistanceIsOn)
+                    Slider(value: $pidMotionControl.kpDistance, in: 0.5...2000).disabled(!pidMotionControl.pDistanceIsOn)
                 }
                 
                 VStack {
                     Toggle("", isOn: $pidMotionControl.iDistanceIsOn)
                     Text("\(String(format: "%.2f", pidMotionControl.kiDistance))")
 //                    Text("\(String(format: "%.2f", pidMotionControl.iOutput))").monospaced()
-                    Slider(value: $pidMotionControl.kiDistance, in: 0.01...200).disabled(!pidMotionControl.iDistanceIsOn)
+                    Slider(value: $pidMotionControl.kiDistance, in: 0.01...2000).disabled(!pidMotionControl.iDistanceIsOn)
                 }
                 
                 VStack {
                     Toggle("", isOn: $pidMotionControl.dDistanceIsOn)
                     Text("\(String(format: "%.2f", pidMotionControl.kdDistance))")
 //                    Text("\(String(format: "%.2f", pidMotionControl.dOutput))").monospaced()
-                    Slider(value: $pidMotionControl.kdDistance, in: 0.5...200).disabled(!pidMotionControl.dDistanceIsOn)
+                    Slider(value: $pidMotionControl.kdDistance, in: 0.5...2000).disabled(!pidMotionControl.dDistanceIsOn)
                 }
                 
             }.padding()

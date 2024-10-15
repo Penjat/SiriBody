@@ -35,6 +35,7 @@
 		0BF86FEF2CB7840B004FCD87 /* RobitRealityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEE2CB7840B004FCD87 /* RobitRealityView.swift */; };
 		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
 		0BF86FF32CBA23D6004FCD87 /* PIDMotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* PIDMotionService.swift */; };
+		0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
@@ -439,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
+				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
 				0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */,
