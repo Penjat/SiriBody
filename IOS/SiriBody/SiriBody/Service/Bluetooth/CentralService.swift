@@ -29,7 +29,7 @@ class CentralService: NSObject, ObservableObject {
         print("creating...")
         self.serviceUUID = serviceID
         self.charUUID = charID
-        
+
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: true])
         outputSubject
             .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
@@ -154,4 +154,5 @@ extension CentralService: CBPeripheralDelegate {
 
     }
     
+
 }

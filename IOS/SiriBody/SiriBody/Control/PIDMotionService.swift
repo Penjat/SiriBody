@@ -70,54 +70,58 @@ class PIDMotionService: ObservableObject {
         
         // Calculate the desired heading (angle) to the target
         let desiredHeading = atan2(deltaZ, deltaX) // In radians
-        
+
         // Calculate the smallest difference between the desired heading and current yaw
-        var angleDifference = desiredHeading - Double(robitState.deviceOrientation.z)
+        let currentAngle = Double(robitState.deviceOrientation.z)
+
+        var angleDifference = desiredHeading - currentAngle
         // Normalize the angle difference to be within -π to π
         angleDifference = atan2(sin(angleDifference), cos(angleDifference))
-        
+
+
+        let forwardRatio = (currentAngle-desiredHeading+Double.pi/2)/(Double.pi/2)
         // PID control for distance
-        let errorDistance = -distance
+        let errorDistance = distance
         integralDistance += errorDistance * deltaTime
         let derivativeDistance = deltaTime > 0 ? (errorDistance - lastErrorDistance) / deltaTime : 0.0
-        
+
         let outputDistance =
-        (pDistanceIsOn ? kpDistance * errorDistance : 0.0) +
+        ((pDistanceIsOn ? kpDistance * errorDistance : 0.0) +
         (iDistanceIsOn ? kiDistance * integralDistance: 0.0) +
-        (dDistanceIsOn ? kdDistance * derivativeDistance: 0.0)
-        
+        (dDistanceIsOn ? kdDistance * derivativeDistance: 0.0))*forwardRatio
+
         lastErrorDistance = errorDistance
-        
+
         // PID control for angle
         let errorAngle = angleDifference
         integralAngle += errorAngle * deltaTime
         let derivativeAngle = deltaTime > 0 ? (errorAngle - lastErrorAngle) / deltaTime : 0.0
-        
+
         let outputAngle =
         (pAngleIsOn ? kpAngle * errorAngle: 0.0) +
         (iAngleIsOn ? kiAngle * integralAngle: 0.0) +
         (dAngleIsOn ? kdAngle * derivativeAngle: 0.0)
-        
+
         lastErrorAngle = errorAngle
-        
+
         var forwardSpeed = outputDistance
         var turnSpeed = outputAngle
-        
+
         // Limit the forward speed
         forwardSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, forwardSpeed))
-        
+
         // Ensure the forward speed is at least the minimum motor speed if moving
-        if abs(forwardSpeed) > 0 && abs(forwardSpeed) < minMotorSpeed {
-            forwardSpeed = forwardSpeed >= 0 ? minMotorSpeed : -minMotorSpeed
-        }
-        
+//        if abs(forwardSpeed) > 0 && abs(forwardSpeed) < minMotorSpeed {
+//            forwardSpeed = forwardSpeed >= 0 ? minMotorSpeed : -minMotorSpeed
+//        }
+
         // Limit the turn speed
         turnSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, turnSpeed))
-        
+
         // Calculate motor speeds based on forward and turn speeds
         let motor1SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) - (rotationEnabled ? turnSpeed : 0.0)
         let motor2SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) + (rotationEnabled ? turnSpeed : 0.0)
-        
+
         // Limit motor speeds to the allowable range
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
         let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))

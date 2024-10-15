@@ -8,8 +8,8 @@ import CoreBluetooth
 
 class PeripheralService: NSObject, ObservableObject {
     enum ConnectionState {
-        case scanning
-        case connected(CBPeripheral)
+        case advertising
+        case connected(CBCentral)
         case disconnected
     }
     var peripheralManager: CBPeripheralManager?
@@ -21,7 +21,8 @@ class PeripheralService: NSObject, ObservableObject {
     let outputSubject = PassthroughSubject<Data, Never>()
     
     var transferCharacteristic: CBMutableCharacteristic?
-    
+    @Published var connectionState = ConnectionState.disconnected
+
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
         print("creating...")
@@ -56,6 +57,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
         if peripheral.state == .poweredOn {
             // Start advertising as a peripheral once the manager is powered on
             startAdvertising()
+
         }
     }
     
@@ -79,6 +81,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
         peripheralManager?.startAdvertising([
             CBAdvertisementDataServiceUUIDsKey: [serviceUUID]
         ])
+        connectionState = .advertising
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
@@ -109,5 +112,10 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         // Respond to read requests here if needed
         peripheralManager?.respond(to: request, withResult: .success)
+    }
+
+    func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
+        print("connected!!!!!")
+        connectionState = .connected(central)
     }
 }

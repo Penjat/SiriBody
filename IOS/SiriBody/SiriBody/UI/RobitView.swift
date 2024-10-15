@@ -212,6 +212,7 @@ struct RobitView: View {
                 
             }
             BluetoothStatusView()
+            PeripheralStatusView()
         }.onAppear {
             robitStateService.$robitState.sink { state in
                 // TODO: Eventually move this logic somewhere else

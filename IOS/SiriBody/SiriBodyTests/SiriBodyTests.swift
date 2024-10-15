@@ -14,7 +14,7 @@ final class SiriBodyTests: XCTestCase {
         let currentYaw3 = -3.12
         
         let controller = PIDRotationControl()
-        
+
         // when
         let errorDistance1 = controller.findClosestRotation(targetYaw: targetYaw1, currentYaw: currentYaw1)
         let errorDistance2 = controller.findClosestRotation(targetYaw: targetYaw2, currentYaw: currentYaw2)
