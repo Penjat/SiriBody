@@ -13,10 +13,20 @@ struct SceneKitView: NSViewRepresentable {
     func makeNSView(context: Context) -> SCNView {
         // Create the SCNView
         let scnView = SCNView(frame: .zero)
-        let scene = SCNScene()
+        guard let scene = SCNScene(named: "SiriBody.obj") else {
+            print("Failed to load the scene")
+            return scnView
+        }
         scnView.scene = scene
         scene.physicsWorld.gravity = SCNVector3(0, -9.8, 0)
         
+        
+        print(scene.rootNode.childNodes.count)
+        
+        if let modelNode = scene.rootNode.childNodes.first {
+//            modelNode.position = SCNVector3(10,-100, 30)
+            modelNode.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1)
+        }
         // Configure the view
         scnView.allowsCameraControl = true
         scnView.backgroundColor = NSColor.black
@@ -50,9 +60,9 @@ struct SceneKitView: NSViewRepresentable {
         
         let boxNode = SCNNode(geometry: boxGeometry)
         //        self.boxNode = boxNode
-//        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-//        physicsBody.mass = 1.0
-//        boxNode.physicsBody = physicsBody
+        //        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        //        physicsBody.mass = 1.0
+        //        boxNode.physicsBody = physicsBody
         
         return boxNode
     }
