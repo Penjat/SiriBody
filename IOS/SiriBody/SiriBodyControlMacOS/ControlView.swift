@@ -3,12 +3,13 @@ import Combine
 
 struct ControlView: View {
     @EnvironmentObject var centralService: CentralService
+    @EnvironmentObject var robitPositionService: RobitPositionService
     @State var message = ""
     @State var rotation = 0.0
     @State var x = ""
     @State var y = ""
     @State var bag = Set<AnyCancellable>()
-    @State var robitState = "no data"
+    
     var body: some View {
         VStack {
             Text(robitState)
@@ -47,7 +48,7 @@ struct ControlView: View {
             }, label: {
                 Text("send message")
             })
-            SceneKitView()
+            SceneKitView(robitPositionService: robitPositionService)
         }.onAppear {
             centralService
                 .inputSubject
@@ -59,10 +60,13 @@ struct ControlView: View {
 
                     switch state {
                     case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
-                        robitState = "x:\(position.x), y: \(position.y), z:\(position.z), pitch:\(orientation.x), yaw: \(orientation.y), roll:\(orientation.z)"
+                        robitPositionService.robitPosition = RobitPosition(position: position, orientation: orientation)
                     }
             }.store(in: &bag)
         }
+    }
+    var robitState: String {
+        return "x:\(robitPositionService.robitPosition.position.x), y: \(robitPositionService.robitPosition.position.y), z:\(robitPositionService.robitPosition.position.z), pitch:\(robitPositionService.robitPosition.orientation.x), yaw: \(robitPositionService.robitPosition.orientation.y), roll:\(robitPositionService.robitPosition.orientation.z)"
     }
 }
 

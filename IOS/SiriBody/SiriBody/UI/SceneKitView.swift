@@ -1,9 +1,15 @@
 import SwiftUI
 import SceneKit
+import Combine
 
 struct SceneKitView: NSViewRepresentable {
-    @State var boxNode: SCNNode?
-
+    
+    @ObservedObject var robitPositionService: RobitPositionService
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(robitPositionService: robitPositionService)
+    }
+    
     func makeNSView(context: Context) -> SCNView {
         // Create the SCNView
         let scnView = SCNView(frame: .zero)
@@ -20,6 +26,7 @@ struct SceneKitView: NSViewRepresentable {
         
         scene.rootNode.addChildNode(boxNode)
         boxNode.position = SCNVector3(-5, 3, -2)
+        context.coordinator.boxNode = boxNode
         
         let lightNode = createLight()
         scene.rootNode.addChildNode(lightNode)
@@ -42,11 +49,11 @@ struct SceneKitView: NSViewRepresentable {
         boxGeometry.materials = [boxMaterial]
         
         let boxNode = SCNNode(geometry: boxGeometry)
-        self.boxNode = boxNode
-        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-        physicsBody.mass = 1.0
-        boxNode.physicsBody = physicsBody
-
+        //        self.boxNode = boxNode
+//        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+//        physicsBody.mass = 1.0
+//        boxNode.physicsBody = physicsBody
+        
         return boxNode
     }
     
@@ -74,5 +81,34 @@ struct SceneKitView: NSViewRepresentable {
         lightNode.position = SCNVector3(x: 0, y: 5, z: 10)
         
         return lightNode
+    }
+    
+    class Coordinator: NSObject {
+        var robitPositionService: RobitPositionService
+        var boxNode: SCNNode?
+        private var cancellables: Set<AnyCancellable> = []
+        
+        init(robitPositionService: RobitPositionService) {
+            self.robitPositionService = robitPositionService
+            super.init()
+            setupSubscriptions()
+        }
+        
+        private func setupSubscriptions() {
+            robitPositionService
+                .$robitPosition
+                .sink { [weak self] state in
+                    self?.updateBox(state.position, state.orientation)
+                }
+                .store(in: &cancellables)
+            
+            
+        }
+        
+        private func updateBox(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
+            guard let boxNode = boxNode else { return }
+            boxNode.position = SCNVector3(position)
+            boxNode.eulerAngles = SCNVector3(orientation)
+        }
     }
 }
