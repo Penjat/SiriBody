@@ -2,6 +2,8 @@ import SwiftUI
 import SceneKit
 
 struct SceneKitView: NSViewRepresentable {
+    @State var boxNode: SCNNode?
+
     func makeNSView(context: Context) -> SCNView {
         // Create the SCNView
         let scnView = SCNView(frame: .zero)
@@ -40,10 +42,11 @@ struct SceneKitView: NSViewRepresentable {
         boxGeometry.materials = [boxMaterial]
         
         let boxNode = SCNNode(geometry: boxGeometry)
+        self.boxNode = boxNode
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         physicsBody.mass = 1.0
         boxNode.physicsBody = physicsBody
-        
+
         return boxNode
     }
     

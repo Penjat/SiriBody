@@ -36,6 +36,8 @@
 		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
 		0BF86FF32CBA23D6004FCD87 /* PIDMotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* PIDMotionService.swift */; };
 		0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
+		1A78AD532CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
+		1A78AD542CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
@@ -87,6 +89,7 @@
 		0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitStatusView.swift; sourceTree = "<group>"; };
 		0BF86FF22CBA23D6004FCD87 /* PIDMotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDMotionService.swift; sourceTree = "<group>"; };
 		0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
+		1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitPositionService.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 				0BCEAE692CB3350B008B663D /* MotionService.swift */,
 				1AD974612CB3766F00DF80C2 /* LocationService.swift */,
 				0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */,
+				1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
 				0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */,
 				0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */,
+				1A78AD532CBF81D00070D3F6 /* RobitPositionService.swift in Sources */,
 				0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */,
 				0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
@@ -447,6 +452,7 @@
 				1AE096622CBE03B90038B2CA /* SceneKitView.swift in Sources */,
 				1AE096632CBE03DC0038B2CA /* CentralService.swift in Sources */,
 				1AE096642CBE03DC0038B2CA /* TransferService.swift in Sources */,
+				1A78AD542CBF81D00070D3F6 /* RobitPositionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

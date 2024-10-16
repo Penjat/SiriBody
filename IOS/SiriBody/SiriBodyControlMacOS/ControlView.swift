@@ -8,9 +8,10 @@ struct ControlView: View {
     @State var x = ""
     @State var y = ""
     @State var bag = Set<AnyCancellable>()
+    @State var robitState = "no data"
     var body: some View {
         VStack {
-            
+            Text(robitState)
             BluetoothStatusView()
             
             HStack {
@@ -46,9 +47,20 @@ struct ControlView: View {
             }, label: {
                 Text("send message")
             })
+            SceneKitView()
         }.onAppear {
-            centralService.outputSubject.sink { data in
-                
+            centralService
+                .inputSubject
+                .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true).sink { data in
+                    print("recieved state")
+                    guard let state = StateData.createFrom(data: data) else {
+                        return
+                        }
+
+                    switch state {
+                    case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
+                        robitState = "x:\(position.x), y: \(position.y), z:\(position.z), pitch:\(orientation.x), yaw: \(orientation.y), roll:\(orientation.z)"
+                    }
             }.store(in: &bag)
         }
     }
