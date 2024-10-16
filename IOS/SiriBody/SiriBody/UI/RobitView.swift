@@ -220,7 +220,7 @@ struct RobitView: View {
                     return
                 }
                 switch command {
-                case .turnTo(angle: let angle):
+                case .turnTo(angle: _):
                     let turnVector = pidControl.motorOutput(currentYaw: Double(state?.deviceOrientation.z ?? 0.0))
                     print(turnVector)
                     
@@ -235,13 +235,20 @@ struct RobitView: View {
                     }
                     
                 
-                case .moveTo(x: let x, z: let z):
+                case .moveTo(x: _, z: _):
                     if motionEnabled, let robitState = robitStateService.robitState {
                         movementInteractor.motorSpeed = pidMotionControl.motorSpeeds(robitState: robitState)
                     }
                     break
                 }
                 
+            }.store(in: &bag)
+            
+            robitStateService.$robitState.sink { state in
+                guard let state else {
+                    return
+                }
+                peripheralService.outputSubject.send(StateData.positionOrientation(devicePosition: state.devicePosition, deviceOrientation: state.deviceOrientation).toData())
             }.store(in: &bag)
             
             peripheralService.inputSubject.sink { data in

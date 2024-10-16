@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct ControlView: View {
     @EnvironmentObject var centralService: CentralService
@@ -6,6 +7,7 @@ struct ControlView: View {
     @State var rotation = 0.0
     @State var x = ""
     @State var y = ""
+    @State var bag = Set<AnyCancellable>()
     var body: some View {
         VStack {
             
@@ -44,6 +46,10 @@ struct ControlView: View {
             }, label: {
                 Text("send message")
             })
+        }.onAppear {
+            centralService.outputSubject.sink { data in
+                
+            }.store(in: &bag)
         }
     }
 }

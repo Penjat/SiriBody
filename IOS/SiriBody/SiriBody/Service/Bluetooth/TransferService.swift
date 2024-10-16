@@ -11,6 +11,56 @@ class TransferService {
     static let phoneCharUUID = CBUUID(string: "FFE6")
 }
 
+enum StateCode: UInt8 {
+    case update = 1
+}
+
+enum StateData {
+    case positionOrientation(
+        devicePosition: SIMD3<Float>,
+        deviceOrientation: SIMD3<Float>)
+    
+    static func createFrom(data: Data) -> StateData? {
+        switch StateCode.init(rawValue: data[0]) {
+        case .update:
+            // Extract the devicePosition and deviceOrientation from the data
+            let positionSize = MemoryLayout<SIMD3<Float>>.size
+            let orientationSize = MemoryLayout<SIMD3<Float>>.size
+            let expectedLength = 1 + positionSize + orientationSize // Total expected data length
+
+            guard data.count >= expectedLength else {
+                return nil // Not enough data
+            }
+
+            // Define the ranges for position and orientation data
+            let positionRange = 1..<(1 + positionSize)
+            let orientationRange = (1 + positionSize)..<(1 + positionSize + orientationSize)
+
+            // Extract the subdata for position and orientation
+            let positionData = data.subdata(in: positionRange)
+            let orientationData = data.subdata(in: orientationRange)
+
+            // Reconstruct the SIMD3<Float> values
+            let devicePosition = positionData.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
+            let deviceOrientation = orientationData.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
+
+            // Return the StateData with the extracted values
+            return .positionOrientation(devicePosition: devicePosition, deviceOrientation: deviceOrientation)
+        default:
+            return nil
+        }
+    }
+    
+    func toData() -> Data {
+        switch self {
+        case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
+            let positionData = withUnsafeBytes(of: position) { Data($0) }
+            let orientationData = withUnsafeBytes(of: orientation) { Data($0) }
+            return Data([StateCode.update.rawValue]) + positionData + orientationData
+        }
+    }
+}
+
 enum CommandCode: UInt8 {
     case turnTo = 1
     case moveTo = 2
@@ -95,3 +145,11 @@ func dataToFloats(_ data: Data) -> (Float, Float)? {
         return (firstFloat, secondFloat)
     }
 }
+
+                             func dataToSIMD3Float(_ data: Data) -> SIMD3<Float>? {
+                guard data.count == MemoryLayout<SIMD3<Float>>.size else {
+                    return nil
+                }
+                return data.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
+            }
+                             
