@@ -40,6 +40,7 @@ struct JoystickView: View {
                                     
                                     motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
                                     touchPoint = value.location
+                                    
                                 }
                         )
                     Path { path in
@@ -50,10 +51,9 @@ struct JoystickView: View {
                         }
                     }.stroke(.blue, lineWidth: 6)
                 }
-            }
-            Spacer()
-            BluetoothStatusView().padding()
+            }.frame(width:400, height: 400)
         }
         .padding()
+        
     }
 }

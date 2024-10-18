@@ -3,6 +3,7 @@ import Combine
 
 enum ConnectionMode {
     case bluetooth(service: CentralService)
+    case sceneKit
 }
 
 class MovementInteractor: ObservableObject {
@@ -28,6 +29,8 @@ class MovementInteractor: ObservableObject {
                              UInt8(252)
                             ]))
             }.store(in: &bag)
+        case .sceneKit:
+            break
         }
     }
 }
