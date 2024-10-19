@@ -74,27 +74,28 @@ class SceneKitInteractor: ObservableObject {
         boxNode4.position = SCNVector3(20, 20, -20)
         
         $realRobitPosition
-        .sink { [weak self] state in
-            self?.updateVirtualRobit(state.position, state.orientation)
-        }
-        .store(in: &bag)
+            .sink { [weak self] state in
+                self?.updateVirtualRobit(state.position, state.orientation)
+            }
+            .store(in: &bag)
         
-        $cameraPosition.sink { [weak self] cameraPosition in
-            guard let self else {
-                return
+        $cameraPosition
+            .sink { [weak self] cameraPosition in
+                guard let self else {
+                    return
+                }
+                
+                switch cameraPosition {
+                case .real:
+                    realRobitCam.addChildNode(camera)
+                case .virtual:
+                    virtualRobitCam.addChildNode(camera)
+                case .overhead:
+                    overheadCam.addChildNode(camera)
+                }
             }
-            
-            switch cameraPosition {
-            case .real:
-                realRobitCam.addChildNode(camera)
-            case .virtual:
-                virtualRobitCam.addChildNode(camera)
-            case .overhead:
-                overheadCam.addChildNode(camera)
-            }
-        }
-        .store(in: &bag)
-
+            .store(in: &bag)
+        
         return scene
     }()
     
@@ -106,16 +107,6 @@ class SceneKitInteractor: ObservableObject {
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
         modelNode.addChildNode(virtualRobitCam)
         virtualRobitCam.position = SCNVector3(0, 150, -35)
-        let redMaterial = SCNMaterial()
-            redMaterial.diffuse.contents = NSColor.green
-            
-            // Apply the red material to all geometries in the model
-            modelNode.enumerateChildNodes { (node, _) in
-                if let geometry = node.geometry {
-                    // Replace all materials with the red material
-                    geometry.materials = [redMaterial]
-                }
-            }
         return modelNode
     }()
     
@@ -125,19 +116,9 @@ class SceneKitInteractor: ObservableObject {
             return nil
         }
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        
         modelNode.addChildNode(realRobitCam)
         realRobitCam.position = SCNVector3(0, 150, -35)
-        let redMaterial = SCNMaterial()
-            redMaterial.diffuse.contents = NSColor.red
-            
-            // Apply the red material to all geometries in the model
-            modelNode.enumerateChildNodes { (node, _) in
-                if let geometry = node.geometry {
-                    // Replace all materials with the red material
-                    geometry.materials = [redMaterial]
-                }
-            }
+       
         return modelNode
     }()
     
