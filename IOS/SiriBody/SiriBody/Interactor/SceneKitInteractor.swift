@@ -3,10 +3,21 @@ import Combine
 
 class SceneKitInteractor: ObservableObject {
     @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
+    @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     
     var bag = Set<AnyCancellable>()
     
-    lazy var robitCam = {
+    lazy var virtualRobitCam = {
+        //TODO: do I need the node as well?
+        let cameraNode = SCNNode()
+        let camera = SCNCamera()
+        cameraNode.camera = camera
+        cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
+        camera.zFar = 10000.0
+        return cameraNode
+    }()
+    
+    lazy var realRobitCam = {
         //TODO: do I need the node as well?
         let cameraNode = SCNNode()
         let camera = SCNCamera()
@@ -26,6 +37,11 @@ class SceneKitInteractor: ObservableObject {
             scene.rootNode.addChildNode(virtualRobit)
         }
         
+        if let realRobit {
+            scene.rootNode.addChildNode(realRobit)
+            realRobit.position = SCNVector3(10, 0, 15)
+        }
+        
         let boxNode1 = createBox()
         scene.rootNode.addChildNode(boxNode1)
         boxNode1.position = SCNVector3(10, 10, 20)
@@ -42,7 +58,7 @@ class SceneKitInteractor: ObservableObject {
         scene.rootNode.addChildNode(boxNode4)
         boxNode4.position = SCNVector3(20, 20, -20)
         
-        $virtualRobitPosition
+        $realRobitPosition
         .sink { [weak self] state in
             self?.updateVirtualRobit(state.position, state.orientation)
         }
@@ -51,14 +67,28 @@ class SceneKitInteractor: ObservableObject {
         return scene
     }()
     
-    lazy var virtualRobit: SCNNode? = {
+    func createModelRobitModel() -> SCNNode? {
         guard let scene = SCNScene(named: "SiriBody.obj"), let modelNode = scene.rootNode.childNodes.first else {
             print("Failed to load the scene")
             return nil
         }
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        modelNode.addChildNode(robitCam)
-        robitCam.position = SCNVector3(0, 150, -35)
+        
+        return modelNode
+    }
+    
+    lazy var virtualRobit: SCNNode? = {
+        let modelNode = createModelRobitModel()
+        modelNode?.addChildNode(virtualRobitCam)
+        virtualRobitCam.position = SCNVector3(0, 150, -35)
+        return modelNode
+    }()
+    
+    lazy var realRobit: SCNNode? = {
+        let modelNode = createModelRobitModel()
+        modelNode?.addChildNode(realRobitCam)
+        realRobitCam.position = SCNVector3(0, 150, -35)
+        
         return modelNode
     }()
     

@@ -73,7 +73,7 @@ struct ControlView: View {
                     case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
                         //TODO: decide if I need this
 //                        robitPositionService.robitPosition = RobitPosition(position: position, orientation: orientation)
-                        appState.sceneKitInteractor.virtualRobitPosition = RobitPosition(position: position, orientation: orientation)
+                        appState.sceneKitInteractor.realRobitPosition = RobitPosition(position: position, orientation: orientation)
                     }
                 }.store(in: &bag)
         }
