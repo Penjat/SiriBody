@@ -16,7 +16,7 @@ struct ControlView: View {
     var body: some View {
         VStack {
             SceneKitView(interactor: appState.sceneKitInteractor)
-        
+
             HStack {
                 JoystickView(motorSpeed: $virtualRobitInteractor.motorSpeed)
                 VStack {

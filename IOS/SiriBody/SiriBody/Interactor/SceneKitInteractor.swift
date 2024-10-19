@@ -11,10 +11,10 @@ class SceneKitInteractor: ObservableObject {
     @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var cameraPosition = CameraPosition.virtual
     var bag = Set<AnyCancellable>()
-    let virtualRobitInteractor = VirtualRobitInteractor
-    
+    let virtualRobitInteractor: VirtualRobitInteractor
+
     init(virtualRobitInteractor: VirtualRobitInteractor) {
-        
+        self.virtualRobitInteractor = virtualRobitInteractor
     }
     
     lazy var camera = {
@@ -25,8 +25,7 @@ class SceneKitInteractor: ObservableObject {
         
         return cameraNode
     }()
-    
-    
+
     lazy var realRobitCam = {
         let cameraNode = SCNNode()
         cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
@@ -47,7 +46,7 @@ class SceneKitInteractor: ObservableObject {
         scene.rootNode.addChildNode(mainFloor)
         scene.rootNode.addChildNode(overheadCam)
         
-        if let virtualRobit {
+        if let virtualRobit = virtualRobitInteractor.virtualRobit {
             scene.rootNode.addChildNode(virtualRobit)
         }
         
@@ -88,7 +87,7 @@ class SceneKitInteractor: ObservableObject {
                 case .real:
                     realRobitCam.addChildNode(camera)
                 case .virtual:
-                    virtualRobitCam.addChildNode(camera)
+                    virtualRobitInteractor.virtualRobitCam.addChildNode(camera)
                 case .overhead:
                     overheadCam.addChildNode(camera)
                 }
@@ -139,7 +138,7 @@ class SceneKitInteractor: ObservableObject {
     }()
     
     private func updateVirtualRobit(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
-        guard let virtualRobit else { return }
+        guard let virtualRobit = virtualRobitInteractor.virtualRobit else { return }
         virtualRobit.position = SCNVector3(x: CGFloat(position.x*10), y: 0.0, z: CGFloat(position.z*10))
         virtualRobit.eulerAngles = SCNVector3(x: 0.0, y: CGFloat(orientation.z), z: 0.0)
     }
