@@ -71,7 +71,9 @@ struct ControlView: View {
                     
                     switch state {
                     case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
-                        robitPositionService.robitPosition = RobitPosition(position: position, orientation: orientation)
+                        //TODO: decide if I need this
+//                        robitPositionService.robitPosition = RobitPosition(position: position, orientation: orientation)
+                        appState.sceneKitInteractor.virtualRobitPosition = RobitPosition(position: position, orientation: orientation)
                     }
                 }.store(in: &bag)
         }

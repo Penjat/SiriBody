@@ -2,7 +2,7 @@ import SceneKit
 import Combine
 
 class SceneKitInteractor: ObservableObject {
-    @Published var robitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
+    @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     
     var bag = Set<AnyCancellable>()
     
@@ -11,6 +11,7 @@ class SceneKitInteractor: ObservableObject {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
+        cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
         camera.zFar = 10000.0
         return cameraNode
     }()
@@ -41,7 +42,7 @@ class SceneKitInteractor: ObservableObject {
         scene.rootNode.addChildNode(boxNode4)
         boxNode4.position = SCNVector3(20, 20, -20)
         
-        $robitPosition
+        $virtualRobitPosition
         .sink { [weak self] state in
             self?.updateVirtualRobit(state.position, state.orientation)
         }

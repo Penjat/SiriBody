@@ -30,5 +30,7 @@ class AppState: ObservableObject {
                 print("unkown")
             }
         }.store(in: &bag)
+        
+        
     }
 }
