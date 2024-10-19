@@ -163,4 +163,10 @@ class SceneKitInteractor: ObservableObject {
         
         return boxNode
     }
+
+    public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
+        virtualRobitInteractor.virtualRobit?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitInteractor.virtualRobit?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitInteractor.virtualRobit?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+    }
 }

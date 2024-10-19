@@ -20,6 +20,13 @@ struct ControlView: View {
             HStack {
                 JoystickView(motorSpeed: $virtualRobitInteractor.motorSpeed)
                 VStack {
+                    HStack {
+                        Button {
+                            sceneKitInteractor.resetVirtualRobitPosition()
+                        } label: {
+                            Text("reset 0")
+                        }
+                    }
                     Picker(selection: $sceneKitInteractor.cameraPosition) {
                         ForEach(CameraPosition.allCases, id: \.self) { cameraPosition in
                             Text(cameraPosition.rawValue).tag(cameraPosition)
