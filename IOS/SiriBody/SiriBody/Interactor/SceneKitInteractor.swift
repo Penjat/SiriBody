@@ -67,28 +67,47 @@ class SceneKitInteractor: ObservableObject {
         return scene
     }()
     
-    func createModelRobitModel() -> SCNNode? {
-        guard let scene = SCNScene(named: "SiriBody.obj"), let modelNode = scene.rootNode.childNodes.first else {
+    
+    lazy var virtualRobit: SCNNode? = {
+        guard let scene = SCNScene(named: "SiriBodyVirtual.obj"), let modelNode = scene.rootNode.childNodes.first else {
+            print("Failed to load the scene")
+            return nil
+        }
+        modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        modelNode.addChildNode(virtualRobitCam)
+        virtualRobitCam.position = SCNVector3(0, 150, -35)
+        let redMaterial = SCNMaterial()
+            redMaterial.diffuse.contents = NSColor.green
+            
+            // Apply the red material to all geometries in the model
+            modelNode.enumerateChildNodes { (node, _) in
+                if let geometry = node.geometry {
+                    // Replace all materials with the red material
+                    geometry.materials = [redMaterial]
+                }
+            }
+        return modelNode
+    }()
+    
+    lazy var realRobit: SCNNode? = {
+        guard let scene = SCNScene(named: "SiriBodyReal.obj"), let modelNode = scene.rootNode.childNodes.first else {
             print("Failed to load the scene")
             return nil
         }
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
         
-        return modelNode
-    }
-    
-    lazy var virtualRobit: SCNNode? = {
-        let modelNode = createModelRobitModel()
-        modelNode?.addChildNode(virtualRobitCam)
-        virtualRobitCam.position = SCNVector3(0, 150, -35)
-        return modelNode
-    }()
-    
-    lazy var realRobit: SCNNode? = {
-        let modelNode = createModelRobitModel()
-        modelNode?.addChildNode(realRobitCam)
+        modelNode.addChildNode(realRobitCam)
         realRobitCam.position = SCNVector3(0, 150, -35)
-        
+        let redMaterial = SCNMaterial()
+            redMaterial.diffuse.contents = NSColor.red
+            
+            // Apply the red material to all geometries in the model
+            modelNode.enumerateChildNodes { (node, _) in
+                if let geometry = node.geometry {
+                    // Replace all materials with the red material
+                    geometry.materials = [redMaterial]
+                }
+            }
         return modelNode
     }()
     
