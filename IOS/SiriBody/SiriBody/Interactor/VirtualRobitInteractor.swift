@@ -23,7 +23,7 @@ class VirtualRobitInteractor: ObservableObject {
         modelNode.addChildNode(virtualRobitCam)
         virtualRobitCam.position = SCNVector3(0, 150, -35)
 
-        let boxGeometry = SCNBox(width: 10, height: 10, length: 10, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: 5, height: 5, length: 5, chamferRadius: 0.0)
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = NSColor.gray
         boxGeometry.materials = [boxMaterial]

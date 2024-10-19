@@ -2,14 +2,16 @@ import SceneKit
 import Combine
 
 enum CameraPosition: String, CaseIterable {
+    case overhead
     case virtual
     case real
-    case overhead
+    case side
 }
 
 class SceneKitInteractor: ObservableObject {
     @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
-    @Published var cameraPosition = CameraPosition.virtual
+    @Published var cameraPosition = CameraPosition.overhead
+
     var bag = Set<AnyCancellable>()
     let virtualRobitInteractor: VirtualRobitInteractor
 
@@ -17,11 +19,15 @@ class SceneKitInteractor: ObservableObject {
         self.virtualRobitInteractor = virtualRobitInteractor
     }
     
+
+    // MARK: Cameras
+
+
     lazy var camera = {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        camera.zFar = 10000.0
+        camera.zFar = 60000.0
         
         return cameraNode
     }()
@@ -38,7 +44,18 @@ class SceneKitInteractor: ObservableObject {
         cameraNode.position = SCNVector3(0, 50, 0)
         return cameraNode
     }()
-    
+
+    lazy var sideCam = {
+        let cameraNode = SCNNode()
+        cameraNode.eulerAngles = SCNVector3(-Double.pi/2, 0, 0)
+        cameraNode.position = SCNVector3(0, 0, -90)
+        return cameraNode
+    }()
+
+
+    // MARK: Cameras
+
+
     lazy var scene = {
         let scene = SCNScene()
         scene.physicsWorld.gravity = SCNVector3(0, -9.8, 0)
@@ -90,6 +107,8 @@ class SceneKitInteractor: ObservableObject {
                     virtualRobitInteractor.virtualRobitCam.addChildNode(camera)
                 case .overhead:
                     overheadCam.addChildNode(camera)
+                case .side:
+                    sideCam.addChildNode(camera)
                 }
             }
             .store(in: &bag)
@@ -112,7 +131,7 @@ class SceneKitInteractor: ObservableObject {
     }()
     
     lazy var mainFloor = {
-        let boxGeometry = SCNBox(width: 100, height: 0.1, length: 100, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: 100, height: 1, length: 100, chamferRadius: 0.0)
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = NSColor.gray
         boxGeometry.materials = [boxMaterial]
@@ -121,6 +140,7 @@ class SceneKitInteractor: ObservableObject {
         let physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         physicsBody.mass = 1.0
         boxNode.physicsBody = physicsBody
+        boxNode.position = SCNVector3(x: 0, y: -1, z: 0)
         return boxNode
     }()
     
@@ -152,13 +172,7 @@ class SceneKitInteractor: ObservableObject {
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         physicsBody.mass = 1.0
         
-        
-        
         let boxNode = SCNNode(geometry: boxGeometry)
-        //        self.boxNode = boxNode
-        //        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-        //        physicsBody.mass = 1.0
-        //        boxNode.physicsBody = physicsBody
         boxNode.physicsBody = physicsBody
         
         return boxNode
