@@ -8,7 +8,7 @@ struct RobitView: View {
     @EnvironmentObject var goalInteractor: GoalInteractor
     
     @StateObject var pidControl = PIDRotationControl()
-    @StateObject var pidMotionControl = PIDMotionService()
+    @StateObject var pidMotionControl = PIDMotionControl()
 
     @State var motionEnabled = false
     @State var bag = Set<AnyCancellable>()

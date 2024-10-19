@@ -8,10 +8,14 @@ enum CameraPosition: String, CaseIterable {
 }
 
 class SceneKitInteractor: ObservableObject {
-    @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var cameraPosition = CameraPosition.virtual
     var bag = Set<AnyCancellable>()
+    let virtualRobitInteractor = VirtualRobitInteractor
+    
+    init(virtualRobitInteractor: VirtualRobitInteractor) {
+        
+    }
     
     lazy var camera = {
         let cameraNode = SCNNode()
@@ -22,11 +26,6 @@ class SceneKitInteractor: ObservableObject {
         return cameraNode
     }()
     
-    lazy var virtualRobitCam = {
-        let cameraNode = SCNNode()
-        cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
-        return cameraNode
-    }()
     
     lazy var realRobitCam = {
         let cameraNode = SCNNode()
@@ -99,16 +98,7 @@ class SceneKitInteractor: ObservableObject {
         return scene
     }()
     
-    lazy var virtualRobit: SCNNode? = {
-        guard let scene = SCNScene(named: "SiriBodyVirtual.obj"), let modelNode = scene.rootNode.childNodes.first else {
-            print("Error: Failed to load the scene")
-            return nil
-        }
-        modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        modelNode.addChildNode(virtualRobitCam)
-        virtualRobitCam.position = SCNVector3(0, 150, -35)
-        return modelNode
-    }()
+    
     
     lazy var realRobit: SCNNode? = {
         guard let scene = SCNScene(named: "SiriBodyReal.obj"), let modelNode = scene.rootNode.childNodes.first else {

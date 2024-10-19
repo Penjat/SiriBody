@@ -1,8 +1,7 @@
 import SwiftUI
 import Combine
 
-class PIDMotionService: ObservableObject {
-    // Published variables for external adjustment and observation
+class PIDMotionControl: ObservableObject {
     @Published var motionEnabled = false
     @Published var rotationEnabled = false
     @Published var target: (x: Double, z: Double)?

@@ -6,19 +6,19 @@ struct ControlView: View {
     @EnvironmentObject var robitPositionService: RobitPositionService
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
+    @EnvironmentObject var virtualRobitInteractor: VirtualRobitInteractor
     @State var message = ""
     @State var rotation = 0.0
     @State var x = ""
     @State var y = ""
     @State var bag = Set<AnyCancellable>()
-    @State var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     
     var body: some View {
         VStack {
             SceneKitView(interactor: appState.sceneKitInteractor)
         
             HStack {
-                JoystickView(motorSpeed: $motorSpeed)
+                JoystickView(motorSpeed: $virtualRobitInteractor.motorSpeed)
                 VStack {
                     Picker(selection: $sceneKitInteractor.cameraPosition) {
                         ForEach(CameraPosition.allCases, id: \.self) { cameraPosition in
@@ -66,7 +66,6 @@ struct ControlView: View {
                     })
                 }
             }
-            
             
         }.onAppear {
             //TODO: move this elsewhere

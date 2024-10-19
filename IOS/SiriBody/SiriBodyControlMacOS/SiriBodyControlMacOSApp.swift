@@ -11,6 +11,7 @@ struct SiriBodyControlMacOSApp: App {
                 .environmentObject(appState.centralService)
                 .environmentObject(appState.robitPositionService)
                 .environmentObject(appState.sceneKitInteractor)
+                .environmentObject(appState.virtualRobitInteractor)
         }
     }
 }

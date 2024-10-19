@@ -2,6 +2,7 @@ import Foundation
 import Combine
 
 class PIDRotationControl: ObservableObject {
+    //TODO: Move all functionallity from here to PIDMotionControl
     var bag = Set<AnyCancellable>()
     
     let proportionalRange = 1.0..<200.0
