@@ -46,7 +46,7 @@ struct JoystickView: View {
                     Path { path in
                         if let touchPoint {
                             path.move(to: CGPoint(x: geometry.size.width/2, y: geometry.size.height/2))
-                            path.addLine(to: CGPoint(x: touchPoint.x, y: touchPoint.y + geometry.size.width/2) )
+                            path.addLine(to: CGPoint(x: touchPoint.x, y: touchPoint.y) )
                             
                         }
                     }.stroke(.blue, lineWidth: 6)

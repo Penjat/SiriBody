@@ -13,7 +13,6 @@ class SceneKitInteractor: ObservableObject {
     @Published var cameraPosition = CameraPosition.virtual
     var bag = Set<AnyCancellable>()
     
-    
     lazy var camera = {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
@@ -98,7 +97,6 @@ class SceneKitInteractor: ObservableObject {
 
         return scene
     }()
-    
     
     lazy var virtualRobit: SCNNode? = {
         guard let scene = SCNScene(named: "SiriBodyVirtual.obj"), let modelNode = scene.rootNode.childNodes.first else {
