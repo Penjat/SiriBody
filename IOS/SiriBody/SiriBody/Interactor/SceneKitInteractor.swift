@@ -27,8 +27,8 @@ class SceneKitInteractor: ObservableObject {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        camera.zFar = 60000.0
-        
+        camera.zFar = 10000.0
+
         return cameraNode
     }()
 

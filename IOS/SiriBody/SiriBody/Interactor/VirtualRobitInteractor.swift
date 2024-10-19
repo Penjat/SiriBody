@@ -5,12 +5,14 @@ import SceneKit
 class VirtualRobitInteractor: ObservableObject {
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
+
     var bag = Set<AnyCancellable>()
 
     init() {
         $motorSpeed.sink { [weak self] speed in
             print("applying force")
-            self?.virtualRobit?.physicsBody?.applyForce(SCNVector3(speed.motor1Speed, Int(0.0), speed.motor2Speed), asImpulse: false)
+            self?.virtualRobit?.physicsBody?.applyForce(SCNVector3(speed.motor1Speed, Int(0.0), speed.motor1Speed), at: SCNVector3(x: 5, y: 0, z: 0),asImpulse: false)
+            self?.virtualRobit?.physicsBody?.applyForce(SCNVector3(speed.motor2Speed, Int(0.0), speed.motor2Speed), at: SCNVector3(x: -5, y: 0, z: 0), asImpulse: false)
         }.store(in: &bag)
     }
 
