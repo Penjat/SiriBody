@@ -1,29 +1,44 @@
 import SceneKit
 import Combine
 
+enum CameraPosition: String, CaseIterable {
+    case virtual
+    case real
+    case overhead
+}
+
 class SceneKitInteractor: ObservableObject {
     @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
-    
+    @Published var cameraPosition = CameraPosition.virtual
     var bag = Set<AnyCancellable>()
     
-    lazy var virtualRobitCam = {
-        //TODO: do I need the node as well?
+    
+    lazy var camera = {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
         camera.zFar = 10000.0
+        
+        return cameraNode
+    }()
+    
+    lazy var virtualRobitCam = {
+        let cameraNode = SCNNode()
+        cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
         return cameraNode
     }()
     
     lazy var realRobitCam = {
-        //TODO: do I need the node as well?
         let cameraNode = SCNNode()
-        let camera = SCNCamera()
-        cameraNode.camera = camera
         cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
-        camera.zFar = 10000.0
+        return cameraNode
+    }()
+    
+    lazy var overheadCam = {
+        let cameraNode = SCNNode()
+        cameraNode.eulerAngles = SCNVector3(-Double.pi/2, 0, 0)
+        cameraNode.position = SCNVector3(0, 50, 0)
         return cameraNode
     }()
     
@@ -32,6 +47,7 @@ class SceneKitInteractor: ObservableObject {
         scene.physicsWorld.gravity = SCNVector3(0, -9.8, 0)
         scene.rootNode.addChildNode(mainLight)
         scene.rootNode.addChildNode(mainFloor)
+        scene.rootNode.addChildNode(overheadCam)
         
         if let virtualRobit {
             scene.rootNode.addChildNode(virtualRobit)
@@ -63,6 +79,22 @@ class SceneKitInteractor: ObservableObject {
             self?.updateVirtualRobit(state.position, state.orientation)
         }
         .store(in: &bag)
+        
+        $cameraPosition.sink { [weak self] cameraPosition in
+            guard let self else {
+                return
+            }
+            
+            switch cameraPosition {
+            case .real:
+                realRobitCam.addChildNode(camera)
+            case .virtual:
+                virtualRobitCam.addChildNode(camera)
+            case .overhead:
+                overheadCam.addChildNode(camera)
+            }
+        }
+        .store(in: &bag)
 
         return scene
     }()
@@ -70,7 +102,7 @@ class SceneKitInteractor: ObservableObject {
     
     lazy var virtualRobit: SCNNode? = {
         guard let scene = SCNScene(named: "SiriBodyVirtual.obj"), let modelNode = scene.rootNode.childNodes.first else {
-            print("Failed to load the scene")
+            print("Error: Failed to load the scene")
             return nil
         }
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
@@ -91,7 +123,7 @@ class SceneKitInteractor: ObservableObject {
     
     lazy var realRobit: SCNNode? = {
         guard let scene = SCNScene(named: "SiriBodyReal.obj"), let modelNode = scene.rootNode.childNodes.first else {
-            print("Failed to load the scene")
+            print("Error: Failed to load the scene")
             return nil
         }
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)

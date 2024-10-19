@@ -5,6 +5,7 @@ struct ControlView: View {
     @EnvironmentObject var centralService: CentralService
     @EnvironmentObject var robitPositionService: RobitPositionService
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
     @State var message = ""
     @State var rotation = 0.0
     @State var x = ""
@@ -19,6 +20,14 @@ struct ControlView: View {
             HStack {
                 JoystickView(motorSpeed: $motorSpeed)
                 VStack {
+                    Picker(selection: $sceneKitInteractor.cameraPosition) {
+                        ForEach(CameraPosition.allCases, id: \.self) { cameraPosition in
+                            Text(cameraPosition.rawValue).tag(cameraPosition)
+                        }
+                    } label: {
+                        Text("camera")
+                    }.pickerStyle(SegmentedPickerStyle())
+
                     Text(robitState)
                     BluetoothStatusView()
                     
