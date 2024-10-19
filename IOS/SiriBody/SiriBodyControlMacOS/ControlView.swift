@@ -4,6 +4,7 @@ import Combine
 struct ControlView: View {
     @EnvironmentObject var centralService: CentralService
     @EnvironmentObject var robitPositionService: RobitPositionService
+    @EnvironmentObject var appState: AppState
     @State var message = ""
     @State var rotation = 0.0
     @State var x = ""
@@ -13,7 +14,7 @@ struct ControlView: View {
     
     var body: some View {
         VStack {
-            SceneKitView(robitPositionService: robitPositionService)
+            SceneKitView(interactor: appState.sceneKitInteractor)
         
             HStack {
                 JoystickView(motorSpeed: $motorSpeed)
@@ -59,6 +60,7 @@ struct ControlView: View {
             
             
         }.onAppear {
+            //TODO: move this elsewhere
             centralService
                 .inputSubject
                 .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true).sink { data in

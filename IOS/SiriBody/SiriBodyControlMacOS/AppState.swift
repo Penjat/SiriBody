@@ -4,6 +4,7 @@ import Combine
 class AppState: ObservableObject {
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
     let robitPositionService = RobitPositionService()
+    let sceneKitInteractor = SceneKitInteractor()
     
     var bag = Set<AnyCancellable>()
     
