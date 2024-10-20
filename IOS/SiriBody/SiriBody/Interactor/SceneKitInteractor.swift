@@ -8,17 +8,26 @@ enum CameraPosition: String, CaseIterable {
     case side
 }
 
-class SceneKitInteractor: ObservableObject {
+class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     @Published var realRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var cameraPosition = CameraPosition.overhead
 
     var bag = Set<AnyCancellable>()
-    let virtualRobitInteractor: VirtualRobitInteractor
+    var virtualRobitInteractor: VirtualRobitInteractor!
 
-    init(virtualRobitInteractor: VirtualRobitInteractor) {
+    override init() {
+        super.init()
+    }
+
+    convenience init(virtualRobitInteractor: VirtualRobitInteractor) {
+        self.init()
         self.virtualRobitInteractor = virtualRobitInteractor
     }
-    
+
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        virtualRobitInteractor.updateRobit()
+    }
+
 
     // MARK: Cameras
 

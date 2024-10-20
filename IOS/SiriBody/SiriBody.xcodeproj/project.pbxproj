@@ -49,6 +49,7 @@
 		0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */; };
 		1A78AD532CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
 		1A78AD542CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
+		1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
@@ -492,6 +493,7 @@
 				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
+				1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */,
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
 				0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
 				0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */,

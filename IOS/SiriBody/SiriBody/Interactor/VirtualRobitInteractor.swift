@@ -5,15 +5,20 @@ import SceneKit
 class VirtualRobitInteractor: ObservableObject {
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
+    @Published var speedFactor = 0.05
+    @Published var turnFactor = 0.005
+    @Published var maxVelocity = 20.0
 
-    var bag = Set<AnyCancellable>()
+    public func updateRobit() {
+        guard let robit = virtualRobit else { return }
+        let forwardBackward = Double(motorSpeed.motor1Speed + motorSpeed.motor2Speed)*(-speedFactor)
+        let leftRight = Double(motorSpeed.motor1Speed - motorSpeed.motor2Speed) * turnFactor
 
-    init() {
-        $motorSpeed.sink { [weak self] speed in
-            print("applying force")
-            self?.virtualRobit?.physicsBody?.applyForce(SCNVector3(speed.motor1Speed, Int(0.0), speed.motor1Speed), at: SCNVector3(x: 5, y: 0, z: 0),asImpulse: false)
-            self?.virtualRobit?.physicsBody?.applyForce(SCNVector3(speed.motor2Speed, Int(0.0), speed.motor2Speed), at: SCNVector3(x: -5, y: 0, z: 0), asImpulse: false)
-        }.store(in: &bag)
+        let forwardVelocity = SCNVector3(x: robit.worldForward.x*forwardBackward, y: robit.worldForward.y*forwardBackward, z: robit.worldForward.z*forwardBackward)
+        robit.physicsBody?.velocity = forwardVelocity
+
+        let angularVelocityY = Float(leftRight)
+        robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
     }
 
     lazy var virtualRobit: SCNNode? = {
@@ -25,7 +30,7 @@ class VirtualRobitInteractor: ObservableObject {
         modelNode.addChildNode(virtualRobitCam)
         virtualRobitCam.position = SCNVector3(0, 150, -35)
 
-        let boxGeometry = SCNBox(width: 5, height: 5, length: 5, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0.0)
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = NSColor.gray
         boxGeometry.materials = [boxMaterial]
@@ -40,7 +45,7 @@ class VirtualRobitInteractor: ObservableObject {
 
         return modelNode
     }()
-    
+
     lazy var virtualRobitCam = {
         let cameraNode = SCNNode()
         cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)

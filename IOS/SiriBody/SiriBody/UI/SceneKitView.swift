@@ -10,7 +10,8 @@ struct SceneKitView: NSViewRepresentable {
         let scnView = SCNView(frame: .zero)
         scnView.scene = interactor.scene
         scnView.backgroundColor = NSColor.darkGray
-        
+        scnView.delegate = interactor
+
         return scnView
     }
     
