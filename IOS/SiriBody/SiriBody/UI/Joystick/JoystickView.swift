@@ -51,7 +51,7 @@ struct JoystickView: View {
                         }
                     }.stroke(.blue, lineWidth: 6)
                 }
-            }.frame(width:400, height: 400)
+            }.frame(width:200, height: 200)
         }
         .padding()
         

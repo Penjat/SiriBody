@@ -1,13 +1,6 @@
 import SwiftUI
 import ARKit
 
-struct RobitState {
-    let devicePosition: SIMD3<Float>
-    let deviceOrientation: SIMD3<Float>
-    let trackingStatus: ARCamera.TrackingState?
-    let linearVelocity: SIMD3<Float>?
-    let gravity: SIMD4<Float>
-}
 
 class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
     @Published var robitState: RobitState?
@@ -58,7 +51,7 @@ class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
         RobitState(
             devicePosition: position,
             deviceOrientation: SIMD3(pitch, yaw, roll),
-            trackingStatus: frame.camera.trackingState,
+//            trackingStatus: frame.camera.trackingState,
             linearVelocity: linearVelocity,
             gravity: transform.columns.2 * -1)
     }

@@ -4,8 +4,8 @@ import SceneKit
 
 class VirtualRobitInteractor: ObservableObject {
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
-    @Published var speedFactor = 0.05
-    @Published var turnFactor = 0.005
+    @Published var speedFactor = 0.03
+    @Published var turnFactor = 0.03
     @Published var maxVelocity = 20.0
 
     public func updateRobit() {
@@ -29,7 +29,7 @@ class VirtualRobitInteractor: ObservableObject {
         modelNode.addChildNode(virtualRobitCam)
         virtualRobitCam.position = SCNVector3(0, 150, -35)
 
-        let boxGeometry = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0.0)
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = NSColor.gray
         boxGeometry.materials = [boxMaterial]

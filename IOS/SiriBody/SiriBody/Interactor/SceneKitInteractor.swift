@@ -36,7 +36,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        camera.zFar = 10000.0
+        camera.zFar = 100000.0
 
         return cameraNode
     }()

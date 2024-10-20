@@ -42,11 +42,18 @@
 		0BF870022CBFF8D5004FCD87 /* SiriBody.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */; };
 		0BF870042CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */; };
 		0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */; };
-		0BF8700B2CC4030E004FCD87 /* SiriBodyReal.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870072CC4030E004FCD87 /* SiriBodyReal.mtl */; };
-		0BF8700C2CC4030E004FCD87 /* SiriBodyReal.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */; };
-		0BF8700D2CC4030E004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */; };
-		0BF8700E2CC4030E004FCD87 /* SiriBodyVirtual.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */; };
 		0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */; };
+		0BF870112CC549A0004FCD87 /* PIDMotionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* PIDMotionControl.swift */; };
+		0BF870162CC54A5A004FCD87 /* RobitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870152CC54A5A004FCD87 /* RobitState.swift */; };
+		0BF870172CC54B8A004FCD87 /* RobitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870152CC54A5A004FCD87 /* RobitState.swift */; };
+		0BF8701C2CC54F04004FCD87 /* SiriBodyVirtual.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870182CC54F04004FCD87 /* SiriBodyVirtual.mtl */; };
+		0BF8701D2CC54F04004FCD87 /* SiriBodyVirtual.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870182CC54F04004FCD87 /* SiriBodyVirtual.mtl */; };
+		0BF8701E2CC54F04004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870192CC54F04004FCD87 /* SiriBodyVirtual.obj */; };
+		0BF8701F2CC54F04004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870192CC54F04004FCD87 /* SiriBodyVirtual.obj */; };
+		0BF870202CC54F04004FCD87 /* SiriBodyReal.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8701A2CC54F04004FCD87 /* SiriBodyReal.mtl */; };
+		0BF870212CC54F04004FCD87 /* SiriBodyReal.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8701A2CC54F04004FCD87 /* SiriBodyReal.mtl */; };
+		0BF870222CC54F04004FCD87 /* SiriBodyReal.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8701B2CC54F04004FCD87 /* SiriBodyReal.obj */; };
+		0BF870232CC54F04004FCD87 /* SiriBodyReal.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8701B2CC54F04004FCD87 /* SiriBodyReal.obj */; };
 		1A78AD532CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
 		1A78AD542CBF81D00070D3F6 /* RobitPositionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */; };
 		1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
@@ -104,11 +111,12 @@
 		0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.obj; sourceTree = "<group>"; };
 		0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.mtl; sourceTree = "<group>"; };
 		0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitInteractor.swift; sourceTree = "<group>"; };
-		0BF870072CC4030E004FCD87 /* SiriBodyReal.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.mtl; path = ../../../../../Models/SiriBodyReal.mtl; sourceTree = "<group>"; };
-		0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.obj; path = ../../../../../Models/SiriBodyReal.obj; sourceTree = "<group>"; };
-		0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.obj; path = ../../../../../Models/SiriBodyVirtual.obj; sourceTree = "<group>"; };
-		0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.mtl; path = ../../../../../Models/SiriBodyVirtual.mtl; sourceTree = "<group>"; };
 		0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualRobitInteractor.swift; sourceTree = "<group>"; };
+		0BF870152CC54A5A004FCD87 /* RobitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitState.swift; sourceTree = "<group>"; };
+		0BF870182CC54F04004FCD87 /* SiriBodyVirtual.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.mtl; path = ../../../../Models/SiriBodyVirtual.mtl; sourceTree = "<group>"; };
+		0BF870192CC54F04004FCD87 /* SiriBodyVirtual.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.obj; path = ../../../../Models/SiriBodyVirtual.obj; sourceTree = "<group>"; };
+		0BF8701A2CC54F04004FCD87 /* SiriBodyReal.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.mtl; path = ../../../../Models/SiriBodyReal.mtl; sourceTree = "<group>"; };
+		0BF8701B2CC54F04004FCD87 /* SiriBodyReal.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.obj; path = ../../../../Models/SiriBodyReal.obj; sourceTree = "<group>"; };
 		1A78AD522CBF81D00070D3F6 /* RobitPositionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitPositionService.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
@@ -166,11 +174,13 @@
 			children = (
 				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
 				0BCEAE532CAD8402008B663D /* AppState.swift */,
+				0BF870122CC549F0004FCD87 /* Model */,
 				0BF86FB22CB3A131004FCD87 /* Control */,
 				0BCEAE592CAD87B5008B663D /* Service */,
 				0BCEAE5E2CADD131008B663D /* Interactor */,
 				0BCEAE5A2CAD87C9008B663D /* UI */,
 				0BF86FA92CB3952D004FCD87 /* Utility */,
+				0BF870062CC402F1004FCD87 /* 3DModels */,
 				0BCEAE492CA7637A008B663D /* Assets.xcassets */,
 				0BCEAE4B2CA7637A008B663D /* Preview Content */,
 			);
@@ -206,7 +216,6 @@
 				0BF86FAE2CB3A03A004FCD87 /* Status */,
 				0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */,
 				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
-				0BF870062CC402F1004FCD87 /* 3DModels */,
 				0BCEAE5B2CADD051008B663D /* Joystick */,
 			);
 			path = UI;
@@ -301,14 +310,22 @@
 		0BF870062CC402F1004FCD87 /* 3DModels */ = {
 			isa = PBXGroup;
 			children = (
-				0BF870072CC4030E004FCD87 /* SiriBodyReal.mtl */,
-				0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */,
-				0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */,
-				0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */,
+				0BF8701A2CC54F04004FCD87 /* SiriBodyReal.mtl */,
+				0BF8701B2CC54F04004FCD87 /* SiriBodyReal.obj */,
+				0BF870182CC54F04004FCD87 /* SiriBodyVirtual.mtl */,
+				0BF870192CC54F04004FCD87 /* SiriBodyVirtual.obj */,
 				0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */,
 				0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */,
 			);
 			path = 3DModels;
+			sourceTree = "<group>";
+		};
+		0BF870122CC549F0004FCD87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BF870152CC54A5A004FCD87 /* RobitState.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,9 +431,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF870012CBFF8D5004FCD87 /* SiriBody.mtl in Resources */,
+				0BF870202CC54F04004FCD87 /* SiriBodyReal.mtl in Resources */,
+				0BF870222CC54F04004FCD87 /* SiriBodyReal.obj in Resources */,
 				0BCEAE4D2CA7637A008B663D /* Preview Assets.xcassets in Resources */,
 				0BCEAE4A2CA7637A008B663D /* Assets.xcassets in Resources */,
 				0BF86FFF2CBFF8D5004FCD87 /* SiriBody.obj in Resources */,
+				0BF8701E2CC54F04004FCD87 /* SiriBodyVirtual.obj in Resources */,
+				0BF8701C2CC54F04004FCD87 /* SiriBodyVirtual.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,14 +452,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF8700D2CC4030E004FCD87 /* SiriBodyVirtual.obj in Resources */,
-				0BF8700C2CC4030E004FCD87 /* SiriBodyReal.obj in Resources */,
-				0BF8700E2CC4030E004FCD87 /* SiriBodyVirtual.mtl in Resources */,
-				0BF8700B2CC4030E004FCD87 /* SiriBodyReal.mtl in Resources */,
 				0BF870022CBFF8D5004FCD87 /* SiriBody.mtl in Resources */,
+				0BF870212CC54F04004FCD87 /* SiriBodyReal.mtl in Resources */,
+				0BF870232CC54F04004FCD87 /* SiriBodyReal.obj in Resources */,
 				0BF86FD92CB617C3004FCD87 /* Preview Assets.xcassets in Resources */,
 				0BF86FD62CB617C3004FCD87 /* Assets.xcassets in Resources */,
 				0BF870002CBFF8D5004FCD87 /* SiriBody.obj in Resources */,
+				0BF8701F2CC54F04004FCD87 /* SiriBodyVirtual.obj in Resources */,
+				0BF8701D2CC54F04004FCD87 /* SiriBodyVirtual.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +475,7 @@
 				0BCEAE542CAD8402008B663D /* AppState.swift in Sources */,
 				0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */,
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
+				0BF870162CC54A5A004FCD87 /* RobitState.swift in Sources */,
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
 				0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */,
 				0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */,
@@ -489,6 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF870112CC549A0004FCD87 /* PIDMotionControl.swift in Sources */,
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
 				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */,
@@ -498,6 +521,7 @@
 				0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
 				0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */,
 				1AE096622CBE03B90038B2CA /* SceneKitView.swift in Sources */,
+				0BF870172CC54B8A004FCD87 /* RobitState.swift in Sources */,
 				1AE096632CBE03DC0038B2CA /* CentralService.swift in Sources */,
 				1AE096642CBE03DC0038B2CA /* TransferService.swift in Sources */,
 				1A78AD542CBF81D00070D3F6 /* RobitPositionService.swift in Sources */,
