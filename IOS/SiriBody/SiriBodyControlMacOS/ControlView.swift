@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import SceneKit
 
 struct ControlView: View {
     @EnvironmentObject var centralService: CentralService
@@ -20,11 +21,17 @@ struct ControlView: View {
             HStack {
                 JoystickView(motorSpeed: $virtualRobitInteractor.motorSpeed)
                 VStack {
+                    Text("reset")
                     HStack {
                         Button {
                             sceneKitInteractor.resetVirtualRobitPosition()
                         } label: {
-                            Text("reset 0")
+                            Text("(0,0)")
+                        }
+                        Button {
+                            sceneKitInteractor.resetVirtualRobitPosition(sceneKitInteractor.realRobit?.position ?? SCNVector3(x: 0, y: 0, z: 0), sceneKitInteractor.realRobit?.eulerAngles ?? SCNVector3(x: 0, y: 0, z: 0))
+                        } label: {
+                            Text("real robit")
                         }
                     }
                     Picker(selection: $sceneKitInteractor.cameraPosition) {

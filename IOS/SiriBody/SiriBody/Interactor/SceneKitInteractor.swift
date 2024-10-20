@@ -62,6 +62,49 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     }()
 
 
+    // MARK: Robits
+
+
+    lazy var realRobit: SCNNode? = {
+        guard let scene = SCNScene(named: "SiriBodyReal.obj"), let modelNode = scene.rootNode.childNodes.first else {
+            print("Error: Failed to load the scene")
+            return nil
+        }
+        modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        modelNode.addChildNode(realRobitCam)
+        realRobitCam.position = SCNVector3(0, 150, -35)
+
+        return modelNode
+    }()
+
+    lazy var mainFloor = {
+        let boxGeometry = SCNBox(width: 100, height: 1, length: 100, chamferRadius: 0.0)
+        let boxMaterial = SCNMaterial()
+        boxMaterial.diffuse.contents = NSColor.gray
+        boxGeometry.materials = [boxMaterial]
+
+        let boxNode = SCNNode(geometry: boxGeometry)
+        let physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+        physicsBody.mass = 1.0
+        boxNode.physicsBody = physicsBody
+        boxNode.position = SCNVector3(x: 0, y: -1, z: 0)
+        return boxNode
+    }()
+
+    lazy var mainLight = {
+        let light = SCNLight()
+        light.type = .ambient
+        light.color = NSColor.white
+        light.intensity = 1000
+
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3(x: 0, y: 5, z: 10)
+
+        return lightNode
+    }()
+
+
     // MARK: Cameras
 
 
@@ -124,48 +167,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
         
         return scene
     }()
-    
-    
-    
-    lazy var realRobit: SCNNode? = {
-        guard let scene = SCNScene(named: "SiriBodyReal.obj"), let modelNode = scene.rootNode.childNodes.first else {
-            print("Error: Failed to load the scene")
-            return nil
-        }
-        modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        modelNode.addChildNode(realRobitCam)
-        realRobitCam.position = SCNVector3(0, 150, -35)
-       
-        return modelNode
-    }()
-    
-    lazy var mainFloor = {
-        let boxGeometry = SCNBox(width: 100, height: 1, length: 100, chamferRadius: 0.0)
-        let boxMaterial = SCNMaterial()
-        boxMaterial.diffuse.contents = NSColor.gray
-        boxGeometry.materials = [boxMaterial]
-        
-        let boxNode = SCNNode(geometry: boxGeometry)
-        let physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        physicsBody.mass = 1.0
-        boxNode.physicsBody = physicsBody
-        boxNode.position = SCNVector3(x: 0, y: -1, z: 0)
-        return boxNode
-    }()
-    
-    lazy var mainLight = {
-        let light = SCNLight()
-        light.type = .ambient
-        light.color = NSColor.white
-        light.intensity = 1000
-        
-        let lightNode = SCNNode()
-        lightNode.light = light
-        lightNode.position = SCNVector3(x: 0, y: 5, z: 10)
-        
-        return lightNode
-    }()
-    
+
     private func updateVirtualRobit(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
         guard let virtualRobit = virtualRobitInteractor.virtualRobit else { return }
         virtualRobit.position = SCNVector3(x: CGFloat(position.x*10), y: 0.0, z: CGFloat(position.z*10))
@@ -190,6 +192,12 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
         virtualRobitInteractor.virtualRobit?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
         virtualRobitInteractor.virtualRobit?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitInteractor.virtualRobit?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+    }
+
+    public func resetVirtualRobitPosition(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
+        virtualRobitInteractor.virtualRobit?.position = position.asSCNVector3
+        virtualRobitInteractor.virtualRobit?.eulerAngles = orientation.asSCNVector3
         virtualRobitInteractor.virtualRobit?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
     }
 }

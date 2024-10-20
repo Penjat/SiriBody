@@ -4,7 +4,6 @@ import SceneKit
 
 class VirtualRobitInteractor: ObservableObject {
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
-    @Published var virtualRobitPosition = RobitPosition(position: SIMD3<Float>(0, 0, 0), orientation: SIMD3<Float>(0, 0, 0))
     @Published var speedFactor = 0.05
     @Published var turnFactor = 0.005
     @Published var maxVelocity = 20.0

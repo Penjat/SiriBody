@@ -24,3 +24,9 @@ extension SCNVector3 {
         return SCNVector3(x / length, y / length, z / length)
     }
 }
+
+extension SIMD3<Float> {
+    var asSCNVector3: SCNVector3 {
+        return SCNVector3(self.x, self.y, self.z)
+    }
+}
