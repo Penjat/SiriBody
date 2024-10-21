@@ -10,9 +10,13 @@ enum CameraPosition: String, CaseIterable {
 
 class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     @Published var cameraPosition = CameraPosition.overhead
+    @Published var realRobitState = RobitState.zero
+    @Published var virtualRobit = VirtualRobitInterface()
 
     var bag = Set<AnyCancellable>()
-    let virtualRobit = VirtualRobitInterface()
+
+
+
 
     override init() {
         super.init()
@@ -37,14 +41,12 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
                 }
             }
             .store(in: &bag)
-    }
 
-    func syncRealRobit(_ realRobitPublisher: any Publisher<RobitState, Never>) {
-        realRobitPublisher
+        $realRobitState
             .sink { [weak self] state in
-                self?.updateRealRobit(state.position, state.orientation)
-            }
-            .store(in: &bag)
+            self?.updateRealRobit(state.position, state.orientation)
+        }
+        .store(in: &bag)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {

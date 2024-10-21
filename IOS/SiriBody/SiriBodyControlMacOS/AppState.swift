@@ -3,12 +3,13 @@ import Combine
 
 class AppState: ObservableObject {
 
-    let virtualRobitBrain: RobitBrain
+    @Published var virtualRobitBrain: RobitBrain
+    @Published var sceneKitInteractor = SceneKitInteractor()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
     //    let robitPositionService: RobitPositionService
-    @Published var sceneKitInteractor = SceneKitInteractor()
+
 
     var bag = Set<AnyCancellable>()
 
@@ -55,19 +56,22 @@ class AppState: ObservableObject {
         }.store(in: &bag)
 
         // Phone Input to Real RobitState
-        // TODO: Make this work
-//        centralService
-//            .inputSubject
-//            .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
-//            .compactMap { data -> RobitState? in
-//                guard let state = StateData.createFrom(data: data) else {
-//                    return nil
-//                }
-//                switch state {
-//                case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
-//                    return RobitState(position: position, orientation: orientation)
-//                }
-//
-//            }.assign(to: &$realRobitState)
+        centralService
+            .inputSubject
+            .throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
+            .compactMap { data -> RobitState? in
+                guard let state = StateData.createFrom(data: data) else {
+                    return nil
+                }
+                switch state {
+                case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
+                    return RobitState(position: position, orientation: orientation)
+                }
+
+            }.assign(to: &sceneKitInteractor.$realRobitState)
+
+        virtualRobitBrain
+            .$motorSpeed
+            .assign(to: &sceneKitInteractor.virtualRobit.$motorSpeed)
     }
 }

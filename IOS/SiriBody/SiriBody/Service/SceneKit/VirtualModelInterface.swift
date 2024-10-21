@@ -5,15 +5,15 @@ import SwiftUI
 
 class VirtualRobitInterface: ObservableObject {
 
-    @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
+    @Published var motorSpeed = MotorOutput.zero
     @Published var speedFactor = 0.05
     @Published var turnFactor = 0.005
     @Published var maxVelocity = 20.0
 
     public func updateRobit() {
         guard let robit = node else { return }
-        let forwardBackward = Double(motorSpeed.motor1Speed + motorSpeed.motor2Speed)*(-speedFactor)
-        let leftRight = Double(motorSpeed.motor1Speed - motorSpeed.motor2Speed) * turnFactor
+        let forwardBackward = Double(motorSpeed.motor1 + motorSpeed.motor2)*(-speedFactor)
+        let leftRight = Double(motorSpeed.motor1 - motorSpeed.motor2) * turnFactor
 
         let forwardVelocity = SCNVector3(x: robit.worldForward.x*forwardBackward, y: robit.worldForward.y*forwardBackward, z: robit.worldForward.z*forwardBackward)
         robit.physicsBody?.velocity = forwardVelocity

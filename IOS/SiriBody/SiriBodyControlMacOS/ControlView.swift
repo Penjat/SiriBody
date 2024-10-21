@@ -3,7 +3,7 @@ import Combine
 import SceneKit
 
 struct ControlView: View {
-
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
 //    @EnvironmentObject var virtualRobitInterface: VirtualRobitInterface
 
@@ -14,7 +14,7 @@ struct ControlView: View {
             SceneKitView(interactor: sceneKitInteractor)
 
             HStack {
-//                JoystickView(motorSpeed: $sceneKitInteractor.virtualRobit.motorSpeed).frame(width: 420)
+                JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobit.motorSpeed).frame(width: 420)
                 Spacer()
                 VStack {
                     Picker(selection: $sceneKitInteractor.cameraPosition) {

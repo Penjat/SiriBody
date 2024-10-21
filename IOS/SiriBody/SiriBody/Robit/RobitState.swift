@@ -12,4 +12,9 @@ struct RobitState {
         self.linearVelocity = linearVelocity
         self.gravity = gravity
     }
+
+    static var zero: RobitState {
+        RobitState(position: SIMD3<Float>.zero,
+                   orientation: SIMD3<Float>.zero)
+    }
 }
