@@ -1,10 +1,10 @@
 import CoreLocation
-import SwiftUI
+import Combine
 
-class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationService: NSObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
 
-    @Published var location: CLLocation?
+    let locationSubject = PassthroughSubject<CLLocation, Never>()
 
     override init() {
         super.init()
@@ -16,6 +16,6 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
-        self.location = newLocation
+        self.locationSubject.send(newLocation)
     }
 }

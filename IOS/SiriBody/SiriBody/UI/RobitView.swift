@@ -2,13 +2,6 @@ import SwiftUI
 import Combine
 
 struct RobitView: View {
-    @EnvironmentObject var robitStateService: RealityKitService
-    @EnvironmentObject var movementInteractor: MovementInteractor
-    @EnvironmentObject var peripheralService: PeripheralService
-    @EnvironmentObject var goalInteractor: GoalInteractor
-    
-    @StateObject var pidControl = PIDRotationControl()
-    @StateObject var pidMotionControl = PIDMotionControl()
 
     @State var motionEnabled = false
     @State var bag = Set<AnyCancellable>()
@@ -17,7 +10,7 @@ struct RobitView: View {
         VStack {
         ScrollView {
             
-                RealityKitStatusView()
+//                RealityKitStatusView()
                 Spacer()
             switch goalInteractor.command {
             case .turnTo(let angle):
@@ -214,47 +207,11 @@ struct RobitView: View {
             BluetoothStatusView()
             PeripheralStatusView()
         }.onAppear {
-            robitStateService.$robitState.compactMap{ $0 }.sink { state in
-                // TODO: Eventually move this logic somewhere else
-                guard let command = goalInteractor.command else {
-                    return
-                }
-                switch command {
-                case .turnTo(angle: _):
-                    let turnVector = pidControl.motorOutput(currentYaw: Double(state.deviceOrientation.z))
-                    print(turnVector)
-                    
-                    let forwardBackward = 0.0
-                    let leftRight = max(-254,min(254,(turnVector)))
-                    
-                    let motor1Speed = max(-254,min(254,(forwardBackward - leftRight)))
-                    let motor2Speed = max(-254,min(254,(forwardBackward + leftRight)))
-                    
-                    if motionEnabled {
-                        movementInteractor.motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
-                    }
-                    
-                case .moveTo(x: _, z: _):
-                    if motionEnabled, let robitState = robitStateService.robitState {
-                        movementInteractor.motorSpeed = pidMotionControl.motorSpeeds(robitState: robitState)
-                    }
-                    break
-                }
+            
 
+            
 
-            }.store(in: &bag)
-            robitStateService.$robitState.compactMap{ $0 }.sink { state in
-                
-                peripheralService.outputSubject.send(StateData.positionOrientation(devicePosition: state.devicePosition, deviceOrientation: state.deviceOrientation).toData())
-            }.store(in: &bag)
-
-            peripheralService.inputSubject.sink { data in
-                print("recieved command! ")
-                guard let command = Command.createFrom(data: data) else {
-                    return
-                }
-                goalInteractor.command = command
-            }.store(in: &bag)
+            
             
             goalInteractor.$command.sink { command in
                 print("command updated")

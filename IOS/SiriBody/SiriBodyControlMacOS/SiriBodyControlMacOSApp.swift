@@ -8,9 +8,8 @@ struct SiriBodyControlMacOSApp: App {
         Window("First Window", id: "window1") {
             ControlView()
                 .environmentObject(appState)
-                .environmentObject(appState.centralService)
-                .environmentObject(appState.robitPositionService)
                 .environmentObject(appState.sceneKitInteractor)
+                .environmentObject(appState.bluetoothInteractor)
                 .environmentObject(appState.virtualRobitInteractor)
         }
     }

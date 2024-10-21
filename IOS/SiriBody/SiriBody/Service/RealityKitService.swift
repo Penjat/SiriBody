@@ -1,17 +1,26 @@
-import SwiftUI
+import Combine
 import ARKit
 
-struct RobitState {
+
+struct RealityKitState {
     let devicePosition: SIMD3<Float>
     let deviceOrientation: SIMD3<Float>
     let trackingStatus: ARCamera.TrackingState?
     let linearVelocity: SIMD3<Float>?
     let gravity: SIMD4<Float>
+
+    static var zero: RealityKitState {
+        return RealityKitState(devicePosition: SIMD3<Float>(0,0,0),
+                               deviceOrientation: SIMD3<Float>(0,0,0),
+                               trackingStatus: .none,
+                               linearVelocity: SIMD3<Float>(0,0,0),
+                               gravity: SIMD4<Float>(0,0,0,0))
+    }
 }
 
-class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
-    @Published var robitState: RobitState?
-    
+class RealityKitService: NSObject, ARSessionDelegate {
+    public let realityKitStateSubject = PassthroughSubject<RealityKitState, Never>()
+
     private var lastPosition: SIMD3<Float>?
     private var lastUpdateTime: Date?
     private var session: ARSession
@@ -49,18 +58,18 @@ class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
                 linearVelocity = deltaPosition / Float(deltaTime)
             }
         }
-        
-        // Update last position and time
+
         self.lastPosition = position
         self.lastUpdateTime = Date()
         
-        self.robitState = 
-        RobitState(
+        let state = RealityKitState(
             devicePosition: position,
             deviceOrientation: SIMD3(pitch, yaw, roll),
             trackingStatus: frame.camera.trackingState,
             linearVelocity: linearVelocity,
             gravity: transform.columns.2 * -1)
+
+        realityKitStateSubject.send(state)
     }
 
     
@@ -74,5 +83,3 @@ class RealityKitService: NSObject, ObservableObject, ARSessionDelegate {
         session.run(configuration)
     }
 }
-
-

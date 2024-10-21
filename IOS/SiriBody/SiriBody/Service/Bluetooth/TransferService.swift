@@ -6,7 +6,7 @@ class TransferService {
     static let siriBodyCharUUID = CBUUID(string: "FFE1")
     static let startingCharacter: UInt8 = 0x02
     static let endingCharacter: UInt8 = 0x03
-    
+
     static let phoneServiceUUID = CBUUID(string: "FFE5")
     static let phoneCharUUID = CBUUID(string: "FFE6")
 }
@@ -19,7 +19,7 @@ enum StateData {
     case positionOrientation(
         devicePosition: SIMD3<Float>,
         deviceOrientation: SIMD3<Float>)
-    
+
     static func createFrom(data: Data) -> StateData? {
         switch StateCode.init(rawValue: data[0]) {
         case .update:
@@ -50,7 +50,7 @@ enum StateData {
             return nil
         }
     }
-    
+
     func toData() -> Data {
         switch self {
         case .positionOrientation(devicePosition: let position, deviceOrientation: let orientation):
@@ -82,7 +82,7 @@ enum Command {
             return nil
         }
     }
-    
+
     func toData() -> Data {
         switch self {
         case .turnTo(angle: let angle):
@@ -96,14 +96,14 @@ enum Command {
 func rotationToData(value: Double) -> Data {
     // Ensure the value is within the specified range
     let clampedValue = min(max(value, -Double.pi), Double.pi)
-    
+
     // Scale the value and convert to Int16 (precision to two decimal places)
     let scaledValue = Int16(clampedValue * 100)  // 100 for 2 decimal places
-    
+
     // Convert Int16 to Data
     var data = Data()
     data.append(contentsOf: withUnsafeBytes(of: scaledValue.bigEndian) { Array($0) })
-    
+
     return data
 }
 
@@ -117,7 +117,7 @@ func floatsToData(_ firstDouble: Double, _ secondDouble: Double) -> Data {
     var first = Float(firstDouble)
     var second = Float(secondDouble)
     var data = Data()
-    
+
     withUnsafeBytes(of: &first) { bytes in
         data.append(contentsOf: bytes)
     }
@@ -146,10 +146,10 @@ func dataToFloats(_ data: Data) -> (Float, Float)? {
     }
 }
 
-                             func dataToSIMD3Float(_ data: Data) -> SIMD3<Float>? {
-                guard data.count == MemoryLayout<SIMD3<Float>>.size else {
-                    return nil
-                }
-                return data.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
-            }
-                             
+func dataToSIMD3Float(_ data: Data) -> SIMD3<Float>? {
+    guard data.count == MemoryLayout<SIMD3<Float>>.size else {
+        return nil
+    }
+    return data.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
+}
+

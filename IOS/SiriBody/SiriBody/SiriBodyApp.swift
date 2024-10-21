@@ -7,13 +7,8 @@ struct SiriBodyApp: App {
         WindowGroup {
             TitleView()
                 .environmentObject(appState)
-                .environmentObject(appState.centralService)
-                .environmentObject(appState.motionService)
-//                .environmentObject(appState.locationService)
                 .environmentObject(appState.goalInteractor)
                 .environmentObject(appState.movementInteractor)
-                .environmentObject(appState.peripheralService)
-                .environmentObject(appState.realityKitService)
         }
     }
 }

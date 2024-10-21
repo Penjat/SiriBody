@@ -22,7 +22,7 @@ struct TitleView: View {
                         NavigationLink("Reality Kit 👩🏻‍💻",
                                        destination:
                                         VStack {
-                            RealityKitStatusView()
+//                            RealityKitStatusView()
                             MotionStatusView()
                         }
 )

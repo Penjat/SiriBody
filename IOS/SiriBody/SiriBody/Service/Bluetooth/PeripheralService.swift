@@ -2,11 +2,8 @@ import Foundation
 import Combine
 import CoreBluetooth
 
-// Central Service and Transfer Service in Sharred Folder
 
-
-
-class PeripheralService: NSObject, ObservableObject {
+class PeripheralService: NSObject {
     enum ConnectionState {
         case advertising
         case connected(CBCentral)
@@ -19,9 +16,9 @@ class PeripheralService: NSObject, ObservableObject {
     
     let inputSubject = PassthroughSubject<Data, Never>()
     let outputSubject = PassthroughSubject<Data, Never>()
-    
+    let connectionStateSubject = CurrentValueSubject<ConnectionState, Never>(.disconnected)
+
     var transferCharacteristic: CBMutableCharacteristic?
-    @Published var connectionState = ConnectionState.disconnected
 
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
@@ -38,8 +35,7 @@ class PeripheralService: NSObject, ObservableObject {
                     print("Characteristic not found")
                     return
                 }
-                
-                // Update the characteristic value and notify subscribers
+
                 let success = self?.peripheralManager?.updateValue(data, for: transferCharacteristic, onSubscribedCentrals: nil) ?? false
                 
                 if success {
@@ -55,33 +51,28 @@ class PeripheralService: NSObject, ObservableObject {
 extension PeripheralService: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
-            // Start advertising as a peripheral once the manager is powered on
             startAdvertising()
 
         }
     }
     
     func startAdvertising() {
-        // Create a characteristic with properties for reading/writing
         transferCharacteristic = CBMutableCharacteristic(
             type: charUUID,
             properties: [.writeWithoutResponse, .read, .notify],
             value: nil,
             permissions: [.readable, .writeable]
         )
-        
-        // Create a service and add the characteristic to it
+
         let service = CBMutableService(type: serviceUUID, primary: true)
         service.characteristics = [transferCharacteristic!]
-        
-        // Add the service to the peripheral manager
+
         peripheralManager?.add(service)
-        
-        // Start advertising the service
+
         peripheralManager?.startAdvertising([
             CBAdvertisementDataServiceUUIDsKey: [serviceUUID]
         ])
-        connectionState = .advertising
+        connectionStateSubject.send(.advertising)
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
@@ -110,12 +101,10 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
-        // Respond to read requests here if needed
         peripheralManager?.respond(to: request, withResult: .success)
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
-        print("connected!!!!!")
-        connectionState = .connected(central)
+        connectionStateSubject.send(.connected(central))
     }
 }

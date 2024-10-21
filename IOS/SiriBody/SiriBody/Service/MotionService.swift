@@ -2,6 +2,7 @@ import Foundation
 import CoreMotion
 import Combine
 
+// TODO: Refactor to use combine and not be observable
 class MotionService: ObservableObject {
     let motionManager = CMMotionManager()
     @Published var position: CMDeviceMotion?

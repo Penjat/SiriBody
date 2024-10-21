@@ -2,12 +2,12 @@ import SwiftUI
 import simd
 
 struct RealityKitStatusView: View {
-    @EnvironmentObject var realityKitService: RealityKitService
-    
+    @Binding var realityKitState: RealityKitState?
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            if let robitState = realityKitService.robitState {
-                Text("Status: \(trackingStatusDescription)")
+            if let robitState = realityKitState {
+//                Text("Status: \(trackingStatusDescription)")
                 Text("x: \(robitState.devicePosition.x, specifier: "%.2f"), y: \(robitState.devicePosition.y, specifier: "%.2f"), z: \(robitState.devicePosition.z, specifier: "%.2f")")
                 
                 
@@ -26,29 +26,29 @@ struct RealityKitStatusView: View {
     }
     
     // Helper to format tracking status
-    private var trackingStatusDescription: String {
-        switch realityKitService.robitState?.trackingStatus {
-        case .notAvailable:
-            return "Not Available"
-        case .normal:
-            return "Normal"
-        case .limited(let reason):
-            switch reason {
-            case .excessiveMotion:
-                return "Limited: Excessive Motion"
-            case .insufficientFeatures:
-                return "Limited: Insufficient Features"
-            case .initializing:
-                return "Limited: Initializing"
-            case .relocalizing:
-                return "Limited: Relocalizing"
-            @unknown default:
-                return "Unknown"
-            }
-        default:
-            return "Unknown"
-        }
-    }
+//    private var trackingStatusDescription: String {
+//        switch realityKitService.robitState?.trackingStatus {
+//        case .notAvailable:
+//            return "Not Available"
+//        case .normal:
+//            return "Normal"
+//        case .limited(let reason):
+//            switch reason {
+//            case .excessiveMotion:
+//                return "Limited: Excessive Motion"
+//            case .insufficientFeatures:
+//                return "Limited: Insufficient Features"
+//            case .initializing:
+//                return "Limited: Initializing"
+//            case .relocalizing:
+//                return "Limited: Relocalizing"
+//            @unknown default:
+//                return "Unknown"
+//            }
+//        default:
+//            return "Unknown"
+//        }
+//    }
     
     // Helper to format a matrix
     private func matrixDescription(_ matrix: simd_float4x4) -> String {

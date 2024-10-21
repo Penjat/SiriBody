@@ -1,8 +1,10 @@
 import Foundation
 import Combine
 import SceneKit
+import SwiftUI
 
 class VirtualRobitInteractor: ObservableObject {
+
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     @Published var speedFactor = 0.05
     @Published var turnFactor = 0.005

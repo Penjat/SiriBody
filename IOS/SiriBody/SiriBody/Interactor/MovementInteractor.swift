@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+
 enum ConnectionMode {
     case bluetooth(service: CentralService)
     case sceneKit
@@ -14,7 +15,6 @@ class MovementInteractor: ObservableObject {
         switch mode {
         case .bluetooth(service: let bluetoothService):
             $motorSpeed.sink { (motor1Speed, motor2Speed) in
-                //Only write code here
                 let motorDirectionByte = UInt8((motor1Speed > 0 ? 1 : 0) + (motor2Speed > 0 ? 2 : 0))
                 let motor1Byte = UInt8(abs(motor1Speed))
                 let motor2Byte = UInt8(abs(motor2Speed))

@@ -1,26 +1,25 @@
 import CoreBluetooth
 import Combine
 
+class CentralService: NSObject {
+    var serviceUUID: CBUUID!
+    var charUUID: CBUUID!
 
-
-class CentralService: NSObject, ObservableObject {
     enum ConnectionState {
         case scanning
         case connected(CBPeripheral)
         case disconnected
     }
+    
     var centralManager: CBCentralManager!
     var discoveredPeripheral: CBPeripheral?
     var transferCharacteristic: CBCharacteristic?
      
     let centralState = PassthroughSubject<CBManagerState, Never>()
+    let connectionStateSubject = CurrentValueSubject<ConnectionState, Never>(.disconnected)
+
     let inputSubject = PassthroughSubject<Data, Never>()
     let outputSubject = PassthroughSubject<Data, Never>()
-    
-    @Published var connectionState = ConnectionState.disconnected
-    
-    var serviceUUID: CBUUID!
-    var charUUID: CBUUID!
     
     var bag = Set<AnyCancellable>()
     
@@ -50,7 +49,7 @@ extension CentralService: CBCentralManagerDelegate {
     
     func stopScanning() {
         centralManager.stopScan()
-        connectionState = .disconnected
+        connectionStateSubject.send(.disconnected)
     }
     
     func retrievePeripheral() {
@@ -61,7 +60,7 @@ extension CentralService: CBCentralManagerDelegate {
             centralManager.connect(connectedPeripheral, options: nil)
         } else {
             print("scaning...")
-            connectionState = .scanning
+            connectionStateSubject.send(.scanning)
             centralManager.scanForPeripherals(withServices: [serviceUUID],
                                                options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         }
@@ -78,12 +77,12 @@ extension CentralService: CBCentralManagerDelegate {
         centralManager.stopScan()
         peripheral.delegate = self
         peripheral.discoverServices([serviceUUID])
-        connectionState = .connected(peripheral)
+        connectionStateSubject.send(.connected(peripheral))
         print("connected")
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
-        connectionState = .disconnected
+        connectionStateSubject.send(.disconnected)
     }
 }
 
