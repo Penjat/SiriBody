@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct JoystickView: View {
-    @Binding var motorSpeed: (motor1Speed: Int, motor2Speed: Int)
+    @Binding var motorSpeed: MotorOutput
     @State var touchPoint: CGPoint?
     @State var turnSensitivity = 1.0
     @State var speedDamping = 1.0
@@ -14,9 +14,9 @@ struct JoystickView: View {
             Text("speed damping: \(Int(100 - speedDamping*100))%")
             Slider(value: $speedDamping, in: 0.2...1.0)
             HStack {
-                Text("\(motorSpeed.motor1Speed)")
+                Text("\(motorSpeed.motor1)")
                 Spacer()
-                Text("\(motorSpeed.motor2Speed)")
+                Text("\(motorSpeed.motor2)")
             }.font(.title3)
             Spacer()
             GeometryReader { geometry in
@@ -26,7 +26,7 @@ struct JoystickView: View {
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onEnded { value in
-                                    motorSpeed = (motor1Speed: 0, motor2Speed:  0)
+                                    motorSpeed = MotorOutput.zero
                                     touchPoint = nil
                                 }
                                 .onChanged { value in
@@ -38,9 +38,8 @@ struct JoystickView: View {
                                     let motor1Speed = max(-254,min(254,(forwardBackward + leftRight)))*(-1)*speedDamping
                                     let motor2Speed = max(-254,min(254,(forwardBackward - leftRight)))*(-1)*speedDamping
                                     
-                                    motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
+                                    motorSpeed = MotorOutput(motor1: Int(motor1Speed), motor2: Int(motor2Speed))
                                     touchPoint = value.location
-                                    
                                 }
                         )
                     Path { path in
@@ -54,6 +53,5 @@ struct JoystickView: View {
             }.frame(width:400, height: 400)
         }
         .padding()
-        
     }
 }

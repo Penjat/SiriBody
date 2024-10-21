@@ -7,8 +7,7 @@ struct SiriBodyApp: App {
         WindowGroup {
             TitleView()
                 .environmentObject(appState)
-                .environmentObject(appState.goalInteractor)
-                .environmentObject(appState.movementInteractor)
+
         }
     }
 }

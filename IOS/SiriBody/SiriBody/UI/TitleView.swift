@@ -14,7 +14,7 @@ struct TitleView: View {
                         Spacer().frame(height: 40)
                         NavigationLink("Joystick 🕹️",
                                        destination:
-                                        JoystickView(motorSpeed: $appState.movementInteractor.motorSpeed))
+                                        JoystickView(motorSpeed: $appState.robitBrain.motorSpeed))
                         NavigationLink("Motion Status",
                                        destination: MotionStatusView())
                         NavigationLink("PID 🎚️🎚️🎚️",

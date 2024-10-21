@@ -9,31 +9,62 @@ class AppState: ObservableObject {
     @Published var realityKitState = RealityKitState.zero
     @Published var motionEnabled = false
 
+    // Control
+    @Published var robitBrain: RobitBrain
+    @Published var pidMotionControl = PIDMotionControl()
+
     // Service
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
     let peripheralService = PeripheralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
-    let motionService = MotionService()
     let realityKitService = RealityKitService()
-
-    // Interactor
-    @Published var movementInteractor: MovementInteractor
-    @Published var goalInteractor = GoalInteractor()
-
-    // Control
-    @Published var pidControl = PIDRotationControl()
-    @Published var pidMotionControl = PIDMotionControl()
 
     var bag = Set<AnyCancellable>()
 
     init() {
-        self.movementInteractor = MovementInteractor(mode: .bluetooth(service: centralService))
 
-        //        motionService.startPositionUpdates()
+        // Just return 0 for now
+        var controlLogic:  (RobitState?, Command?) -> MotorOutput = { state, command in
+            return MotorOutput.zero
+        }
 
+        // just return origional command for now
+        var objectiveLogic:  (RobitState?, Command?) -> Command? = { state, command in
+            return command
+        }
+
+        self.robitBrain = RobitBrain(
+            controlLogic: controlLogic,
+            objectiveLogic: objectiveLogic)
+
+        setUpSubscriptions()
     }
 
     func setUpSubscriptions() {
-        centralService.centralState.sink { [weak self] state in
+
+        // Realitykit state
+        realityKitService
+            .realityKitStateSubject
+            .assign(to: &$realityKitState)
+
+        // Process Incomming Command form bluetooth
+        peripheralService
+            .inputSubject
+            .compactMap { Command.createFrom(data: $0) }
+            .assign(to: &robitBrain.$command)
+
+        // RobitBrain process new state
+        realityKitService
+            .realityKitStateSubject
+            .map { RobitState(position: $0.devicePosition,
+                              orientation: $0.deviceOrientation,
+                              linearVelocity: $0.linearVelocity,
+                              gravity: $0.gravity)}
+            .assign(to: &robitBrain.$state)
+
+        // Scan for wheels
+        centralService
+            .centralState
+            .sink { [weak self] state in
             switch state {
 
             case .unknown:
@@ -54,56 +85,21 @@ class AppState: ObservableObject {
             }
         }.store(in: &bag)
 
-        realityKitService
-            .realityKitStateSubject
-            .assign(to: &$realityKitState)
+        // Transmit Robit State
+        //TODO: make sure this works
+        robitBrain
+            .$state
+            .compactMap { [weak self] in self?.transmitDevicePosition ?? false ? $0 : nil}
+            .compactMap { state -> Data? in StateData.positionOrientation(devicePosition: state.position, deviceOrientation: state.orientation).toData() }
+            .subscribe(peripheralService.outputSubject)
+            .store(in: &bag)
 
-
-        peripheralService
-            .inputSubject
-            .compactMap { Command.createFrom(data: $0) }
-            .assign(to: &goalInteractor.$command)
-
-
-        realityKitService
-            .realityKitStateSubject
-            .map { RobitState(position: $0.devicePosition,
-                              orientation: $0.deviceOrientation,
-                              linearVelocity: $0.linearVelocity,
-                              gravity: $0.gravity)}
-            .sink { [weak self] state in
-
-            guard let self, let command = goalInteractor.command, motionEnabled else {
-                return
-            }
-            switch command {
-            case .turnTo(angle: _):
-                let turnVector = pidControl.motorOutput(currentYaw: Double(state.orientation.z))
-                print(turnVector)
-
-                let forwardBackward = 0.0
-                let leftRight = max(-254,min(254,(turnVector)))
-
-                let motor1Speed = max(-254,min(254,(forwardBackward - leftRight)))
-                let motor2Speed = max(-254,min(254,(forwardBackward + leftRight)))
-
-                if motionEnabled {
-                    movementInteractor.motorSpeed = (motor1Speed: Int(motor1Speed), motor2Speed: Int(motor2Speed))
-                }
-
-            case .moveTo(x: _, z: _):
-                if motionEnabled {
-                    movementInteractor.motorSpeed = pidMotionControl.motorSpeeds(robitState: state)
-                }
-                break
-            }
-
-        }.store(in: &bag)
-
-
-        //            .$robitState.compactMap{ $0 }.sink { state in
-        //
-        //            peripheralService.outputSubject.send(StateData.positionOrientation(devicePosition: state.devicePosition, deviceOrientation: state.deviceOrientation).toData())
-        //        }.store(in: &bag)
+        // Send output to wheels
+        //TODO: make sure this works
+        robitBrain
+            .$motorSpeed
+            .compactMap { TransferService.bluetoothMessageFor(motorOutput: $0) }
+            .subscribe(centralService.outputSubject)
+            .store(in: &bag)
     }
 }

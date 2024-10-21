@@ -61,9 +61,9 @@ class PIDMotionControl: ObservableObject {
         lastUpdateTime = currentTime
         
         // Calculate the vector from the current position to the target position
-        let deltaX = target.x - Double(robitState.devicePosition.x)
-        let deltaZ = target.z - Double(robitState.devicePosition.z)
-        
+        let deltaX = target.x - Double(robitState.position.x)
+        let deltaZ = target.z - Double(robitState.position.z)
+
         // Calculate the distance to the target
         let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
         guard distance > 0.02 else {
@@ -75,7 +75,7 @@ class PIDMotionControl: ObservableObject {
         let desiredHeading = atan2(deltaZ, deltaX) // In radians
 
         // Calculate the smallest difference between the desired heading and current yaw
-        let currentAngle = Double(robitState.deviceOrientation.z)+(Double.pi/2)
+        let currentAngle = Double(robitState.orientation.z)+(Double.pi/2)
 
         var angleDifference = desiredHeading - currentAngle
         // Normalize the angle difference to be within -π to π

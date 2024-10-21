@@ -3,7 +3,7 @@ import Combine
 import SceneKit
 import SwiftUI
 
-class VirtualRobitInteractor: ObservableObject {
+class VirtualRobitInterface: ObservableObject {
 
     @Published var motorSpeed = (motor1Speed: 0, motor2Speed: 0)
     @Published var speedFactor = 0.05
@@ -11,7 +11,7 @@ class VirtualRobitInteractor: ObservableObject {
     @Published var maxVelocity = 20.0
 
     public func updateRobit() {
-        guard let robit = virtualRobit else { return }
+        guard let robit = node else { return }
         let forwardBackward = Double(motorSpeed.motor1Speed + motorSpeed.motor2Speed)*(-speedFactor)
         let leftRight = Double(motorSpeed.motor1Speed - motorSpeed.motor2Speed) * turnFactor
 
@@ -22,7 +22,7 @@ class VirtualRobitInteractor: ObservableObject {
         robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
     }
 
-    lazy var virtualRobit: SCNNode? = {
+    lazy var node: SCNNode? = {
         guard let scene = SCNScene(named: "SiriBodyVirtual.obj"), let modelNode = scene.rootNode.childNodes.first else {
             print("Error: Failed to load the scene")
             return nil

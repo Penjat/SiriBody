@@ -13,13 +13,11 @@
 		0BCEAE542CAD8402008B663D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE532CAD8402008B663D /* AppState.swift */; };
 		0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE552CAD844F008B663D /* TitleView.swift */; };
 		0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
-		0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */; };
 		0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE622CAED0D1008B663D /* CentralService.swift */; };
 		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
 		0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 		0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE692CB3350B008B663D /* MotionService.swift */; };
 		0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
-		0BF86FAD2CB39EE0004FCD87 /* GoalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAC2CB39EE0004FCD87 /* GoalInteractor.swift */; };
 		0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FB02CB3A08B004FCD87 /* RobitView.swift */; };
 		0BF86FB42CB3A19C004FCD87 /* PIDRotationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FB32CB3A19C004FCD87 /* PIDRotationControl.swift */; };
 		0BF86FBC2CB41509004FCD87 /* SiriBodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */; };
@@ -45,20 +43,22 @@
 		0BF8700C2CC4030E004FCD87 /* SiriBodyReal.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */; };
 		0BF8700D2CC4030E004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */; };
 		0BF8700E2CC4030E004FCD87 /* SiriBodyVirtual.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */; };
-		0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */; };
+		0BF870102CC43EE7004FCD87 /* VirtualModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualModelInterface.swift */; };
 		1A78AD532CBF81D00070D3F6 /* RobitPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */; };
 		1A78AD542CBF81D00070D3F6 /* RobitPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */; };
 		1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
-		1A78AD572CC567650070D3F6 /* JoystickPresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD562CC567650070D3F6 /* JoystickPresenterView.swift */; };
 		1A78AD592CC568E40070D3F6 /* VirtualRobiPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */; };
 		1A78AD5B2CC56AB10070D3F6 /* CommandPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */; };
-		1A78AD5D2CC56BC90070D3F6 /* CommandInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD5C2CC56BC90070D3F6 /* CommandInteractor.swift */; };
-		1A78AD612CC594CF0070D3F6 /* BluetoothInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD5F2CC593FC0070D3F6 /* BluetoothInteractor.swift */; };
-		1A78AD622CC596390070D3F6 /* BluetoothInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD5F2CC593FC0070D3F6 /* BluetoothInteractor.swift */; };
 		1A78AD632CC597600070D3F6 /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FC62CB61015004FCD87 /* PeripheralService.swift */; };
 		1A78AD662CC5C7DE0070D3F6 /* RobitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */; };
 		1A78AD672CC5E7E30070D3F6 /* RobitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */; };
-		1A78AD682CC5F1F20070D3F6 /* CommandInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD5C2CC56BC90070D3F6 /* CommandInteractor.swift */; };
+		1A78AD692CC600850070D3F6 /* VirtualModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualModelInterface.swift */; };
+		1A78AD722CC60AF50070D3F6 /* MotorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD712CC60AF50070D3F6 /* MotorOutput.swift */; };
+		1A78AD732CC60AF50070D3F6 /* MotorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD712CC60AF50070D3F6 /* MotorOutput.swift */; };
+		1A78AD782CC6E2430070D3F6 /* RobitBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */; };
+		1A78AD792CC6E2430070D3F6 /* RobitBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */; };
+		1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
+		1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
@@ -86,13 +86,11 @@
 		0BCEAE532CAD8402008B663D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BCEAE552CAD844F008B663D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BCEAE572CAD8627008B663D /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
-		0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementInteractor.swift; sourceTree = "<group>"; };
 		0BCEAE622CAED0D1008B663D /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
 		0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusView.swift; sourceTree = "<group>"; };
 		0BCEAE692CB3350B008B663D /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+ApproximatelyEqual.swift"; sourceTree = "<group>"; };
-		0BF86FAC2CB39EE0004FCD87 /* GoalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInteractor.swift; sourceTree = "<group>"; };
 		0BF86FB02CB3A08B004FCD87 /* RobitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitView.swift; sourceTree = "<group>"; };
 		0BF86FB32CB3A19C004FCD87 /* PIDRotationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDRotationControl.swift; sourceTree = "<group>"; };
 		0BF86FB92CB41509004FCD87 /* SiriBodyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriBodyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,14 +114,14 @@
 		0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.obj; path = ../../../../../Models/SiriBodyReal.obj; sourceTree = "<group>"; };
 		0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.obj; path = ../../../../../Models/SiriBodyVirtual.obj; sourceTree = "<group>"; };
 		0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.mtl; path = ../../../../../Models/SiriBodyVirtual.mtl; sourceTree = "<group>"; };
-		0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualRobitInteractor.swift; sourceTree = "<group>"; };
+		0BF8700F2CC43EE7004FCD87 /* VirtualModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualModelInterface.swift; sourceTree = "<group>"; };
 		1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitPosition.swift; sourceTree = "<group>"; };
-		1A78AD562CC567650070D3F6 /* JoystickPresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickPresenterView.swift; sourceTree = "<group>"; };
 		1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualRobiPanelView.swift; sourceTree = "<group>"; };
 		1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPanelView.swift; sourceTree = "<group>"; };
-		1A78AD5C2CC56BC90070D3F6 /* CommandInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandInteractor.swift; sourceTree = "<group>"; };
-		1A78AD5F2CC593FC0070D3F6 /* BluetoothInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothInteractor.swift; sourceTree = "<group>"; };
 		1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitState.swift; sourceTree = "<group>"; };
+		1A78AD712CC60AF50070D3F6 /* MotorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorOutput.swift; sourceTree = "<group>"; };
+		1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitBrain.swift; sourceTree = "<group>"; };
+		1A78AD7B2CC6FB060070D3F6 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -180,10 +178,9 @@
 			children = (
 				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
 				0BCEAE532CAD8402008B663D /* AppState.swift */,
-				1A78AD642CC5C7CD0070D3F6 /* Model */,
+				1A78AD762CC6E2310070D3F6 /* Robit */,
 				0BF86FB22CB3A131004FCD87 /* Control */,
 				0BCEAE592CAD87B5008B663D /* Service */,
-				0BCEAE5E2CADD131008B663D /* Interactor */,
 				0BCEAE5A2CAD87C9008B663D /* UI */,
 				0BF86FA92CB3952D004FCD87 /* Utility */,
 				0BCEAE492CA7637A008B663D /* Assets.xcassets */,
@@ -207,6 +204,7 @@
 				0BCEAE692CB3350B008B663D /* MotionService.swift */,
 				1AD974612CB3766F00DF80C2 /* LocationService.swift */,
 				0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */,
+				1A78AD742CC611570070D3F6 /* SceneKit */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -231,19 +229,6 @@
 				0BCEAE572CAD8627008B663D /* JoystickView.swift */,
 			);
 			path = Joystick;
-			sourceTree = "<group>";
-		};
-		0BCEAE5E2CADD131008B663D /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				0BCEAE5F2CADD191008B663D /* MovementInteractor.swift */,
-				0BF86FAC2CB39EE0004FCD87 /* GoalInteractor.swift */,
-				0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */,
-				0BF8700F2CC43EE7004FCD87 /* VirtualRobitInteractor.swift */,
-				1A78AD5C2CC56BC90070D3F6 /* CommandInteractor.swift */,
-				1A78AD5F2CC593FC0070D3F6 /* BluetoothInteractor.swift */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		0BCEAE612CAECFBE008B663D /* Bluetooth */ = {
@@ -298,7 +283,6 @@
 				0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */,
 				0BF86FDE2CB61951004FCD87 /* AppState.swift */,
 				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
-				1A78AD562CC567650070D3F6 /* JoystickPresenterView.swift */,
 				1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */,
 				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
 				0BF86FD52CB617C3004FCD87 /* Assets.xcassets */,
@@ -329,13 +313,25 @@
 			path = 3DModels;
 			sourceTree = "<group>";
 		};
-		1A78AD642CC5C7CD0070D3F6 /* Model */ = {
+		1A78AD742CC611570070D3F6 /* SceneKit */ = {
 			isa = PBXGroup;
 			children = (
+				0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */,
+				0BF8700F2CC43EE7004FCD87 /* VirtualModelInterface.swift */,
+			);
+			path = SceneKit;
+			sourceTree = "<group>";
+		};
+		1A78AD762CC6E2310070D3F6 /* Robit */ = {
+			isa = PBXGroup;
+			children = (
+				1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */,
 				1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */,
 				1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */,
+				1A78AD712CC60AF50070D3F6 /* MotorOutput.swift */,
+				1A78AD7B2CC6FB060070D3F6 /* Command.swift */,
 			);
-			path = Model;
+			path = Robit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,7 +474,6 @@
 			files = (
 				0BF86FB42CB3A19C004FCD87 /* PIDRotationControl.swift in Sources */,
 				1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */,
-				1A78AD5D2CC56BC90070D3F6 /* CommandInteractor.swift in Sources */,
 				0BCEAE542CAD8402008B663D /* AppState.swift in Sources */,
 				0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */,
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
@@ -488,18 +483,19 @@
 				1A78AD532CBF81D00070D3F6 /* RobitPosition.swift in Sources */,
 				0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */,
 				0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */,
+				1A78AD692CC600850070D3F6 /* VirtualModelInterface.swift in Sources */,
+				1A78AD782CC6E2430070D3F6 /* RobitBrain.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
 				0BF870042CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */,
-				0BF86FAD2CB39EE0004FCD87 /* GoalInteractor.swift in Sources */,
+				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
 				1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */,
+				1A78AD722CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
-				1A78AD622CC596390070D3F6 /* BluetoothInteractor.swift in Sources */,
 				1A78AD662CC5C7DE0070D3F6 /* RobitState.swift in Sources */,
 				0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */,
 				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
-				0BCEAE602CADD191008B663D /* MovementInteractor.swift in Sources */,
 				1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */,
 				0BF86FF32CBA23D6004FCD87 /* PIDMotionControl.swift in Sources */,
 			);
@@ -520,22 +516,22 @@
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
 				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
-				0BF870102CC43EE7004FCD87 /* VirtualRobitInteractor.swift in Sources */,
+				0BF870102CC43EE7004FCD87 /* VirtualModelInterface.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
 				1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */,
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
-				1A78AD682CC5F1F20070D3F6 /* CommandInteractor.swift in Sources */,
 				0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
 				1A78AD592CC568E40070D3F6 /* VirtualRobiPanelView.swift in Sources */,
+				1A78AD732CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
+				1A78AD792CC6E2430070D3F6 /* RobitBrain.swift in Sources */,
+				1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */,
 				0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */,
 				1A78AD632CC597600070D3F6 /* PeripheralService.swift in Sources */,
 				1A78AD672CC5E7E30070D3F6 /* RobitState.swift in Sources */,
 				1AE096622CBE03B90038B2CA /* SceneKitView.swift in Sources */,
-				1A78AD572CC567650070D3F6 /* JoystickPresenterView.swift in Sources */,
 				1AE096632CBE03DC0038B2CA /* CentralService.swift in Sources */,
 				1A78AD5B2CC56AB10070D3F6 /* CommandPanelView.swift in Sources */,
 				1AE096642CBE03DC0038B2CA /* TransferService.swift in Sources */,
-				1A78AD612CC594CF0070D3F6 /* BluetoothInteractor.swift in Sources */,
 				1A78AD542CBF81D00070D3F6 /* RobitPosition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
