@@ -16,12 +16,12 @@ class AppState: ObservableObject {
     init() {
 
         // Just return 0 for now
-        var controlLogic:  (RobitState?, Command?) -> MotorOutput = { state, command in
-            return MotorOutput.zero
+        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { state, command in
+            return nil
         }
 
         // just return origional command for now
-        var objectiveLogic:  (RobitState?, Command?) -> Command? = { state, command in
+        let objectiveLogic:  (RobitState?, Command?) -> Command? = { state, command in
             return command
         }
 
@@ -70,8 +70,11 @@ class AppState: ObservableObject {
 
             }.assign(to: &sceneKitInteractor.$realRobitState)
 
+        // RobitBrain to Virtual Body
         virtualRobitBrain
             .$motorSpeed
-            .assign(to: &sceneKitInteractor.virtualRobit.$motorSpeed)
+            .assign(to: &sceneKitInteractor.virtualRobitBody.$motorSpeed)
+
+        sceneKitInteractor.virtualRobitBody.$state.assign(to: &virtualRobitBrain.$state)
     }
 }

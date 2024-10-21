@@ -11,13 +11,10 @@ enum CameraPosition: String, CaseIterable {
 class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     @Published var cameraPosition = CameraPosition.overhead
     @Published var realRobitState = RobitState.zero
-    @Published var virtualRobit = VirtualRobitInterface()
+    @Published var virtualRobitBody = VirtualRobitBody()
 
     var bag = Set<AnyCancellable>()
-
-
-
-
+    
     override init() {
         super.init()
 
@@ -31,7 +28,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
                 case .real:
                     realRobitCam.addChildNode(camera)
                 case .virtual:
-                    virtualRobit
+                    virtualRobitBody
                         .virtualRobitCam
                         .addChildNode(camera)
                 case .overhead:
@@ -50,7 +47,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        virtualRobit.updateRobit()
+        virtualRobitBody.updateRobit()
     }
 
 
@@ -140,7 +137,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
         scene.rootNode.addChildNode(mainFloor)
         scene.rootNode.addChildNode(overheadCam)
         
-        if let virtualRobit = virtualRobit.node {
+        if let virtualRobit = virtualRobitBody.node {
             scene.rootNode.addChildNode(virtualRobit)
         }
         
@@ -190,14 +187,14 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     }
 
     public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
-        virtualRobit.node?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
-        virtualRobit.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
-        virtualRobit.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitBody.node?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitBody.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
     }
 
     public func resetVirtualRobitPosition(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
-        virtualRobit.node?.position = position.asSCNVector3
-        virtualRobit.node?.eulerAngles = orientation.asSCNVector3
-        virtualRobit.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitBody.node?.position = position.asSCNVector3
+        virtualRobitBody.node?.eulerAngles = orientation.asSCNVector3
+        virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
     }
 }

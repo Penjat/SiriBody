@@ -5,7 +5,6 @@ import SceneKit
 struct ControlView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
-//    @EnvironmentObject var virtualRobitInterface: VirtualRobitInterface
 
     @State var bag = Set<AnyCancellable>()
     
@@ -14,7 +13,7 @@ struct ControlView: View {
             SceneKitView(interactor: sceneKitInteractor)
 
             HStack {
-                JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobit.motorSpeed).frame(width: 420)
+                JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobitBody.motorSpeed).frame(width: 420)
                 Spacer()
                 VStack {
                     Picker(selection: $sceneKitInteractor.cameraPosition) {
@@ -28,16 +27,16 @@ struct ControlView: View {
 //                    VirtualRobiPanelView()
 
 
-//                    Text(robitState)
+                    Text(robitState)
                     BluetoothStatusView()
                 }.frame(width: 420)
             }
             
         }
     }
-//    var robitState: String {
-//        return "x:\(appState.realRobitState?.position.x), y: \(appState.realRobitState?.position.y), z:\(appState.realRobitState?.position.z), pitch:\(appState.realRobitState?.position.x), yaw: \(appState.realRobitState?.position.y), roll:\(appState.realRobitState?.position.z)"
-//    }
+    var robitState: String {
+        return "x:\(appState.virtualRobitBrain.state.position.x), y: \(appState.virtualRobitBrain.state.position.y), z:\(appState.virtualRobitBrain.state.position.z), pitch:\(appState.virtualRobitBrain.state.position.x), yaw: \(appState.virtualRobitBrain.state.position.y), roll:\(appState.virtualRobitBrain.state.position.z)"
+    }
 }
 
 #Preview {

@@ -3,12 +3,13 @@ import Combine
 import SceneKit
 import SwiftUI
 
-class VirtualRobitInterface: ObservableObject {
+class VirtualRobitBody: ObservableObject {
 
     @Published var motorSpeed = MotorOutput.zero
     @Published var speedFactor = 0.05
     @Published var turnFactor = 0.005
     @Published var maxVelocity = 20.0
+    @Published var state = RobitState.zero
 
     public func updateRobit() {
         guard let robit = node else { return }
@@ -20,6 +21,8 @@ class VirtualRobitInterface: ObservableObject {
 
         let angularVelocityY = Float(leftRight)
         robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
+
+        state = RobitState(position: robit.position.asSIMD3Float, orientation: robit.eulerAngles.asSIMD3Float)
     }
 
     lazy var node: SCNNode? = {

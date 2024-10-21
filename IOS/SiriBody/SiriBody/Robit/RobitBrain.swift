@@ -20,12 +20,12 @@ class RobitBrain: ObservableObject {
     @Published var motorSpeed = MotorOutput(motor1: 0, motor2: 0)
 
 
-    init(controlLogic: @escaping (RobitState, Command?) -> (MotorOutput),
+    init(controlLogic: @escaping (RobitState, Command?) -> (MotorOutput?),
          objectiveLogic: @escaping (RobitState, Command?) -> (Command?)) {
 
         $state
             .combineLatest($command)
-            .map { controlLogic($0, $1)}
+            .compactMap { controlLogic($0, $1)}
             .assign(to: &$motorSpeed)
 
         $state
