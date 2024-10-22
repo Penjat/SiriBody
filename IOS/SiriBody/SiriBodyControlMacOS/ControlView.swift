@@ -26,7 +26,8 @@ struct ControlView: View {
                     }.pickerStyle(SegmentedPickerStyle())
 
                     VirtualRobiPanelView()
-
+                    CommandPanelView()
+                    PIDControlView(pidMotionControl: appState.pidController)
 
                     Text(robitState)
                     BluetoothStatusView()

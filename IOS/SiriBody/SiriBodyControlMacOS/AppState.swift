@@ -16,9 +16,24 @@ class AppState: ObservableObject {
     init() {
 
         // Just return 0 for now
-        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { state, command in
-            
-            return nil
+        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { [weak self] state, command -> MotorOutput? in
+               guard let self, let state else {
+                   return nil
+               }
+               switch command {
+               case .moveTo(x: let x, z: let z):
+                   if let target = pidController.target, target.x == x, target.z == z {
+
+                   } else {
+                       pidController.target = (x: x, z: z)
+                   }
+
+               default:
+                   break
+               }
+            let speed = pidController.motorSpeeds(robitState: state)
+            print(speed)
+               return speed
         }
 
         // just return origional command for now

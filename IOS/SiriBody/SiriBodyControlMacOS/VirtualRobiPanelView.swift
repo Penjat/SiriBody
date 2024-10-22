@@ -17,11 +17,7 @@ struct VirtualRobiPanelView: View {
                 } label: {
                     Text("real robit")
                 }
-                Button {
-                    print(sceneKitInteractor.virtualRobitBody.node?.position)
-                } label: {
-                    Text("print pos")
-                }
+                
             }
         }.padding().background(.thinMaterial).cornerRadius(8, antialiased: true)
     }

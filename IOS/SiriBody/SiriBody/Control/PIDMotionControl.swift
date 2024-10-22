@@ -2,12 +2,12 @@ import SwiftUI
 import Combine
 
 class PIDMotionControl: ObservableObject {
-    @Published var motionEnabled = false
-    @Published var rotationEnabled = false
+    @Published var motionEnabled = true
+    @Published var rotationEnabled = true
     @Published var target: (x: Double, z: Double)?
     
     // PID constants for distance control
-    @Published var kpDistance: Double = 1.0
+    @Published var kpDistance: Double = 700.0
     @Published var kiDistance: Double = 0.0
     @Published var kdDistance: Double = 0.0
     
@@ -16,7 +16,7 @@ class PIDMotionControl: ObservableObject {
     @Published var dDistanceIsOn = true
     
     // PID constants for angle control
-    @Published var kpAngle: Double = 1.0
+    @Published var kpAngle: Double = 400.0
     @Published var kiAngle: Double = 0.0
     @Published var kdAngle: Double = 0.0
     
