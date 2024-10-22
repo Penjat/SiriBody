@@ -29,7 +29,8 @@ class AppState: ObservableObject {
                    }
 
                default:
-                   pidController.target = nil
+                   break;
+//                   pidController.target = nil
                }
             let speed = pidController.motorSpeeds(robitState: state)
             print(speed)

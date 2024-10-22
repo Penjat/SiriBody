@@ -8,6 +8,7 @@ struct CommandPanelView: View {
     @State var y = ""
     var body: some View {
         VStack {
+           
             HStack {
                 TextField(text: $x) {
                     Text("x:")

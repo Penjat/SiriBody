@@ -4,7 +4,11 @@ struct PIDControlView: View {
     @ObservedObject var pidMotionControl: PIDMotionControl
     var body: some View {
         VStack {
-            Text("movement:")
+
+            HStack {
+                Text("movement:")
+                Toggle("motion", isOn: $pidMotionControl.motionEnabled)
+            }
             HStack {
                 VStack {
                     Toggle("", isOn: $pidMotionControl.pDistanceIsOn)
@@ -29,7 +33,10 @@ struct PIDControlView: View {
 
             }.padding()
                 .background(.regularMaterial).cornerRadius(8)
-            Text("movement+angle:")
+            HStack {
+                Text("rotation:")
+                Toggle("motion", isOn: $pidMotionControl.motionEnabled)
+            }
             HStack {
                 VStack {
                     Toggle("", isOn: $pidMotionControl.pAngleIsOn)
