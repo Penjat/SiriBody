@@ -2,7 +2,7 @@ import Foundation
 
 
 
-enum Command {
+enum Command: Equatable {
     enum CommandCode: UInt8 {
         case turnTo = 1
         case moveTo = 2

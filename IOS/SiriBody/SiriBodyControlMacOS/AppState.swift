@@ -3,12 +3,12 @@ import Combine
 
 class AppState: ObservableObject {
 
-    @Published var virtualRobitBrain: RobitBrain
+    @Published var virtualRobitBrain: RobitBrain!
     @Published var sceneKitInteractor = SceneKitInteractor()
+    @Published var pidController = PIDMotionControl()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
-    //    let robitPositionService: RobitPositionService
 
 
     var bag = Set<AnyCancellable>()
@@ -17,6 +17,7 @@ class AppState: ObservableObject {
 
         // Just return 0 for now
         let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { state, command in
+            
             return nil
         }
 
@@ -70,11 +71,17 @@ class AppState: ObservableObject {
 
             }.assign(to: &sceneKitInteractor.$realRobitState)
 
-        // RobitBrain to Virtual Body
+        // RobitBrain to VirtualBody
         virtualRobitBrain
             .$motorSpeed
             .assign(to: &sceneKitInteractor.virtualRobitBody.$motorSpeed)
 
-        sceneKitInteractor.virtualRobitBody.$state.assign(to: &virtualRobitBrain.$state)
+        // VirtualBody to RobitBrain
+        sceneKitInteractor
+            .virtualRobitBody
+            .$state
+            .subscribe(on: RunLoop.main)
+            .receive(on: RunLoop.main)
+            .assign(to: &virtualRobitBrain.$state)
     }
 }

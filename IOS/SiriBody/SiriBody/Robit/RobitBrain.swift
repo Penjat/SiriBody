@@ -12,7 +12,7 @@ class RobitBrain: ObservableObject {
     // As Complexity grows, more parameters will be added
 
 
-    @Published var state = RobitState(position: SIMD3<Float>.zero, orientation: SIMD3<Float>.zero)
+    @Published var state = RobitState.zero
 
     //TODO: Refactor Command to be Objective
     @Published var command: Command? = nil

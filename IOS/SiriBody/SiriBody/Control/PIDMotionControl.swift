@@ -46,9 +46,9 @@ class PIDMotionControl: ObservableObject {
         }.store(in: &bag)
     }
     
-    func motorSpeeds(robitState: RobitState) -> (motor1Speed: Int, motor2Speed: Int) {
+    func motorSpeeds(robitState: RobitState) -> MotorOutput {
         guard let target else {
-            return (motor1Speed: 0, motor2Speed: 0)
+            return MotorOutput.zero
         }
         
         let currentTime = Date()
@@ -68,7 +68,7 @@ class PIDMotionControl: ObservableObject {
         let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
         guard distance > 0.02 else {
             self.target = nil
-            return (motor1Speed: 0, motor2Speed: 0)
+            return MotorOutput.zero
         }
         
         // Calculate the desired heading (angle) to the target
@@ -129,6 +129,6 @@ class PIDMotionControl: ObservableObject {
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
         let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))
         
-        return (motor1Speed: limitedMotor1Speed, motor2Speed: limitedMotor2Speed)
+        return MotorOutput(motor1: limitedMotor1Speed, motor2: limitedMotor2Speed)
     }
 }

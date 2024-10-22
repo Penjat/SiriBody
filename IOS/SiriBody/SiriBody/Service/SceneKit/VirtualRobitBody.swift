@@ -22,7 +22,11 @@ class VirtualRobitBody: ObservableObject {
         let angularVelocityY = Float(leftRight)
         robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
 
-        state = RobitState(position: robit.position.asSIMD3Float, orientation: robit.eulerAngles.asSIMD3Float)
+
+        print(robit.position)
+        // prints SCNVector3(0,0,0) event though I can see the object moving
+
+        state = RobitState(position: robit.presentation.simdPosition, orientation: robit.presentation.simdEulerAngles)
     }
 
     lazy var node: SCNNode? = {

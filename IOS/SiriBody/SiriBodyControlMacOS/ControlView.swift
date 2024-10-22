@@ -5,6 +5,7 @@ import SceneKit
 struct ControlView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
+    @EnvironmentObject var virtualRobitBrain: RobitBrain
 
     @State var bag = Set<AnyCancellable>()
     
@@ -24,7 +25,7 @@ struct ControlView: View {
                         Text("camera")
                     }.pickerStyle(SegmentedPickerStyle())
 
-//                    VirtualRobiPanelView()
+                    VirtualRobiPanelView()
 
 
                     Text(robitState)
@@ -35,7 +36,7 @@ struct ControlView: View {
         }
     }
     var robitState: String {
-        return "x:\(appState.virtualRobitBrain.state.position.x), y: \(appState.virtualRobitBrain.state.position.y), z:\(appState.virtualRobitBrain.state.position.z), pitch:\(appState.virtualRobitBrain.state.position.x), yaw: \(appState.virtualRobitBrain.state.position.y), roll:\(appState.virtualRobitBrain.state.position.z)"
+        return "x:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.x)), y: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.y)), z:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.z)), pitch:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.x)), yaw: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.y)), roll:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.z))"
     }
 }
 

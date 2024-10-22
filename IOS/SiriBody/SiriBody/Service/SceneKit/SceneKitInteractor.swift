@@ -187,14 +187,17 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     }
 
     public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
+        print(virtualRobitBody.node?.position)
         virtualRobitBody.node?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
         virtualRobitBody.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
         virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
     }
 
     public func resetVirtualRobitPosition(_ position: SIMD3<Float>, _ orientation: SIMD3<Float>) {
+
         virtualRobitBody.node?.position = position.asSCNVector3
         virtualRobitBody.node?.eulerAngles = orientation.asSCNVector3
         virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        print(virtualRobitBody.node?.position)
     }
 }

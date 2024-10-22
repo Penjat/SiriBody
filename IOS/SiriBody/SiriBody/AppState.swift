@@ -10,7 +10,7 @@ class AppState: ObservableObject {
     @Published var motionEnabled = false
 
     // Control
-    @Published var robitBrain: RobitBrain
+    @Published var robitBrain: RobitBrain!
     @Published var pidMotionControl = PIDMotionControl()
 
     // Service
@@ -23,8 +23,22 @@ class AppState: ObservableObject {
     init() {
 
         // Just return 0 for now
-        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { state, command in
-            return nil
+        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { [weak self] state, command -> MotorOutput? in
+            guard let self, let state else {
+                return nil
+            }
+            switch command {
+            case .moveTo(x: let x, z: let z):
+                if let target = pidMotionControl.target, target.x == x, target.z == z {
+
+                } else {
+                    pidMotionControl.target = (x: x, z: z)
+                }
+
+            default:
+                break
+            }
+            return pidMotionControl.motorSpeeds(robitState: state)
         }
 
         // just return origional command for now
@@ -95,7 +109,6 @@ class AppState: ObservableObject {
             .store(in: &bag)
 
         // Send output to wheels
-        //TODO: make sure this works
         robitBrain
             .$motorSpeed
             .compactMap { TransferService.bluetoothMessageFor(motorOutput: $0) }
