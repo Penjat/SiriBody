@@ -33,15 +33,15 @@ class AppState: ObservableObject {
 //                   pidController.target = nil
                }
             let speed = pidController.motorSpeeds(robitState: state)
-            print(speed)
+//            print(speed)
                return speed
         }
 
         // just return origional command for now
         let objectiveLogic:  (RobitState?, Command?) -> Command? = { [weak self] state, command -> Command? in
-            if let self, let state, let target = pidController.target, approximatelyEqual(target.z, Double(state.position.z), tolerance: 0.1) {
-                return nil
-            }
+//            if let self, let state, let target = pidController.target, approximatelyEqual(target.z, Double(state.position.z), tolerance: 0.1) {
+//                return nil
+//            }
             return command
         }
 

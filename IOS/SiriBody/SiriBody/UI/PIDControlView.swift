@@ -5,6 +5,9 @@ struct PIDControlView: View {
     var body: some View {
         VStack {
 
+            Text("target: \(pidMotionControl.targetRotation)")
+            Text("current: \(pidMotionControl.currentAngle)")
+
             HStack {
                 Text("movement:")
                 Toggle("motion", isOn: $pidMotionControl.motionEnabled)

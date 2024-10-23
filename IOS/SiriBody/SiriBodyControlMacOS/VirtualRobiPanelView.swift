@@ -2,6 +2,7 @@ import SwiftUI
 import SceneKit
 
 struct VirtualRobiPanelView: View {
+    @EnvironmentObject var virtualRobitBrain: RobitBrain
     @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
     var body: some View {
         VStack {
@@ -19,7 +20,22 @@ struct VirtualRobiPanelView: View {
                 }
                 
             }
+            commandText
+
         }.padding().background(.thinMaterial).cornerRadius(8, antialiased: true)
+    }
+
+    var commandText: some View {
+        if let command = virtualRobitBrain.command {
+            switch command {
+            case .turnTo(let angle):
+                Text("turnTo \(angle)")
+            case .moveTo(let x, let z):
+                Text("moveTo: (\(x), \(z))")
+            }
+        } else {
+            Text("no command")
+        }
     }
 }
 

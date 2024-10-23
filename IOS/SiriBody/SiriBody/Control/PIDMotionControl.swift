@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 class PIDMotionControl: ObservableObject {
-    @Published var motionEnabled = true
+    @Published var motionEnabled = false
     @Published var rotationEnabled = true
     @Published var target: (x: Double, z: Double)?
     
@@ -26,7 +26,10 @@ class PIDMotionControl: ObservableObject {
     
     @Published var maxMotorSpeed = 95.0      // Maximum motor speed
     @Published var minMotorSpeed = 50.0       // Minimum motor speed to overcome inertia
-    
+
+    @Published var targetRotation = 0.0
+    @Published var currentAngle = 0.0
+
     // Internal variables for PID calculations
     private var integralDistance: Double = 0.0
     private var lastErrorDistance: Double = 0.0
@@ -75,7 +78,10 @@ class PIDMotionControl: ObservableObject {
         let desiredHeading = atan2(deltaZ, deltaX) // In radians
 
         // Calculate the smallest difference between the desired heading and current yaw
-        let currentAngle = Double(robitState.orientation.z)+(Double.pi/2)
+        currentAngle = Double(robitState.orientation.z)//+(Double.pi/2)
+
+        targetRotation = desiredHeading
+
 
         var angleDifference = desiredHeading - currentAngle
         // Normalize the angle difference to be within -π to π
