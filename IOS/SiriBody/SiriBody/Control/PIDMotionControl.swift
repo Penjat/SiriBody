@@ -53,10 +53,11 @@ class PIDMotionControl: ObservableObject {
         let angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
 
         let rotationoutput = rotationController.output(angleDifference)
-        let translationoutput = 0.0
 
-        let motor1SpeedDouble = (motionEnabled ? translationoutput : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
-        let motor2SpeedDouble = (motionEnabled ? translationoutput : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
+        let translationoutput = translationController.output(Double(-deltaZ))
+
+        let motor1SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor2SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
 
 
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
