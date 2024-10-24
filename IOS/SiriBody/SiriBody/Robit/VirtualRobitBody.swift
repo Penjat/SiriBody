@@ -22,7 +22,7 @@ class VirtualRobitBody: ObservableObject {
         let angularVelocityY = Float(leftRight)
         robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
 
-        state = RobitState(position: robit.presentation.simdPosition, orientation: robit.presentation.simdEulerAngles)
+        state = RobitState(position: robit.presentation.simdPosition, orientation: SIMD3(x: robit.presentation.simdEulerAngles.x, y: robit.presentation.simdEulerAngles.y, z: robit.presentation.simdEulerAngles.z) )
     }
 
     lazy var node: SCNNode? = {
@@ -30,8 +30,11 @@ class VirtualRobitBody: ObservableObject {
             print("Error: Failed to load the scene")
             return nil
         }
+        let parentNode = SCNNode()
+        parentNode.eulerAngles = SCNVector3(0.0, 0.0, Double.pi/2)
         modelNode.scale = SCNVector3(0.01, 0.01, 0.01)
         modelNode.addChildNode(virtualRobitCam)
+        modelNode.eulerAngles = SCNVector3(0.0, 0.0, -Double.pi/2)
         virtualRobitCam.position = SCNVector3(0, 150, -35)
 
         let boxGeometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0.0)
@@ -45,9 +48,10 @@ class VirtualRobitBody: ObservableObject {
 
         let physicsBody = SCNPhysicsBody(type: .dynamic, shape: robitShape)
         physicsBody.mass = 10.0
-        modelNode.physicsBody = physicsBody
+        parentNode.addChildNode(modelNode)
+        parentNode.physicsBody = physicsBody
 
-        return modelNode
+        return parentNode
     }()
 
     lazy var virtualRobitCam = {

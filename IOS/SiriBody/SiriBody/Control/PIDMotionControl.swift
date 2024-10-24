@@ -1,6 +1,8 @@
 import SwiftUI
 import Combine
 
+typealias Position = (x: Double, z: Double)
+
 class PIDMotionControl: ObservableObject {
     @Published var motionEnabled = false
     @Published var rotationEnabled = true
@@ -10,7 +12,10 @@ class PIDMotionControl: ObservableObject {
     @Published var kpDistance: Double = 700.0
     @Published var kiDistance: Double = 0.0
     @Published var kdDistance: Double = 0.0
-    
+
+    @Published var outputDistance = 0.0
+    @Published var turnSpeed = 0.0
+
     @Published var pDistanceIsOn = true
     @Published var iDistanceIsOn = true
     @Published var dDistanceIsOn = true
@@ -48,12 +53,45 @@ class PIDMotionControl: ObservableObject {
             self.lastUpdateTime = .now
         }.store(in: &bag)
     }
-    
+
+    func calculateShortestDistance(currentAngle: Double, desiredHeading: Double) -> Double {
+        let leftDistance = desiredHeading - currentAngle
+        let rightDistance = (leftDistance >= 0) ? leftDistance-Double.pi*2 : leftDistance+Double.pi*2
+
+        return abs(leftDistance) < abs(rightDistance) ? leftDistance : rightDistance
+    }
+
+
+
     func motorSpeeds(robitState: RobitState) -> MotorOutput {
+
         guard let target else {
             return MotorOutput.zero
         }
-        
+
+        let deltaX = Double(robitState.position.x) - target.x
+        let deltaZ = Double(robitState.position.z) - target.z
+        currentAngle = Double(robitState.orientation.x)+(Double.pi/2)
+
+
+        // Calculate the angle component
+        targetRotation = atan2(deltaZ, deltaX)
+        let angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
+
+        guard !approximatelyEqual(angleDifference, 0.0, tolerance: 0.02) else {
+            return MotorOutput.zero
+        }
+
+
+        return (angleDifference > 0) ? MotorOutput(motor1: 1, motor2: -1) : MotorOutput(motor1: -1, motor2: 1)
+    }
+
+    func motorSpeeds2(robitState: RobitState) -> MotorOutput {
+        guard let target else {
+            return MotorOutput.zero
+        }
+
+        // Timing
         let currentTime = Date()
         let deltaTime: Double
         if let lastTime = lastUpdateTime {
@@ -62,46 +100,16 @@ class PIDMotionControl: ObservableObject {
             deltaTime = 0.0
         }
         lastUpdateTime = currentTime
-        
-        // Calculate the vector from the current position to the target position
-        let deltaX = target.x - Double(robitState.position.x)
-        let deltaZ = target.z - Double(robitState.position.z)
-
-        // Calculate the distance to the target
-        let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
-        guard distance > 0.02 else {
-            self.target = nil
-            return MotorOutput.zero
-        }
-        
-        // Calculate the desired heading (angle) to the target
-        let desiredHeading = atan2(deltaZ, deltaX) // In radians
-
-        // Calculate the smallest difference between the desired heading and current yaw
-        currentAngle = Double(robitState.orientation.z)//+(Double.pi/2)
-
-        targetRotation = desiredHeading
 
 
-        var angleDifference = desiredHeading - currentAngle
-        // Normalize the angle difference to be within -π to π
-        angleDifference = atan2(sin(angleDifference), cos(angleDifference))
+        // Calculate the angle component
+        currentAngle = Double(robitState.orientation.x)+(Double.pi/2)
+        let deltaX = Double(robitState.position.x) - target.x
+        let deltaZ = Double(robitState.position.z) - target.z
 
+        targetRotation = atan2(deltaZ, deltaX)
+        let angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
 
-        let forwardRatio = (currentAngle-desiredHeading+Double.pi/2)/(Double.pi/2)
-        // PID control for distance
-        let errorDistance = distance
-        integralDistance += errorDistance * deltaTime
-        let derivativeDistance = deltaTime > 0 ? (errorDistance - lastErrorDistance) / deltaTime : 0.0
-
-        let outputDistance =
-        ((pDistanceIsOn ? kpDistance * errorDistance : 0.0) +
-        (iDistanceIsOn ? kiDistance * integralDistance: 0.0) +
-        (dDistanceIsOn ? kdDistance * derivativeDistance: 0.0))*forwardRatio
-
-        lastErrorDistance = errorDistance
-
-        // PID control for angle
         let errorAngle = angleDifference
         integralAngle += errorAngle * deltaTime
         let derivativeAngle = deltaTime > 0 ? (errorAngle - lastErrorAngle) / deltaTime : 0.0
@@ -113,28 +121,38 @@ class PIDMotionControl: ObservableObject {
 
         lastErrorAngle = errorAngle
 
-        var forwardSpeed = outputDistance
-        var turnSpeed = outputAngle
+        turnSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, outputAngle))
 
-        // Limit the forward speed
-        forwardSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, forwardSpeed))
 
-        // Ensure the forward speed is at least the minimum motor speed if moving
-//        if abs(forwardSpeed) > 0 && abs(forwardSpeed) < minMotorSpeed {
-//            forwardSpeed = forwardSpeed >= 0 ? minMotorSpeed : -minMotorSpeed
-//        }
 
-        // Limit the turn speed
-        turnSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, turnSpeed))
+        // Calculate translation component
+        let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
+        guard distance > 0.02 else {
+            self.target = nil
+            return MotorOutput.zero
+        }
+        let forwardRatio = ((angleDifference+(Double.pi/2)).truncatingRemainder(dividingBy: (Double.pi/2)))/(Double.pi/2)
 
-        // Calculate motor speeds based on forward and turn speeds
-        let motor1SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) - (rotationEnabled ? turnSpeed : 0.0)
-        let motor2SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) + (rotationEnabled ? turnSpeed : 0.0)
+        let errorDistance = distance
+        integralDistance += errorDistance * deltaTime
+        let derivativeDistance = deltaTime > 0 ? (errorDistance - lastErrorDistance) / deltaTime : 0.0
+        outputDistance =
+        ((pDistanceIsOn ? kpDistance * errorDistance : 0.0) +
+        (iDistanceIsOn ? kiDistance * integralDistance: 0.0) +
+        (dDistanceIsOn ? kdDistance * derivativeDistance: 0.0))*forwardRatio
+        lastErrorDistance = errorDistance
+
+        let forwardSpeed = max(-maxMotorSpeed, min(maxMotorSpeed, outputDistance))
+
+
+
+        let motor1SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) + (rotationEnabled ? turnSpeed : 0.0)
+        let motor2SpeedDouble = (motionEnabled ? forwardSpeed : 0.0) - (rotationEnabled ? turnSpeed : 0.0)
 
         // Limit motor speeds to the allowable range
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
         let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))
-        
+
         return MotorOutput(motor1: limitedMotor1Speed, motor2: limitedMotor2Speed)
     }
 }
