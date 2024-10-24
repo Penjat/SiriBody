@@ -27,7 +27,8 @@ struct ControlView: View {
 
                     VirtualRobiPanelView()
                     CommandPanelView()
-                    PIDControlView(pidMotionControl: appState.pidController)
+                    MotionControlView(pidMotionControl: appState.pidController)
+//                    PIDControlView(pidMotionControl: appState.pidController)
 
                     Text(robitState)
                     BluetoothStatusView()
