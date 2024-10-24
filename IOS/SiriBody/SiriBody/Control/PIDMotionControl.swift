@@ -4,30 +4,12 @@ import Combine
 typealias Position = (x: Double, z: Double)
 
 class PIDMotionControl: ObservableObject {
+    @Published var rotationController = PIDController()
+
     @Published var motionEnabled = false
     @Published var rotationEnabled = true
     @Published var target: (x: Double, z: Double)?
-    
-    // PID constants for distance control
-    @Published var kpDistance: Double = 700.0
-    @Published var kiDistance: Double = 0.0
-    @Published var kdDistance: Double = 0.0
 
-    @Published var outputDistance = 0.0
-    @Published var turnSpeed = 0.0
-
-    @Published var pDistanceIsOn = true
-    @Published var iDistanceIsOn = true
-    @Published var dDistanceIsOn = true
-    
-    // PID constants for angle control
-    @Published var kpAngle: Double = 400.0
-    @Published var kiAngle: Double = 0.0
-    @Published var kdAngle: Double = 0.0
-    
-    @Published var pAngleIsOn = true
-    @Published var iAngleIsOn = true
-    @Published var dAngleIsOn = true
     
     @Published var maxMotorSpeed = 95.0      // Maximum motor speed
     @Published var minMotorSpeed = 50.0       // Minimum motor speed to overcome inertia
@@ -35,22 +17,13 @@ class PIDMotionControl: ObservableObject {
     @Published var targetRotation = 0.0
     @Published var currentAngle = 0.0
 
-    // Internal variables for PID calculations
-    private var integralDistance: Double = 0.0
-    private var lastErrorDistance: Double = 0.0
-    
-    private var integralAngle: Double = 0.0
-    private var lastErrorAngle: Double = 0.0
-    
-    private var lastUpdateTime: Date?
     
     var bag = Set<AnyCancellable>()
     
     init() {
+        
         $target.sink { _ in
-            self.lastErrorAngle = 0.0
-            self.lastErrorDistance = 0.0
-            self.lastUpdateTime = .now
+            // reset errors on controllers
         }.store(in: &bag)
     }
 
