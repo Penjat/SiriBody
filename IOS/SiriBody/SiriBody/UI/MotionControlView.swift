@@ -18,6 +18,7 @@ struct MotionControlView: View {
                 Toggle("motion", isOn: $pidMotionControl.rotationEnabled)
             }
             PIDControllerView(controller: pidMotionControl.rotationController, name: "rotation PID")
+            PIDControllerView(controller: pidMotionControl.translationController, name: "transation PID")
 
         }.padding()
             .background(.regularMaterial).cornerRadius(8)

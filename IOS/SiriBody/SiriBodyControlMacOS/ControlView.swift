@@ -10,9 +10,8 @@ struct ControlView: View {
     @State var bag = Set<AnyCancellable>()
     
     var body: some View {
-        VStack {
+        ZStack {
             SceneKitView(interactor: sceneKitInteractor)
-
             HStack {
                 JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobitBody.motorSpeed).frame(width: 420)
                 Spacer()
@@ -31,11 +30,16 @@ struct ControlView: View {
 //                    PIDControlView(pidMotionControl: appState.pidController)
 
                     Text(robitState)
-                    BluetoothStatusView()
+//                    BluetoothStatusView()
                 }.frame(width: 420)
             }
-            
         }
+
+
+
+
+            
+
     }
     var robitState: String {
         return "x:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.x)), y: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.y)), z:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.z)), pitch:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.x)), yaw: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.y)), roll:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.z))"

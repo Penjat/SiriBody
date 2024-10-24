@@ -5,6 +5,7 @@ typealias Position = (x: Double, z: Double)
 
 class PIDMotionControl: ObservableObject {
     @Published var rotationController = PIDController()
+    @Published var translationController = PIDController()
 
     @Published var motionEnabled = false
     @Published var rotationEnabled = true

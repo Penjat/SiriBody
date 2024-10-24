@@ -6,11 +6,9 @@ struct PIDControllerView: View {
     let name: String
     var body: some View {
         VStack {
-            Text(name)
-                .padding()
-                .foregroundStyle(.black)
             HStack {
                 VStack {
+
                     Toggle("", isOn: $controller.pIsOn)
                     Text("\(String(format: "%.2f", controller.pConstant))")
                     //                    Text("\(String(format: "%.2f", pidMotionControl.pOutput))").monospaced()
@@ -31,8 +29,9 @@ struct PIDControllerView: View {
                     Slider(value: $controller.dConstant, in: 0.5...2000).disabled(!controller.pIsOn)
                 }
 
-            }.padding()
-                .background(.gray)
+            }
+            .padding()
+            .background(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 0.3))
                 .cornerRadius(8)
         }
     }
