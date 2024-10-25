@@ -5,11 +5,10 @@ class AppState: ObservableObject {
 
     @Published var virtualRobitBrain: RobitBrain!
     @Published var sceneKitInteractor = SceneKitInteractor()
-    @Published var pidController = PIDMotionControl()
+    @Published var pidController = MotionController()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
-
 
     var bag = Set<AnyCancellable>()
 
@@ -17,31 +16,37 @@ class AppState: ObservableObject {
 
         // Just return 0 for now
         let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { [weak self] state, command -> MotorOutput? in
-               guard let self, let state else {
-                   return nil
-               }
-               switch command {
-               case .moveTo(x: let x, z: let z):
-                   if let target = pidController.target, target.x == x, target.z == z {
+            guard let self, let state else {
+                return nil
+            }
+            switch command {
+            case .moveTo(x: let x, z: let z):
+                pidController.mode = .moveTo((x: x, z: z))
 
-                   } else {
-                       pidController.target = (x: x, z: z)
-                   }
-
-               default:
-                   break;
-//                   pidController.target = nil
-               }
+            case nil:
+                pidController.mode = .idle
+            default:
+                break;
+            }
             let speed = pidController.motorSpeeds(robitState: state)
-//            print(speed)
-               return speed
+            return speed
         }
 
         // just return origional command for now
         let objectiveLogic:  (RobitState?, Command?) -> Command? = { [weak self] state, command -> Command? in
-//            if let self, let state, let target = pidController.target, approximatelyEqual(target.z, Double(state.position.z), tolerance: 0.1) {
-//                return nil
-//            }
+            guard let self, let state, let command else {
+                return nil
+            }
+
+            switch pidController.mode {
+            case .moveTo(let position):
+                if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.2),
+                   approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
+                    return nil
+                }
+            default:
+                break
+            }
             return command
         }
 

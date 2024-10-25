@@ -20,6 +20,7 @@ class PIDController: ObservableObject {
 
     private var integralError: Double = 0.0
     private var lastError: Double = 0.0
+    
     @Published var lastUpdateTime: Date?
 
     var bag = Set<AnyCancellable>()

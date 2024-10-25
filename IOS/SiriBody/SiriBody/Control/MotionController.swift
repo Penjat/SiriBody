@@ -3,28 +3,57 @@ import Combine
 
 typealias Position = (x: Double, z: Double)
 
-class PIDMotionControl: ObservableObject {
+
+
+class MotionController: ObservableObject {
+
+    enum Mode {
+
+        case idle
+        case facePosition(Position)
+        case faceAngle(Double)
+        case moveTo(Position)
+
+        var name: String {
+            switch self {
+
+            case .idle:
+                "idle"
+            case .facePosition((let x, let z)):
+                "facePosition"
+            case .faceAngle(_):
+                "faceAngle"
+            case .moveTo((let x, let z)):
+                "moveTo"
+            }
+        }
+    }
+
+    @Published var mode = Mode.idle
     @Published var rotationController = PIDController()
     @Published var translationController = PIDController()
+    @Published var targetRotation = 0.0
 
     @Published var motionEnabled = false
     @Published var rotationEnabled = true
-    @Published var target: (x: Double, z: Double)?
 
-
-    @Published var maxMotorSpeed = 95.0      // Maximum motor speed
-    @Published var minMotorSpeed = 50.0       // Minimum motor speed to overcome inertia
-
-    @Published var targetRotation = 0.0
+    @Published var maxMotorSpeed = 95.0
+    @Published var minMotorSpeed = 50.0
+    @Published var angleDifference = 0.0
     @Published var currentAngle = 0.0
 
+    @Published var moveThreshold = 0.5
 
     var bag = Set<AnyCancellable>()
 
     init() {
-
-        $target.sink { _ in
+        $mode.sink { [weak self] _ in
+            guard let self else {
+                return
+            }
             // reset errors on controllers
+            rotationController.resetError()
+            translationController.resetError()
         }.store(in: &bag)
     }
 
@@ -35,36 +64,90 @@ class PIDMotionControl: ObservableObject {
         return abs(leftDistance) < abs(rightDistance) ? leftDistance : rightDistance
     }
 
+    func levelsFor(faceAngel: Double, robitState: RobitState) -> MotorOutput {
+        return MotorOutput.zero
+    }
 
+    func levelsFor(facePosition position: Position, robitState: RobitState ) -> MotorOutput {
 
-    func motorSpeeds(robitState: RobitState) -> MotorOutput {
-
-        guard let target else {
-            return MotorOutput.zero
-        }
-
-        let deltaX = Double(robitState.position.x) - target.x
-        let deltaZ = Double(robitState.position.z) - target.z
+        let deltaX = Double(robitState.position.x) - position.x
+        let deltaZ = Double(robitState.position.z) - position.z
         currentAngle = Double(robitState.orientation.x)+(Double.pi/2)
 
 
         // Calculate the angle component
         targetRotation = atan2(deltaZ, deltaX)
         let angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
-
         let rotationoutput = rotationController.output(angleDifference)
 
-        let translationoutput = translationController.output(Double(-deltaZ))
-
-        let motor1SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
-        let motor2SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
-
+        let motor1SpeedDouble = (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor2SpeedDouble = -(rotationEnabled ? rotationoutput.combined : 0.0)
 
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
         let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))
 
         return MotorOutput(motor1: limitedMotor1Speed, motor2: limitedMotor2Speed)
     }
+
+    func levelsFor(moveTo position: Position, robitState: RobitState ) -> MotorOutput {
+        let deltaX = (Double(robitState.position.x) - position.x)
+        let deltaZ = (Double(robitState.position.z) - position.z)
+        targetRotation = atan2(deltaX, deltaZ)
+
+        currentAngle = Double(robitState.orientation.x)
+
+        // Calculate the angle component
+
+        angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
+//        let angleDifference2 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation+(Double.pi))
+//
+//        let (angleDifference, direction) = abs(angleDifference1) < abs(angleDifference2) ? (angleDifference1, 1.0) : (angleDifference2, -1.0)
+
+        let rotationoutput = rotationController.output(angleDifference)
+
+        // Calculate translation component
+        let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
+        let translationoutput = translationController.output(distance)
+
+        let forwardLevel = (abs(angleDifference) < moveThreshold) ? -translationoutput.combined : 0.0
+
+        let motor1SpeedDouble = (motionEnabled ? forwardLevel : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor2SpeedDouble = (motionEnabled ? forwardLevel : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
+
+        let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
+        let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))
+
+        return MotorOutput(motor1: limitedMotor1Speed, motor2: limitedMotor2Speed)
+    }
+
+    func motorSpeeds(robitState: RobitState) -> MotorOutput {
+
+        switch mode {
+        case .idle:
+            return MotorOutput.zero
+        case .faceAngle(let angle):
+            return levelsFor(faceAngel: angle, robitState: robitState)
+        case .facePosition(let position):
+            return levelsFor(facePosition: position, robitState: robitState)
+        case .moveTo(let position):
+            return levelsFor(moveTo: position, robitState: robitState)
+        }
+    }
+
+    // TODO: make functions for different cases
+    // Turn to
+    // Move to
+    // align with
+
+
+
+    //    let translationoutput = translationController.output(Double(distance))
+    //
+    //let translationoutput = translationController.output(Double(distance))
+    //    //Nedd to multiply by forward ratio
+    //    let motor1SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
+    //    let motor2SpeedDouble = (motionEnabled ? translationoutput.combined : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
+    //    func motorSpeedsTurnTo
 
     //    func motorSpeeds2(robitState: RobitState) -> MotorOutput {
     //        guard let target else {

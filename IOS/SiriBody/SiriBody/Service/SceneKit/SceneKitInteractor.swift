@@ -146,22 +146,22 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
             realRobit.position = SCNVector3(10, 0, 15)
         }
         
-        let boxNode1 = createBox()
+        let boxNode1 = createBox(color: .red)
         scene.rootNode.addChildNode(boxNode1)
-        boxNode1.position = SCNVector3(10, 10, 20)
-        
-        let boxNode2 = createBox()
+        boxNode1.position = SCNVector3(10, 0.1, 10)
+
+        let boxNode2 = createBox(color: .blue)
         scene.rootNode.addChildNode(boxNode2)
-        boxNode2.position = SCNVector3(20, 20, -20)
-        
-        let boxNode3 = createBox()
+        boxNode2.position = SCNVector3(10, 0.1, -10)
+
+        let boxNode3 = createBox(color: .green)
         scene.rootNode.addChildNode(boxNode3)
-        boxNode3.position = SCNVector3(-10, 10, 20)
-        
-        let boxNode4 = createBox()
+        boxNode3.position = SCNVector3(-10, 0.1, 10)
+
+        let boxNode4 = createBox(color: .yellow)
         scene.rootNode.addChildNode(boxNode4)
-        boxNode4.position = SCNVector3(20, 20, -20)
-        
+        boxNode4.position = SCNVector3(-10, 0.1, -10)
+
         return scene
     }()
 
@@ -172,16 +172,16 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     }
     
     //TODO: remove this function
-    private func createBox() -> SCNNode {
-        let boxGeometry = SCNBox(width: 3, height: 17, length: 4, chamferRadius: 0.01)
+    private func createBox(color: NSColor) -> SCNNode {
+        let boxGeometry = SCNBox(width: 3, height: 1, length: 4, chamferRadius: 0.01)
         let boxMaterial = SCNMaterial()
-        boxMaterial.diffuse.contents = NSColor(calibratedRed: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1), alpha: 1)
+        boxMaterial.diffuse.contents = color
         boxGeometry.materials = [boxMaterial]
-        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-        physicsBody.mass = 1.0
+//        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+//        physicsBody.mass = 1.0
         
         let boxNode = SCNNode(geometry: boxGeometry)
-        boxNode.physicsBody = physicsBody
+//        boxNode.physicsBody = physicsBody
         
         return boxNode
     }
@@ -189,7 +189,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
     public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
         print(virtualRobitBody.node?.position)
         virtualRobitBody.node?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
-        virtualRobitBody.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
+        virtualRobitBody.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: Double.pi/2)
         virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
     }
 
