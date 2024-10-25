@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+
 class AppState: ObservableObject {
 
     // State
@@ -11,7 +12,7 @@ class AppState: ObservableObject {
 
     // Control
     @Published var robitBrain: RobitBrain!
-    @Published var pidMotionControl = MotionController()
+    @Published var pidMotionControl = MotionOutputController()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
@@ -38,13 +39,13 @@ class AppState: ObservableObject {
         }
 
         // just return origional command for now
-        let objectiveLogic:  (RobitState?, Command?) -> Command? = { state, command in
+        let commandLogic:  (RobitState?, Command?) -> Command? = { state, command in
             return command
         }
 
         self.robitBrain = RobitBrain(
             controlLogic: controlLogic,
-            objectiveLogic: objectiveLogic)
+            commandLogic: commandLogic)
 
         setUpSubscriptions()
     }

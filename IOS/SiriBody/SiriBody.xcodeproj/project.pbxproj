@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE452CA76379008B663D /* SiriBodyApp.swift */; };
-		0BCEAE4A2CA7637A008B663D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE492CA7637A008B663D /* Assets.xcassets */; };
-		0BCEAE4D2CA7637A008B663D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */; };
+		0BCEAE4A2CA7637A008B663D /* iOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */; };
 		0BCEAE542CAD8402008B663D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE532CAD8402008B663D /* AppState.swift */; };
 		0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE552CAD844F008B663D /* TitleView.swift */; };
 		0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
@@ -19,17 +18,15 @@
 		0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE692CB3350B008B663D /* MotionService.swift */; };
 		0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
 		0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FB02CB3A08B004FCD87 /* RobitView.swift */; };
-		0BF86FBC2CB41509004FCD87 /* SiriBodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */; };
 		0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FC62CB61015004FCD87 /* PeripheralService.swift */; };
 		0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */; };
-		0BF86FD62CB617C3004FCD87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FD52CB617C3004FCD87 /* Assets.xcassets */; };
-		0BF86FD92CB617C3004FCD87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FD82CB617C3004FCD87 /* Preview Assets.xcassets */; };
+		0BF86FD62CB617C3004FCD87 /* macOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FD52CB617C3004FCD87 /* macOSAssets.xcassets */; };
 		0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FDE2CB61951004FCD87 /* AppState.swift */; };
 		0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FE02CB6197B004FCD87 /* ControlView.swift */; };
 		0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
 		0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */; };
 		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
-		0BF86FF32CBA23D6004FCD87 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionController.swift */; };
+		0BF86FF32CBA23D6004FCD87 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
 		0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
 		0BF86FFF2CBFF8D5004FCD87 /* SiriBody.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */; };
 		0BF870002CBFF8D5004FCD87 /* SiriBody.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */; };
@@ -57,16 +54,19 @@
 		1A78AD792CC6E2430070D3F6 /* RobitBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */; };
 		1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
 		1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
-		1A78AD7E2CC743000070D3F6 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionController.swift */; };
+		1A78AD7E2CC743000070D3F6 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
 		1A78AD802CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
 		1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
-		1AC0B75E2CCAACA100AAF9F7 /* MotionHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B75D2CCAACA100AAF9F7 /* MotionHelperTests.swift */; };
-		1AC0B75F2CCAAD2B00AAF9F7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionController.swift */; };
+		1AC0B75F2CCAAD2B00AAF9F7 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
 		1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
 		1AC0B7622CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
 		1AC0B7642CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
 		1AC0B7652CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
+		1AC0B76D2CCB57F300AAF9F7 /* SequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */; };
+		1AC0B76E2CCB57F300AAF9F7 /* SequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */; };
+		1AC0B7752CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */; };
+		1AC0B7762CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -88,8 +88,7 @@
 /* Begin PBXFileReference section */
 		0BCEAE422CA76379008B663D /* SiriBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BCEAE452CA76379008B663D /* SiriBodyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyApp.swift; sourceTree = "<group>"; };
-		0BCEAE492CA7637A008B663D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOSAssets.xcassets; sourceTree = "<group>"; };
 		0BCEAE532CAD8402008B663D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BCEAE552CAD844F008B663D /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BCEAE572CAD8627008B663D /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
@@ -100,18 +99,16 @@
 		0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+ApproximatelyEqual.swift"; sourceTree = "<group>"; };
 		0BF86FB02CB3A08B004FCD87 /* RobitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitView.swift; sourceTree = "<group>"; };
 		0BF86FB92CB41509004FCD87 /* SiriBodyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriBodyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyTests.swift; sourceTree = "<group>"; };
 		0BF86FC62CB61015004FCD87 /* PeripheralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralService.swift; sourceTree = "<group>"; };
 		0BF86FCF2CB617C2004FCD87 /* SiriBodyControlMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriBodyControlMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyControlMacOSApp.swift; sourceTree = "<group>"; };
-		0BF86FD52CB617C3004FCD87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0BF86FD82CB617C3004FCD87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0BF86FD52CB617C3004FCD87 /* macOSAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = macOSAssets.xcassets; path = SiriBodyControlMacOS/macOSAssets.xcassets; sourceTree = SOURCE_ROOT; };
 		0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriBodyControlMacOS.entitlements; sourceTree = "<group>"; };
 		0BF86FDE2CB61951004FCD87 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BF86FE02CB6197B004FCD87 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitService.swift; sourceTree = "<group>"; };
 		0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitStatusView.swift; sourceTree = "<group>"; };
-		0BF86FF22CBA23D6004FCD87 /* MotionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionController.swift; sourceTree = "<group>"; };
+		0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionOutputController.swift; sourceTree = "<group>"; };
 		0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.obj; sourceTree = "<group>"; };
 		0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.mtl; sourceTree = "<group>"; };
@@ -130,9 +127,10 @@
 		1A78AD7B2CC6FB060070D3F6 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionControlView.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
-		1AC0B75D2CCAACA100AAF9F7 /* MotionHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionHelperTests.swift; sourceTree = "<group>"; };
 		1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDController.swift; sourceTree = "<group>"; };
 		1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDControllerView.swift; sourceTree = "<group>"; };
+		1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceController.swift; sourceTree = "<group>"; };
+		1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = macOSAssets.xcassets; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -166,9 +164,8 @@
 		0BCEAE392CA76379008B663D = {
 			isa = PBXGroup;
 			children = (
-				0BF86FBA2CB41509004FCD87 /* SiriBodyTests */,
+				1AC0B7742CCC62D100AAF9F7 /* SiriBodyControlMacOS */,
 				0BCEAE442CA76379008B663D /* SiriBody */,
-				0BF86FD02CB617C2004FCD87 /* SiriBodyControlMacOS */,
 				0BCEAE432CA76379008B663D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -186,25 +183,16 @@
 		0BCEAE442CA76379008B663D /* SiriBody */ = {
 			isa = PBXGroup;
 			children = (
-				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
-				0BCEAE532CAD8402008B663D /* AppState.swift */,
+				1AC0B76F2CCC39ED00AAF9F7 /* Application */,
 				1A78AD762CC6E2310070D3F6 /* Robit */,
 				0BF86FB22CB3A131004FCD87 /* Control */,
 				0BCEAE592CAD87B5008B663D /* Service */,
 				0BCEAE5A2CAD87C9008B663D /* UI */,
 				0BF86FA92CB3952D004FCD87 /* Utility */,
-				0BCEAE492CA7637A008B663D /* Assets.xcassets */,
-				0BCEAE4B2CA7637A008B663D /* Preview Content */,
+				0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */,
+				0BF86FD52CB617C3004FCD87 /* macOSAssets.xcassets */,
 			);
 			path = SiriBody;
-			sourceTree = "<group>";
-		};
-		0BCEAE4B2CA7637A008B663D /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0BCEAE4C2CA7637A008B663D /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		0BCEAE592CAD87B5008B663D /* Service */ = {
@@ -222,6 +210,7 @@
 		0BCEAE5A2CAD87C9008B663D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1AC0B7722CCC56B800AAF9F7 /* macOS */,
 				0BCEAE552CAD844F008B663D /* TitleView.swift */,
 				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
 				0BF86FAE2CB3A03A004FCD87 /* Status */,
@@ -275,42 +264,11 @@
 		0BF86FB22CB3A131004FCD87 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				0BF86FF22CBA23D6004FCD87 /* MotionController.swift */,
+				1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */,
+				0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */,
 				1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */,
 			);
 			path = Control;
-			sourceTree = "<group>";
-		};
-		0BF86FBA2CB41509004FCD87 /* SiriBodyTests */ = {
-			isa = PBXGroup;
-			children = (
-				0BF86FBB2CB41509004FCD87 /* SiriBodyTests.swift */,
-				1AC0B75D2CCAACA100AAF9F7 /* MotionHelperTests.swift */,
-			);
-			path = SiriBodyTests;
-			sourceTree = "<group>";
-		};
-		0BF86FD02CB617C2004FCD87 /* SiriBodyControlMacOS */ = {
-			isa = PBXGroup;
-			children = (
-				0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */,
-				0BF86FDE2CB61951004FCD87 /* AppState.swift */,
-				1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */,
-				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
-				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
-				0BF86FD52CB617C3004FCD87 /* Assets.xcassets */,
-				0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */,
-				0BF86FD72CB617C3004FCD87 /* Preview Content */,
-			);
-			path = SiriBodyControlMacOS;
-			sourceTree = "<group>";
-		};
-		0BF86FD72CB617C3004FCD87 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0BF86FD82CB617C3004FCD87 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		0BF870062CC402F1004FCD87 /* 3DModels */ = {
@@ -345,6 +303,61 @@
 				1A78AD7B2CC6FB060070D3F6 /* Command.swift */,
 			);
 			path = Robit;
+			sourceTree = "<group>";
+		};
+		1AA9D8AC2CCC65420093CA57 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Preview Content";
+			path = "SiriBodyControlMacOS/Preview Content";
+			sourceTree = SOURCE_ROOT;
+		};
+		1AC0B76F2CCC39ED00AAF9F7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1AC0B7712CCC3A1F00AAF9F7 /* iOS */,
+				1AC0B7702CCC3A1300AAF9F7 /* MacOS */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		1AC0B7702CCC3A1300AAF9F7 /* MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				0BF86FD12CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift */,
+				0BF86FDE2CB61951004FCD87 /* AppState.swift */,
+				1AA9D8AC2CCC65420093CA57 /* Preview Content */,
+			);
+			path = MacOS;
+			sourceTree = "<group>";
+		};
+		1AC0B7712CCC3A1F00AAF9F7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0BCEAE452CA76379008B663D /* SiriBodyApp.swift */,
+				0BCEAE532CAD8402008B663D /* AppState.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		1AC0B7722CCC56B800AAF9F7 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */,
+				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
+				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		1AC0B7742CCC62D100AAF9F7 /* SiriBodyControlMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */,
+				0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */,
+			);
+			path = SiriBodyControlMacOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,8 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF870012CBFF8D5004FCD87 /* SiriBody.mtl in Resources */,
-				0BCEAE4D2CA7637A008B663D /* Preview Assets.xcassets in Resources */,
-				0BCEAE4A2CA7637A008B663D /* Assets.xcassets in Resources */,
+				0BCEAE4A2CA7637A008B663D /* iOSAssets.xcassets in Resources */,
+				1AC0B7752CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */,
 				0BF86FFF2CBFF8D5004FCD87 /* SiriBody.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,8 +485,8 @@
 				0BF8700E2CC4030E004FCD87 /* SiriBodyVirtual.mtl in Resources */,
 				0BF8700B2CC4030E004FCD87 /* SiriBodyReal.mtl in Resources */,
 				0BF870022CBFF8D5004FCD87 /* SiriBody.mtl in Resources */,
-				0BF86FD92CB617C3004FCD87 /* Preview Assets.xcassets in Resources */,
-				0BF86FD62CB617C3004FCD87 /* Assets.xcassets in Resources */,
+				0BF86FD62CB617C3004FCD87 /* macOSAssets.xcassets in Resources */,
+				1AC0B7762CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */,
 				0BF870002CBFF8D5004FCD87 /* SiriBody.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +510,7 @@
 				0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */,
 				1A78AD692CC600850070D3F6 /* VirtualRobitBody.swift in Sources */,
 				1A78AD782CC6E2430070D3F6 /* RobitBrain.swift in Sources */,
+				1AC0B76D2CCB57F300AAF9F7 /* SequenceController.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
 				1A78AD802CC7FF190070D3F6 /* MotionControlView.swift in Sources */,
 				1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */,
@@ -512,7 +526,7 @@
 				0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */,
 				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
 				1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */,
-				0BF86FF32CBA23D6004FCD87 /* MotionController.swift in Sources */,
+				0BF86FF32CBA23D6004FCD87 /* MotionOutputController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,9 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BF86FBC2CB41509004FCD87 /* SiriBodyTests.swift in Sources */,
-				1AC0B75F2CCAAD2B00AAF9F7 /* MotionController.swift in Sources */,
-				1AC0B75E2CCAACA100AAF9F7 /* MotionHelperTests.swift in Sources */,
+				1AC0B75F2CCAAD2B00AAF9F7 /* MotionOutputController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +543,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
-				1A78AD7E2CC743000070D3F6 /* MotionController.swift in Sources */,
+				1A78AD7E2CC743000070D3F6 /* MotionOutputController.swift in Sources */,
+				1AC0B76E2CCB57F300AAF9F7 /* SequenceController.swift in Sources */,
 				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitBody.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
@@ -808,6 +821,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SiriBodyControlMacOS/SiriBodyControlMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -827,6 +842,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = superart.SiriBodyControlMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -839,6 +855,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SiriBodyControlMacOS/SiriBodyControlMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -858,6 +876,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = superart.SiriBodyControlMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

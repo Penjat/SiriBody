@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MotionControlView: View {
-    @ObservedObject var pidMotionControl: MotionController
+    @ObservedObject var pidMotionControl: MotionOutputController
     var body: some View {
         VStack {
             Text("current mode:")

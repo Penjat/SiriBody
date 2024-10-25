@@ -5,7 +5,8 @@ class AppState: ObservableObject {
 
     @Published var virtualRobitBrain: RobitBrain!
     @Published var sceneKitInteractor = SceneKitInteractor()
-    @Published var pidController = MotionController()
+    @Published var pidController = MotionOutputController()
+    @Published var sequenceController = SequenceController()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
@@ -33,7 +34,7 @@ class AppState: ObservableObject {
         }
 
         // just return origional command for now
-        let objectiveLogic:  (RobitState?, Command?) -> Command? = { [weak self] state, command -> Command? in
+        let commandLogic:  (RobitState?, Command?) -> Command? = { [weak self] state, command -> Command? in
             guard let self, let state, let command else {
                 return nil
             }
@@ -52,7 +53,7 @@ class AppState: ObservableObject {
 
         self.virtualRobitBrain = RobitBrain(
             controlLogic: controlLogic,
-            objectiveLogic: objectiveLogic)
+            commandLogic: commandLogic)
 
         setUpSubscriptions()
     }

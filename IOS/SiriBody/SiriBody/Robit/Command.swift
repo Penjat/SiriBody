@@ -1,7 +1,6 @@
 import Foundation
 
 
-
 enum Command: Equatable {
     enum CommandCode: UInt8 {
         case turnTo = 1
