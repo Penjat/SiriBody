@@ -11,7 +11,7 @@ class AppState: ObservableObject {
 
     // Control
     @Published var robitBrain: RobitBrain!
-    @Published var pidMotionControl = PIDMotionControl()
+    @Published var pidMotionControl = MotionController()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
@@ -29,11 +29,7 @@ class AppState: ObservableObject {
             }
             switch command {
             case .moveTo(x: let x, z: let z):
-                if let target = pidMotionControl.target, target.x == x, target.z == z {
-
-                } else {
-                    pidMotionControl.target = (x: x, z: z)
-                }
+                pidMotionControl.mode = .moveTo((x: x, z: z))
 
             default:
                 break

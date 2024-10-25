@@ -17,8 +17,8 @@ struct TitleView: View {
                                         JoystickView(motorSpeed: $appState.robitBrain.motorSpeed))
                         NavigationLink("Motion Status",
                                        destination: MotionStatusView())
-                        NavigationLink("PID 🎚️🎚️🎚️",
-                                       destination: RobitView())
+//                        NavigationLink("PID 🎚️🎚️🎚️",
+//                                       destination: RobitView())
                         NavigationLink("Reality Kit 👩🏻‍💻",
                                        destination:
                                         VStack {
