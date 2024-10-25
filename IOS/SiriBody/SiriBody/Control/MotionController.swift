@@ -19,11 +19,11 @@ class MotionController: ObservableObject {
 
             case .idle:
                 "idle"
-            case .facePosition((let x, let z)):
+            case .facePosition(( _, _)):
                 "facePosition"
             case .faceAngle(_):
                 "faceAngle"
-            case .moveTo((let x, let z)):
+            case .moveTo(( _, _)):
                 "moveTo"
             }
         }
@@ -47,6 +47,8 @@ class MotionController: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init() {
+        rotationController.maxValue = 150
+        translationController.maxValue = 95
         $mode.sink { [weak self] _ in
             guard let self else {
                 return

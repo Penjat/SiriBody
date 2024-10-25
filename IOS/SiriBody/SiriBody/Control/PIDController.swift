@@ -9,6 +9,7 @@ struct PIDOutput {
 }
 
 class PIDController: ObservableObject {
+    
     @Published var maxValue = 254.0
     @Published var pConstant = 400.0
     @Published var iConstant = 0.0
