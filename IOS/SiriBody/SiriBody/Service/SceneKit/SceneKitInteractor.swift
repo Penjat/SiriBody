@@ -170,8 +170,7 @@ class SceneKitInteractor: NSObject, SCNSceneRendererDelegate, ObservableObject {
         realRobit?.position = SCNVector3(x: CGFloat(position.x*10), y: 0.0, z: CGFloat(position.z*10))
         realRobit?.eulerAngles = SCNVector3(x: 0.0, y: CGFloat(orientation.z), z: 0.0)
     }
-    
-    //TODO: remove this function
+
     private func createBox(color: NSColor) -> SCNNode {
         let boxGeometry = SCNBox(width: 3, height: 1, length: 4, chamferRadius: 0.01)
         let boxMaterial = SCNMaterial()

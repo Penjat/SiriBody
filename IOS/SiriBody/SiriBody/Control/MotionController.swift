@@ -98,10 +98,10 @@ class MotionController: ObservableObject {
 
         // Calculate the angle component
 
-        angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
-//        let angleDifference2 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation+(Double.pi))
-//
-//        let (angleDifference, direction) = abs(angleDifference1) < abs(angleDifference2) ? (angleDifference1, 1.0) : (angleDifference2, -1.0)
+        let angleDifference1 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
+        let angleDifference2 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation+(Double.pi))
+
+        let (angleDifference, direction) = abs(angleDifference1) < abs(angleDifference2) ? (angleDifference1, 1.0) : (angleDifference2, -1.0)
 
         let rotationoutput = rotationController.output(angleDifference)
 
@@ -109,7 +109,7 @@ class MotionController: ObservableObject {
         let distance = sqrt(deltaX * deltaX + deltaZ * deltaZ)
         let translationoutput = translationController.output(distance)
 
-        let forwardLevel = (abs(angleDifference) < moveThreshold) ? -translationoutput.combined : 0.0
+        let forwardLevel = (abs(angleDifference) < moveThreshold) ? -translationoutput.combined*direction : 0.0
 
         let motor1SpeedDouble = (motionEnabled ? forwardLevel : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
         let motor2SpeedDouble = (motionEnabled ? forwardLevel : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
