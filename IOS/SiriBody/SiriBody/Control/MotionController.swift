@@ -3,8 +3,6 @@ import Combine
 
 typealias Position = (x: Double, z: Double)
 
-
-
 class MotionController: ObservableObject {
 
     enum Mode {
@@ -34,7 +32,7 @@ class MotionController: ObservableObject {
     @Published var translationController = PIDController()
     @Published var targetRotation = 0.0
 
-    @Published var motionEnabled = false
+    @Published var motionEnabled = true
     @Published var rotationEnabled = true
 
     @Published var maxMotorSpeed = 95.0
