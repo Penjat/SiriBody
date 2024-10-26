@@ -17,14 +17,39 @@ class RobitBrain: ObservableObject {
 
     init() {
 
-        // Everytime there is a new command
-        // check if should send to motion controller
+        // Everytime there is a new state
+        // check if our motion command is complete
+        // return the motor speed
         $state
-            .combineLatest(sequenceController.$motionCommand)
-            .compactMap { [weak self] (state, command) -> MotorOutput?  in
+            .compactMap { [weak self] state -> MotorOutput?  in
 
                 guard let self else {
                     return nil
+                }
+                switch motionController.mode {
+
+                case .moveTo(let position):
+                    if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.2),
+                       approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
+                        sequenceController.stepComplete()
+                    }
+                default:
+                    return nil
+                }
+
+                return motionController.motorSpeeds(robitState: state)
+            }
+            .assign(to: &$motorSpeed)
+
+
+        // Everytime there is a new command
+        // check if should send to motion controller
+        sequenceController
+            .$motionCommand
+            .sink { [weak self] command  in
+
+                guard let self else {
+                    return
                 }
                 switch command {
                 case .moveTo(x: let x, z: let z):
@@ -35,29 +60,7 @@ class RobitBrain: ObservableObject {
                 default:
                     break;
                 }
-                return motionController.motorSpeeds(robitState: state)
-            }
-            .assign(to: &$motorSpeed)
 
-
-        sequenceController
-            .$motionCommand
-            .combineLatest($state)
-            .sink { [weak self] (command, state)  in
-
-                guard let self, let command else {
-                    return
-                }
-                switch motionController.mode {
-
-                case .moveTo(let position):
-                    if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.2),
-                       approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
-                        sequenceController.stepComplete()
-                    }
-                default:
-                    return
-                }
             }.store(in: &bag)
 
     }
