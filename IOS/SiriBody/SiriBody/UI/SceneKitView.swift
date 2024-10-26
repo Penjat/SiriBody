@@ -3,7 +3,7 @@ import SceneKit
 import Combine
 
 struct SceneKitView: NSViewRepresentable {
-    let interactor: SceneKitInteractor
+    let interactor: SceneKitService
     @State var bag = Set<AnyCancellable>()
     
     func makeNSView(context: Context) -> SCNView {

@@ -32,8 +32,7 @@
 		0BF870002CBFF8D5004FCD87 /* SiriBody.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */; };
 		0BF870012CBFF8D5004FCD87 /* SiriBody.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */; };
 		0BF870022CBFF8D5004FCD87 /* SiriBody.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */; };
-		0BF870042CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */; };
-		0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */; };
+		0BF870042CC3E068004FCD87 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		0BF8700B2CC4030E004FCD87 /* SiriBodyReal.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870072CC4030E004FCD87 /* SiriBodyReal.mtl */; };
 		0BF8700C2CC4030E004FCD87 /* SiriBodyReal.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */; };
 		0BF8700D2CC4030E004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */; };
@@ -112,7 +111,7 @@
 		0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.obj; sourceTree = "<group>"; };
 		0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SiriBody.mtl; sourceTree = "<group>"; };
-		0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitInteractor.swift; sourceTree = "<group>"; };
+		0BF870032CC3E068004FCD87 /* SceneKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitService.swift; sourceTree = "<group>"; };
 		0BF870072CC4030E004FCD87 /* SiriBodyReal.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.mtl; path = ../../../../../Models/SiriBodyReal.mtl; sourceTree = "<group>"; };
 		0BF870082CC4030E004FCD87 /* SiriBodyReal.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyReal.obj; path = ../../../../../Models/SiriBodyReal.obj; sourceTree = "<group>"; };
 		0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.obj; path = ../../../../../Models/SiriBodyVirtual.obj; sourceTree = "<group>"; };
@@ -184,9 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				1AC0B76F2CCC39ED00AAF9F7 /* Application */,
-				1A78AD762CC6E2310070D3F6 /* Robit */,
-				0BF86FB22CB3A131004FCD87 /* Control */,
 				0BCEAE592CAD87B5008B663D /* Service */,
+				1AA9D8AD2CCC68EC0093CA57 /* Domain */,
 				0BCEAE5A2CAD87C9008B663D /* UI */,
 				0BF86FA92CB3952D004FCD87 /* Utility */,
 				0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */,
@@ -201,8 +199,8 @@
 				0BCEAE612CAECFBE008B663D /* Bluetooth */,
 				0BCEAE692CB3350B008B663D /* MotionService.swift */,
 				1AD974612CB3766F00DF80C2 /* LocationService.swift */,
+				0BF870032CC3E068004FCD87 /* SceneKitService.swift */,
 				0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */,
-				1A78AD742CC611570070D3F6 /* SceneKit */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -267,6 +265,7 @@
 				1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */,
 				0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */,
 				1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */,
+				0BF8700F2CC43EE7004FCD87 /* VirtualRobitBody.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -284,14 +283,6 @@
 			path = 3DModels;
 			sourceTree = "<group>";
 		};
-		1A78AD742CC611570070D3F6 /* SceneKit */ = {
-			isa = PBXGroup;
-			children = (
-				0BF870032CC3E068004FCD87 /* SceneKitInteractor.swift */,
-			);
-			path = SceneKit;
-			sourceTree = "<group>";
-		};
 		1A78AD762CC6E2310070D3F6 /* Robit */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,7 +290,6 @@
 				1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */,
 				1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */,
 				1A78AD712CC60AF50070D3F6 /* MotorOutput.swift */,
-				0BF8700F2CC43EE7004FCD87 /* VirtualRobitBody.swift */,
 				1A78AD7B2CC6FB060070D3F6 /* Command.swift */,
 			);
 			path = Robit;
@@ -312,6 +302,15 @@
 			name = "Preview Content";
 			path = "SiriBodyControlMacOS/Preview Content";
 			sourceTree = SOURCE_ROOT;
+		};
+		1AA9D8AD2CCC68EC0093CA57 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0BF86FB22CB3A131004FCD87 /* Control */,
+				1A78AD762CC6E2310070D3F6 /* Robit */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
 		};
 		1AC0B76F2CCC39ED00AAF9F7 /* Application */ = {
 			isa = PBXGroup;
@@ -515,7 +514,7 @@
 				1A78AD802CC7FF190070D3F6 /* MotionControlView.swift in Sources */,
 				1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */,
 				1AC0B7642CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */,
-				0BF870042CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
+				0BF870042CC3E068004FCD87 /* SceneKitService.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */,
 				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
@@ -552,7 +551,6 @@
 				1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */,
 				1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */,
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
-				0BF870052CC3E068004FCD87 /* SceneKitInteractor.swift in Sources */,
 				1A78AD592CC568E40070D3F6 /* VirtualRobiPanelView.swift in Sources */,
 				1A78AD732CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
 				1A78AD792CC6E2430070D3F6 /* RobitBrain.swift in Sources */,

@@ -4,7 +4,7 @@ import SceneKit
 
 struct ControlView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
+    @EnvironmentObject var sceneKitInteractor: SceneKitService
     @EnvironmentObject var virtualRobitBrain: RobitBrain
 
     @State var bag = Set<AnyCancellable>()

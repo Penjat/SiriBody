@@ -4,7 +4,7 @@ import Combine
 class AppState: ObservableObject {
 
     @Published var virtualRobitBrain: RobitBrain!
-    @Published var sceneKitInteractor = SceneKitInteractor()
+    @Published var sceneKitInteractor = SceneKitService()
     @Published var pidController = MotionOutputController()
     @Published var sequenceController = SequenceController()
 

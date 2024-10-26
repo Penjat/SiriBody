@@ -71,7 +71,6 @@ class RealityKitService: NSObject, ARSessionDelegate {
 
         realityKitStateSubject.send(state)
     }
-
     
     func pauseTracking() {
         session.pause()

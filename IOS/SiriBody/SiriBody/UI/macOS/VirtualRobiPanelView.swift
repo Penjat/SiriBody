@@ -3,7 +3,7 @@ import SceneKit
 
 struct VirtualRobiPanelView: View {
     @EnvironmentObject var virtualRobitBrain: RobitBrain
-    @EnvironmentObject var sceneKitInteractor: SceneKitInteractor
+    @EnvironmentObject var sceneKitInteractor: SceneKitService
     var body: some View {
         VStack {
             Text("Virtual Robit")
