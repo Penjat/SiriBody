@@ -16,17 +16,38 @@ class SequenceController: ObservableObject {
     func stepComplete() {
         stepNumber += 1
         if stepNumber < sequence.count {
-            switch sequence[stepNumber] {
-            case .reapeatSequence:
-                break
-            case.runCommand(let command):
-                motionCommand = command
-            case .wait(let seconds):
-                break
-            }
+            process(sequenceStep: sequence[stepNumber])
+            return
         }
 
         stepNumber = 0
         motionCommand = nil
+    }
+
+    func startSquareSequence() {
+        stepNumber = 0
+        sequence = [
+            .runCommand(.moveTo(x: 10, z: 10)),
+            .runCommand(.moveTo(x: -10, z: 10)),
+            .runCommand(.moveTo(x: -10, z: -10)),
+            .runCommand(.moveTo(x: 10, z: -10)),
+            .reapeatSequence
+        ]
+        motionCommand = .moveTo(x: 10, z: 10)
+        // TODO: make this better
+    }
+
+    func process(sequenceStep: SequenceStep) {
+        switch sequenceStep {
+        case .reapeatSequence:
+            stepNumber = 0
+            process(sequenceStep: sequence[stepNumber])
+            return
+        case.runCommand(let command):
+            motionCommand = command
+            return
+        case .wait(_):
+            return
+        }
     }
 }

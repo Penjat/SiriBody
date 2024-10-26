@@ -35,8 +35,6 @@ struct ControlView: View {
                     }.pickerStyle(SegmentedPickerStyle())
                     Text(robitState)
 
-
-
                     Picker(selection: $viewMode) {
                         ForEach(ViewMode.allCases, id: \.self) { mode in
                             Text(mode.rawValue).tag(mode)
@@ -52,7 +50,7 @@ struct ControlView: View {
                     case .command:
                         CommandPanelView()
                     case .sequence:
-                        Text("TODO: sequence panel")
+                        SequenceControlView()
                     case .motion:
                         MotionControlView(pidMotionControl: appState.pidController)
                     case .virtualRobit:

@@ -56,6 +56,7 @@
 		1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
 		1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B22CCC6B690093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
+		1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
 		1AC0B75F2CCAAD2B00AAF9F7 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
 		1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
@@ -124,6 +125,7 @@
 		1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitBrain.swift; sourceTree = "<group>"; };
 		1A78AD7B2CC6FB060070D3F6 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionControlView.swift; sourceTree = "<group>"; };
+		1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceControlView.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
 		1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDController.swift; sourceTree = "<group>"; };
 		1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDControllerView.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
 				1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */,
 				1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */,
+				1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
 				1A78AD7E2CC743000070D3F6 /* MotionOutputController.swift in Sources */,
+				1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */,
 				1AC0B76E2CCB57F300AAF9F7 /* SequenceController.swift in Sources */,
 				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitBody.swift in Sources */,
