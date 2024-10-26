@@ -14,47 +14,7 @@ class AppState: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init() {
-
-        // Just return 0 for now
-        let controlLogic:  (RobitState?, Command?) -> MotorOutput? = { [weak self] state, command -> MotorOutput? in
-            guard let self, let state else {
-                return nil
-            }
-            switch command {
-            case .moveTo(x: let x, z: let z):
-                pidController.mode = .moveTo((x: x, z: z))
-
-            case nil:
-                pidController.mode = .idle
-            default:
-                break;
-            }
-            let speed = pidController.motorSpeeds(robitState: state)
-            return speed
-        }
-
-        // just return origional command for now
-        let commandLogic:  (RobitState?, Command?) -> Command? = { [weak self] state, command -> Command? in
-            guard let self, let state, let command else {
-                return nil
-            }
-
-            switch pidController.mode {
-            case .moveTo(let position):
-                if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.2),
-                   approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
-                    return nil
-                }
-            default:
-                break
-            }
-            return command
-        }
-
-        self.virtualRobitBrain = RobitBrain(
-            controlLogic: controlLogic,
-            commandLogic: commandLogic)
-
+        self.virtualRobitBrain = RobitBrain()
         setUpSubscriptions()
     }
 

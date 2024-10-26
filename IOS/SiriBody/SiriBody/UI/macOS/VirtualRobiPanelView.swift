@@ -26,7 +26,7 @@ struct VirtualRobiPanelView: View {
     }
 
     var commandText: some View {
-        if let command = virtualRobitBrain.command {
+        if let command = virtualRobitBrain.sequenceController.motionCommand {
             switch command {
             case .turnTo(let angle):
                 Text("turnTo \(angle)")
