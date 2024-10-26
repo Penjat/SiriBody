@@ -5,8 +5,8 @@ import Combine
 class MapController: ObservableObject {
 
     @Published var grid: [[UInt8]] = Array(
-        repeating: Array(repeating: UInt8(0), count: 60),
-        count: 60
+        repeating: Array(repeating: UInt8(0), count: 100),
+        count: 100
     )
 
     init() {

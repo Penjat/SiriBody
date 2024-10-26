@@ -60,7 +60,7 @@ struct ControlView: View {
 
                 }.frame(width: 420)
             }
-            MapDisplayView(mapController: appState.virtualRobitBrain.mapController).frame(width: 400, height: 400)
+            MapDisplayView(mapController: appState.virtualRobitBrain.mapController, robitState: $appState.virtualRobitBrain.state).frame(width: 400, height: 400)
         }
     }
     

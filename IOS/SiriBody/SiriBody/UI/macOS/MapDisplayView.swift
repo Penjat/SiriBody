@@ -2,14 +2,15 @@ import SwiftUI
 
 struct MapDisplayView: View {
     @ObservedObject var mapController: MapController
+    @Binding var robitState: RobitState
 
     var body: some View {
         GeometryReader { geometry in
-
+            let robitPos = (x: Int(robitState.position.x)+50, z: Int(robitState.position.z)+50)
             ForEach(0..<mapController.grid.count, id: \.self) { rowIndex in
                 ForEach(0..<mapController.grid[rowIndex].count, id: \.self) { columnIndex in
                     let byte = mapController.grid[rowIndex][columnIndex]
-                    let color = colorForByte(byte)
+                    let color = (rowIndex == robitPos.z && columnIndex == robitPos.x) ? Color.purple :  colorForByte(byte)
                     let squareSize: CGFloat = 10.0
                     let x = CGFloat(columnIndex) * squareSize
                     let y = CGFloat(rowIndex) * squareSize
