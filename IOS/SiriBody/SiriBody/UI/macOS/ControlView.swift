@@ -8,36 +8,65 @@ struct ControlView: View {
     @EnvironmentObject var virtualRobitBrain: RobitBrain
 
     @State var bag = Set<AnyCancellable>()
-    
+    @State var viewMode = ViewMode.joystick
+
+    enum ViewMode: String, CaseIterable {
+        case joystick
+        case command
+        case sequence
+        case motion
+        case virtualRobit
+    }
+
     var body: some View {
         ZStack {
             SceneKitView(interactor: sceneKitInteractor)
             HStack {
-                JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobitBody.motorSpeed).frame(width: 420)
+
                 Spacer()
                 VStack {
+                    //                    BluetoothStatusView()
                     Picker(selection: $sceneKitInteractor.cameraPosition) {
                         ForEach(CameraPosition.allCases, id: \.self) { cameraPosition in
                             Text(cameraPosition.rawValue).tag(cameraPosition)
                         }
                     } label: {
-                        Text("camera")
+                        Text("")
                     }.pickerStyle(SegmentedPickerStyle())
-
-                    VirtualRobiPanelView()
-                    CommandPanelView()
-                    MotionControlView(pidMotionControl: appState.pidController)
-//                    PIDControlView(pidMotionControl: appState.pidController)
-
                     Text(robitState)
-//                    BluetoothStatusView()
+
+
+
+                    Picker(selection: $viewMode) {
+                        ForEach(ViewMode.allCases, id: \.self) { mode in
+                            Text(mode.rawValue).tag(mode)
+                        }
+                    } label: {
+                        Text("")
+                    }.pickerStyle(SegmentedPickerStyle())
+                    Spacer()
+
+                    switch viewMode {
+                    case .joystick:
+                        JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobitBody.motorSpeed).frame(width: 420)
+                    case .command:
+                        CommandPanelView()
+                    case .sequence:
+                        Text("TODO: sequence panel")
+                    case .motion:
+                        MotionControlView(pidMotionControl: appState.pidController)
+                    case .virtualRobit:
+                        VirtualRobiPanelView()
+                    }
+                    Spacer()
+
                 }.frame(width: 420)
             }
         }
     }
     
     var robitState: String {
-        return "x:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.x)), y: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.y)), z:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.z)), pitch:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.x)), yaw: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.y)), roll:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.z))"
+        return "x:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.x)), y: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.y)), z:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.position.z)),\n pitch:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.x)), yaw: \(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.y)), roll:\(String(format: "%.2f", sceneKitInteractor.virtualRobitBody.state.orientation.z))"
     }
 }
 

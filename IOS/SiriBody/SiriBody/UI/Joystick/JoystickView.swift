@@ -18,7 +18,6 @@ struct JoystickView: View {
                 Spacer()
                 Text("\(motorSpeed.motor2)")
             }.font(.title3)
-            Spacer()
             GeometryReader { geometry in
                 ZStack {
                     

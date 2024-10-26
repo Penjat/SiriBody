@@ -53,7 +53,6 @@
 		1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
 		1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
 		1A78AD7E2CC743000070D3F6 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
-		1A78AD802CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
 		1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
 		1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B22CCC6B690093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
@@ -61,7 +60,6 @@
 		1AC0B75F2CCAAD2B00AAF9F7 /* MotionOutputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputController.swift */; };
 		1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
 		1AC0B7622CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
-		1AC0B7642CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
 		1AC0B7652CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
 		1AC0B76D2CCB57F300AAF9F7 /* SequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */; };
 		1AC0B76E2CCB57F300AAF9F7 /* SequenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B76C2CCB57F300AAF9F7 /* SequenceController.swift */; };
@@ -208,13 +206,9 @@
 			isa = PBXGroup;
 			children = (
 				1AC0B7722CCC56B800AAF9F7 /* macOS */,
-				0BCEAE552CAD844F008B663D /* TitleView.swift */,
-				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
+				1AA9D8B42CCC794E0093CA57 /* iOS */,
 				0BF86FAE2CB3A03A004FCD87 /* Status */,
 				0BF86FF62CBC0714004FCD87 /* SceneKitView.swift */,
-				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
-				1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */,
-				1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */,
 				0BF870062CC402F1004FCD87 /* 3DModels */,
 				0BCEAE5B2CADD051008B663D /* Joystick */,
 			);
@@ -329,6 +323,16 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
+		1AA9D8B42CCC794E0093CA57 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
+				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
+				0BCEAE552CAD844F008B663D /* TitleView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		1AC0B76F2CCC39ED00AAF9F7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +367,8 @@
 				1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */,
 				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
 				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
+				1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */,
+				1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -529,9 +535,7 @@
 				1AA9D8B22CCC6B690093CA57 /* SceneKitService.swift in Sources */,
 				1AC0B76D2CCB57F300AAF9F7 /* SequenceController.swift in Sources */,
 				1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */,
-				1A78AD802CC7FF190070D3F6 /* MotionControlView.swift in Sources */,
 				1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */,
-				1AC0B7642CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */,
 				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
