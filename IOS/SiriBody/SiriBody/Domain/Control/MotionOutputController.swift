@@ -4,7 +4,6 @@ import Combine
 typealias Position = (x: Double, z: Double)
 
 
-
 class MotionOutputController: ObservableObject {
 
     enum Mode {

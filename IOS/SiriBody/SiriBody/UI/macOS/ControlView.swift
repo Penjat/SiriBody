@@ -50,9 +50,9 @@ struct ControlView: View {
                     case .command:
                         CommandPanelView()
                     case .sequence:
-                        SequenceControlView()
+                        SequenceControlView(sequenceController: appState.virtualRobitBrain.sequenceController)
                     case .motion:
-                        MotionControlView(pidMotionControl: appState.pidController)
+                        MotionControlView(pidMotionControl: appState.virtualRobitBrain.motionController)
                     case .virtualRobit:
                         VirtualRobiPanelView()
                     }

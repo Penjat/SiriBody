@@ -41,7 +41,6 @@ class RobitBrain: ObservableObject {
             }
             .assign(to: &$motorSpeed)
 
-
         // Everytime there is a new command
         // check if should send to motion controller
         sequenceController
@@ -60,8 +59,6 @@ class RobitBrain: ObservableObject {
                 default:
                     break;
                 }
-
             }.store(in: &bag)
-
     }
 }

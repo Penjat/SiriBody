@@ -9,14 +9,12 @@ enum SequenceStep {
 class SequenceController: ObservableObject {
     @Published var sequence = [SequenceStep]()
     @Published var stepNumber = 0
-
     @Published var motionCommand: Command?
-
 
     func stepComplete() {
         stepNumber += 1
         if stepNumber < sequence.count {
-            process(sequenceStep: sequence[stepNumber])
+            runStep()
             return
         }
 
@@ -33,8 +31,21 @@ class SequenceController: ObservableObject {
             .runCommand(.moveTo(x: 10, z: -10)),
             .reapeatSequence
         ]
-        motionCommand = .moveTo(x: 10, z: 10)
-        // TODO: make this better
+        runStep()
+    }
+
+    func startLineSequence() {
+        stepNumber = 0
+        sequence = [
+            .runCommand(.moveTo(x: 10, z: 0)),
+            .runCommand(.moveTo(x: -10, z: 0)),
+            .reapeatSequence
+        ]
+        runStep()
+    }
+
+    func runStep() {
+        process(sequenceStep: sequence[stepNumber])
     }
 
     func process(sequenceStep: SequenceStep) {

@@ -1,19 +1,37 @@
 import SwiftUI
 
 struct SequenceControlView: View {
-    @EnvironmentObject var appState: AppState
+    @ObservedObject var sequenceController: SequenceController
     var body: some View {
         VStack {
             Button {
-                appState.virtualRobitBrain.sequenceController.startSquareSequence()
+                    sequenceController
+                    .startSquareSequence()
             } label: {
-                Text("Start Square Sequence")
+                Text("Square")
             }
 
+            Button {
+                    sequenceController
+                    .startLineSequence()
+            } label: {
+                Text("line")
+            }
+
+            Button {
+                    sequenceController
+                    .motionCommand = nil
+            } label: {
+                Text("Stop")
+            }
+
+            Button {
+                    sequenceController
+                    .runStep()
+            } label: {
+                Text("resume")
+            }
         }
     }
 }
 
-#Preview {
-    SequenceControlView()
-}
