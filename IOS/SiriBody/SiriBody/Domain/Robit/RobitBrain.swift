@@ -11,6 +11,7 @@ class RobitBrain: ObservableObject {
     @Published var motionController = MotionOutputController()
     @Published var sequenceController = SequenceController()
     @Published var state = RobitState.zero
+    @Published var mapController = MapController()
 
     @Published var motorSpeed = MotorOutput(motor1: 0, motor2: 0)
     var bag = Set<AnyCancellable>()

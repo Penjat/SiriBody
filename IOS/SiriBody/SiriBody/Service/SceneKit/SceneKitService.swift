@@ -9,6 +9,7 @@ enum CameraPosition: String, CaseIterable {
 }
 
 class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
+
     @Published var cameraPosition = CameraPosition.overhead
     @Published var realRobitState = RobitState.zero
     @Published var virtualRobitBody = VirtualRobitBody()

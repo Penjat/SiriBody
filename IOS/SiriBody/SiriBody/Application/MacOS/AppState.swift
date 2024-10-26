@@ -4,7 +4,7 @@ import Combine
 class AppState: ObservableObject {
 
     @Published var virtualRobitBrain: RobitBrain!
-    @Published var sceneKitInteractor = SceneKitService()
+    @Published var sceneKitInteractor: SceneKitService
 
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
@@ -13,6 +13,7 @@ class AppState: ObservableObject {
 
     init() {
         self.virtualRobitBrain = RobitBrain()
+        self.sceneKitInteractor = SceneKitService()
         setUpSubscriptions()
     }
 

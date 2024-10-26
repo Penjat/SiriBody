@@ -43,7 +43,6 @@ class PIDController: ObservableObject {
         }
         lastUpdateTime = currentTime
 
-
         integralError += error * deltaTime
         let derivativeError = deltaTime > 0 ? (error - lastError) / deltaTime : 0.0
 
