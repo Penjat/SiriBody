@@ -2,8 +2,14 @@ import Foundation
 import Combine
 
 
-class MapController: ObservableObject {
+struct GridPosition: Equatable {
+    let x: Int
+    let z: Int
+}
 
+class MapController: ObservableObject {
+    
+    @Published var robitGridPosition: GridPosition?
     @Published var grid: [[UInt8]] = Array(
         repeating: Array(repeating: UInt8(0), count: 100),
         count: 100

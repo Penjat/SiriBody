@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import SceneKit
 import Combine
@@ -7,12 +8,12 @@ struct SceneKitView: NSViewRepresentable {
     @State var bag = Set<AnyCancellable>()
     
     func makeNSView(context: Context) -> SCNView {
-        let scnView = SCNView(frame: .zero)
-        scnView.scene = interactor.scene
-        scnView.backgroundColor = NSColor.darkGray
-        scnView.delegate = interactor
+        let sceneView = SCNView(frame: .zero)
+        sceneView.scene = interactor.scene
+        sceneView.backgroundColor = NSColor.darkGray
+        sceneView.delegate = interactor
 
-        return scnView
+        return sceneView
     }
     
     func updateNSView(_ nsView: SCNView, context: Context) {}

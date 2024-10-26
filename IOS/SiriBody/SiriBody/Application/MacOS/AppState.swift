@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import SceneKit
 
 class AppState: ObservableObject {
 
@@ -67,5 +68,27 @@ class AppState: ObservableObject {
             .subscribe(on: RunLoop.main)
             .receive(on: RunLoop.main)
             .assign(to: &virtualRobitBrain.$state)
+
+
+
+        sceneKitInteractor.mapService.createMap(from: virtualRobitBrain.mapController.grid)
+
+        virtualRobitBrain
+            .mapController
+            .$robitGridPosition
+            .compactMap{ $0 }
+            .sink { [weak self] gridPosition in
+            guard let self else {
+                return
+            }
+
+
+
+                for x in 0..<3 {
+                    for z in 0..<3 {
+                        self.sceneKitInteractor.mapService.updateTile(x: gridPosition.x + x - 1, z: gridPosition.z + z - 1, color: NSColor.purple)
+                    }
+                }
+            }.store(in: &bag)
     }
 }

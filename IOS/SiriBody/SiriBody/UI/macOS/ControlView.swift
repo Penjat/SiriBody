@@ -20,7 +20,16 @@ struct ControlView: View {
 
     var body: some View {
         ZStack {
-            SceneKitView(interactor: sceneKitInteractor)
+            SceneKitView(interactor: sceneKitInteractor).gesture(
+                DragGesture(minimumDistance: 0)
+                    .onEnded { value in
+
+                    }
+                    .onChanged { value in
+                        print(value.location)
+                    }
+            )
+
             HStack {
 
                 Spacer()
@@ -60,7 +69,7 @@ struct ControlView: View {
 
                 }.frame(width: 420)
             }
-            MapDisplayView(mapController: appState.virtualRobitBrain.mapController, robitState: $appState.virtualRobitBrain.state).frame(width: 400, height: 400)
+//            MapDisplayView(mapController: appState.virtualRobitBrain.mapController, robitState: $appState.virtualRobitBrain.state).frame(width: 400, height: 400)
         }
     }
     

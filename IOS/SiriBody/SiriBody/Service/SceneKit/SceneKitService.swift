@@ -9,16 +9,17 @@ enum CameraPosition: String, CaseIterable {
 }
 
 class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
-
     @Published var cameraPosition = CameraPosition.overhead
     @Published var realRobitState = RobitState.zero
     @Published var virtualRobitBody = VirtualRobitBody()
+
+    var mapService: SceneKitMapService!
 
     var bag = Set<AnyCancellable>()
     
     override init() {
         super.init()
-
+        mapService = SceneKitMapService(scene: scene)
         $cameraPosition
             .sink { [weak self] cameraPosition in
                 guard let self else {
