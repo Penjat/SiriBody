@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SequenceControlView: View {
-    @ObservedObject var sequenceController: SequenceController
+    @ObservedObject var sequenceController: CommandInteractor
     var body: some View {
         VStack {
             Button {

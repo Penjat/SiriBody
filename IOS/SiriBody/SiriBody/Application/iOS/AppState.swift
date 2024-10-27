@@ -12,7 +12,7 @@ class AppState: ObservableObject {
 
     // Control
     @Published var robitBrain: RobitBrain!
-    @Published var pidMotionControl = MotionOutputController()
+    @Published var pidMotionInteractor = MotionOutputInteractor()
 
     // Service
     let centralService = CentralService(serviceID: TransferService.siriBodyServiceUUID, charID: TransferService.siriBodyCharUUID)
@@ -30,12 +30,12 @@ class AppState: ObservableObject {
             }
             switch command {
             case .moveTo(x: let x, z: let z):
-                pidMotionControl.mode = .moveTo((x: x, z: z))
+                pidMotionInteractor.mode = .moveTo((x: x, z: z))
 
             default:
                 break
             }
-            return pidMotionControl.motorSpeeds(robitState: state)
+            return pidMotionInteractor.motorSpeeds(robitState: state)
         }
 
         // just return origional command for now

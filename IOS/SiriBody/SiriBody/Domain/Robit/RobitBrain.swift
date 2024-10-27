@@ -8,10 +8,10 @@ import Combine
 
 class RobitBrain: ObservableObject {
     // As Complexity grows, more parameters will be added
-    @Published var motionController = MotionOutputController()
-    @Published var sequenceController = SequenceController()
+    @Published var motionController = MotionOutputInteractor()
+    @Published var sequenceController = CommandInteractor()
     @Published var state = RobitState.zero
-    @Published var mapController = MapController()
+    @Published var mapController = RobitMap()
 
     @Published var motorSpeed = MotorOutput(motor1: 0, motor2: 0)
     var bag = Set<AnyCancellable>()

@@ -21,7 +21,7 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
 
     var bag = Set<AnyCancellable>()
 
-    convenience init(mapController: MapController) {
+    convenience init(mapController: RobitMap) {
         self.init()
         self.mapDisplayService = SceneKitMapDisplayService(scene: scene, mapController: mapController)
     }

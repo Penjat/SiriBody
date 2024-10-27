@@ -5,13 +5,13 @@ import Combine
 class SceneKitMapDisplayService: ObservableObject {
     let scene: SCNScene
     var gridTiles: [[SCNNode]] = []
-    let mapController: MapController
+    let mapController: RobitMap
 
     let xOffset = 50
     let zOffset = 50
     var bag = Set<AnyCancellable>()
 
-    init(scene: SCNScene, mapController: MapController) {
+    init(scene: SCNScene, mapController: RobitMap) {
         self.scene = scene
         self.mapController = mapController
         createMap(from: mapController.grid)

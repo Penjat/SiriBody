@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MapDisplayView: View {
-    @ObservedObject var mapController: MapController
+    @ObservedObject var mapController: RobitMap
     @Binding var robitState: RobitState
 
     var body: some View {

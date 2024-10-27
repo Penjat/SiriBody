@@ -6,7 +6,7 @@ enum SequenceStep {
     case runCommand(Command)
 }
 
-class SequenceController: ObservableObject {
+class CommandInteractor: ObservableObject {
     @Published var sequence = [SequenceStep]()
     @Published var stepNumber = 0
     @Published var motionCommand: Command?

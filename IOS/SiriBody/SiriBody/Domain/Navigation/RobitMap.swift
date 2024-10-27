@@ -7,11 +7,11 @@ struct GridPosition: Equatable {
     let z: Int
 }
 
-class MapController: ObservableObject {
+class RobitMap: ObservableObject {
 
     static let gridSize = 100
     static var hlafGridSize: Int {
-        MapController.gridSize/2
+        RobitMap.gridSize/2
     }
 
     enum MapEvent {
@@ -26,22 +26,18 @@ class MapController: ObservableObject {
     )
 
     init() {
-        grid[2][3] = 2
-
-        grid[10][10] = 1
-
-        grid[4][2] = 3
+        
     }
 
     func setTile(value: Int, x: Int, z: Int) {
-        let gridPointX = x+MapController.hlafGridSize
-        let gridPointZ = z+MapController.hlafGridSize
+        let gridPointX = x+RobitMap.hlafGridSize
+        let gridPointZ = z+RobitMap.hlafGridSize
 
         guard
             gridPointX > 0,
-            gridPointX < MapController.gridSize,
+            gridPointX < RobitMap.gridSize,
             gridPointZ > 0,
-            gridPointZ < MapController.gridSize else {
+            gridPointZ < RobitMap.gridSize else {
             return
         }
 
