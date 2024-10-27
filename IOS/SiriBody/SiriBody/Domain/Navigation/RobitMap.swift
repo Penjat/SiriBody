@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 
-struct GridPosition: Equatable {
+struct GridPosition: Equatable, Hashable {
     let x: Int
     let z: Int
 }

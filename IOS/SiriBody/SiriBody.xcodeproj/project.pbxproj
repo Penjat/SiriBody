@@ -37,8 +37,8 @@
 		0BF8700D2CC4030E004FCD87 /* SiriBodyVirtual.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */; };
 		0BF8700E2CC4030E004FCD87 /* SiriBodyVirtual.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */; };
 		0BF870102CC43EE7004FCD87 /* VirtualRobitBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8700F2CC43EE7004FCD87 /* VirtualRobitBody.swift */; };
-		1A65AB9A2CCEC16F00A74A7A /* AStarPathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinder.swift */; };
-		1A65AB9B2CCEC16F00A74A7A /* AStarPathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinder.swift */; };
+		1A65AB9A2CCEC16F00A74A7A /* AStarPathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */; };
+		1A65AB9B2CCEC16F00A74A7A /* AStarPathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */; };
 		1A65AB9E2CCEC53900A74A7A /* ObjectiveInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB9D2CCEC53900A74A7A /* ObjectiveInteractor.swift */; };
 		1A65AB9F2CCEC53900A74A7A /* ObjectiveInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB9D2CCEC53900A74A7A /* ObjectiveInteractor.swift */; };
 		1A65ABA52CCECADE00A74A7A /* PlanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65ABA42CCECADE00A74A7A /* PlanInteractor.swift */; };
@@ -131,7 +131,7 @@
 		0BF870092CC4030E004FCD87 /* SiriBodyVirtual.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.obj; path = ../../../../../Models/SiriBodyVirtual.obj; sourceTree = "<group>"; };
 		0BF8700A2CC4030E004FCD87 /* SiriBodyVirtual.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SiriBodyVirtual.mtl; path = ../../../../../Models/SiriBodyVirtual.mtl; sourceTree = "<group>"; };
 		0BF8700F2CC43EE7004FCD87 /* VirtualRobitBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualRobitBody.swift; sourceTree = "<group>"; };
-		1A65AB992CCEC16F00A74A7A /* AStarPathfinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathfinder.swift; sourceTree = "<group>"; };
+		1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathfinding.swift; sourceTree = "<group>"; };
 		1A65AB9D2CCEC53900A74A7A /* ObjectiveInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveInteractor.swift; sourceTree = "<group>"; };
 		1A65ABA42CCECADE00A74A7A /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
 		1A65ABA72CCECB2200A74A7A /* Objective.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objective.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		1A65AB9C2CCEC4F300A74A7A /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				1A65AB992CCEC16F00A74A7A /* AStarPathfinder.swift */,
+				1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */,
 				1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */,
 			);
 			path = Navigation;
@@ -613,7 +613,7 @@
 				1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */,
 				0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */,
 				0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */,
-				1A65AB9A2CCEC16F00A74A7A /* AStarPathfinder.swift in Sources */,
+				1A65AB9A2CCEC16F00A74A7A /* AStarPathfinding.swift in Sources */,
 				1A65ABA52CCECADE00A74A7A /* PlanInteractor.swift in Sources */,
 				1AA9D8BE2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift in Sources */,
 				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
@@ -660,7 +660,7 @@
 				1AA9D8BF2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift in Sources */,
 				1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */,
 				0BF86FDF2CB61951004FCD87 /* AppState.swift in Sources */,
-				1A65AB9B2CCEC16F00A74A7A /* AStarPathfinder.swift in Sources */,
+				1A65AB9B2CCEC16F00A74A7A /* AStarPathfinding.swift in Sources */,
 				1A78AD632CC597600070D3F6 /* PeripheralService.swift in Sources */,
 				1A78AD672CC5E7E30070D3F6 /* RobitState.swift in Sources */,
 				1AE096622CBE03B90038B2CA /* SceneKitView.swift in Sources */,
