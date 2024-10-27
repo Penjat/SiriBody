@@ -20,15 +20,7 @@ struct ControlView: View {
 
     var body: some View {
         ZStack {
-            SceneKitView(interactor: sceneKitInteractor).gesture(
-                DragGesture(minimumDistance: 0)
-                    .onEnded { value in
-
-                    }
-                    .onChanged { value in
-                        print(value.location)
-                    }
-            )
+            SceneKitView(interactor: sceneKitInteractor)
 
             HStack {
 

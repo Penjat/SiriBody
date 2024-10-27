@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 import Combine
 
 typealias Position = (x: Double, z: Double)

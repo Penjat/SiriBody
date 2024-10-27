@@ -9,17 +9,26 @@ enum CameraPosition: String, CaseIterable {
 }
 
 class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
+    enum SceneEvent {
+        case touchPoint(x: Double, z: Double)
+    }
     @Published var cameraPosition = CameraPosition.overhead
     @Published var realRobitState = RobitState.zero
     @Published var virtualRobitBody = VirtualRobitBody()
+    let eventSubject = PassthroughSubject<SceneEvent, Never>()
 
-    var mapService: SceneKitMapService!
+    var mapDisplayService: SceneKitMapDisplayService!
 
     var bag = Set<AnyCancellable>()
-    
+
+    convenience init(mapController: MapController) {
+        self.init()
+        self.mapDisplayService = SceneKitMapDisplayService(scene: scene, mapController: mapController)
+    }
+
     override init() {
         super.init()
-        mapService = SceneKitMapService(scene: scene)
+
         $cameraPosition
             .sink { [weak self] cameraPosition in
                 guard let self else {
@@ -178,17 +187,16 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = color
         boxGeometry.materials = [boxMaterial]
-//        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-//        physicsBody.mass = 1.0
-        
+        //        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        //        physicsBody.mass = 1.0
+
         let boxNode = SCNNode(geometry: boxGeometry)
-//        boxNode.physicsBody = physicsBody
-        
+        //        boxNode.physicsBody = physicsBody
+
         return boxNode
     }
 
     public func resetVirtualRobitPosition(_ position: SCNVector3? = nil, _ orientation: SCNVector3? = nil) {
-        print(virtualRobitBody.node?.position)
         virtualRobitBody.node?.position = position ?? SCNVector3(x: 0.0, y: 0.0, z: 0.0)
         virtualRobitBody.node?.eulerAngles = orientation ?? SCNVector3(x: 0.0, y: 0.0, z: Double.pi/2)
         virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
@@ -199,6 +207,5 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
         virtualRobitBody.node?.position = position.asSCNVector3
         virtualRobitBody.node?.eulerAngles = orientation.asSCNVector3
         virtualRobitBody.node?.physicsBody?.velocity = SCNVector3(x: 0.0, y: 0.0, z: 0.0)
-        print(virtualRobitBody.node?.position)
     }
 }

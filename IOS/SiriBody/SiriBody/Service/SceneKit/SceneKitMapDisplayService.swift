@@ -2,19 +2,34 @@ import Foundation
 import SceneKit
 import Combine
 
-class SceneKitMapService: ObservableObject {
+class SceneKitMapDisplayService: ObservableObject {
     let scene: SCNScene
     var gridTiles: [[SCNNode]] = []
+    let mapController: MapController
 
     let xOffset = 50
     let zOffset = 50
+    var bag = Set<AnyCancellable>()
 
-    init(scene: SCNScene) {
+    init(scene: SCNScene, mapController: MapController) {
         self.scene = scene
+        self.mapController = mapController
+        createMap(from: mapController.grid)
+        mapController
+            .events
+            .sink { [weak self] event in
+                
+            switch event {
+            case .updateTiles(let tileUpdates):
+                for (value, position) in tileUpdates {
+                    self?.updateTile(x: position.x, z: position.z, color: NSColor.orange)
+                }
+            }
+        }.store(in: &bag)
     }
 
-    func createMap(from grid: [[UInt8]] ) {
-        
+    private func createMap(from grid: [[UInt8]] ) {
+
         var x = 0
         var z = 0
         for row in grid {
@@ -50,10 +65,9 @@ class SceneKitMapService: ObservableObject {
     }
 
     func updateTile(x: Int, z: Int, color: NSColor) {
-        guard let materials = gridTiles[z+zOffset][x+xOffset].geometry?.materials else {
+        guard let materials = gridTiles[z][x].geometry?.materials else {
             return
         }
-
 
         for material in materials {
             material.diffuse.contents = color
@@ -65,7 +79,6 @@ class SceneKitMapService: ObservableObject {
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = color
         boxGeometry.materials = [boxMaterial]
-
 
         let boxNode = SCNNode(geometry: boxGeometry)
         

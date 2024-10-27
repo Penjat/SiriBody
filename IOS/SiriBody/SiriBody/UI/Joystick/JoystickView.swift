@@ -21,7 +21,8 @@ struct JoystickView: View {
             GeometryReader { geometry in
                 ZStack {
                     
-                    Circle().aspectRatio(1.0, contentMode: .fit)
+                    Circle()
+                        .aspectRatio(1.0, contentMode: .fit)
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onEnded { value in

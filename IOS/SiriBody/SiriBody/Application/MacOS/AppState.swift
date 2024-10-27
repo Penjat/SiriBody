@@ -13,8 +13,9 @@ class AppState: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init() {
-        self.virtualRobitBrain = RobitBrain()
-        self.sceneKitInteractor = SceneKitService()
+        let brain = RobitBrain()
+        self.virtualRobitBrain = brain
+        self.sceneKitInteractor = SceneKitService(mapController: brain.mapController)
         setUpSubscriptions()
     }
 
@@ -69,10 +70,6 @@ class AppState: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &virtualRobitBrain.$state)
 
-
-
-        sceneKitInteractor.mapService.createMap(from: virtualRobitBrain.mapController.grid)
-
         virtualRobitBrain
             .mapController
             .$robitGridPosition
@@ -81,13 +78,19 @@ class AppState: ObservableObject {
             guard let self else {
                 return
             }
-
-
-
                 for x in 0..<3 {
                     for z in 0..<3 {
-                        self.sceneKitInteractor.mapService.updateTile(x: gridPosition.x + x - 1, z: gridPosition.z + z - 1, color: NSColor.purple)
+                        self.sceneKitInteractor.mapDisplayService.updateTile(x: gridPosition.x + x + MapController.hlafGridSize - 1, z: gridPosition.z + MapController.hlafGridSize + z - 1, color: NSColor.purple)
                     }
+                }
+            }.store(in: &bag)
+
+        sceneKitInteractor
+            .eventSubject
+            .sink { [weak self] event in
+                switch event {
+                case .touchPoint(x: let x, z: let z):
+                    self?.virtualRobitBrain.mapController.setTile(value: 2, x: Int(x), z: Int(z))
                 }
             }.store(in: &bag)
     }
