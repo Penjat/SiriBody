@@ -8,7 +8,7 @@ struct GridPosition: Equatable, Hashable {
 }
 
 struct SquareGrid {
-    let grid: [[UInt8]]
+    var grid: [[UInt8]]
 
     init(size: Int = 100) {
         grid = Array(
@@ -35,7 +35,7 @@ struct SquareGrid {
 class RobitMap: ObservableObject {
 
     enum MapEvent {
-        case updateTiles([(value: Int, position: GridPosition)])
+        case updateTiles([(value: UInt8, position: GridPosition)])
     }
 
     let events = PassthroughSubject<MapEvent, Never>()
@@ -46,7 +46,7 @@ class RobitMap: ObservableObject {
         
     }
 
-    func setTile(value: Int, x: Int, z: Int) {
+    func setTile(value: UInt8, x: Int, z: Int) {
         let gridPointX = x+grid.halfSize
         let gridPointZ = z+grid.halfSize
 
@@ -57,6 +57,7 @@ class RobitMap: ObservableObject {
             gridPointZ < grid.grid.count else {
             return
         }
+        grid.grid[gridPointX][gridPointZ] = value
 
         events
             .send(.updateTiles([(value: value, position: GridPosition(x: gridPointX, z: gridPointZ))]))

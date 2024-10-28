@@ -44,17 +44,13 @@ class AStarPathfinder {
                         let distanceToGoal = distanceFromGoal(tile: tile, goal: goal)
                         posibleTiles[tile] = TileScroe(position: tile, previousTile: previousScore.position, gScore: distanceToGoal, wScore: previousScore.wScore+1)
                     }
-
+                
+                print(posibleTiles.map{ ($0.value.position, $0.value.gScore)})
                 subject.send(Event.findingPath(posibleTiles: posibleTiles, visitedTiles: visitedTiles))
 
                 let nextTile = posibleTiles
                     .sorted { $0.value.score < $1.value.score }
                     .first?.value
-
-                if nextTile?.position == goal {
-                    subject.send(Event.foundPath([]))
-                    subject.send(completion: .finished)
-                }
 
                 guard let nextTile else {
                     subject.send(completion: .failure(PathError.noPathFound))
@@ -64,6 +60,16 @@ class AStarPathfinder {
 
                 posibleTiles.removeValue(forKey: nextTile.position)
                 visitedTiles[nextTile.position] = nextTile
+
+                if nextTile.position == goal {
+                    let pathBack = findWayBack(nextTile.position, tiles: visitedTiles)
+                    subject.send(Event.foundPath(pathBack))
+                    subject.send(completion: .finished)
+                    running = false
+                    return
+                }
+
+                print(nextTile.position)
                 previousScore = nextTile
 
             }
@@ -74,10 +80,12 @@ class AStarPathfinder {
     static func findPossibleNeighbors(forTile tile: GridPosition, grid: SquareGrid) -> [GridPosition] {
 
         var output = [GridPosition]()
-        for x in 0..<3 {
-            for z in 0..<3 {
-                if let neightbor = grid.tile(GridPosition(x: tile.x + x - 1, z: tile.z + z - 1)), neightbor < 2 {
-                    output.append(GridPosition(x: x, z: z))
+        for x in -1...1 {
+            for z in -1...1 {
+                let xPos = tile.x + x
+                let zPos = tile.z + z
+                if let neightbor = grid.tile(GridPosition(x: xPos, z: zPos)), neightbor < 2 {
+                    output.append(GridPosition(x: xPos, z: zPos))
                 }
             }
         }
@@ -86,14 +94,14 @@ class AStarPathfinder {
     }
 
     static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int{
-        return max(abs(goal.x-tile.x), abs(goal.z - tile.z))
+        return  abs(goal.x-tile.x) + abs(goal.z - tile.z)
     }
 
     static func findWayBack(_ tile: GridPosition, tiles: [GridPosition: TileScroe]) -> [GridPosition] {
         
         var output = [tile]
         while true {
-            guard let index = output.last, let nextTile = tiles[index]?.position else {
+            guard let index = output.last, let nextTile = tiles[index]?.previousTile else {
                 return output
             }
             output.append(nextTile)
