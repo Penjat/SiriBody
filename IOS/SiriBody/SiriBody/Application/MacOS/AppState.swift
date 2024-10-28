@@ -78,9 +78,10 @@ class AppState: ObservableObject {
             guard let self else {
                 return
             }
+                let offset = virtualRobitBrain.mapController.grid.halfSize
                 for x in 0..<3 {
                     for z in 0..<3 {
-                        self.sceneKitInteractor.mapDisplayService.updateTile(x: gridPosition.x + x + RobitMap.hlafGridSize - 1, z: gridPosition.z + RobitMap.hlafGridSize + z - 1, color: NSColor.purple)
+                        self.sceneKitInteractor.mapDisplayService.updateTile(x: gridPosition.x + x + offset - 1, z: gridPosition.z + offset + z - 1, color: NSColor.purple)
                     }
                 }
             }.store(in: &bag)

@@ -28,11 +28,10 @@ class SceneKitMapDisplayService: ObservableObject {
         }.store(in: &bag)
     }
 
-    private func createMap(from grid: [[UInt8]] ) {
-
+    private func createMap(from grid: SquareGrid ) {
         var x = 0
         var z = 0
-        for row in grid {
+        for row in grid.grid {
             var newRow = [SCNNode]()
             for col in row {
 

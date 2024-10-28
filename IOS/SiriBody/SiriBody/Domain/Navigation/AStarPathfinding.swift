@@ -25,7 +25,7 @@ class AStarPathfinder {
         // TODO: cases for unkown or blocked
     }
 
-    static func findPath(startingTile: GridPosition, goal: GridPosition, grid: [[UInt8]]) -> any Publisher<AStarPathfinder.Event, PathError> {
+    static func findPath(startingTile: GridPosition, goal: GridPosition, grid: SquareGrid) -> any Publisher<AStarPathfinder.Event, PathError> {
 
         let subject = PassthroughSubject<AStarPathfinder.Event, PathError>()
 
@@ -36,7 +36,6 @@ class AStarPathfinder {
 
             var visitedTiles = [startingTile: previousScore]
             var running = true
-
             while running {
 
                 findPossibleNeighbors(forTile: previousScore.position, grid: grid)
@@ -64,6 +63,7 @@ class AStarPathfinder {
                 }
 
                 posibleTiles.removeValue(forKey: nextTile.position)
+                visitedTiles[nextTile.position] = nextTile
                 previousScore = nextTile
 
             }
@@ -71,7 +71,9 @@ class AStarPathfinder {
         return subject.eraseToAnyPublisher()
     }
 
-    static func findPossibleNeighbors(forTile tile: GridPosition, grid:[[UInt8]]) -> [GridPosition] {
+    static func findPossibleNeighbors(forTile tile: GridPosition, grid: SquareGrid) -> [GridPosition] {
+
+        
 
         return []
     }
@@ -80,8 +82,14 @@ class AStarPathfinder {
         return max(abs(goal.x-tile.x), abs(goal.z - tile.z))
     }
 
-    static func findWayBack(_ tile: GridPosition) -> [GridPosition] {
-
-        return []
+    static func findWayBack(_ tile: GridPosition, tiles: [GridPosition: TileScroe]) -> [GridPosition] {
+        
+        var output = [tile]
+        while true {
+            guard let index = output.last, let nextTile = tiles[index]?.position else {
+                return output
+            }
+            output.append(nextTile)
+        }
     }
 }
