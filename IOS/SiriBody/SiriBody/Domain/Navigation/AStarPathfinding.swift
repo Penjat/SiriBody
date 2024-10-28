@@ -73,9 +73,16 @@ class AStarPathfinder {
 
     static func findPossibleNeighbors(forTile tile: GridPosition, grid: SquareGrid) -> [GridPosition] {
 
-        
+        var output = [GridPosition]()
+        for x in 0..<3 {
+            for z in 0..<3 {
+                if let neightbor = grid.tile(GridPosition(x: tile.x + x - 1, z: tile.z + z - 1)), neightbor < 2 {
+                    output.append(GridPosition(x: x, z: z))
+                }
+            }
+        }
 
-        return []
+        return output
     }
 
     static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int{

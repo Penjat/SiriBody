@@ -35,5 +35,28 @@ final class AStarTests: XCTestCase {
         XCTAssertEqual(distance, 15)
     }
 
-    
+    func testFindNeighborsWithEmptyGrid() {
+        // Given
+        let grid = SquareGrid(size: 10)
+        let startingTile = GridPosition(x: 3, z: 4)
+
+        // When
+        let neighbors = AStarPathfinder.findPossibleNeighbors(forTile: startingTile, grid: grid)
+
+        // Then
+        XCTAssertEqual(neighbors.count, 9)
+    }
+
+    func testFindNeighborsWithSomeBlocked() {
+        // Given
+        let grid = SquareGrid(size: 10)
+        let startingTile = GridPosition(x: 3, z: 4)
+
+        // When
+        let neighbors = AStarPathfinder.findPossibleNeighbors(forTile: startingTile, grid: grid)
+
+        // Then
+        XCTAssertEqual(neighbors.count, 9)
+    }
+
 }

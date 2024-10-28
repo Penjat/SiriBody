@@ -16,8 +16,19 @@ struct SquareGrid {
            count: size)
     }
 
+    var size: Int {
+        grid.count
+    }
+
     var halfSize: Int {
         grid.count/2
+    }
+
+    func tile(_ position: GridPosition) -> UInt8? {
+        guard position.x > 0, position.z > 0, position.x < size, position.z < size else {
+            return nil
+        }
+        return grid[position.x][position.z]
     }
 }
 
