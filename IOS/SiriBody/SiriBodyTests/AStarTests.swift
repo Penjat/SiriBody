@@ -41,7 +41,7 @@ final class AStarTests: XCTestCase {
         let startingTile = GridPosition(x: 3, z: 4)
 
         // When
-        let neighbors = AStarPathfinder.findPossibleNeighbors(forTile: startingTile, grid: grid)
+        let neighbors = grid.findPossibleNeighbors(forTile: startingTile)
 
         // Then
         XCTAssertEqual(neighbors.count, 9)
@@ -57,7 +57,7 @@ final class AStarTests: XCTestCase {
         grid.grid[3][5] = 3
 
         // When
-        let neighbors = AStarPathfinder.findPossibleNeighbors(forTile: startingTile, grid: grid)
+        let neighbors = grid.findPossibleNeighbors(forTile: startingTile)
 
         // Then
         XCTAssertEqual(neighbors.count, 6)

@@ -66,6 +66,12 @@
 		1A78AD7D2CC6FB060070D3F6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7B2CC6FB060070D3F6 /* Command.swift */; };
 		1A78AD7E2CC743000070D3F6 /* MotionOutputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputInteractor.swift */; };
 		1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */; };
+		1A9BB2A12CD069AA00B18193 /* ObjectivePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB29F2CD067A800B18193 /* ObjectivePanelView.swift */; };
+		1A9BB2A32CD1203100B18193 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
+		1A9BB2A52CD120CB00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
+		1A9BB2A62CD120CB00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
+		1A9BB2A72CD25E6700B18193 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
+		1A9BB2A82CD25E7A00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
 		1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B22CCC6B690093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */; };
@@ -147,6 +153,9 @@
 		1A78AD772CC6E2430070D3F6 /* RobitBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitBrain.swift; sourceTree = "<group>"; };
 		1A78AD7B2CC6FB060070D3F6 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionControlView.swift; sourceTree = "<group>"; };
+		1A9BB29F2CD067A800B18193 /* ObjectivePanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivePanelView.swift; sourceTree = "<group>"; };
+		1A9BB2A22CD1203100B18193 /* TileGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileGrid.swift; sourceTree = "<group>"; };
+		1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareGrid.swift; sourceTree = "<group>"; };
 		1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceControlView.swift; sourceTree = "<group>"; };
 		1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitMap.swift; sourceTree = "<group>"; };
 		1AA9D8BA2CCD106C0093CA57 /* MapDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplayView.swift; sourceTree = "<group>"; };
@@ -308,6 +317,8 @@
 			children = (
 				1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */,
 				1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */,
+				1A9BB2A22CD1203100B18193 /* TileGrid.swift */,
+				1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -447,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */,
+				1A9BB29F2CD067A800B18193 /* ObjectivePanelView.swift */,
 				0BF86FE02CB6197B004FCD87 /* ControlView.swift */,
 				1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */,
 				1A78AD7F2CC7FF190070D3F6 /* MotionControlView.swift */,
@@ -638,6 +650,7 @@
 				1A78AD662CC5C7DE0070D3F6 /* RobitState.swift in Sources */,
 				0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */,
 				0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */,
+				1A9BB2A52CD120CB00B18193 /* SquareGrid.swift in Sources */,
 				1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */,
 				0BF86FF32CBA23D6004FCD87 /* MotionOutputInteractor.swift in Sources */,
 			);
@@ -648,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF86FE82CB61B14004FCD87 /* JoystickView.swift in Sources */,
+				1A9BB2A32CD1203100B18193 /* TileGrid.swift in Sources */,
 				1A78AD7E2CC743000070D3F6 /* MotionOutputInteractor.swift in Sources */,
 				1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */,
 				1AC0B76E2CCB57F300AAF9F7 /* CommandInteractor.swift in Sources */,
@@ -661,6 +675,7 @@
 				0BF86FE12CB6197B004FCD87 /* ControlView.swift in Sources */,
 				1AA9D8BC2CCD106C0093CA57 /* MapDisplayView.swift in Sources */,
 				1A78AD592CC568E40070D3F6 /* VirtualRobiPanelView.swift in Sources */,
+				1A9BB2A12CD069AA00B18193 /* ObjectivePanelView.swift in Sources */,
 				1A78AD732CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
 				1A78AD792CC6E2430070D3F6 /* RobitBrain.swift in Sources */,
 				1AA9D8B92CCC9D0F0093CA57 /* RobitMap.swift in Sources */,
@@ -677,6 +692,7 @@
 				1AE096642CBE03DC0038B2CA /* TransferService.swift in Sources */,
 				1A78AD542CBF81D00070D3F6 /* RobitPosition.swift in Sources */,
 				1AC0B7622CCAB3AF00AAF9F7 /* PIDController.swift in Sources */,
+				1A9BB2A62CD120CB00B18193 /* SquareGrid.swift in Sources */,
 				1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */,
 				1A65ABA62CCECADE00A74A7A /* PlanInteractor.swift in Sources */,
 			);
@@ -687,6 +703,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A65ABBA2CCF338400A74A7A /* AStarPathfinding.swift in Sources */,
+				1A9BB2A72CD25E6700B18193 /* TileGrid.swift in Sources */,
+				1A9BB2A82CD25E7A00B18193 /* SquareGrid.swift in Sources */,
 				1A65ABBB2CCF339100A74A7A /* RobitMap.swift in Sources */,
 				1A65ABB92CCF316400A74A7A /* AStarTests.swift in Sources */,
 			);

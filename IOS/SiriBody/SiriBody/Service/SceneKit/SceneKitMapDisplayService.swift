@@ -7,8 +7,8 @@ class SceneKitMapDisplayService: ObservableObject {
     var gridTiles: [[SCNNode]] = []
     let mapController: RobitMap
 
-    let xOffset = 50
-    let zOffset = 50
+    let xOffset = 100
+    let zOffset = 100
     var bag = Set<AnyCancellable>()
 
     init(scene: SCNScene, mapController: RobitMap) {
@@ -22,10 +22,27 @@ class SceneKitMapDisplayService: ObservableObject {
             switch event {
             case .updateTiles(let tileUpdates):
                 for (value, position) in tileUpdates {
-                    self?.updateTile(x: position.x, z: position.z, color: NSColor.orange)
+                    self?.updateTile(x: position.x, z: position.z, color: SceneKitMapDisplayService.colorForByte(value))
                 }
             }
         }.store(in: &bag)
+    }
+
+    static func colorForByte(_ byte: UInt8) -> NSColor {
+        switch byte {
+        case 0:
+            return NSColor.gray
+        case 1:
+            return NSColor.red
+        case 2:
+            return NSColor.orange
+        case 3:
+            return NSColor.yellow
+        case 4:
+            return NSColor.green
+        default:
+            return NSColor.black
+        }
     }
 
     private func createMap(from grid: SquareGrid ) {
@@ -64,6 +81,7 @@ class SceneKitMapDisplayService: ObservableObject {
     }
 
     func updateTile(x: Int, z: Int, color: NSColor) {
+        
         guard let materials = gridTiles[z][x].geometry?.materials else {
             return
         }

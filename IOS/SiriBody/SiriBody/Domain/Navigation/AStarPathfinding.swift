@@ -2,7 +2,6 @@ import Foundation
 import Combine
 
 
-
 class AStarPathfinder {
 
     struct TileScroe {
@@ -25,7 +24,7 @@ class AStarPathfinder {
         // TODO: cases for unkown or blocked
     }
 
-    static func findPath(startingTile: GridPosition, goal: GridPosition, grid: SquareGrid) -> any Publisher<AStarPathfinder.Event, PathError> {
+    static func findPath(startingTile: GridPosition, goal: GridPosition, grid: TileGrid) -> any Publisher<AStarPathfinder.Event, PathError> {
 
         let subject = PassthroughSubject<AStarPathfinder.Event, PathError>()
 
@@ -38,7 +37,7 @@ class AStarPathfinder {
             var running = true
             while running {
 
-                findPossibleNeighbors(forTile: previousScore.position, grid: grid)
+                grid.findPossibleNeighbors(forTile: previousScore.position)
                     .filter { visitedTiles[$0] == nil && posibleTiles[$0] == nil }
                     .forEach { tile in
                         let distanceToGoal = distanceFromGoal(tile: tile, goal: goal)
@@ -75,22 +74,6 @@ class AStarPathfinder {
             }
         }
         return subject.eraseToAnyPublisher()
-    }
-
-    static func findPossibleNeighbors(forTile tile: GridPosition, grid: SquareGrid) -> [GridPosition] {
-
-        var output = [GridPosition]()
-        for x in -1...1 {
-            for z in -1...1 {
-                let xPos = tile.x + x
-                let zPos = tile.z + z
-                if let neightbor = grid.tile(GridPosition(x: xPos, z: zPos)), neightbor < 2 {
-                    output.append(GridPosition(x: xPos, z: zPos))
-                }
-            }
-        }
-
-        return output
     }
 
     static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int{

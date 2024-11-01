@@ -21,7 +21,6 @@ struct CommandPanelView: View {
                 if let xDouble = Double(x), let yDouble = Double(y) {
                     print("\(xDouble), \(yDouble)")
                     appState.virtualRobitBrain.sequenceController.motionCommand = Command.moveTo(x: xDouble, z: yDouble)
-
                 }
 
             } label: {

@@ -7,6 +7,7 @@ class AppState: ObservableObject {
     @Published var virtualRobitBrain: RobitBrain!
     @Published var sceneKitInteractor: SceneKitService
 
+
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
 
@@ -91,7 +92,7 @@ class AppState: ObservableObject {
             .sink { [weak self] event in
                 switch event {
                 case .touchPoint(x: let x, z: let z):
-                    self?.virtualRobitBrain.mapController.setTile(value: 2, x: Int(x), z: Int(z))
+                    self?.virtualRobitBrain.mapController.setTile(value: 4, x: Int(x), z: Int(z))
                 }
             }.store(in: &bag)
     }

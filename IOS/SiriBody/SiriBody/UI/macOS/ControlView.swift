@@ -16,6 +16,7 @@ struct ControlView: View {
         case sequence
         case motion
         case virtualRobit
+        case objective
     }
 
     var body: some View {
@@ -56,6 +57,8 @@ struct ControlView: View {
                         MotionControlView(pidMotionControl: appState.virtualRobitBrain.motionController)
                     case .virtualRobit:
                         VirtualRobiPanelView()
+                    case .objective:
+                        ObjectivePanelView()
                     }
                     Spacer()
 

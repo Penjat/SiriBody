@@ -8,6 +8,7 @@ import Combine
 
 class RobitBrain: ObservableObject {
     // As Complexity grows, more parameters will be added
+    @Published var objectiveInteractor: ObjectiveInteractor!
     @Published var motionController = MotionOutputInteractor()
     @Published var sequenceController = CommandInteractor()
     @Published var state = RobitState.zero
@@ -17,6 +18,16 @@ class RobitBrain: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init() {
+        // Give Objectiveinteractor
+        objectiveInteractor = ObjectiveInteractor(
+            statePublisher: 
+                mapController
+                .$robitGridPosition
+                .compactMap { $0 }
+                .eraseToAnyPublisher(),
+            robitMap:
+                mapController
+        )
 
         // Everytime there is a new state
         // check if our motion command is complete
@@ -61,7 +72,6 @@ class RobitBrain: ObservableObject {
                     break;
                 }
             }.store(in: &bag)
-
 
         $state
             .map { GridPosition(
