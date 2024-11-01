@@ -72,6 +72,8 @@
 		1A9BB2A62CD120CB00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
 		1A9BB2A72CD25E6700B18193 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
 		1A9BB2A82CD25E7A00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
+		1A9BB2AB2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */; };
+		1A9BB2AC2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */; };
 		1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B22CCC6B690093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
 		1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */; };
@@ -156,6 +158,7 @@
 		1A9BB29F2CD067A800B18193 /* ObjectivePanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivePanelView.swift; sourceTree = "<group>"; };
 		1A9BB2A22CD1203100B18193 /* TileGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileGrid.swift; sourceTree = "<group>"; };
 		1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareGrid.swift; sourceTree = "<group>"; };
+		1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandInteractor+ObjectiveAdapter.swift"; sourceTree = "<group>"; };
 		1AA9D8B52CCC7DEC0093CA57 /* SequenceControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceControlView.swift; sourceTree = "<group>"; };
 		1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitMap.swift; sourceTree = "<group>"; };
 		1AA9D8BA2CCD106C0093CA57 /* MapDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplayView.swift; sourceTree = "<group>"; };
@@ -346,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				1AC0B76C2CCB57F300AAF9F7 /* CommandInteractor.swift */,
+				1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */,
 				1A78AD7B2CC6FB060070D3F6 /* Command.swift */,
 			);
 			path = Command;
@@ -627,6 +631,7 @@
 				1A65ABAA2CCECB6700A74A7A /* RobitMap.swift in Sources */,
 				1A78AD532CBF81D00070D3F6 /* RobitPosition.swift in Sources */,
 				0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */,
+				1A9BB2AB2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */,
 				0BF86FC72CB61015004FCD87 /* PeripheralService.swift in Sources */,
 				1AA9D8BB2CCD106C0093CA57 /* MapDisplayView.swift in Sources */,
 				1A78AD692CC600850070D3F6 /* VirtualRobitBody.swift in Sources */,
@@ -669,6 +674,7 @@
 				1A65ABA92CCECB2200A74A7A /* Objective.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitBody.swift in Sources */,
 				0BF86FD22CB617C2004FCD87 /* SiriBodyControlMacOSApp.swift in Sources */,
+				1A9BB2AC2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */,
 				1AC0B7652CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */,
 				1A78AD812CC7FF190070D3F6 /* MotionControlView.swift in Sources */,
 				1A78AD552CC490120070D3F6 /* Math+ApproximatelyEqual.swift in Sources */,

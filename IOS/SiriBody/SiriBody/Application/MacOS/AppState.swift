@@ -7,7 +7,6 @@ class AppState: ObservableObject {
     @Published var virtualRobitBrain: RobitBrain!
     @Published var sceneKitInteractor: SceneKitService
 
-
     // Service
     let centralService = CentralService(serviceID: TransferService.phoneServiceUUID, charID: TransferService.phoneCharUUID)
 
@@ -71,21 +70,23 @@ class AppState: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &virtualRobitBrain.$state)
 
-        virtualRobitBrain
-            .mapController
-            .$robitGridPosition
-            .compactMap{ $0 }
-            .sink { [weak self] gridPosition in
-            guard let self else {
-                return
-            }
-                let offset = virtualRobitBrain.mapController.grid.halfSize
-                for x in 0..<3 {
-                    for z in 0..<3 {
-                        self.sceneKitInteractor.mapDisplayService.updateTile(x: gridPosition.x + x + offset - 1, z: gridPosition.z + offset + z - 1, color: NSColor.purple)
-                    }
-                }
-            }.store(in: &bag)
+
+        // Highlight visited tiles
+//        virtualRobitBrain
+//            .mapController
+//            .$robitGridPosition
+//            .compactMap{ $0 }
+//            .sink { [weak self] gridPosition in
+//            guard let self else {
+//                return
+//            }
+//                let offset = virtualRobitBrain.mapController.grid.halfSize
+//                for x in 0..<3 {
+//                    for z in 0..<3 {
+//                        self.sceneKitInteractor.mapDisplayService.updateTile(x: gridPosition.x + x + offset - 1, z: gridPosition.z + offset + z - 1, color: NSColor.purple)
+//                    }
+//                }
+//            }.store(in: &bag)
 
         sceneKitInteractor
             .eventSubject

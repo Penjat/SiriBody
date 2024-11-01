@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 enum SequenceStep {
     case wait(TimeInterval)
@@ -10,6 +11,15 @@ class CommandInteractor: ObservableObject {
     @Published var sequence = [SequenceStep]()
     @Published var stepNumber = 0
     @Published var motionCommand: Command?
+
+    var bag = Set<AnyCancellable>()
+
+    init() {
+        $sequence.sink { [ weak self] _ in
+            self?.runStep()
+        }.store(in: &bag)
+
+    }
 
     func stepComplete() {
         stepNumber += 1
@@ -45,6 +55,9 @@ class CommandInteractor: ObservableObject {
     }
 
     func runStep() {
+        guard stepNumber < sequence.count else {
+            return
+        }
         process(sequenceStep: sequence[stepNumber])
     }
 

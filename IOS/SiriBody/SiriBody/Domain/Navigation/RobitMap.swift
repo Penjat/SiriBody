@@ -35,6 +35,11 @@ class RobitMap: ObservableObject {
     }
 
     public func clearGrid() {
-        grid = SquareGrid()
+        for x in -grid.halfSize..<grid.halfSize {
+            for z in -grid.halfSize..<grid.halfSize {
+                setTile(value: 0, x: x, z: z)
+            }
+        }
+
     }
 }

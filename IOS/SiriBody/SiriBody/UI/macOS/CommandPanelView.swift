@@ -34,6 +34,7 @@ struct CommandPanelView: View {
             } label: {
                 Text("set rotation")
             }
+
         }
     }
 }

@@ -29,7 +29,7 @@ struct MapDisplayView: View {
     func colorForByte(_ byte: UInt8) -> Color {
         switch byte {
         case 0:
-            return Color.gray
+            return Color.blue
         case 1:
             return Color.red
         case 2:

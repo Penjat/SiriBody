@@ -9,6 +9,7 @@ enum ObjectiveOutput {
 
 class ObjectiveInteractor: ObservableObject {
     @Published var objective: Objective?
+    
     let output = PassthroughSubject<ObjectiveOutput, Never>()
 
     var bag = Set<AnyCancellable>()
@@ -69,7 +70,7 @@ class ObjectiveInteractor: ObservableObject {
 
                 case .foundPath(let path):
                     objective = nil
-                    self.output.send(.followPath(path))
+                    self.output.send(.followPath(path.reversed()))
 
                     print("path: \(path) ")
                     path.forEach { possition in

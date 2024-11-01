@@ -79,5 +79,7 @@ class RobitBrain: ObservableObject {
                 z: Int($0.position.z))  }
             .removeDuplicates()
             .assign(to: &mapController.$robitGridPosition)
+
+        sequenceController.subscribeTo(objectiveOutputPublisher: objectiveInteractor.output)
     }
 }

@@ -22,27 +22,10 @@ class SceneKitMapDisplayService: ObservableObject {
             switch event {
             case .updateTiles(let tileUpdates):
                 for (value, position) in tileUpdates {
-                    self?.updateTile(x: position.x, z: position.z, color: SceneKitMapDisplayService.colorForByte(value))
+                    self?.updateTile(x: position.x, z: position.z, color: SceneKitMapDisplayService.colorForTile(number: value))
                 }
             }
         }.store(in: &bag)
-    }
-
-    static func colorForByte(_ byte: UInt8) -> NSColor {
-        switch byte {
-        case 0:
-            return NSColor.gray
-        case 1:
-            return NSColor.red
-        case 2:
-            return NSColor.orange
-        case 3:
-            return NSColor.yellow
-        case 4:
-            return NSColor.green
-        default:
-            return NSColor.black
-        }
     }
 
     private func createMap(from grid: SquareGrid ) {
@@ -52,7 +35,7 @@ class SceneKitMapDisplayService: ObservableObject {
             var newRow = [SCNNode]()
             for col in row {
 
-                let color = colorForTile(number: col)
+                let color = SceneKitMapDisplayService.colorForTile(number: col)
                 let tile = createTile(color: color)
                 scene.rootNode.addChildNode(tile)
                 tile.position = SCNVector3(x-xOffset, 0, z-zOffset)
@@ -65,24 +48,24 @@ class SceneKitMapDisplayService: ObservableObject {
         }
     }
 
-    func colorForTile(number: UInt8) -> NSColor {
+    static func colorForTile(number: UInt8) -> NSColor {
         switch number {
         case 0:
             return NSColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2)
         case 1:
-            return NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.2)
+            return NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.6)
         case 2:
-            return NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 0.2)
+            return NSColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 0.6)
         case 3:
-            return NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.2)
+            return NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.6)
         default:
-            return NSColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.2)
+            return NSColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.6)
         }
     }
 
     func updateTile(x: Int, z: Int, color: NSColor) {
-        
-        guard let materials = gridTiles[z][x].geometry?.materials else {
+
+        guard x > 0, z > 0, x < gridTiles.count, z < gridTiles.count,  let materials = gridTiles[z][x].geometry?.materials else {
             return
         }
 

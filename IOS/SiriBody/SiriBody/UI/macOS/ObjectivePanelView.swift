@@ -29,11 +29,10 @@ struct ObjectivePanelView: View {
             }
 
             Button {
-                appState.virtualRobitBrain
+                appState.virtualRobitBrain.mapController.clearGrid()
             } label: {
                 Text("clear")
             }
-
         }
     }
 }

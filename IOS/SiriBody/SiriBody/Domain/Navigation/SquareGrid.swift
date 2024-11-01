@@ -32,7 +32,7 @@ struct SquareGrid: TileGrid {
     }
 
     func tile(_ position: GridPosition) -> UInt8? {
-        guard position.x > -size, position.z > -size, position.x < size, position.z < size else {
+        guard position.x > -halfSize, position.z > -halfSize, position.x < halfSize, position.z < size else {
             return nil
         }
         return grid[position.x+halfSize][position.z+halfSize]
