@@ -27,7 +27,7 @@ struct SequenceControlView: View {
 
             Button {
                     sequenceController
-                    .runStep()
+                    .runStep(sequence: sequenceController.sequence)
             } label: {
                 Text("resume")
             }

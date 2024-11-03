@@ -15,16 +15,16 @@ class CommandInteractor: ObservableObject {
     var bag = Set<AnyCancellable>()
 
     init() {
-        $sequence.sink { [ weak self] _ in
+        $sequence.sink { [ weak self] sequence in
             self?.stepNumber = 0
-            self?.runStep()
+            self?.runStep(sequence: sequence)
         }.store(in: &bag)
     }
 
     func stepComplete() {
         stepNumber += 1
         if stepNumber < sequence.count {
-            runStep()
+            runStep(sequence: sequence)
             return
         }
 
@@ -41,7 +41,7 @@ class CommandInteractor: ObservableObject {
             .runCommand(.moveTo(x: 10, z: -10)),
             .reapeatSequence
         ]
-        runStep()
+        runStep(sequence: sequence)
     }
 
     func startLineSequence() {
@@ -51,10 +51,10 @@ class CommandInteractor: ObservableObject {
             .runCommand(.moveTo(x: -10, z: 0)),
             .reapeatSequence
         ]
-        runStep()
+        runStep(sequence: sequence)
     }
 
-    func runStep() {
+    func runStep(sequence: [SequenceStep]) {
 
         guard stepNumber < sequence.count else {
             return
