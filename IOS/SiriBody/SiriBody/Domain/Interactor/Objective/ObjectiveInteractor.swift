@@ -73,9 +73,9 @@ class ObjectiveInteractor: ObservableObject {
                     self.output.send(.followPath(path.reversed()))
 
                     print("path: \(path) ")
-                    path.forEach { possition in
-                        robitMap.setTile(value: 1, x: possition.x, z: possition.z)
-                    }
+//                    path.forEach { possition in
+//                        robitMap.setTile(value: 1, x: possition.x, z: possition.z)
+//                    }
                 }
             }
     }

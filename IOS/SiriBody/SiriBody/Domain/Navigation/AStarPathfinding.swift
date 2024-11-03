@@ -76,8 +76,12 @@ class AStarPathfinder {
         return subject.eraseToAnyPublisher()
     }
 
-    static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int{
+    static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int {
         return  abs(goal.x-tile.x) + abs(goal.z - tile.z)
+//        let xDistance = Double(abs(goal.x - tile.x))
+//        let zDistance = Double(abs(goal.z - tile.z))
+//
+//        return Int(sqrt(xDistance*xDistance + zDistance*zDistance))
     }
 
     static func findWayBack(_ tile: GridPosition, tiles: [GridPosition: TileScroe]) -> [GridPosition] {

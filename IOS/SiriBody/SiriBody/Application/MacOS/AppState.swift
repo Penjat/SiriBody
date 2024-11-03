@@ -93,7 +93,9 @@ class AppState: ObservableObject {
             .sink { [weak self] event in
                 switch event {
                 case .touchPoint(x: let x, z: let z):
-                    self?.virtualRobitBrain.mapController.setTile(value: 4, x: Int(x), z: Int(z))
+                    let valueX = x + (x > 0 ? 0.5 : -0.5)
+                    let valueZ = z + (z > 0 ? 0.5 : -0.5)
+                    self?.virtualRobitBrain.mapController.setTile(value: 4, x: Int( valueX), z: Int(valueZ))
                 }
             }.store(in: &bag)
     }

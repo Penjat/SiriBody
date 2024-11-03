@@ -16,9 +16,9 @@ class CommandInteractor: ObservableObject {
 
     init() {
         $sequence.sink { [ weak self] _ in
+            self?.stepNumber = 0
             self?.runStep()
         }.store(in: &bag)
-
     }
 
     func stepComplete() {
@@ -55,6 +55,7 @@ class CommandInteractor: ObservableObject {
     }
 
     func runStep() {
+
         guard stepNumber < sequence.count else {
             return
         }

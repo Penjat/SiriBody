@@ -10,7 +10,7 @@ extension CommandInteractor {
             .compactMap { output in
                 switch output {
                 case .followPath(let path):
-                    return nil//CommandInteractor.sesquenceFrom(path: path)
+                    return CommandInteractor.sesquenceFrom(path: path)
                 }
             }.assign(to: &$sequence)
     }
