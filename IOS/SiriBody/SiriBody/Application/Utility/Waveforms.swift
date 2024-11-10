@@ -1,3 +1,5 @@
+import Foundation
+
 func triangleWave(_ input: Double) -> Double {
     return (abs((input + Double.pi/2).remainder(dividingBy:Double.pi*2)/Double.pi)-0.5)*2
 }
@@ -51,69 +53,3 @@ func pinkNoise(_ input: Double) -> Double {
     // The output is the running sum of the generators
     return Static.runningSum
 }
-
-
-for i in 0..<100 {
-    let time = Double(i) * 0.01
-    let value = pinkNoise(time)
-    print(value)
-}
-
-
-import SwiftUI
-import PlaygroundSupport
-
-
-struct WaveView: View {
-    var title: String = ""
-    let frequency: Double
-    var wav: (Double) -> Double = sin
-    var color: Color
-    var magnitude = 1.0
-    var body: some View {
-        VStack {
-            Text(title)
-            HStack(spacing: 0) {
-                ForEach(0..<500){ index in
-                    let wavOutput = (wav(Double(index)/500.0*Double.pi*2*frequency)/magnitude)/2
-                    let height = wavOutput*30
-
-                    VStack(spacing: 0.0) {
-                        VStack(spacing: 1.0) {
-                            Spacer()
-                            Rectangle().fill(color).frame(width: 4, height: max(0, height))
-                        }
-                        VStack {
-                            Rectangle().fill(.purple).frame(width: 4, height: max(0,-height))
-                            Spacer()
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-struct ContentView: View {
-    let wav: (Double) -> Double =  { input in
-        return pinkNoise(input)*4 + sin(input + 0.4)
-    }
-    var body: some View {
-
-
-        WaveView(frequency: 1, wav: wav, color: .blue, magnitude: 0.2)
-            .font(.largeTitle)
-            .padding()
-            .frame(height: 800)
-    }
-}
-
-PlaygroundPage.current.setLiveView(ContentView())
-
-
-
-
-
-
-

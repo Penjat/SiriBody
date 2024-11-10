@@ -8,7 +8,7 @@ struct SiriBodyControlMacOSApp: App {
         Window("First Window", id: "window1") {
             ControlView()
                 .environmentObject(appState)
-                .environmentObject(appState.sceneKitInteractor)
+                .environmentObject(appState.sceneKitService)
                 .environmentObject(appState.virtualRobitBrain)
         }
     }

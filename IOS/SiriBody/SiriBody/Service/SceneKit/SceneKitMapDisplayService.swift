@@ -48,6 +48,8 @@ class SceneKitMapDisplayService: ObservableObject {
         }
     }
 
+    
+
     static func colorForTile(number: UInt8) -> NSColor {
         switch number {
         case 0:

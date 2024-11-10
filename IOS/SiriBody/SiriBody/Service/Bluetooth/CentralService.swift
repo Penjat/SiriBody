@@ -14,8 +14,7 @@ class CentralService: NSObject {
     var centralManager: CBCentralManager!
     var discoveredPeripheral: CBPeripheral?
     var transferCharacteristic: CBCharacteristic?
-     
-    let centralState = PassthroughSubject<CBManagerState, Never>()
+
     let connectionStateSubject = CurrentValueSubject<ConnectionState, Never>(.disconnected)
 
     let inputSubject = PassthroughSubject<Data, Never>()
@@ -44,7 +43,9 @@ class CentralService: NSObject {
 
 extension CentralService: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        centralState.send(centralManager.state)
+        if central.state == .poweredOn {
+            retrievePeripheral()
+        }
     }
     
     func stopScanning() {

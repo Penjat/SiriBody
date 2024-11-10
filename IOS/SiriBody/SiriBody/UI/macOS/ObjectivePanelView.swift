@@ -28,8 +28,16 @@ struct ObjectivePanelView: View {
                 Text("set target")
             }
 
+            Toggle(isOn: $appState.virtualRobitBrain.objectiveInteractor.moveTo) {
+                Text("move to")
+            }
+
+            Toggle(isOn: $appState.virtualRobitBrain.objectiveInteractor.showPath) {
+                Text("show path")
+            }
+
             Button {
-                appState.virtualRobitBrain.mapController.clearGrid()
+
             } label: {
                 Text("clear")
             }

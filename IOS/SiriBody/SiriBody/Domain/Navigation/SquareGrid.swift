@@ -45,7 +45,7 @@ struct SquareGrid: TileGrid {
             for z in -1...1 {
                 let xPos = tile.x + x
                 let zPos = tile.z + z
-                if let neightbor = self.tile(GridPosition(x: xPos, z: zPos)), neightbor == 0 {
+                if let neightbor = self.tile(GridPosition(x: xPos, z: zPos)), neightbor < 3 {
                     output.append(GridPosition(x: xPos, z: zPos))
                 }
             }

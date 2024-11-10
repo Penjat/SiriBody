@@ -48,7 +48,7 @@ struct ControlView: View {
 
                     switch viewMode {
                     case .joystick:
-                        JoystickView(motorSpeed: $appState.sceneKitInteractor.virtualRobitBody.motorSpeed).frame(width: 420)
+                        JoystickView(motorSpeed: $appState.sceneKitService.virtualRobitBody.motorSpeed).frame(width: 420)
                     case .command:
                         CommandPanelView()
                     case .sequence:

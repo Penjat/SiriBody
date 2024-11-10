@@ -83,6 +83,8 @@
 		1AA9D8BE2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8BD2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift */; };
 		1AA9D8BF2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8BD2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift */; };
 		1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */; };
+		1ABEEF2E2CDEA691006EC86F /* Waveforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEEF2D2CDEA691006EC86F /* Waveforms.swift */; };
+		1ABEEF2F2CDEA691006EC86F /* Waveforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEEF2D2CDEA691006EC86F /* Waveforms.swift */; };
 		1AC0B7612CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
 		1AC0B7622CCAB3AF00AAF9F7 /* PIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */; };
 		1AC0B7652CCACCF800AAF9F7 /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
@@ -164,6 +166,7 @@
 		1AA9D8BA2CCD106C0093CA57 /* MapDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplayView.swift; sourceTree = "<group>"; };
 		1AA9D8BD2CCD3F2C0093CA57 /* SceneKitMapDisplayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitMapDisplayService.swift; sourceTree = "<group>"; };
 		1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralStatusView.swift; sourceTree = "<group>"; };
+		1ABEEF2D2CDEA691006EC86F /* Waveforms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveforms.swift; sourceTree = "<group>"; };
 		1AC0B7602CCAB3AF00AAF9F7 /* PIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDController.swift; sourceTree = "<group>"; };
 		1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDControllerView.swift; sourceTree = "<group>"; };
 		1AC0B76C2CCB57F300AAF9F7 /* CommandInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandInteractor.swift; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */,
+				1ABEEF2D2CDEA691006EC86F /* Waveforms.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -651,6 +655,7 @@
 				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
 				1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */,
 				1A78AD722CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
+				1ABEEF2E2CDEA691006EC86F /* Waveforms.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
 				1A78AD662CC5C7DE0070D3F6 /* RobitState.swift in Sources */,
 				0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */,
@@ -694,6 +699,7 @@
 				1AE096622CBE03B90038B2CA /* SceneKitView.swift in Sources */,
 				1AE096632CBE03DC0038B2CA /* CentralService.swift in Sources */,
 				1A78AD5B2CC56AB10070D3F6 /* CommandPanelView.swift in Sources */,
+				1ABEEF2F2CDEA691006EC86F /* Waveforms.swift in Sources */,
 				1A65AB9F2CCEC53900A74A7A /* ObjectiveInteractor.swift in Sources */,
 				1AE096642CBE03DC0038B2CA /* TransferService.swift in Sources */,
 				1A78AD542CBF81D00070D3F6 /* RobitPosition.swift in Sources */,

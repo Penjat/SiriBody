@@ -12,18 +12,43 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
     enum SceneEvent {
         case touchPoint(x: Double, z: Double)
     }
+
     @Published var cameraPosition = CameraPosition.overhead
     @Published var realRobitState = RobitState.zero
     @Published var virtualRobitBody = VirtualRobitBody()
+
     let eventSubject = PassthroughSubject<SceneEvent, Never>()
 
     var mapDisplayService: SceneKitMapDisplayService!
 
     var bag = Set<AnyCancellable>()
 
-    convenience init(mapController: RobitMap) {
+    convenience init(robitBrain: RobitBrain) {
         self.init()
-        self.mapDisplayService = SceneKitMapDisplayService(scene: scene, mapController: mapController)
+        self.mapDisplayService = SceneKitMapDisplayService(scene: scene, mapController: robitBrain.mapController)
+
+        eventSubject
+            .sink { event in
+                switch event {
+                case .touchPoint(x: let x, z: let z):
+                    let valueX = x + (x > 0 ? 0.5 : -0.5)
+                    let valueZ = z + (z > 0 ? 0.5 : -0.5)
+                    robitBrain.mapController.setTile(value: 4, x: Int( valueX), z: Int(valueZ))
+                }
+            }.store(in: &bag)
+
+
+        // RobitBrain to VirtualBody
+        robitBrain
+            .$motorSpeed
+            .assign(to: &virtualRobitBody.$motorSpeed)
+
+        // VirtualBody to RobitBrain
+            virtualRobitBody
+            .$state
+            .subscribe(on: RunLoop.main)
+            .receive(on: RunLoop.main)
+            .assign(to: &robitBrain.$state)
     }
 
     override init() {
@@ -52,9 +77,9 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
 
         $realRobitState
             .sink { [weak self] state in
-            self?.updateRealRobit(state.position, state.orientation)
-        }
-        .store(in: &bag)
+                self?.updateRealRobit(state.position, state.orientation)
+            }
+            .store(in: &bag)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -79,7 +104,7 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
         cameraNode.eulerAngles = SCNVector3(0, Double.pi, 0)
         return cameraNode
     }()
-    
+
     lazy var overheadCam = {
         let cameraNode = SCNNode()
         cameraNode.eulerAngles = SCNVector3(-Double.pi/2, 0, 0)
@@ -147,16 +172,16 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
         scene.rootNode.addChildNode(mainLight)
         scene.rootNode.addChildNode(mainFloor)
         scene.rootNode.addChildNode(overheadCam)
-        
+
         if let virtualRobit = virtualRobitBody.node {
             scene.rootNode.addChildNode(virtualRobit)
         }
-        
+
         if let realRobit {
             scene.rootNode.addChildNode(realRobit)
             realRobit.position = SCNVector3(10, 0, 15)
         }
-        
+
         let boxNode1 = createBox(color: .red)
         scene.rootNode.addChildNode(boxNode1)
         boxNode1.position = SCNVector3(10, 0.1, 10)

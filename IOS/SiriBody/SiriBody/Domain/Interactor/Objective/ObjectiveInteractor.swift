@@ -9,7 +9,9 @@ enum ObjectiveOutput {
 
 class ObjectiveInteractor: ObservableObject {
     @Published var objective: Objective?
-    
+    @Published var moveTo = false
+    @Published var showPath = true
+
     let output = PassthroughSubject<ObjectiveOutput, Never>()
 
     var bag = Set<AnyCancellable>()
@@ -70,12 +72,17 @@ class ObjectiveInteractor: ObservableObject {
 
                 case .foundPath(let path):
                     objective = nil
-                    self.output.send(.followPath(path.reversed()))
-
                     print("path: \(path) ")
-//                    path.forEach { possition in
-//                        robitMap.setTile(value: 1, x: possition.x, z: possition.z)
-//                    }
+
+                    if moveTo {
+                        self.output.send(.followPath(path.reversed()))
+                    }
+
+                    if showPath {
+                        path.forEach { possition in
+                            robitMap.setTile(value: 1, x: possition.x, z: possition.z)
+                        }
+                    }
                 }
             }
     }
