@@ -12,12 +12,15 @@ class RobitBrain: ObservableObject {
     @Published var motionController = MotionOutputInteractor()
     @Published var sequenceController = CommandInteractor()
     @Published var state = RobitState.zero
-    @Published var mapController = RobitMap()
+    @Published var mapController: RobitMap!
 
     @Published var motorSpeed = MotorOutput(motor1: 0, motor2: 0)
     var bag = Set<AnyCancellable>()
 
     init() {
+
+        mapController = RobitMap(statePublisher: $state)
+
         // Give Objectiveinteractor
         objectiveInteractor = ObjectiveInteractor(
             statePublisher: 
@@ -72,13 +75,6 @@ class RobitBrain: ObservableObject {
                     break;
                 }
             }.store(in: &bag)
-
-        $state
-            .map { GridPosition(
-                x: Int($0.position.x),
-                z: Int($0.position.z))  }
-            .removeDuplicates()
-            .assign(to: &mapController.$robitGridPosition)
 
         sequenceController.subscribeTo(objectiveOutputPublisher: objectiveInteractor.output)
     }

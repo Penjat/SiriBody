@@ -62,7 +62,8 @@ class AStarPathfinder {
 
                 if nextTile.position == goal {
                     let pathBack = findWayBack(nextTile.position, tiles: visitedTiles)
-                    subject.send(Event.foundPath(pathBack))
+                    let optimizedPath = AStarPathfinder.optimize(path: pathBack, grid: grid)
+                    subject.send(Event.foundPath(optimizedPath))
                     subject.send(completion: .finished)
                     running = false
                     return
@@ -93,5 +94,49 @@ class AStarPathfinder {
             }
             output.append(nextTile)
         }
+    }
+
+    static func pathClear(p1: GridPosition, p2: GridPosition, grid: TileGrid) -> Bool {
+        // check all points in between and see if blocked
+        let distanceX = abs(p2.x - p1.x)
+        let distanceZ = abs(p2.z - p1.z)
+
+        if distanceX > distanceZ {
+            let direction = (p1.x < p2.x) ? 1 : -1
+            let slope = distanceZ != 0 ? Double(p2.x - p1.x) / Double(p2.z - p1.z) : 0.0
+            for i in 0..<distanceX {
+                if let value = grid.tile(GridPosition(x: p1.x + direction*i, z: p1.z + Int(Double(i)*slope))), value > 2 {
+                    return false
+                }
+            }
+        } else {
+            let direction = (p1.z < p2.z) ? 1 : -1
+            let slope = distanceX != 0 ? Double(p2.z - p1.z) / Double(p2.x - p1.x) : 0.0
+            for i in 0..<distanceZ {
+                if let value = grid.tile(GridPosition(x: p1.x + Int(Double(i)*slope), z: p1.z + direction*i)), value > 2 {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    static func optimize(path: [GridPosition], grid: TileGrid) -> [GridPosition] {
+        guard let firstNode = path.first, let lastNode = path.last else {
+            return path
+        }
+
+        return path
+            .dropFirst()
+            .reduce((firstNode, [firstNode])) { partialResult, position in
+
+                // check if pathClear between
+                if AStarPathfinder.pathClear(p1: partialResult.1.last!, p2: position, grid: grid) {
+
+                    return (position, partialResult.1)
+                } else {
+                    return (position, partialResult.1 + [partialResult.0])
+                }
+        }.1 + [lastNode]
     }
 }

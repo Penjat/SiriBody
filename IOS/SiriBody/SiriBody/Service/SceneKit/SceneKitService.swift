@@ -29,10 +29,11 @@ class SceneKitService: NSObject, SCNSceneRendererDelegate, ObservableObject {
 
         eventSubject
             .sink { event in
+                // control size here
                 switch event {
                 case .touchPoint(x: let x, z: let z):
-                    let valueX = x + (x > 0 ? 0.5 : -0.5)
-                    let valueZ = z + (z > 0 ? 0.5 : -0.5)
+                    let valueX = x/Double(RobitMap.gridResolution) + (x > 0 ? 0.5 : -0.5)
+                    let valueZ = z/Double(RobitMap.gridResolution) + (z > 0 ? 0.5 : -0.5)
                     robitBrain.mapController.setTile(value: 4, x: Int( valueX), z: Int(valueZ))
                 }
             }.store(in: &bag)

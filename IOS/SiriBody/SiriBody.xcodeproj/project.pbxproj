@@ -45,9 +45,6 @@
 		1A65ABA82CCECB2200A74A7A /* Objective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65ABA72CCECB2200A74A7A /* Objective.swift */; };
 		1A65ABA92CCECB2200A74A7A /* Objective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65ABA72CCECB2200A74A7A /* Objective.swift */; };
 		1A65ABAA2CCECB6700A74A7A /* RobitMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */; };
-		1A65ABB92CCF316400A74A7A /* AStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65ABB82CCF316400A74A7A /* AStarTests.swift */; };
-		1A65ABBA2CCF338400A74A7A /* AStarPathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */; };
-		1A65ABBB2CCF339100A74A7A /* RobitMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */; };
 		1A65ABBD2CCF356B00A74A7A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE532CAD8402008B663D /* AppState.swift */; };
 		1A78AD532CBF81D00070D3F6 /* RobitPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */; };
 		1A78AD542CBF81D00070D3F6 /* RobitPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */; };
@@ -70,8 +67,6 @@
 		1A9BB2A32CD1203100B18193 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
 		1A9BB2A52CD120CB00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
 		1A9BB2A62CD120CB00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
-		1A9BB2A72CD25E6700B18193 /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
-		1A9BB2A82CD25E7A00B18193 /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
 		1A9BB2AB2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */; };
 		1A9BB2AC2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2AA2CD5169700B18193 /* CommandInteractor+ObjectiveAdapter.swift */; };
 		1AA9D8B02CCC6B1C0093CA57 /* SceneKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF870032CC3E068004FCD87 /* SceneKitService.swift */; };
@@ -92,6 +87,12 @@
 		1AC0B76E2CCB57F300AAF9F7 /* CommandInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B76C2CCB57F300AAF9F7 /* CommandInteractor.swift */; };
 		1AC0B7752CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */; };
 		1AC0B7762CCC62D100AAF9F7 /* macOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */; };
+		1ACD9D2C2CE4DEE300728CBB /* AStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACD9D2B2CE4DEE300728CBB /* AStarTests.swift */; };
+		1ACD9D322CE4DEF400728CBB /* AStarPathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65AB992CCEC16F00A74A7A /* AStarPathfinding.swift */; };
+		1ACD9D332CE4DEF700728CBB /* RobitMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9D8B82CCC9D0F0093CA57 /* RobitMap.swift */; };
+		1ACD9D342CE4DEFA00728CBB /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
+		1ACD9D352CE4DEFA00728CBB /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A42CD120CB00B18193 /* SquareGrid.swift */; };
+		1ACD9D372CE4E14F00728CBB /* RobitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78AD652CC5C7DE0070D3F6 /* RobitState.swift */; };
 		1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */; };
 		1AD974622CB3766F00DF80C2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974612CB3766F00DF80C2 /* LocationService.swift */; };
 		1AD974652CB377B400DF80C2 /* LocationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD974642CB377B400DF80C2 /* LocationStatusView.swift */; };
@@ -101,7 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1A65ABB32CCF312A00A74A7A /* PBXContainerItemProxy */ = {
+		1ACD9D2D2CE4DEE300728CBB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0BCEAE3A2CA76379008B663D /* Project object */;
 			proxyType = 1;
@@ -146,9 +147,6 @@
 		1A65AB9D2CCEC53900A74A7A /* ObjectiveInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveInteractor.swift; sourceTree = "<group>"; };
 		1A65ABA42CCECADE00A74A7A /* PlanInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInteractor.swift; sourceTree = "<group>"; };
 		1A65ABA72CCECB2200A74A7A /* Objective.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objective.swift; sourceTree = "<group>"; };
-		1A65ABAF2CCF312A00A74A7A /* SiriBodyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriBodyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A65ABB82CCF316400A74A7A /* AStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarTests.swift; sourceTree = "<group>"; };
-		1A65ABBE2CCF368100A74A7A /* SiriBodyControlMacOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SiriBodyControlMacOS.xctestplan; sourceTree = "<group>"; };
 		1A78AD522CBF81D00070D3F6 /* RobitPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitPosition.swift; sourceTree = "<group>"; };
 		1A78AD582CC568E40070D3F6 /* VirtualRobiPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualRobiPanelView.swift; sourceTree = "<group>"; };
 		1A78AD5A2CC56AB10070D3F6 /* CommandPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPanelView.swift; sourceTree = "<group>"; };
@@ -171,6 +169,9 @@
 		1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIDControllerView.swift; sourceTree = "<group>"; };
 		1AC0B76C2CCB57F300AAF9F7 /* CommandInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandInteractor.swift; sourceTree = "<group>"; };
 		1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = macOSAssets.xcassets; sourceTree = "<group>"; };
+		1ACD9D292CE4DEE300728CBB /* SiriBodyControlMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriBodyControlMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACD9D2B2CE4DEE300728CBB /* AStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarTests.swift; sourceTree = "<group>"; };
+		1ACD9D362CE4E10500728CBB /* SiriBodyControlMacOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SiriBodyControlMacOS.xctestplan; path = ../../SiriBodyControlMacOS.xctestplan; sourceTree = "<group>"; };
 		1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStatusView.swift; sourceTree = "<group>"; };
 		1AD974612CB3766F00DF80C2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1AD974642CB377B400DF80C2 /* LocationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStatusView.swift; sourceTree = "<group>"; };
@@ -191,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A65ABAC2CCF312A00A74A7A /* Frameworks */ = {
+		1ACD9D262CE4DEE300728CBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,9 +205,10 @@
 		0BCEAE392CA76379008B663D = {
 			isa = PBXGroup;
 			children = (
+				1ACD9D362CE4E10500728CBB /* SiriBodyControlMacOS.xctestplan */,
 				1AC0B7742CCC62D100AAF9F7 /* SiriBodyControlMacOS */,
 				0BCEAE442CA76379008B663D /* SiriBody */,
-				1A65ABB02CCF312A00A74A7A /* SiriBodyTests */,
+				1ACD9D2A2CE4DEE300728CBB /* SiriBodyControlMacOSTests */,
 				0BCEAE432CA76379008B663D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -216,7 +218,7 @@
 			children = (
 				0BCEAE422CA76379008B663D /* SiriBody.app */,
 				0BF86FCF2CB617C2004FCD87 /* SiriBodyControlMacOS.app */,
-				1A65ABAF2CCF312A00A74A7A /* SiriBodyTests.xctest */,
+				1ACD9D292CE4DEE300728CBB /* SiriBodyControlMacOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -367,14 +369,6 @@
 			path = Plan;
 			sourceTree = "<group>";
 		};
-		1A65ABB02CCF312A00A74A7A /* SiriBodyTests */ = {
-			isa = PBXGroup;
-			children = (
-				1A65ABB82CCF316400A74A7A /* AStarTests.swift */,
-			);
-			path = SiriBodyTests;
-			sourceTree = "<group>";
-		};
 		1A78AD762CC6E2310070D3F6 /* Robit */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,11 +474,18 @@
 		1AC0B7742CCC62D100AAF9F7 /* SiriBodyControlMacOS */ = {
 			isa = PBXGroup;
 			children = (
-				1A65ABBE2CCF368100A74A7A /* SiriBodyControlMacOS.xctestplan */,
 				1AC0B7732CCC62D100AAF9F7 /* macOSAssets.xcassets */,
 				0BF86FDA2CB617C3004FCD87 /* SiriBodyControlMacOS.entitlements */,
 			);
 			path = SiriBodyControlMacOS;
+			sourceTree = "<group>";
+		};
+		1ACD9D2A2CE4DEE300728CBB /* SiriBodyControlMacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				1ACD9D2B2CE4DEE300728CBB /* AStarTests.swift */,
+			);
+			path = SiriBodyControlMacOSTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,22 +525,22 @@
 			productReference = 0BF86FCF2CB617C2004FCD87 /* SiriBodyControlMacOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1A65ABAE2CCF312A00A74A7A /* SiriBodyTests */ = {
+		1ACD9D282CE4DEE300728CBB /* SiriBodyControlMacOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A65ABB52CCF312A00A74A7A /* Build configuration list for PBXNativeTarget "SiriBodyTests" */;
+			buildConfigurationList = 1ACD9D2F2CE4DEE300728CBB /* Build configuration list for PBXNativeTarget "SiriBodyControlMacOSTests" */;
 			buildPhases = (
-				1A65ABAB2CCF312A00A74A7A /* Sources */,
-				1A65ABAC2CCF312A00A74A7A /* Frameworks */,
-				1A65ABAD2CCF312A00A74A7A /* Resources */,
+				1ACD9D252CE4DEE300728CBB /* Sources */,
+				1ACD9D262CE4DEE300728CBB /* Frameworks */,
+				1ACD9D272CE4DEE300728CBB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1A65ABB42CCF312A00A74A7A /* PBXTargetDependency */,
+				1ACD9D2E2CE4DEE300728CBB /* PBXTargetDependency */,
 			);
-			name = SiriBodyTests;
-			productName = SiriBodyTests;
-			productReference = 1A65ABAF2CCF312A00A74A7A /* SiriBodyTests.xctest */;
+			name = SiriBodyControlMacOSTests;
+			productName = SiriBodyControlMacOSTests;
+			productReference = 1ACD9D292CE4DEE300728CBB /* SiriBodyControlMacOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -549,7 +550,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					0BCEAE412CA76379008B663D = {
@@ -558,9 +559,8 @@
 					0BF86FCE2CB617C2004FCD87 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					1A65ABAE2CCF312A00A74A7A = {
-						CreatedOnToolsVersion = 15.3;
-						LastSwiftMigration = 1530;
+					1ACD9D282CE4DEE300728CBB = {
+						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 0BF86FCE2CB617C2004FCD87;
 					};
 				};
@@ -580,7 +580,7 @@
 			targets = (
 				0BCEAE412CA76379008B663D /* SiriBody */,
 				0BF86FCE2CB617C2004FCD87 /* SiriBodyControlMacOS */,
-				1A65ABAE2CCF312A00A74A7A /* SiriBodyTests */,
+				1ACD9D282CE4DEE300728CBB /* SiriBodyControlMacOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -612,7 +612,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A65ABAD2CCF312A00A74A7A /* Resources */ = {
+		1ACD9D272CE4DEE300728CBB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -710,25 +710,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A65ABAB2CCF312A00A74A7A /* Sources */ = {
+		1ACD9D252CE4DEE300728CBB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A65ABBA2CCF338400A74A7A /* AStarPathfinding.swift in Sources */,
-				1A9BB2A72CD25E6700B18193 /* TileGrid.swift in Sources */,
-				1A9BB2A82CD25E7A00B18193 /* SquareGrid.swift in Sources */,
-				1A65ABBB2CCF339100A74A7A /* RobitMap.swift in Sources */,
-				1A65ABB92CCF316400A74A7A /* AStarTests.swift in Sources */,
+				1ACD9D322CE4DEF400728CBB /* AStarPathfinding.swift in Sources */,
+				1ACD9D332CE4DEF700728CBB /* RobitMap.swift in Sources */,
+				1ACD9D372CE4E14F00728CBB /* RobitState.swift in Sources */,
+				1ACD9D2C2CE4DEE300728CBB /* AStarTests.swift in Sources */,
+				1ACD9D342CE4DEFA00728CBB /* TileGrid.swift in Sources */,
+				1ACD9D352CE4DEFA00728CBB /* SquareGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1A65ABB42CCF312A00A74A7A /* PBXTargetDependency */ = {
+		1ACD9D2E2CE4DEE300728CBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0BF86FCE2CB617C2004FCD87 /* SiriBodyControlMacOS */;
-			targetProxy = 1A65ABB32CCF312A00A74A7A /* PBXContainerItemProxy */;
+			targetProxy = 1ACD9D2D2CE4DEE300728CBB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1000,39 +1001,36 @@
 			};
 			name = Release;
 		};
-		1A65ABB62CCF312A00A74A7A /* Debug */ = {
+		1ACD9D302CE4DEE300728CBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L688AU9RCV;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.superart.SiriBodyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superart.SiriBodyControlMacOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SiriBodyControlMacOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SiriBodyControlMacOS";
 			};
 			name = Debug;
 		};
-		1A65ABB72CCF312A00A74A7A /* Release */ = {
+		1ACD9D312CE4DEE300728CBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L688AU9RCV;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.superart.SiriBodyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superart.SiriBodyControlMacOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1071,11 +1069,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A65ABB52CCF312A00A74A7A /* Build configuration list for PBXNativeTarget "SiriBodyTests" */ = {
+		1ACD9D2F2CE4DEE300728CBB /* Build configuration list for PBXNativeTarget "SiriBodyControlMacOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A65ABB62CCF312A00A74A7A /* Debug */,
-				1A65ABB72CCF312A00A74A7A /* Release */,
+				1ACD9D302CE4DEE300728CBB /* Debug */,
+				1ACD9D312CE4DEE300728CBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

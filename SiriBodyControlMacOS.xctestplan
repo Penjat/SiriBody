@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "61B06264-7D2C-48C9-B96C-F3BFB8317D1E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SiriBody.xcodeproj",
+        "identifier" : "1ACD9D282CE4DEE300728CBB",
+        "name" : "SiriBodyControlMacOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}

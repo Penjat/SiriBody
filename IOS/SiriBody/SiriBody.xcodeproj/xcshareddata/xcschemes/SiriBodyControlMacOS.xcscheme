@@ -30,10 +30,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:SiriBodyControlMacOS.xctestplan"
+            reference = "container:../../SiriBodyControlMacOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1ACD9D282CE4DEE300728CBB"
+               BuildableName = "SiriBodyControlMacOSTests.xctest"
+               BlueprintName = "SiriBodyControlMacOSTests"
+               ReferencedContainer = "container:SiriBody.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

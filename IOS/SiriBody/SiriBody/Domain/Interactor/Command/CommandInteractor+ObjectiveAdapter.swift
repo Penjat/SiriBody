@@ -17,6 +17,11 @@ extension CommandInteractor {
 
     static func sesquenceFrom(path: [GridPosition]) -> [SequenceStep] {
         
-        return path.map { .runCommand(.moveTo(x: Double($0.x), z: Double($0.z))) }
+        return path
+            .map { point in
+                let x = Double(point.x)*Double(RobitMap.gridResolution)
+                let z = Double(point.z)*Double(RobitMap.gridResolution)
+                return   .runCommand(.moveTo(x: x, z: z))
+            }
     }
 }

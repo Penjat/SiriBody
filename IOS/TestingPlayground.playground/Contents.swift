@@ -1,117 +1,166 @@
-func triangleWave(_ input: Double) -> Double {
-    return (abs((input + Double.pi/2).remainder(dividingBy:Double.pi*2)/Double.pi)-0.5)*2
-}
+import Foundation
+import Combine
 
-func squareWave(_ input: Double) -> Double  {
-    return (input.remainder(dividingBy: Double.pi*2) >= 0) ? 1 : -1
-}
 
-func sawWave(_ input: Double) -> Double {
-    return (input).truncatingRemainder(dividingBy: Double.pi*2)/(Double.pi)-1
-}
+class AStarPathfinder {
 
-func whiteNoise(_ input: Double) -> Double {
-    return Double.random(in: -1...1)
-}
-
-func pinkNoise(_ input: Double) -> Double {
-    // Number of random generators to sum
-    let numGenerators = 16
-
-    // Static variables to maintain state between function calls
-    struct Static {
-        static var generators = [Double](repeating: 0.0, count: 16)
-        static var runningSum: Double = 0.0
-        static var index: UInt = 0
-    }
-
-    // Update the index
-    Static.index += 1
-
-    // Determine which generators to update based on the index
-    var n = Static.index
-    var lastUpdatedGenerator = -1
-    for i in 0..<numGenerators {
-        if n & 1 == 1 {
-            lastUpdatedGenerator = i
-            break
+    struct TileScroe {
+        let position: GridPosition
+        let previousTile: GridPosition?
+        let gScore: Int
+        let wScore: Int
+        var score: Int {
+            gScore + wScore
         }
-        n >>= 1
     }
 
-    if lastUpdatedGenerator >= 0 {
-        // Subtract the old value of the generator from the running sum
-        Static.runningSum -= Static.generators[lastUpdatedGenerator]
-        // Generate a new random value for this generator
-        Static.generators[lastUpdatedGenerator] = Double.random(in: -1.0...1.0) / Double(numGenerators)
-        // Add the new value to the running sum
-        Static.runningSum += Static.generators[lastUpdatedGenerator]
+    enum PathError: Error {
+        case noPathFound
     }
 
-    // The output is the running sum of the generators
-    return Static.runningSum
-}
+    enum Event {
+        case findingPath(posibleTiles: [GridPosition: TileScroe], visitedTiles: [GridPosition: TileScroe])
+        case foundPath([GridPosition])
+        // TODO: cases for unkown or blocked
+    }
 
+    static func findPath(startingTile: GridPosition, goal: GridPosition, grid: TileGrid) -> any Publisher<AStarPathfinder.Event, PathError> {
 
-for i in 0..<100 {
-    let time = Double(i) * 0.01
-    let value = pinkNoise(time)
-    print(value)
-}
+        let subject = PassthroughSubject<AStarPathfinder.Event, PathError>()
 
+        DispatchQueue.main.async {
 
-import SwiftUI
-import PlaygroundSupport
+            var posibleTiles = [GridPosition: TileScroe]()
+            var previousScore = TileScroe(position: startingTile, previousTile: nil, gScore: distanceFromGoal(tile: startingTile, goal: goal), wScore: 0)
 
+            var visitedTiles = [startingTile: previousScore]
+            var running = true
+            while running {
 
-struct WaveView: View {
-    var title: String = ""
-    let frequency: Double
-    var wav: (Double) -> Double = sin
-    var color: Color
-    var magnitude = 1.0
-    var body: some View {
-        VStack {
-            Text(title)
-            HStack(spacing: 0) {
-                ForEach(0..<500){ index in
-                    let wavOutput = (wav(Double(index)/500.0*Double.pi*2*frequency)/magnitude)/2
-                    let height = wavOutput*30
-
-                    VStack(spacing: 0.0) {
-                        VStack(spacing: 1.0) {
-                            Spacer()
-                            Rectangle().fill(color).frame(width: 4, height: max(0, height))
-                        }
-                        VStack {
-                            Rectangle().fill(.purple).frame(width: 4, height: max(0,-height))
-                            Spacer()
-                        }
+                grid.findPossibleNeighbors(forTile: previousScore.position)
+                    .filter { visitedTiles[$0] == nil && posibleTiles[$0] == nil }
+                    .forEach { tile in
+                        let distanceToGoal = distanceFromGoal(tile: tile, goal: goal)
+                        posibleTiles[tile] = TileScroe(position: tile, previousTile: previousScore.position, gScore: distanceToGoal, wScore: previousScore.wScore+1)
                     }
+
+                print(posibleTiles.map{ ($0.value.position, $0.value.gScore)})
+                subject.send(Event.findingPath(posibleTiles: posibleTiles, visitedTiles: visitedTiles))
+
+                let nextTile = posibleTiles
+                    .sorted { $0.value.score < $1.value.score }
+                    .first?.value
+
+                guard let nextTile else {
+                    subject.send(completion: .failure(PathError.noPathFound))
+                    running = false
+                    return
+                }
+
+                posibleTiles.removeValue(forKey: nextTile.position)
+                visitedTiles[nextTile.position] = nextTile
+
+                if nextTile.position == goal {
+                    let pathBack = findWayBack(nextTile.position, tiles: visitedTiles)
+                    subject.send(Event.foundPath(pathBack))
+                    subject.send(completion: .finished)
+                    running = false
+                    return
+                }
+
+                print(nextTile.position)
+                previousScore = nextTile
+
+            }
+        }
+        return subject.eraseToAnyPublisher()
+    }
+
+    static func distanceFromGoal(tile: GridPosition, goal: GridPosition) -> Int {
+        return  abs(goal.x-tile.x) + abs(goal.z - tile.z)
+//        let xDistance = Double(abs(goal.x - tile.x))
+//        let zDistance = Double(abs(goal.z - tile.z))
+//
+//        return Int(sqrt(xDistance*xDistance + zDistance*zDistance))
+    }
+
+    static func findWayBack(_ tile: GridPosition, tiles: [GridPosition: TileScroe]) -> [GridPosition] {
+
+        var output = [tile]
+        while true {
+            guard let index = output.last, let nextTile = tiles[index]?.previousTile else {
+                return output
+            }
+            output.append(nextTile)
+        }
+    }
+
+    static func pathClear(p1: GridPosition, p2: GridPosition, grid: TileGrid) -> Bool {
+        return false
+    }
+}
+
+import Foundation
+import Combine
+
+
+struct GridPosition: Equatable, Hashable {
+    let x: Int
+    let z: Int
+}
+
+protocol TileGrid {
+    func findPossibleNeighbors(forTile tile: GridPosition) -> [GridPosition]
+    func tile(_ position: GridPosition) -> UInt8?
+}
+
+
+import Foundation
+import Combine
+
+struct SquareGrid: TileGrid {
+
+    var grid: [[UInt8]]
+
+    init(size: Int = 100) {
+
+        var array = Array(
+            repeating: Array(repeating: UInt8(0), count: size*2),
+            count: size*2)
+        grid = array
+    }
+
+    var size: Int {
+        grid.count
+    }
+
+    var halfSize: Int {
+        grid.count/2
+    }
+
+    func tile(_ position: GridPosition) -> UInt8? {
+        guard position.x > -halfSize, position.z > -halfSize, position.x < halfSize, position.z < size else {
+            return nil
+        }
+        return grid[position.x+halfSize][position.z+halfSize]
+    }
+
+    func findPossibleNeighbors(forTile tile: GridPosition) -> [GridPosition] {
+
+        var output = [GridPosition]()
+        for x in -1...1 {
+            for z in -1...1 {
+                let xPos = tile.x + x
+                let zPos = tile.z + z
+                if let neightbor = self.tile(GridPosition(x: xPos, z: zPos)), neightbor < 3 {
+                    output.append(GridPosition(x: xPos, z: zPos))
                 }
             }
         }
+
+        return output
     }
 }
-
-
-struct ContentView: View {
-    let wav: (Double) -> Double =  { input in
-        return pinkNoise(input)*4 + sin(input + 0.4)
-    }
-    var body: some View {
-
-
-        WaveView(frequency: 1, wav: wav, color: .blue, magnitude: 0.2)
-            .font(.largeTitle)
-            .padding()
-            .frame(height: 800)
-    }
-}
-
-PlaygroundPage.current.setLiveView(ContentView())
-
-
 
 
 

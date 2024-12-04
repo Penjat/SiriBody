@@ -7,14 +7,14 @@ class SceneKitMapDisplayService: ObservableObject {
     var gridTiles: [[SCNNode]] = []
     let mapController: RobitMap
 
-    let xOffset = 100
-    let zOffset = 100
+    let xOffset = 100*RobitMap.gridResolution
+    let zOffset = 100*RobitMap.gridResolution
     var bag = Set<AnyCancellable>()
 
     init(scene: SCNScene, mapController: RobitMap) {
         self.scene = scene
         self.mapController = mapController
-        createMap(from: mapController.grid)
+        createMap(from: mapController.grid, resolution: RobitMap.gridResolution)
         mapController
             .events
             .sink { [weak self] event in
@@ -28,9 +28,9 @@ class SceneKitMapDisplayService: ObservableObject {
         }.store(in: &bag)
     }
 
-    private func createMap(from grid: SquareGrid ) {
-        var x = 0
-        var z = 0
+    private func createMap(from grid: SquareGrid, resolution: Float ) {
+        var x: Float = 0
+        var z: Float = 0
         for row in grid.grid {
             var newRow = [SCNNode]()
             for col in row {
@@ -38,7 +38,7 @@ class SceneKitMapDisplayService: ObservableObject {
                 let color = SceneKitMapDisplayService.colorForTile(number: col)
                 let tile = createTile(color: color)
                 scene.rootNode.addChildNode(tile)
-                tile.position = SCNVector3(x-xOffset, 0, z-zOffset)
+                tile.position = SCNVector3(x*RobitMap.gridResolution-xOffset, 0, z*RobitMap.gridResolution-zOffset)
                 newRow.append(tile)
                 x += 1
             }
@@ -47,8 +47,6 @@ class SceneKitMapDisplayService: ObservableObject {
             gridTiles.append(newRow)
         }
     }
-
-    
 
     static func colorForTile(number: UInt8) -> NSColor {
         switch number {
@@ -77,7 +75,12 @@ class SceneKitMapDisplayService: ObservableObject {
     }
 
     private func createTile(color: NSColor) -> SCNNode {
-        let boxGeometry = SCNBox(width: 0.9, height: 0.1, length: 0.9, chamferRadius: 0.0)
+        let boxGeometry = SCNBox(
+            width: 0.9*CGFloat(RobitMap.gridResolution),
+            height: 0.1,
+            length: 0.9*CGFloat(RobitMap.gridResolution),
+            chamferRadius: 0.0)
+
         let boxMaterial = SCNMaterial()
         boxMaterial.diffuse.contents = color
         boxGeometry.materials = [boxMaterial]
