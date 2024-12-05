@@ -11,7 +11,7 @@ class AppState: ObservableObject {
     @Published var motionEnabled = false
 
     // Control
-    @Published var robitBrain: RobitBrain!
+    @Published var robitBrain = RobitBrain()
     @Published var pidMotionInteractor = MotionOutputInteractor()
 
     // Service
@@ -43,69 +43,44 @@ class AppState: ObservableObject {
             return command
         }
 
-        self.robitBrain = RobitBrain(
-            controlLogic: controlLogic,
-            commandLogic: commandLogic)
-
         setUpSubscriptions()
     }
 
     func setUpSubscriptions() {
 
-        // Realitykit state
-        realityKitService
-            .realityKitStateSubject
-            .assign(to: &$realityKitState)
-
-        // Process Incomming Command form bluetooth
-        peripheralService
-            .inputSubject
-            .compactMap { Command.createFrom(data: $0) }
-            .assign(to: &robitBrain.$command)
-
-        // RobitBrain process new state
-        realityKitService
-            .realityKitStateSubject
-            .map { RobitState(position: $0.devicePosition,
-                              orientation: $0.deviceOrientation,
-                              linearVelocity: $0.linearVelocity,
-                              gravity: $0.gravity)}
-            .assign(to: &robitBrain.$state)
-
-        // Scan for wheels
-        centralService
-            .centralState
-            .sink { [weak self] state in
-            switch state {
-
-            case .unknown:
-                print("Unkown")
-            case .resetting:
-                print("resetting")
-            case .unsupported:
-                print("unsupported")
-            case .unauthorized:
-                print("unauthorized")
-            case .poweredOff:
-                print("poweredOff")
-            case .poweredOn:
-                print("poweredOn")
-                self?.centralService.retrievePeripheral()
-            @unknown default:
-                print("unkown")
-            }
-        }.store(in: &bag)
-
-        // Transmit Robit State
-        //TODO: make sure this works
-        robitBrain
-            .$state
-            .compactMap { [weak self] in self?.transmitDevicePosition ?? false ? $0 : nil}
-            .compactMap { state -> Data? in StateData.positionOrientation(devicePosition: state.position, deviceOrientation: state.orientation).toData() }
-            .subscribe(peripheralService.outputSubject)
-            .store(in: &bag)
-
-        // Send output to wheels
+//        // Realitykit state
+//        realityKitService
+//            .realityKitStateSubject
+//            .assign(to: &$realityKitState)
+//
+//        // Process Incomming Command form bluetooth
+//        peripheralService
+//            .inputSubject
+//            .compactMap { Command.createFrom(data: $0) }
+//            .assign(to: &robitBrain.$command)
+//
+//        // RobitBrain process new state
+//        realityKitService
+//            .realityKitStateSubject
+//            .map { RobitState(position: $0.devicePosition,
+//                              orientation: $0.deviceOrientation,
+//                              linearVelocity: $0.linearVelocity,
+//                              gravity: $0.gravity)}
+//            .assign(to: &robitBrain.$state)
+//
+//        // Scan for wheels
+        
+//
+//        // Transmit Robit State
+//        //TODO: make sure this works
+//        robitBrain
+//            .$state
+//            .compactMap { [weak self] in self?.transmitDevicePosition ?? false ? $0 : nil}
+//            .compactMap { state -> Data? in StateData.positionOrientation(devicePosition: state.position, deviceOrientation: state.orientation).toData() }
+//            .subscribe(peripheralService.outputSubject)
+//            .store(in: &bag)
+//
+//        // Send output to wheels
         robitBrain
             .$motorSpeed
             .compactMap { TransferService.bluetoothMessageFor(motorOutput: $0) }

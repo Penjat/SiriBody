@@ -35,4 +35,6 @@ extension SCNVector3 {
     var asSIMD3Float: SIMD3<Float> {
         return SIMD3<Float>(Float(self.x), Float(self.y), Float(self.z))
     }
+    
+    
 }

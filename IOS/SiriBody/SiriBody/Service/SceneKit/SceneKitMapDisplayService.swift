@@ -29,24 +29,29 @@ class SceneKitMapDisplayService: ObservableObject {
     }
 
     private func createMap(from grid: SquareGrid, resolution: Float ) {
-        var x: Float = 0
-        var z: Float = 0
-        for row in grid.grid {
-            var newRow = [SCNNode]()
-            for col in row {
-
-                let color = SceneKitMapDisplayService.colorForTile(number: col)
-                let tile = createTile(color: color)
-                scene.rootNode.addChildNode(tile)
-                tile.position = SCNVector3(x*RobitMap.gridResolution-xOffset, 0, z*RobitMap.gridResolution-zOffset)
-                newRow.append(tile)
-                x += 1
-            }
-            x = 0
-            z += 1
-            gridTiles.append(newRow)
-        }
+//        var x: Float = 0
+//        var z: Float = 0
+//        for row in grid.grid {
+//            var newRow = [SCNNode]()
+//            for col in row {
+//
+//                let color = SceneKitMapDisplayService.colorForTile(number: col)
+//                let tile = createTile(color: color)
+//                scene.rootNode.addChildNode(tile)
+//                tile.position = SCNVector3(x*RobitMap.gridResolution-xOffset, 0, z*RobitMap.gridResolution-zOffset)
+//                newRow.append(tile)
+//                x += 1
+//            }
+//            x = 0
+//            z += 1
+//            gridTiles.append(newRow)
+//        }
+        let boxMaterial = SCNMaterial()
+        boxMaterial.diffuse.contents
+        
     }
+    
+    #if os(macOS)
 
     static func colorForTile(number: UInt8) -> NSColor {
         switch number {
@@ -64,7 +69,7 @@ class SceneKitMapDisplayService: ObservableObject {
     }
 
     func updateTile(x: Int, z: Int, color: NSColor) {
-
+        
         guard x > 0, z > 0, x < gridTiles.count, z < gridTiles.count,  let materials = gridTiles[z][x].geometry?.materials else {
             return
         }
@@ -89,4 +94,8 @@ class SceneKitMapDisplayService: ObservableObject {
         
         return boxNode
     }
+    
+    #elseif os(iOS)
+    
+    #endif
 }
