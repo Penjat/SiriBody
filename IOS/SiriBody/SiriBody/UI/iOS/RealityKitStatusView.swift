@@ -7,7 +7,6 @@ struct RealityKitStatusView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             
-//                Text("Status: \(trackingStatusDescription)")
                 Text("x: \(realityKitState.devicePosition.x, specifier: "%.2f"), y: \(realityKitState.devicePosition.y, specifier: "%.2f"), z: \(realityKitState.devicePosition.z, specifier: "%.2f")")
                 
                 

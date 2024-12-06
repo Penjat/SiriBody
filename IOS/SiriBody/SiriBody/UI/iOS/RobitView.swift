@@ -15,7 +15,8 @@ struct RobitView: View {
             CentralStatusView()
             RealityKitStatusView(realityKitState: $appState.realityKitState)
             
-            
+            PIDControllerView(controller: appState.robitBrain.motionController.rotationController, name: "Rotation Controller")
+            PIDControllerView(controller: appState.robitBrain.motionController.translationController, name: "Translation Controller")
         }
     }
 }
