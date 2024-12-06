@@ -8,7 +8,7 @@ struct JoystickView: View {
     var body: some View {
         
         VStack {
-            
+            CentralStatusView()
             Text("turn sensitivity: \(turnSensitivity)")
             Slider(value: $turnSensitivity, in: 0.0...1.0)
             Text("speed damping: \(Int(100 - speedDamping*100))%")

@@ -15,7 +15,7 @@
 		0BCEAE582CAD8627008B663D /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE572CAD8627008B663D /* JoystickView.swift */; };
 		0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE622CAED0D1008B663D /* CentralService.swift */; };
 		0BCEAE652CAED2FE008B663D /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE642CAED2FE008B663D /* TransferService.swift */; };
-		0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
+		0BCEAE672CB2FB78008B663D /* CentralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* CentralStatusView.swift */; };
 		0BCEAE6A2CB3350B008B663D /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE692CB3350B008B663D /* MotionService.swift */; };
 		0BF86FAB2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */; };
 		0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FB02CB3A08B004FCD87 /* RobitView.swift */; };
@@ -28,7 +28,7 @@
 		0BF86FED2CB6C041004FCD87 /* RealityKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FEC2CB6C041004FCD87 /* RealityKitService.swift */; };
 		0BF86FF12CB960D0004FCD87 /* RealityKitStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */; };
 		0BF86FF32CBA23D6004FCD87 /* MotionOutputInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF86FF22CBA23D6004FCD87 /* MotionOutputInteractor.swift */; };
-		0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */; };
+		0BF86FF82CBE07DE004FCD87 /* CentralStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE662CB2FB78008B663D /* CentralStatusView.swift */; };
 		0BF86FFF2CBFF8D5004FCD87 /* SiriBody.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */; };
 		0BF870002CBFF8D5004FCD87 /* SiriBody.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFD2CBFF8D5004FCD87 /* SiriBody.obj */; };
 		0BF870012CBFF8D5004FCD87 /* SiriBody.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0BF86FFE2CBFF8D5004FCD87 /* SiriBody.mtl */; };
@@ -118,7 +118,7 @@
 		0BCEAE572CAD8627008B663D /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
 		0BCEAE622CAED0D1008B663D /* CentralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralService.swift; sourceTree = "<group>"; };
 		0BCEAE642CAED2FE008B663D /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
-		0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusView.swift; sourceTree = "<group>"; };
+		0BCEAE662CB2FB78008B663D /* CentralStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralStatusView.swift; sourceTree = "<group>"; };
 		0BCEAE692CB3350B008B663D /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		0BF86FAA2CB3956B004FCD87 /* Math+ApproximatelyEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Math+ApproximatelyEqual.swift"; sourceTree = "<group>"; };
 		0BF86FB02CB3A08B004FCD87 /* RobitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitView.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		0BF86FAE2CB3A03A004FCD87 /* Status */ = {
 			isa = PBXGroup;
 			children = (
-				0BCEAE662CB2FB78008B663D /* BluetoothStatusView.swift */,
+				0BCEAE662CB2FB78008B663D /* CentralStatusView.swift */,
 				1ABEB2A82CBDF61D00CE92AF /* PeripheralStatusView.swift */,
 				1AD9745F2CB3733A00DF80C2 /* MotionStatusView.swift */,
 			);
@@ -624,7 +624,7 @@
 			files = (
 				1AD974602CB3733A00DF80C2 /* MotionStatusView.swift in Sources */,
 				0BCDCFB62D01F7200021B79F /* TileGrid.swift in Sources */,
-				0BCEAE672CB2FB78008B663D /* BluetoothStatusView.swift in Sources */,
+				0BCEAE672CB2FB78008B663D /* CentralStatusView.swift in Sources */,
 				0BCEAE632CAED0D1008B663D /* CentralService.swift in Sources */,
 				0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */,
 				0BF86FB12CB3A08B004FCD87 /* RobitView.swift in Sources */,
@@ -668,7 +668,7 @@
 				1A78AD7E2CC743000070D3F6 /* MotionOutputInteractor.swift in Sources */,
 				1AA9D8B72CCC7F480093CA57 /* SequenceControlView.swift in Sources */,
 				1AC0B76E2CCB57F300AAF9F7 /* CommandInteractor.swift in Sources */,
-				0BF86FF82CBE07DE004FCD87 /* BluetoothStatusView.swift in Sources */,
+				0BF86FF82CBE07DE004FCD87 /* CentralStatusView.swift in Sources */,
 				1A65ABA92CCECB2200A74A7A /* Objective.swift in Sources */,
 				0BF870102CC43EE7004FCD87 /* VirtualRobitBody.swift in Sources */,
 				0BCDCFB52D01EDF60021B79F /* Color+NSColor.swift in Sources */,

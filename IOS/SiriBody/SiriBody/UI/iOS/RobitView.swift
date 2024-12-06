@@ -8,7 +8,12 @@ struct RobitView: View {
     @State var bag = Set<AnyCancellable>()
     
     var body: some View {
-        Text("Robit View")
+        VStack {
+            Text("Robit View")
+            PeripheralStatusView()
+            CentralStatusView()
+            
+        }
     }
 }
 

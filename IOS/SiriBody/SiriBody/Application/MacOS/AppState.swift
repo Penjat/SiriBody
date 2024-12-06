@@ -18,6 +18,8 @@ class AppState: ObservableObject {
         self.sceneKitService = SceneKitService(robitBrain: brain)
         setUpSubscriptions()
     }
+    
+    
 
     private func setUpSubscriptions() {
 
@@ -52,7 +54,5 @@ class AppState: ObservableObject {
 //                    }
 //                }
 //            }.store(in: &bag)
-
-
     }
 }
