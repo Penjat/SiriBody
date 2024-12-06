@@ -42,7 +42,7 @@ struct CommandPanelView: View {
             } label: {
                 Text("set target")
             }
-
+            Text("\(rotation)")
             Slider(value: $rotation, in: -Double.pi...Double.pi)
             Button {
                 if sendToVirtual {

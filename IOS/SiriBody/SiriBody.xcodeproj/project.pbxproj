@@ -10,6 +10,7 @@
 		0BCDCFB52D01EDF60021B79F /* Color+NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCDCFB42D01EDF60021B79F /* Color+NSColor.swift */; };
 		0BCDCFB62D01F7200021B79F /* TileGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BB2A22CD1203100B18193 /* TileGrid.swift */; };
 		0BCDCFB72D0290E00021B79F /* PIDControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0B7632CCACCF800AAF9F7 /* PIDControllerView.swift */; };
+		0BCDCFB92D038BA40021B79F /* RobitStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCDCFB82D038BA40021B79F /* RobitStatus.swift */; };
 		0BCEAE462CA76379008B663D /* SiriBodyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE452CA76379008B663D /* SiriBodyApp.swift */; };
 		0BCEAE4A2CA7637A008B663D /* iOSAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */; };
 		0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCEAE552CAD844F008B663D /* TitleView.swift */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		0BCDCFB42D01EDF60021B79F /* Color+NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+NSColor.swift"; sourceTree = "<group>"; };
+		0BCDCFB82D038BA40021B79F /* RobitStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobitStatus.swift; sourceTree = "<group>"; };
 		0BCEAE422CA76379008B663D /* SiriBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BCEAE452CA76379008B663D /* SiriBodyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBodyApp.swift; sourceTree = "<group>"; };
 		0BCEAE492CA7637A008B663D /* iOSAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOSAssets.xcassets; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF86FB02CB3A08B004FCD87 /* RobitView.swift */,
+				0BCDCFB82D038BA40021B79F /* RobitStatus.swift */,
 				0BF86FF02CB960D0004FCD87 /* RealityKitStatusView.swift */,
 				0BCEAE552CAD844F008B663D /* TitleView.swift */,
 			);
@@ -651,6 +654,7 @@
 				1A78AD7C2CC6FB060070D3F6 /* Command.swift in Sources */,
 				1ABEB2A92CBDF61D00CE92AF /* PeripheralStatusView.swift in Sources */,
 				1A78AD722CC60AF50070D3F6 /* MotorOutput.swift in Sources */,
+				0BCDCFB92D038BA40021B79F /* RobitStatus.swift in Sources */,
 				1ABEEF2E2CDEA691006EC86F /* Waveforms.swift in Sources */,
 				0BCEAE562CAD844F008B663D /* TitleView.swift in Sources */,
 				1A78AD662CC5C7DE0070D3F6 /* RobitState.swift in Sources */,

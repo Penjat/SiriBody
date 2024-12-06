@@ -13,8 +13,8 @@ struct RobitView: View {
             
             PeripheralStatusView()
             CentralStatusView()
-            RealityKitStatusView(realityKitState: $appState.realityKitState)
-            
+//            RealityKitStatusView(realityKitState: $appState.realityKitState)
+            RobitStatusView()
             PIDControllerView(controller: appState.robitBrain.motionController.rotationController, name: "Rotation Controller")
             PIDControllerView(controller: appState.robitBrain.motionController.translationController, name: "Translation Controller")
             
@@ -22,7 +22,25 @@ struct RobitView: View {
                 Button(action: {
                     appState.robitBrain.sequenceController.motionCommand = .turnTo(angle: 0.0)
                 }, label: {
-                    Text("0,0")
+                    Text("0")
+                })
+                
+                Button(action: {
+                    appState.robitBrain.sequenceController.motionCommand = .turnTo(angle: Double.pi)
+                }, label: {
+                    Text("π")
+                })
+                
+                Button(action: {
+                    appState.robitBrain.sequenceController.motionCommand = .turnTo(angle: Double.pi/2)
+                }, label: {
+                    Text("+π/2")
+                })
+                
+                Button(action: {
+                    appState.robitBrain.sequenceController.motionCommand = .turnTo(angle: -Double.pi/2)
+                }, label: {
+                    Text("-π/2")
                 })
             }
         }
