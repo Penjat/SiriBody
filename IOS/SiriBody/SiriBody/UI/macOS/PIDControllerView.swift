@@ -6,6 +6,7 @@ struct PIDControllerView: View {
     let name: String
     var body: some View {
         VStack {
+            Text(name)
             HStack {
                 VStack {
                     Toggle("", isOn: $controller.pIsOn)
