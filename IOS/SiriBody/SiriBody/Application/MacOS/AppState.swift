@@ -52,7 +52,5 @@ class AppState: ObservableObject {
 //                    }
 //                }
 //            }.store(in: &bag)
-
-
     }
 }

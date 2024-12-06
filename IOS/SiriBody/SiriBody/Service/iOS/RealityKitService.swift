@@ -68,7 +68,7 @@ class RealityKitService: NSObject, ARSessionDelegate {
             trackingStatus: frame.camera.trackingState,
             linearVelocity: linearVelocity,
             gravity: transform.columns.2 * -1)
-
+        
         realityKitStateSubject.send(state)
     }
     

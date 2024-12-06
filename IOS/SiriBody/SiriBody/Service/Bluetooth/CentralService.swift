@@ -24,7 +24,7 @@ class CentralService: NSObject {
     
     init(serviceID: CBUUID, charID: CBUUID) {
         super.init()
-        print("creating...")
+        print("creating central service...")
         self.serviceUUID = serviceID
         self.charUUID = charID
 
@@ -84,6 +84,7 @@ extension CentralService: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
         connectionStateSubject.send(.disconnected)
+        print("disconnected")
     }
 }
 

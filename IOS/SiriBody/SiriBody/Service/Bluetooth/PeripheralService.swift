@@ -39,7 +39,7 @@ class PeripheralService: NSObject {
                 let success = self?.peripheralManager?.updateValue(data, for: transferCharacteristic, onSubscribedCentrals: nil) ?? false
                 
                 if success {
-                    print("Data sent successfully")
+//                    print("Data sent successfully")
                 } else {
                     print("Failed to send data")
                 }
@@ -94,6 +94,7 @@ extension PeripheralService: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         for request in requests {
             if let value = request.value {
+                print(value)
                 inputSubject.send(value)
             }
             peripheralManager?.respond(to: request, withResult: .success)
@@ -106,5 +107,6 @@ extension PeripheralService: CBPeripheralManagerDelegate {
 
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         connectionStateSubject.send(.connected(central))
+        print("Peripheral was connected to")
     }
 }

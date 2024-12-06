@@ -1,27 +1,28 @@
 import SwiftUI
 
-struct PeripheralStatusView: View {
+struct CentralStatusView: View {
     @EnvironmentObject var appState: AppState
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16).fill(.ultraThickMaterial)
             HStack {
-                switch appState.peripheralService.connectionStateSubject.value {
-                case .advertising:
+                switch appState.centralService.connectionStateSubject.value {
+                case .scanning:
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
                     Spacer()
-                    Text("Advertising...")
+                    Text("Scanning for devices...")
                     Spacer()
                     Button("stop", action: {
-                        appState.peripheralService.peripheralManager?.stopAdvertising()
+                        appState.centralService.stopScanning()
                     })
-
-                case .connected(let central):
+                    
+                case .connected(let peripheral):
                     Circle()
                         .fill(.green)
                         .frame(width: 20, height: 20)
                     Spacer()
-                    Text("\(central.identifier)")
+                    Text("\(peripheral.name ?? "")")
                     Spacer()
                 case .disconnected:
                     Circle()
@@ -31,10 +32,11 @@ struct PeripheralStatusView: View {
                     Text("not connected")
                     Spacer()
                     Button("scan", action: {
-                        appState.peripheralService.startAdvertising()
+                        appState.centralService.retrievePeripheral()
                     })
                 }
             }.padding()
         }.frame(height: 40)
     }
 }
+

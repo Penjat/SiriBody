@@ -9,6 +9,7 @@ struct ControlView: View {
 
     @State var bag = Set<AnyCancellable>()
     @State var viewMode = ViewMode.joystick
+    
 
     enum ViewMode: String, CaseIterable {
         case joystick
@@ -27,7 +28,7 @@ struct ControlView: View {
 
                 Spacer()
                 VStack {
-                    //                    BluetoothStatusView()
+                    
                     Picker(selection: $sceneKitInteractor.cameraPosition) {
                         ForEach(CameraPosition.allCases, id: \.self) { cameraPosition in
                             Text(cameraPosition.rawValue).tag(cameraPosition)
@@ -48,6 +49,7 @@ struct ControlView: View {
 
                     switch viewMode {
                     case .joystick:
+                        
                         JoystickView(motorSpeed: $appState.sceneKitService.virtualRobitBody.motorSpeed).frame(width: 420)
                     case .command:
                         CommandPanelView()
@@ -63,6 +65,9 @@ struct ControlView: View {
                     Spacer()
 
                 }.frame(width: 420)
+            }
+            .onAppear {
+                
             }
 //            MapDisplayView(mapController: appState.virtualRobitBrain.mapController, robitState: $appState.virtualRobitBrain.state).frame(width: 400, height: 400)
         }

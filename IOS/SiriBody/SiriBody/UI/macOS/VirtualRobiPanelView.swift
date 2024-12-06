@@ -19,7 +19,7 @@ struct VirtualRobiPanelView: View {
                 }
 
                 Button {
-                    sceneKitInteractor.resetVirtualRobitPosition(sceneKitInteractor.realRobit?.position ?? SCNVector3(x: 0, y: 0, z: 0), sceneKitInteractor.realRobit?.eulerAngles ?? SCNVector3(x: 0, y: 0, z: 0))
+                    sceneKitInteractor.resetVirtualRobitPosition(sceneKitInteractor.realRobit?.position ?? SCNVector3(x: 0, y: 0, z: 0), SCNVector3(x: sceneKitInteractor.realRobit?.eulerAngles.y ?? 0, y: 0, z: Double.pi/2))
                 } label: {
                     Text("real robit")
                 }

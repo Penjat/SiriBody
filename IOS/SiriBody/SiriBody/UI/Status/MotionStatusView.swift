@@ -1,49 +1,49 @@
 import SwiftUI
 
 struct MotionStatusView: View {
-    @EnvironmentObject var motionService: MotionService
-    @EnvironmentObject var goalInteractor: GoalInteractor
+//    @EnvironmentObject var motionService: MotionService
+    
     var body: some View {
         VStack(spacing: 30) {
             HStack {
                 VStack {
-                    Text("goal: \(String(format: "%.2f", goalInteractor.targetYaw))")
-                    Text("Yaw")
-                    ZStack {
-                        // Original Orange Circle
-                        Circle()
-                            .trim(from: 0, to: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)))
-                            .stroke(Color.orange, lineWidth: 20)
-                            .frame(width: 80, height: 80)
-                            .rotationEffect(.degrees(-90))
-                        
-                        // New Circle - goes opposite of Orange
-                        Circle()
-                            .trim(from: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)), to: 1)
-                            .stroke(Color.blue, lineWidth: 20)
-                            .frame(width: 80, height: 80)
-                            .rotationEffect(.degrees(-90))
-
-                        // Original Green Circle
-                        Circle()
-                            .trim(from: 0, to: CGFloat(((motionService.position?.attitude.yaw ?? 0) + .pi) / (2 * .pi)))
-                            .stroke(Color.green, lineWidth: 10)
-                            .frame(width: 80, height: 80)
-                            .rotationEffect(.degrees(-90))
-                            .overlay(Text("\(String(format: "%.2f", motionService.position?.attitude.yaw ?? 0.0))"))
-
-                        
-
-                        // New Circle - goes opposite of Green
-                        Circle()
-                            .trim(from: CGFloat(((motionService.position?.attitude.yaw ?? 0) + .pi) / (2 * .pi)), to: 1)
-                            .stroke(Color.purple, lineWidth: 10)
-                            .frame(width: 80, height: 80)
-                            .rotationEffect(.degrees(-90))
-                    }
-                    
-                    Text(approximatelyEqual(goalInteractor.targetYaw, motionService.position?.attitude.yaw ?? 0, tolerance: 0.025) ? "matches" : "doesn't match")
-                }
+//                    Text("goal: \(String(format: "%.2f", goalInteractor.targetYaw))")
+//                    Text("Yaw")
+//                    ZStack {
+//                        // Original Orange Circle
+//                        Circle()
+//                            .trim(from: 0, to: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)))
+//                            .stroke(Color.orange, lineWidth: 20)
+//                            .frame(width: 80, height: 80)
+//                            .rotationEffect(.degrees(-90))
+//                        
+//                        // New Circle - goes opposite of Orange
+//                        Circle()
+//                            .trim(from: CGFloat(((goalInteractor.targetYaw) + .pi) / (2 * .pi)), to: 1)
+//                            .stroke(Color.blue, lineWidth: 20)
+//                            .frame(width: 80, height: 80)
+//                            .rotationEffect(.degrees(-90))
+//
+//                        // Original Green Circle
+//                        Circle()
+//                            .trim(from: 0, to: CGFloat(((motionService.position?.attitude.yaw ?? 0) + .pi) / (2 * .pi)))
+//                            .stroke(Color.green, lineWidth: 10)
+//                            .frame(width: 80, height: 80)
+//                            .rotationEffect(.degrees(-90))
+//                            .overlay(Text("\(String(format: "%.2f", motionService.position?.attitude.yaw ?? 0.0))"))
+//
+//                        
+//
+//                        // New Circle - goes opposite of Green
+//                        Circle()
+//                            .trim(from: CGFloat(((motionService.position?.attitude.yaw ?? 0) + .pi) / (2 * .pi)), to: 1)
+//                            .stroke(Color.purple, lineWidth: 10)
+//                            .frame(width: 80, height: 80)
+//                            .rotationEffect(.degrees(-90))
+//                    }
+//                    
+//                    Text(approximatelyEqual(goalInteractor.targetYaw, motionService.position?.attitude.yaw ?? 0, tolerance: 0.025) ? "matches" : "doesn't match")
+//                }
                 
                 
                 //                        VStack {
@@ -83,10 +83,10 @@ struct MotionStatusView: View {
             //                        }
             //                    }
             
-            Button {
-                goalInteractor.targetYaw = Double.random(in: -Double.pi..<Double.pi)
-            } label: {
-                Text("new goal")
+//            Button {
+//                goalInteractor.targetYaw = Double.random(in: -Double.pi..<Double.pi)
+//            } label: {
+//                Text("new goal")
             }
             
         }
