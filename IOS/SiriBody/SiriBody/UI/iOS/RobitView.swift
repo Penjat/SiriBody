@@ -10,8 +10,11 @@ struct RobitView: View {
     var body: some View {
         VStack {
             Text("Robit View")
+            
             PeripheralStatusView()
             CentralStatusView()
+            RealityKitStatusView(realityKitState: $appState.realityKitState)
+            
             
         }
     }

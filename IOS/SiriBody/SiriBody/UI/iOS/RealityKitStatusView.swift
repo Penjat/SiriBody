@@ -2,23 +2,23 @@ import SwiftUI
 import simd
 
 struct RealityKitStatusView: View {
-    @Binding var realityKitState: RealityKitState?
+    @Binding var realityKitState: RealityKitState
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            if let robitState = realityKitState {
+            
 //                Text("Status: \(trackingStatusDescription)")
-                Text("x: \(robitState.devicePosition.x, specifier: "%.2f"), y: \(robitState.devicePosition.y, specifier: "%.2f"), z: \(robitState.devicePosition.z, specifier: "%.2f")")
+                Text("x: \(realityKitState.devicePosition.x, specifier: "%.2f"), y: \(realityKitState.devicePosition.y, specifier: "%.2f"), z: \(realityKitState.devicePosition.z, specifier: "%.2f")")
                 
                 
-                Text("Pitch: \(robitState.deviceOrientation.x, specifier: "%.2f"), Yaw: \(robitState.deviceOrientation.y, specifier: "%.2f"), Roll: \(robitState.deviceOrientation.z, specifier: "%.2f")")
+                Text("Pitch: \(realityKitState.deviceOrientation.x, specifier: "%.2f"), Yaw: \(realityKitState.deviceOrientation.y, specifier: "%.2f"), Roll: \(realityKitState.deviceOrientation.z, specifier: "%.2f")")
                 
-                if let velocity = robitState.linearVelocity {
+                if let velocity = realityKitState.linearVelocity {
                     Text("x: \(velocity.x, specifier: "%.2f"), y: \(velocity.y, specifier: "%.2f"), z: \(velocity.z, specifier: "%.2f")")
                 } else {
                     Text("no data")
                 }
-            }
+            
         }
         .padding()
         .background(.regularMaterial).cornerRadius(8)
