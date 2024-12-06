@@ -7,7 +7,6 @@ class AppState: ObservableObject {
     // State
     @Published var transmitDevicePosition = true
     
-
     @Published var realityKitState = RealityKitState.zero
     @Published var motionEnabled = false
 
@@ -35,10 +34,10 @@ class AppState: ObservableObject {
             .assign(to: &$realityKitState)
 //
 //        // Process Incomming Command form bluetooth
-//        peripheralService
-//            .inputSubject
-//            .compactMap { Command.createFrom(data: $0) }
-//            .assign(to: &robitBrain.$command)
+        peripheralService
+            .inputSubject
+            .compactMap { Command.createFrom(data: $0) }
+            .assign(to: &robitBrain.sequenceController.$motionCommand)
 //
 //        // RobitBrain process new state
         realityKitService

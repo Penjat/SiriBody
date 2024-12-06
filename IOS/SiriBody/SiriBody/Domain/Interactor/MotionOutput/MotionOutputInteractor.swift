@@ -65,8 +65,22 @@ class MotionOutputInteractor: ObservableObject {
         return abs(leftDistance) < abs(rightDistance) ? leftDistance : rightDistance
     }
 
-    func levelsFor(faceAngel: Double, robitState: RobitState) -> MotorOutput {
-        return MotorOutput.zero
+    func levelsFor(faceAngel targetRotation: Double, robitState: RobitState) -> MotorOutput {
+        
+        currentAngle = Double(robitState.orientation.x)+(Double.pi/2)
+
+
+        // Calculate the angle component
+        let angleDifference = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
+        let rotationoutput = rotationController.output(angleDifference)
+
+        let motor1SpeedDouble = (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor2SpeedDouble = -(rotationEnabled ? rotationoutput.combined : 0.0)
+
+        let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
+        let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))
+
+        return MotorOutput(motor1: limitedMotor1Speed, motor2: limitedMotor2Speed)
     }
 
     func levelsFor(facePosition position: Position, robitState: RobitState ) -> MotorOutput {

@@ -48,6 +48,10 @@ class RobitBrain: ObservableObject {
                        approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
                         sequenceController.stepComplete()
                     }
+                case .faceAngle(let angle):
+                    if approximatelyEqual(angle, Double(state.orientation.z), tolerance: 0.2) {
+                        sequenceController.stepComplete()
+                    }
                 default:
                     return nil
                 }
@@ -69,10 +73,12 @@ class RobitBrain: ObservableObject {
                 case .moveTo(x: let x, z: let z):
                     motionController.mode = .moveTo((x: x, z: z))
 
+                case .turnTo(angle: let angle):
+                    motionController.mode = .faceAngle(angle)
+                    
                 case nil:
                     motionController.mode = .idle
-                default:
-                    break;
+                    
                 }
             }.store(in: &bag)
 
