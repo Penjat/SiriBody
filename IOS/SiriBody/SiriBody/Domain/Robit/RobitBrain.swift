@@ -49,8 +49,8 @@ class RobitBrain: ObservableObject {
                         sequenceController.stepComplete()
                     }
                 case .faceAngle(let angle):
-                    if approximatelyEqual(angle, Double(state.orientation.z), tolerance: 0.2) {
-                        sequenceController.stepComplete()
+                    if approximatelyEqual(angle, Double(state.orientation.z), tolerance: 0.1) {
+//                        sequenceController.stepComplete()
                     }
                 default:
                     return nil

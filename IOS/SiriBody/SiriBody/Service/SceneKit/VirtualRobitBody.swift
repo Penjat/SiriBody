@@ -19,10 +19,10 @@ class VirtualRobitBody: ObservableObject {
         let forwardVelocity = SCNVector3(x: robit.worldForward.x*forwardBackward, y: robit.worldForward.y*forwardBackward, z: robit.worldForward.z*forwardBackward)
         robit.physicsBody?.velocity = forwardVelocity
 
-        let angularVelocityY = Float(leftRight)
+        let angularVelocityY = Float(-leftRight)
         robit.physicsBody?.angularVelocity = SCNVector4(0, 1, 0, angularVelocityY)
 
-        state = RobitState(position: robit.presentation.simdPosition, orientation: SIMD3(x: robit.presentation.simdEulerAngles.x, y: robit.presentation.simdEulerAngles.y, z: robit.presentation.simdEulerAngles.z) )
+        state = RobitState(position: robit.presentation.simdPosition, orientation: SIMD3(x: robit.presentation.simdEulerAngles.z, y: robit.presentation.simdEulerAngles.y, z: robit.presentation.simdEulerAngles.x) )
     }
 
     lazy var node: SCNNode? = {

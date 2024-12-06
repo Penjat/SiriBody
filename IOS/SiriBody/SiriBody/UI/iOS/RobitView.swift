@@ -15,6 +15,11 @@ struct RobitView: View {
             CentralStatusView()
 //            RealityKitStatusView(realityKitState: $appState.realityKitState)
             RobitStatusView()
+            
+            Slider(value: $appState.robitBrain.motionController.maxMotorSpeed, in: 0...255) {
+                Text("Max Spped")
+            }
+
             PIDControllerView(controller: appState.robitBrain.motionController.rotationController, name: "Rotation Controller")
             PIDControllerView(controller: appState.robitBrain.motionController.translationController, name: "Translation Controller")
             
