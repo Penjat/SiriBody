@@ -17,6 +17,8 @@ struct RobitView: View {
 //            RealityKitStatusView(realityKitState: $appState.realityKitState)
             RobitStatusView()
             
+            CommandView()
+            
             Spacer()
             Button {
                 editPidModal.toggle()
