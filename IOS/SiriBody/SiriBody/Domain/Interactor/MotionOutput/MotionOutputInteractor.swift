@@ -36,7 +36,7 @@ class MotionOutputInteractor: ObservableObject {
     @Published var motionEnabled = true
     @Published var rotationEnabled = true
 
-    @Published var maxMotorSpeed = 95.0
+    @Published var maxMotorSpeed = 65.0
     @Published var minMotorSpeed = 50.0
     @Published var angleDifference = 0.0
     @Published var currentAngle = 0.0

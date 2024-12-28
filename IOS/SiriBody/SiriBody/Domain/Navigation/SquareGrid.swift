@@ -7,7 +7,7 @@ struct SquareGrid: TileGrid {
 
     init(size: Int = 100) {
 
-        var array = Array(
+        let array = Array(
             repeating: Array(repeating: UInt8(0), count: size*2),
             count: size*2)
         grid = array
