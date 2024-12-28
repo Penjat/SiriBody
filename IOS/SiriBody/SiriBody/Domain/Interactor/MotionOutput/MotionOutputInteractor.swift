@@ -58,13 +58,6 @@ class MotionOutputInteractor: ObservableObject {
         }.store(in: &bag)
     }
 
-    func calculateShortestDistance(currentAngle: Double, desiredHeading: Double) -> Double {
-        let leftDistance = desiredHeading - currentAngle
-        let rightDistance = (leftDistance >= 0) ? leftDistance-Double.pi*2 : leftDistance+Double.pi*2
-
-        return abs(leftDistance) < abs(rightDistance) ? leftDistance : rightDistance
-    }
-
     func levelsFor(faceAngel targetRotation: Double, robitState: RobitState) -> MotorOutput {
         // This might need to be changed agian for digital
         currentAngle = Double(robitState.orientation.z)//+(Double.pi/2)

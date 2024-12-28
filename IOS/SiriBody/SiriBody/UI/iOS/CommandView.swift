@@ -5,7 +5,11 @@ struct CommandView: View {
     var body: some View {
         switch appState.robitBrain.sequenceController.motionCommand {
         case .turnTo(angle: let angle):
-            Text("turn to: \(angle, specifier: "%.2f"))")
+            VStack {
+                Text("turn to: \(angle, specifier: "%.2f"))")
+                Text("\(calculateShortestDistance(currentAngle:Double( appState.robitBrain.state.orientation.z), desiredHeading: angle), specifier: "%.2f")")
+            }
+
         case .none:
             Text("no command")
         case .moveTo(x: let x, z: let z):

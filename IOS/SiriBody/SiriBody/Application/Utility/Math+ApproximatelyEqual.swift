@@ -5,6 +5,13 @@ func approximatelyEqual(_ a: Double, _ b: Double, tolerance: Double = 0.01) -> B
     return abs(a - b) < tolerance
 }
 
+func calculateShortestDistance(currentAngle: Double, desiredHeading: Double) -> Double {
+    let leftDistance = desiredHeading - currentAngle
+    let rightDistance = (leftDistance >= 0) ? leftDistance-Double.pi*2 : leftDistance+Double.pi*2
+
+    return abs(leftDistance) < abs(rightDistance) ? leftDistance : rightDistance
+}
+
 extension SCNNode {
     var worldForward: SCNVector3 {
         let node = self.presentation  // Use the presentation node for the current state
