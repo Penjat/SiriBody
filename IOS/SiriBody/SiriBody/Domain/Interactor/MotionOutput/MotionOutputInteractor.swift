@@ -102,7 +102,7 @@ class MotionOutputInteractor: ObservableObject {
         let deltaZ = (Double(robitState.position.z) - position.z)
         targetRotation = atan2(deltaX, deltaZ)
 
-        currentAngle = Double(robitState.orientation.x)
+        currentAngle = Double(robitState.orientation.z)
 
         // Calculate the angle component
 
@@ -119,8 +119,8 @@ class MotionOutputInteractor: ObservableObject {
 
         let forwardLevel = (abs(angleDifference) < moveThreshold) ? -translationoutput.combined*direction : 0.0
 
-        let motor1SpeedDouble = (motionEnabled ? forwardLevel : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
-        let motor2SpeedDouble = (motionEnabled ? forwardLevel : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor1SpeedDouble = (motionEnabled ? forwardLevel : 0.0) - (rotationEnabled ? rotationoutput.combined : 0.0)
+        let motor2SpeedDouble = (motionEnabled ? forwardLevel : 0.0) + (rotationEnabled ? rotationoutput.combined : 0.0)
 
         let limitedMotor1Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor1SpeedDouble)))
         let limitedMotor2Speed = Int(max(-maxMotorSpeed, min(maxMotorSpeed, motor2SpeedDouble)))

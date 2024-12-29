@@ -70,7 +70,39 @@ struct CommandPanelView: View {
                 Text("Save PID Response")
             }
             
-            
+            // TODO: clean up this mess
+            HStack {
+                Button {
+                    let rotation = Double(appState.sceneKitService.realRobitState.orientation.z) + Double.pi/2
+                    appState.centralService.outputSubject.send(Command.turnTo(angle: rotation).toData())
+                    appState.rotationResponseMap = PIDResponseMap(targetValue: rotation, dataPoints: [])
+                } label: {
+                    Text("90 R")
+                }
+                Button {
+                    let rotation = Double(appState.sceneKitService.realRobitState.orientation.z) - Double.pi/2
+                    appState.centralService.outputSubject.send(Command.turnTo(angle: rotation).toData())
+                    appState.rotationResponseMap = PIDResponseMap(targetValue: rotation, dataPoints: [])
+                } label: {
+                    Text("90 L")
+                }
+                
+                Button {
+                    let rotation = Double(appState.sceneKitService.realRobitState.orientation.z) + Double.pi
+                    appState.centralService.outputSubject.send(Command.turnTo(angle: rotation).toData())
+                    appState.rotationResponseMap = PIDResponseMap(targetValue: rotation, dataPoints: [])
+                } label: {
+                    Text("180 R")
+                }
+                Button {
+                    let rotation = Double(appState.sceneKitService.realRobitState.orientation.z) - Double.pi
+                    appState.centralService.outputSubject.send(Command.turnTo(angle: rotation).toData())
+                    appState.rotationResponseMap = PIDResponseMap(targetValue: rotation, dataPoints: [])
+                } label: {
+                    Text("180 L")
+                }
+
+            }
             
             PIDControllerView(controller: rotationController, name: "Real Robit Rotation Controller")
             

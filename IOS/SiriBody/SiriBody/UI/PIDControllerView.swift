@@ -26,7 +26,7 @@ struct PIDControllerView: View {
                     Toggle("", isOn: $controller.dIsOn)
                     Text("\(String(format: "%.2f", controller.dConstant))")
                     //                    Text("\(String(format: "%.2f", pidMotionControl.pOutput))").monospaced()
-                    Slider(value: $controller.dConstant, in: 0.5...500).disabled(!controller.dIsOn)
+                    Slider(value: $controller.dConstant, in: -20...20).disabled(!controller.dIsOn)
                 }
             }
             .padding()
