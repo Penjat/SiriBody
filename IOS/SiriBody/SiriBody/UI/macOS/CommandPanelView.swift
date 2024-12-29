@@ -30,12 +30,16 @@ struct CommandPanelView: View {
             Button {
                 if let xDouble = Double(x), let zDouble = Double(z) {
                     print("\(xDouble), \(zDouble)")
+                    // TODO: Eventually this could be replaced by a list of active robits
                     if sendToVirtual {
                         appState.virtualRobitBrain.sequenceController.motionCommand = Command.moveTo(x: xDouble, z: zDouble)
                     }
                     
                     if sendToPhysical {
+                        // TODO: Handle this differently
                         appState.centralService.outputSubject.send(Command.moveTo(x: xDouble, z: zDouble).toData())
+                        
+                        
                     }
                 }
 
@@ -51,6 +55,7 @@ struct CommandPanelView: View {
                 
                 if sendToPhysical {
                     appState.centralService.outputSubject.send(Command.turnTo(angle: rotation).toData())
+                    appState.rotationResponseMap = PIDResponseMap(targetValue: rotation, dataPoints: [])
                 }
                 
             } label: {
