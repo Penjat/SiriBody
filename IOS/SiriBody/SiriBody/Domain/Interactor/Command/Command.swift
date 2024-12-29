@@ -1,16 +1,32 @@
 import Foundation
 
-enum Command: Equatable {
-    enum CommandCode: UInt8 {
-        case turnTo = 1
-        case moveTo = 2
-        case unknown = 0
-    }
+enum TransferCode: UInt8 {
+    
+    // Commands
+    case turnTo = 1
+    case moveTo = 2
+    
+    // Settings
+    case setRotationP = 4
+    case setRotationI = 5
+    case setRotationD = 6
+    case setRotationMax = 7
+    
+    case setTranslationP = 8
+    case setTranslationI = 9
+    case setTranslationD = 10
+    case setTranslationMax = 11
+    
+    case unknown = 0
+}
 
+enum Command: Equatable {
+    // TODO: rename TransferCode
+    
     case turnTo(angle: Double)
     case moveTo(x: Double, z: Double)
     static func createFrom(data: Data) -> Command? {
-        switch CommandCode.init(rawValue: data[0]) {
+        switch TransferCode.init(rawValue: data[0]) {
         case .turnTo:
             let angle = TransferService.rotationFrom(data: Data([data[1], data[2]])) ?? 0.0
             return .turnTo(angle: angle)
@@ -25,9 +41,9 @@ enum Command: Equatable {
     func toData() -> Data {
         switch self {
         case .turnTo(angle: let angle):
-            return Data([CommandCode.turnTo.rawValue]) + TransferService.rotationToData(value: angle)
+            return Data([TransferCode.turnTo.rawValue]) + TransferService.rotationToData(value: angle)
         case .moveTo(x: let x, z: let z):
-            return Data([CommandCode.moveTo.rawValue]) + TransferService.floatsToData(x, z)
+            return Data([TransferCode.moveTo.rawValue]) + TransferService.floatsToData(x, z)
         }
     }
 }

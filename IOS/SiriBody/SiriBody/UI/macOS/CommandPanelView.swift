@@ -67,6 +67,13 @@ struct CommandPanelView: View {
             } label: {
                 Text("Save PID Response")
             }
+            
+            Button {
+                appState.centralService.outputSubject.send(Data([TransferCode.setRotationP.rawValue] + [UInt8(28)]))
+            } label: {
+                Text("test send setting")
+            }
+
         }
     }
 }

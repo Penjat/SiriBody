@@ -38,6 +38,12 @@ class AppState: ObservableObject {
             .inputSubject
             .compactMap { Command.createFrom(data: $0) }
             .assign(to: &robitBrain.sequenceController.$motionCommand)
+        
+        peripheralService
+            .inputSubject
+            .sink{ [weak self] data in
+                self?.robitBrain.updateSetting(data: data)
+            }.store(in: &bag)
 //
 //        // RobitBrain process new state
         realityKitService
