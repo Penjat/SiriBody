@@ -13,9 +13,13 @@ extension RobitBrain {
             }
             
         case .setRotationI:
-            break
+            if let value = TransferService.dataToDouble(data.dropFirst()) {
+                self.motionController.rotationController.iConstant = value
+            }
         case .setRotationD:
-            break
+            if let value = TransferService.dataToDouble(data.dropFirst()) {
+                self.motionController.rotationController.dConstant = value
+            }
         case .setRotationMax:
             break
         case .setTranslationP:

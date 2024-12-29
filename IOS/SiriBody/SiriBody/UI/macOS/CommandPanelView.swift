@@ -9,6 +9,8 @@ struct CommandPanelView: View {
     @State var sendToVirtual = false
     @State var sendToPhysical = false
     
+    @State var rotationController = PIDController()
+    
     var body: some View {
         VStack {
             
@@ -68,8 +70,21 @@ struct CommandPanelView: View {
                 Text("Save PID Response")
             }
             
+            
+            
+            PIDControllerView(controller: rotationController, name: "Real Robit Rotation Controller")
+            
             Button {
-                appState.centralService.outputSubject.send(Data([TransferCode.setRotationP.rawValue]) + TransferService.doubleToData(128.78) )
+                appState.centralService.outputSubject.send(Data([TransferCode.setRotationP.rawValue]) + TransferService.doubleToData(rotationController.pConstant) )
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    appState.centralService.outputSubject.send(Data([TransferCode.setRotationI.rawValue]) + TransferService.doubleToData(rotationController.iConstant) )
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    appState.centralService.outputSubject.send(Data([TransferCode.setRotationD.rawValue]) + TransferService.doubleToData(rotationController.dConstant) )
+                }
+                
             } label: {
                 Text("test send setting")
             }
