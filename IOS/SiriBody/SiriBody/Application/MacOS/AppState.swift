@@ -45,10 +45,10 @@ class AppState: ObservableObject {
                 guard let responseMap else {
                     return nil
                 }
-                if let startTime = responseMap.dataPoints.first?.1,  startTime + PIDResponseMap.recordDuration < Date().timeIntervalSince1970  {
+                if let startTime = responseMap.dataPoints.first?.y,  startTime + PIDResponseMap.recordDuration < Date().timeIntervalSince1970  {
                     return nil
                 } else {
-                    return responseMap.plus((Double(state.orientation.z), Date().timeIntervalSince1970))
+                    return responseMap.plus(DataPoint(x: Double(state.orientation.z), y: Date().timeIntervalSince1970))
                 }
             }
             .print()
@@ -71,5 +71,25 @@ class AppState: ObservableObject {
         //                    }
         //                }
         //            }.store(in: &bag)
+    }
+    
+    func savePIDResponse() {
+        guard let pidMap = rotationResponseMap else {
+            print("no response to print")
+            return
+        }
+        
+        let homeURL = FileManager.default.homeDirectoryForCurrentUser
+        let fileManager = FileManager.default
+        if let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = documentsURL.appendingPathComponent("pidMapData.json")
+            
+            do {
+                try pidMap.saveToJSONFile(at: fileURL)
+                print("Successfully saved JSON to \(fileURL.path)")
+            } catch {
+                print("Failed to save JSON:", error)
+            }
+        }
     }
 }

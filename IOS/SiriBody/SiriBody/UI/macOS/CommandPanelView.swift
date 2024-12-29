@@ -61,7 +61,12 @@ struct CommandPanelView: View {
             } label: {
                 Text("set rotation")
             }
-
+            
+            Button {
+                appState.savePIDResponse()
+            } label: {
+                Text("Save PID Response")
+            }
         }
     }
 }
