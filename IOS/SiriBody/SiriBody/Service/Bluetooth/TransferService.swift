@@ -84,6 +84,29 @@ class TransferService {
         }
         return data.withUnsafeBytes { $0.load(as: SIMD3<Float>.self) }
     }
+    
+    
+    
+    static func dataToDouble(_ data: Data) -> Double? {
+        guard data.count >= MemoryLayout<Double>.size else { return nil }
+        
+        return data.withUnsafeBytes { rawBuffer -> Double in
+            var value: Double = 0
+            // Copy the bytes into `value` (on the stack), which is correctly aligned
+            memcpy(&value, rawBuffer.baseAddress!, MemoryLayout<Double>.size)
+            return value
+        }
+    }
+
+    /// Converts `Data` (containing 8 bytes) back into a `Double`.
+    static func doubleToData(_ value: Double) -> Data {
+        var mutableValue = value
+        // Copy from our aligned stack variable into a new `Data`
+        return withUnsafePointer(to: mutableValue) { ptr in
+            Data(bytes: ptr, count: MemoryLayout.size(ofValue: mutableValue))
+        }
+    }
+
 }
 
 enum StateCode: UInt8 {

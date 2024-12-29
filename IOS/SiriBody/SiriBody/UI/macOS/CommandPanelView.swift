@@ -69,7 +69,7 @@ struct CommandPanelView: View {
             }
             
             Button {
-                appState.centralService.outputSubject.send(Data([TransferCode.setRotationP.rawValue] + [UInt8(28)]))
+                appState.centralService.outputSubject.send(Data([TransferCode.setRotationP.rawValue]) + TransferService.doubleToData(128.78) )
             } label: {
                 Text("test send setting")
             }
