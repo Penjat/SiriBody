@@ -44,8 +44,8 @@ class RobitBrain: ObservableObject {
                 switch motionController.mode {
 
                 case .moveTo(let position):
-                    if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.2),
-                       approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.2) {
+                    if approximatelyEqual(position.z, Double(state.position.z), tolerance: 0.1),
+                       approximatelyEqual(position.x, Double(state.position.x), tolerance: 0.1) {
                         sequenceController.stepComplete()
                     }
                 case .faceAngle(let angle):

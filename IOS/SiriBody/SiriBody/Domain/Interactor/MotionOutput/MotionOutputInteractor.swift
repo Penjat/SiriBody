@@ -100,16 +100,17 @@ class MotionOutputInteractor: ObservableObject {
     func levelsFor(moveTo position: Position, robitState: RobitState ) -> MotorOutput {
         let deltaX = (Double(robitState.position.x) - position.x)
         let deltaZ = (Double(robitState.position.z) - position.z)
-        targetRotation = atan2(deltaX, deltaZ)
+        targetRotation = atan2(deltaX, -deltaZ)
 
         currentAngle = Double(robitState.orientation.z)
 
         // Calculate the angle component
 
-        let angleDifference1 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
-        let angleDifference2 = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation+(Double.pi))
+        let angleDifferenceFrontFace = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation)
+        let angleDifferenceRearFace = calculateShortestDistance(currentAngle: currentAngle, desiredHeading: targetRotation+(Double.pi))
 
-        let (angleDifference, direction) = abs(angleDifference1) < abs(angleDifference2) ? (angleDifference1, 1.0) : (angleDifference2, -1.0)
+        // TODO: Be able to set if should face or just align with target
+        let (angleDifference, direction) = (angleDifferenceFrontFace, -1.0)//abs(angleDifferenceFrontFace) < abs(angleDifferenceRearFace) ? (angleDifferenceFrontFace, 1.0) : (angleDifferenceRearFace, -1.0)
 
         let rotationoutput = rotationController.output(angleDifference)
 
